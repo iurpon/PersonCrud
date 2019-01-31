@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -73,19 +72,18 @@ public class TaskCrud {
     }
 
     private static Date getDate(BufferedReader reader,String str) throws IOException {
-        System.out.format("Enter the %s date with format dd-MM-yyyy : ",str);
+
         boolean correctDate = false;
         Date date = null;
         while (!correctDate){
-
+            System.out.format("Enter the %s date with format dd-MM-yyyy : ",str);
             String dateString = reader.readLine();
 
             if(dateString.isEmpty()){
                 return null;
             }else{
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                 try {
-                    date = formatter.parse(dateString);
+                    date = DateTimeFormatter.parse(dateString);
                     correctDate = true;
                 } catch (ParseException e) {
                     System.out.println("Incorrect date format");

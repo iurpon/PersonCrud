@@ -71,8 +71,8 @@ public class Task {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", begin=" + (begin == null?"Didn't start":begin) +
-                ", end=" + (end == null?"Still in production":end) +
+                ", begin=" + (begin == null?"Didn't start":DateTimeFormatter.format(begin)) +
+                ", end=" + (end == null?"Still in production":DateTimeFormatter.format(end)) +
                 ", project='" + project + '\'' +
                 '}';
     }

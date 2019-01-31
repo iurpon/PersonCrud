@@ -43,6 +43,7 @@ public class TaskCrud {
     private static void taskDelete(BufferedReader reader) throws IOException {
         System.out.println("You are trying to delete project tasks");
         Project project = getProject(reader);
+        if(project == null) return;
         String taskName = getNotNullString("name",reader);
         AppRun.tasks.remove(taskName);
     }
@@ -50,7 +51,9 @@ public class TaskCrud {
     private static void taskCreate(BufferedReader reader) throws IOException {
         System.out.println("You are trying to create project tasks");
         Project project = getProject(reader);
+        if(project == null) return;
         Task task = getTask(reader,project);
+        if(task == null) return;
         AppRun.tasks.put(task.getName(),task);
 
     }
@@ -58,7 +61,10 @@ public class TaskCrud {
     private static Task getTask(BufferedReader reader,Project project) throws IOException {
 
         String name = getNotNullString("name",reader);
+        if(name == null) return null;
         String description = getNotNullString("description",reader);
+        if(description == null) return null;
+
         Date start = getDate(reader,"start");
         Date end = getDate(reader,"end");
         Task task = new Task(UUID.randomUUID().toString(),name,description,start,end,project);
@@ -73,7 +79,7 @@ public class TaskCrud {
         while (!correctDate){
 
             String dateString = reader.readLine();
-            mainMenu(dateString);
+
             if(dateString.isEmpty()){
                 return null;
             }else{
@@ -95,6 +101,7 @@ public class TaskCrud {
         String requestString = null;
         while (!notNull){
             requestString = reader.readLine();
+            if("return".equals(requestString)) return null;
             if(requestString.isEmpty()){
                 System.out.println("String must be not empty");
             }else{
@@ -110,6 +117,9 @@ public class TaskCrud {
         while(!correctName){
             System.out.print("Enter correct project name : ");
             String projectName = reader.readLine();
+            if("return".equals(projectName)){
+                return null;
+            }
             if(projectName.isEmpty()){
                 badCommand();
                 continue;
@@ -134,10 +144,8 @@ public class TaskCrud {
     }
 
     private static void badCommand(){
-        System.out.println("Bad command.");
+        System.out.println("Bad command. Type return to exit in main menu");
     }
 
-    private static void mainMenu(String command){
 
-    }
 }

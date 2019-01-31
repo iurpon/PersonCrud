@@ -17,13 +17,34 @@ public class TaskCrud {
             String secondStep = choice[1].toLowerCase().trim();
             switch (secondStep){
                 case "list" :  taskList(reader);break;
-//                case "update" : taskUpdate(reader);break;
+                case "update" : taskUpdate(reader);break;
                 case "create" : taskCreate(reader);break;
-//                case "delete" : taskDelete(reader);break;
+                case "delete" : taskDelete(reader);break;
                 default: badCommand();
             }
         }
+    }
 
+    private static void taskUpdate(BufferedReader reader) throws IOException {
+        System.out.println("You are trying to update project tasks");
+        Project project = getProject(reader);
+        String taskName = getNotNullString("name",reader);
+        Task task = AppRun.tasks.get(taskName);
+        String name = getNotNullString("new name",reader);
+        String description = getNotNullString("new description",reader);
+        Date start = getDate(reader,"new start");
+        Date end = getDate(reader,"new end");
+        Task newTask = new Task(task.getId(),name,description,start,end,project);
+        AppRun.tasks.remove(task);
+        AppRun.tasks.put(newTask.getName(),newTask);
+
+    }
+
+    private static void taskDelete(BufferedReader reader) throws IOException {
+        System.out.println("You are trying to delete project tasks");
+        Project project = getProject(reader);
+        String taskName = getNotNullString("name",reader);
+        AppRun.tasks.remove(taskName);
     }
 
     private static void taskCreate(BufferedReader reader) throws IOException {

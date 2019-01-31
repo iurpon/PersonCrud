@@ -19,7 +19,6 @@ public class AppRun {
         String userChoice = "";
         System.out.println("you can type help to see available command");
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
-
             while(!"exit".equals(userChoice)){
                 userChoice = reader.readLine();
                 String[] choises = userChoice.split("-");

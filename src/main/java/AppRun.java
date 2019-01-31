@@ -7,7 +7,7 @@ public class AppRun {
     public static Map<String, List<String>> helper = new HashMap<>();
 
     static {
-        helper.put("help", Arrays.asList("quit",
+        helper.put("help", Arrays.asList("exit",
                 "project-list","project-remove","project-create","project-update",
                 "task-list","task-remove","task-create","task-update"));
     }
@@ -17,7 +17,7 @@ public class AppRun {
 
     public static void main(String[] args) throws IOException {
         String userChoice = "";
-        System.out.println("you can type help to see available command");
+        System.out.println("you can type help to see available commands");
         try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))){
             while(!"exit".equals(userChoice)){
                 userChoice = reader.readLine();

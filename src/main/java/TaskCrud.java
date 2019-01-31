@@ -73,6 +73,7 @@ public class TaskCrud {
         while (!correctDate){
 
             String dateString = reader.readLine();
+            mainMenu(dateString);
             if(dateString.isEmpty()){
                 return null;
             }else{
@@ -133,6 +134,10 @@ public class TaskCrud {
     }
 
     private static void badCommand(){
-        System.out.println("Bad command");
+        System.out.println("Bad command.");
+    }
+
+    private static void mainMenu(String command){
+
     }
 }

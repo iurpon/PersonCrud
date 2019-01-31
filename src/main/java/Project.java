@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Objects;
 
 public class Project {
     private String id;
@@ -43,5 +44,20 @@ public class Project {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Project project = (Project) o;
+        return id.equals(project.id) &&
+                name.equals(project.name) &&
+                description.equals(project.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description);
     }
 }

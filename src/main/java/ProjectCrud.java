@@ -37,7 +37,7 @@ public class ProjectCrud {
                 badCommand();
                 filled = false;
             }
-            AppRun.projects.remove(newName);
+           AppRun.projects.remove(newName);
         }
     }
 

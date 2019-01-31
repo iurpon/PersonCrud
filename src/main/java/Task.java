@@ -6,15 +6,15 @@ public class Task {
     private String description;
     private Date begin;
     private Date end;
-    private String projectId;
+    private Project project;
 
-    public Task(String id, String name, String description, Date begin, Date end, String projectId) {
+    public Task(String id, String name, String description, Date begin, Date end, Project project) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.begin = begin;
         this.end = end;
-        this.projectId = projectId;
+        this.project = project;
     }
 
     public String getId() {
@@ -57,12 +57,12 @@ public class Task {
         this.end = end;
     }
 
-    public String getProjectId() {
-        return projectId;
+    public Project getProject() {
+        return project;
     }
 
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class Task {
                 ", description='" + description + '\'' +
                 ", begin=" + (begin == null?"Didn't start":begin) +
                 ", end=" + (end == null?"Still in production":end) +
-                ", projectId='" + projectId + '\'' +
+                ", project='" + project + '\'' +
                 '}';
     }
 }

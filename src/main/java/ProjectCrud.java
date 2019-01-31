@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -28,17 +29,18 @@ public class ProjectCrud {
 
     private static void projectDelete(BufferedReader reader) throws IOException {
         System.out.println("You are trying to delete project : ");
-        boolean filled = false;
-        while(!filled){
-            filled = true;
-            System.out.print("Enter project name : ");
-            String newName = reader.readLine();
-            if(newName.isEmpty()){
-                badCommand();
-                filled = false;
+        Project project = TaskCrud.getProject(reader);
+        AppRun.tasks.values().forEach( t -> {
+            if(t.getProject().equals(project)){
+                AppRun.tasks.remove(t.getName());
             }
-           AppRun.projects.remove(newName);
-        }
+        });
+        AppRun.projects.remove(project.getName());
+        Map<String, Project> projects = AppRun.projects;
+        Map<String,Task> tasks = AppRun.tasks;
+        System.out.println();
+
+
     }
 
 

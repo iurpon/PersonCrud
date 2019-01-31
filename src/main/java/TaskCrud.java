@@ -104,7 +104,7 @@ public class TaskCrud {
         return requestString;
     }
 
-    private static Project getProject(BufferedReader reader) throws IOException {
+    public static Project getProject(BufferedReader reader) throws IOException {
         boolean correctName = false;
         Project project = null;
         while(!correctName){

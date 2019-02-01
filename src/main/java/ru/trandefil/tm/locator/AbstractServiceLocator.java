@@ -2,8 +2,9 @@ package ru.trandefil.tm.locator;
 
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TaskService;
+import ru.trandefil.tm.service.TerminalService;
 
-import java.util.Scanner;
+
 
 public interface AbstractServiceLocator {
 
@@ -11,6 +12,6 @@ public interface AbstractServiceLocator {
 
     TaskService getTaskService();
 
-    Scanner getScanner();
+    TerminalService getTermanalService();
 
 }

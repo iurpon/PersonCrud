@@ -6,8 +6,7 @@ import ru.trandefil.tm.repository.ProjectRepository;
 import ru.trandefil.tm.repository.TaskRepository;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TaskService;
-
-
+import ru.trandefil.tm.service.TerminalService;
 
 
 import java.util.HashMap;
@@ -23,20 +22,23 @@ public class BootStrap  implements AbstractServiceLocator {
         commandMap.put("project-update",new ProjectUpdateCommand(this));
         commandMap.put("task-list",new TaskListCommand(this));
         commandMap.put("task-create",new TaskCreateCommand(this));
+        commandMap.put("task-remove",new TaskRemoveCommand(this));
+        commandMap.put("task-update",new TaskUpdateCommand(this));
     }
 
     private ProjectRepository projectRepository = new ProjectRepository();
     private TaskRepository taskRepository = new TaskRepository();
     private ProjectService projectService = new ProjectService(projectRepository);
     private TaskService taskService = new TaskService(taskRepository);
-    public  Scanner scanner = new Scanner(System.in);
+    private TerminalService terminalService = new TerminalService(new Scanner(System.in));
+
 
 
     public void init() {
         System.out.println("enter help to see commands ");
 
             while(true){
-                String s = scanner.nextLine();
+                String s = terminalService.nextLine();
                 if("help".equals(s)){
                     commandMap.keySet().forEach(System.out::println);
                     continue;
@@ -62,8 +64,8 @@ public class BootStrap  implements AbstractServiceLocator {
     }
 
     @Override
-    public Scanner getScanner() {
-        return scanner;
+    public TerminalService getTermanalService() {
+        return this.terminalService;
     }
 
 

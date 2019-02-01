@@ -1,41 +1,33 @@
 package ru.trandefil.tm.command;
 
-
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.locator.AbstractServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TaskService;
 import ru.trandefil.tm.service.TerminalService;
 
+import static ru.trandefil.tm.util.ValidateUserInput.*;
 
-
-import java.util.Date;
-import java.util.UUID;
-
-import static ru.trandefil.tm.util.ValidateUserInput.getDate;
-import static ru.trandefil.tm.util.ValidateUserInput.getNotNullString;
-
-public class TaskCreateCommand extends AbstractCommand {
-    public TaskCreateCommand(AbstractServiceLocator abstractServiceLocator) {
+public class TaskRemoveCommand extends AbstractCommand {
+    public TaskRemoveCommand(AbstractServiceLocator abstractServiceLocator) {
         super(abstractServiceLocator);
     }
 
     @Override
     public String command() {
-        return "task-create";
+        return "task-remove";
     }
 
     @Override
     public String description() {
-        return "create new task for project";
+        return "remove a project task";
     }
 
     @Override
     public void execute() {
         TerminalService scanner = abstractServiceLocator.getTermanalService();
-        System.out.println("enter project name to add new task :");
-        String projectName = scanner.nextLine();
+
+        String projectName = getNotNullString(scanner,"Enter project name to remove task");
         ProjectService projectService = abstractServiceLocator.getProjectService();
         Project project = projectService.getByName(projectName);
         if(project == null){
@@ -43,13 +35,8 @@ public class TaskCreateCommand extends AbstractCommand {
             return;
         }else{
             String taskName = getNotNullString(scanner,"Enter task name");
-            String taskDesc = getNotNullString(scanner,"Enter task description");
-            Date taskBegin = getDate(scanner,"task start ");
-            Date taskEnd = getDate(scanner,"task end");
-            Task newTask = new Task(UUID.randomUUID().toString(),taskName,taskDesc,taskBegin,taskEnd,project);
             TaskService taskService = abstractServiceLocator.getTaskService();
-            taskService.save(newTask);
+            taskService.deleteByName(taskName);
         }
     }
-
 }

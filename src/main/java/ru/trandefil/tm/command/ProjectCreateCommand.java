@@ -3,8 +3,9 @@ package ru.trandefil.tm.command;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.locator.AbstractServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
+import ru.trandefil.tm.service.TerminalService;
 
-import java.util.Scanner;
+
 import java.util.UUID;
 
 public class ProjectCreateCommand extends AbstractCommand {
@@ -25,7 +26,7 @@ public class ProjectCreateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        Scanner scanner = abstractServiceLocator.getScanner();
+        TerminalService scanner = abstractServiceLocator.getTermanalService();
         System.out.println("Plz enter the project name :");
         String name = scanner.nextLine();
         System.out.println("Plz enter the project description");

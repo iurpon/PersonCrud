@@ -35,7 +35,7 @@ public class ValidateUserInput {
             requestString = scanner.nextLine();
             if("return".equals(requestString)) return null;
             if(requestString.isEmpty()){
-                System.out.println("String must be not empty");
+                System.out.println("empty string isn't valid");
             }else{
                 notNull = true;
             }

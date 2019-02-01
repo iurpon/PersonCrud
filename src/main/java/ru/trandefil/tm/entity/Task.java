@@ -4,10 +4,8 @@ import ru.trandefil.tm.util.DateTimeFormatter;
 
 import java.util.*;
 
-public class Task {
-    private String id;
-    private String name;
-    private String description;
+public class Task  extends BaseEntity{
+
     private Date begin;
     private Date end;
     private Project project;
@@ -71,7 +69,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "ru.trandefil.tm.entity.Task{" +
+        return "Task{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

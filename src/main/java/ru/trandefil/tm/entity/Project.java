@@ -2,11 +2,7 @@ package ru.trandefil.tm.entity;
 
 import java.util.Objects;
 
-public class Project {
-    private String id;
-    private String name;
-    private String description;
-
+public class Project  extends BaseEntity{
 
     public Project(String id, String name, String description) {
         this.id = id;
@@ -40,7 +36,7 @@ public class Project {
 
     @Override
     public String toString() {
-        return "ru.trandefil.tm.entity.Project{" +
+        return "Project{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

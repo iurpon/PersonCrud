@@ -1,4 +1,5 @@
-import java.util.List;
+package ru.trandefil.tm.entity;
+
 import java.util.Objects;
 
 public class Project {
@@ -39,7 +40,7 @@ public class Project {
 
     @Override
     public String toString() {
-        return "Project{" +
+        return "ru.trandefil.tm.entity.Project{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

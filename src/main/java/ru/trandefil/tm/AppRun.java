@@ -1,3 +1,10 @@
+package ru.trandefil.tm;
+
+import ru.trandefil.tm.entity.Project;
+import ru.trandefil.tm.entity.Task;
+import ru.trandefil.tm.service.ProjectCrud;
+import ru.trandefil.tm.service.TaskCrud;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,8 +20,8 @@ public class AppRun {
                 "task-list","task-remove","task-create","task-update"));
     }
 
-    public static Map<String,Project> projects = new HashMap<>();
-    public static Map<String,Task> tasks = new ConcurrentHashMap<>();
+    public static Map<String, Project> projects = new HashMap<>();
+    public static Map<String, Task> tasks = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws IOException {
         String userChoice = "";

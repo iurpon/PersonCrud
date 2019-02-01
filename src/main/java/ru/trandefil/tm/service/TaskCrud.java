@@ -1,3 +1,10 @@
+package ru.trandefil.tm.service;
+
+import ru.trandefil.tm.AppRun;
+import ru.trandefil.tm.entity.Project;
+import ru.trandefil.tm.entity.Task;
+import ru.trandefil.tm.util.DateTimeFormatter;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.text.ParseException;
@@ -94,7 +101,7 @@ public class TaskCrud {
     }
 
     private static String getNotNullString(String requestedStringName, BufferedReader reader) throws IOException {
-        System.out.format("Enter Task %s : ",requestedStringName);
+        System.out.format("Enter ru.trandefil.tm.entity.Task %s : ",requestedStringName);
         boolean notNull = false;
         String requestString = null;
         while (!notNull){

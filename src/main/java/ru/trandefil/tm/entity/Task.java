@@ -1,3 +1,7 @@
+package ru.trandefil.tm.entity;
+
+import ru.trandefil.tm.util.DateTimeFormatter;
+
 import java.util.*;
 
 public class Task {
@@ -67,11 +71,11 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "ru.trandefil.tm.entity.Task{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", begin=" + (begin == null?"Didn't start":DateTimeFormatter.format(begin)) +
+                ", begin=" + (begin == null?"Didn't start": DateTimeFormatter.format(begin)) +
                 ", end=" + (end == null?"Still in production":DateTimeFormatter.format(end)) +
                 ", project='" + project + '\'' +
                 '}';

@@ -5,9 +5,9 @@ import ru.trandefil.tm.entity.Project;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ProjectRepository {
-    public static Map<String, Project> projects = new HashMap<>();
-    static {
-        projects.put("simpleProject",new Project("id","simpleProject","do nothing"));
+public class ProjectRepository  implements AbstractRepository {
+    public  Map<String, Project> projects = new HashMap<>();
+    {
+        projects.put("simpleProject1",new Project("id","simpleProject","no description"));
     }
 }

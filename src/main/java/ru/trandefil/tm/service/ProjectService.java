@@ -1,19 +1,24 @@
 package ru.trandefil.tm.service;
 
-import ru.trandefil.tm.entity.BaseEntity;
+
+import ru.trandefil.tm.entity.Project;
+import ru.trandefil.tm.repository.AbstractRepository;
 import ru.trandefil.tm.repository.ProjectRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectService {
-    private ProjectRepository projectRepository;
+public class ProjectService implements AbstractService{
+    private AbstractRepository projectRepository;
 
-    public ProjectService(ProjectRepository projectRepository) {
+    public ProjectService(AbstractRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 
-    public List<BaseEntity> projectList(){
-        return new ArrayList<>(projectRepository.projects.values());
+
+
+
+    public List<Project> getAll() {
+        return new ArrayList(((ProjectRepository)projectRepository).projects.values());
     }
 }

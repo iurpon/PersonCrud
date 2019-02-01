@@ -8,6 +8,6 @@ import java.util.Map;
 public class ProjectRepository  implements AbstractRepository {
     public  Map<String, Project> projects = new HashMap<>();
     {
-        projects.put("simpleProject1",new Project("id","simpleProject","no description"));
+        projects.put("simpleProject",new Project("id","simpleProject","no description"));
     }
 }

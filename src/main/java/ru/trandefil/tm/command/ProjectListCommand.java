@@ -2,14 +2,18 @@ package ru.trandefil.tm.command;
 
 
 import ru.trandefil.tm.entity.Project;
+import ru.trandefil.tm.locator.AbstractServiceLocator;
 import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 
 
 import java.util.List;
 
-public class ProjectList implements AbstractCommand {
+public class ProjectListCommand extends AbstractCommand {
 
+    public ProjectListCommand(AbstractServiceLocator abstractServiceLocator) {
+        super(abstractServiceLocator);
+    }
 
     @Override
     public String command() {

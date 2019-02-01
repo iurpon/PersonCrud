@@ -1,7 +1,7 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.locator.AbstractServiceLocator;
+import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.TaskService;
 import ru.trandefil.tm.service.TerminalService;
 
@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 
 public class TaskListCommand  extends AbstractCommand{
 
-    public TaskListCommand(AbstractServiceLocator abstractServiceLocator) {
-        super(abstractServiceLocator);
+    public TaskListCommand(ServiceLocator serviceLocator) {
+        super(serviceLocator);
     }
 
     @Override
@@ -26,10 +26,10 @@ public class TaskListCommand  extends AbstractCommand{
 
     @Override
     public void execute() {
-        TerminalService scanner = abstractServiceLocator.getTermanalService();
+        TerminalService scanner = serviceLocator.getTerminalService();
         System.out.println("Enter the project name to see tasks:");
         String projectName = scanner.nextLine();
-        TaskService taskService = abstractServiceLocator.getTaskService();
+        TaskService taskService = serviceLocator.getTaskService();
         List<Task> collect = taskService.getAll().stream().filter(t -> t.getProject().getName().equals(projectName))
                 .collect(Collectors.toList());
         collect.forEach(System.out::println);

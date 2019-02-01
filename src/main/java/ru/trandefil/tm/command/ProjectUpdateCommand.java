@@ -2,15 +2,15 @@ package ru.trandefil.tm.command;
 
 
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.locator.AbstractServiceLocator;
+import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TerminalService;
 
 
 public class ProjectUpdateCommand extends AbstractCommand {
 
-    public ProjectUpdateCommand(AbstractServiceLocator abstractServiceLocator) {
-        super(abstractServiceLocator);
+    public ProjectUpdateCommand(ServiceLocator serviceLocator) {
+        super(serviceLocator);
     }
 
     @Override
@@ -25,11 +25,11 @@ public class ProjectUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        TerminalService scanner = abstractServiceLocator.getTermanalService();
+        TerminalService scanner = serviceLocator.getTerminalService();
         System.out.println("you are trying to update project :");
         System.out.println("plz enter project name :");
         String projectName = scanner.nextLine();
-        ProjectService projectService = abstractServiceLocator.getProjectService();
+        ProjectService projectService = serviceLocator.getProjectService();
         Project project = projectService.getByName(projectName);
         if(project == null){
             System.out.println("wrong project name");

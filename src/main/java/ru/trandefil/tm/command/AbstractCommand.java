@@ -1,13 +1,13 @@
 package ru.trandefil.tm.command;
 
 
-import ru.trandefil.tm.locator.AbstractServiceLocator;
+import ru.trandefil.tm.locator.ServiceLocator;
 
 public abstract class AbstractCommand {
-     protected AbstractServiceLocator abstractServiceLocator;
+     protected ServiceLocator serviceLocator;
 
-     public AbstractCommand(AbstractServiceLocator abstractServiceLocator) {
-          this.abstractServiceLocator = abstractServiceLocator;
+     public AbstractCommand(ServiceLocator serviceLocator) {
+          this.serviceLocator = serviceLocator;
      }
 
      public AbstractCommand() {
@@ -16,8 +16,8 @@ public abstract class AbstractCommand {
      public abstract String command();
      public abstract String description();
      public abstract void execute();
-     public AbstractServiceLocator getAbstractServiceLocator(){
-          return abstractServiceLocator;
+     public ServiceLocator getServiceLocator(){
+          return serviceLocator;
      }
 
 

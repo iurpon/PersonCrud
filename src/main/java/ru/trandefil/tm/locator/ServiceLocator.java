@@ -6,12 +6,12 @@ import ru.trandefil.tm.service.TerminalService;
 
 
 
-public interface AbstractServiceLocator {
+public interface ServiceLocator {
 
     ProjectService getProjectService();
 
     TaskService getTaskService();
 
-    TerminalService getTermanalService();
+    TerminalService getTerminalService();
 
 }

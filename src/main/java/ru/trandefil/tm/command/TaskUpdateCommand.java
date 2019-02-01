@@ -3,7 +3,7 @@ package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.locator.AbstractServiceLocator;
+import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TaskService;
 import ru.trandefil.tm.service.TerminalService;
@@ -13,8 +13,8 @@ import java.util.Date;
 import static ru.trandefil.tm.util.ValidateUserInput.*;
 
 public class TaskUpdateCommand extends AbstractCommand {
-    public TaskUpdateCommand(AbstractServiceLocator abstractServiceLocator) {
-        super(abstractServiceLocator);
+    public TaskUpdateCommand(ServiceLocator serviceLocator) {
+        super(serviceLocator);
     }
 
     @Override
@@ -29,16 +29,16 @@ public class TaskUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        TerminalService terminalService = abstractServiceLocator.getTermanalService();
+        TerminalService terminalService = serviceLocator.getTerminalService();
         String projectName = getNotNullString(terminalService,"Enter project name : ");
-        ProjectService projectService = abstractServiceLocator.getProjectService();
+        ProjectService projectService = serviceLocator.getProjectService();
         Project project = projectService.getByName(projectName);
         if(project == null){
             System.out.println("Wrong project name.");
             return;
         }else{
             String taskName = getNotNullString(terminalService,"Enter task name for update : ");
-            TaskService taskService = abstractServiceLocator.getTaskService();
+            TaskService taskService = serviceLocator.getTaskService();
             Task task = taskService.getByName(taskName);
             if(task == null){
                 System.out.println("Wrong task name");

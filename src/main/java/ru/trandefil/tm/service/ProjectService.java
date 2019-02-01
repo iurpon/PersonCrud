@@ -37,10 +37,8 @@ public class ProjectService {
         if(removed != null){
             System.out.println("LOGGER: object removed");
             return;
-        }else{
-            System.out.println("LOGGER: no this name object ");
-            return;
         }
+        System.out.println("LOGGER: no this name object ");
 
     }
 }

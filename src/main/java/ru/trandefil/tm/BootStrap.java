@@ -1,7 +1,7 @@
 package ru.trandefil.tm;
 
 import ru.trandefil.tm.command.*;
-import ru.trandefil.tm.locator.AbstractServiceLocator;
+import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.repository.ProjectRepository;
 import ru.trandefil.tm.repository.TaskRepository;
 import ru.trandefil.tm.service.ProjectService;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class BootStrap  implements AbstractServiceLocator {
+public class BootStrap  implements ServiceLocator {
     private  final Map<String, AbstractCommand> commandMap = new HashMap<>();
      {
         commandMap.put("project-list",new ProjectListCommand(this));
@@ -68,7 +68,7 @@ public class BootStrap  implements AbstractServiceLocator {
     }
 
     @Override
-    public TerminalService getTermanalService() {
+    public TerminalService getTerminalService() {
         return this.terminalService;
     }
 

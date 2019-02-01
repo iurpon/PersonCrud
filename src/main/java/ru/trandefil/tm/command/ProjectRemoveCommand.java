@@ -1,10 +1,8 @@
 package ru.trandefil.tm.command;
-
-import ru.trandefil.tm.BootStrap;
 import ru.trandefil.tm.locator.AbstractServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 
-import java.util.Scanner;
+
 
 public class ProjectRemoveCommand  extends AbstractCommand {
     public ProjectRemoveCommand(AbstractServiceLocator abstractServiceLocator) {
@@ -23,9 +21,9 @@ public class ProjectRemoveCommand  extends AbstractCommand {
 
     @Override
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
+
         System.out.println("Plz enter project name you want to delete : ");
-        String name = scanner.nextLine();
+        String name = getAbstractServiceLocator().getScanner().nextLine();
         ProjectService projectService = abstractServiceLocator.getProjectService();
         projectService.deleteByName(name);
     }

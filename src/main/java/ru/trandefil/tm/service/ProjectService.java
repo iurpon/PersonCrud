@@ -34,6 +34,13 @@ public class ProjectService implements AbstractService{
     }
 
     public void deleteByName(String projectName){
-        ((ProjectRepository) projectRepository).projects.remove(projectName);
+        Project removed = ((ProjectRepository) projectRepository).projects.remove(projectName);
+        if(removed != null){
+            System.out.println("LOGGER: object removed");
+
+        }else{
+            System.out.println("LOGGER: no this name object ");
+        }
+
     }
 }

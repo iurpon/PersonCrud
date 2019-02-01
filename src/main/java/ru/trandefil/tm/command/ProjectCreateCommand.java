@@ -2,7 +2,6 @@ package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.locator.AbstractServiceLocator;
-import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 
 import java.util.Scanner;
@@ -26,14 +25,14 @@ public class ProjectCreateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = abstractServiceLocator.getScanner();
         System.out.println("Plz enter the project name :");
         String name = scanner.nextLine();
         System.out.println("Plz enter the project description");
         String description = scanner.nextLine();
         Project newProject = new Project(UUID.randomUUID().toString(),name,description);
-        ProjectService projectService = (ProjectService)ServiceLocator.getService("projectService");
+        ProjectService projectService = abstractServiceLocator.getProjectService();
         projectService.save(newProject);
-        scanner.close();
+
     }
 }

@@ -35,7 +35,7 @@ public class BootStrap  implements AbstractServiceLocator {
 
 
     public void init() {
-        System.out.println("enter help to see commands ");
+        System.out.println("enter help to see commands & exit to stop program ");
 
             while(true){
                 String s = terminalService.nextLine();
@@ -43,6 +43,10 @@ public class BootStrap  implements AbstractServiceLocator {
                     commandMap.keySet().forEach(System.out::println);
                     continue;
                 }
+                if("exit".equals(s)){
+                    break;
+                }
+
                 AbstractCommand abstractCommand = commandMap.get(s);
                 if(abstractCommand == null){
                     System.out.println("Bad command.");

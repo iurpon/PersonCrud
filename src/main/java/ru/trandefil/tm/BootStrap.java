@@ -4,9 +4,10 @@ import ru.trandefil.tm.command.*;
 import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepository;
-import ru.trandefil.tm.service.ProjectService;
-import ru.trandefil.tm.service.TaskService;
-import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.repository.UserRepository;
+import ru.trandefil.tm.repository.inMemory.UserRepositoryImpl;
+import ru.trandefil.tm.service.*;
+import ru.trandefil.tm.service.inMemory.UserServiceImpl;
 
 
 import java.util.HashMap;
@@ -24,6 +25,10 @@ public class BootStrap  implements ServiceLocator {
         commandMap.put("task-create",new TaskCreateCommand(this));
         commandMap.put("task-remove",new TaskRemoveCommand(this));
         commandMap.put("task-update",new TaskUpdateCommand(this));
+        commandMap.put("user-list",new UserListCommand(this));
+        commandMap.put("user-create",new UserCreateCommand(this));
+        commandMap.put("user-delete",new UserDeleteCommand(this));
+        commandMap.put("user-update",new UserUpdateCommand(this));
     }
 
     private ProjectRepositoryImpl projectRepository = new ProjectRepositoryImpl();
@@ -31,6 +36,8 @@ public class BootStrap  implements ServiceLocator {
     private ProjectService projectService = new ProjectService(projectRepository);
     private TaskService taskService = new TaskService(taskRepository);
     private TerminalService terminalService = new TerminalService(new Scanner(System.in));
+    private UserRepository userRepository = new UserRepositoryImpl();
+    private UserService userService = new UserServiceImpl(userRepository);
 
 
 
@@ -71,6 +78,9 @@ public class BootStrap  implements ServiceLocator {
     public TerminalService getTerminalService() {
         return this.terminalService;
     }
+
+    @Override
+    public UserService getUserService(){ return this.userService;}
 
 
 }

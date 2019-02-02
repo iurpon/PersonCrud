@@ -3,9 +3,7 @@ package ru.trandefil.tm.repository.inMemory;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.repository.UserRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class UserRepositoryImpl implements UserRepository {
     private static Map<String,User> userMap = new HashMap<>();
@@ -33,5 +31,10 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User getByName(String userName) {
         return userMap.get(userName);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return new ArrayList<>(userMap.values());
     }
 }

@@ -2,6 +2,8 @@ package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.entity.User;
 
+import java.util.List;
+
 public interface UserRepository {
 
 
@@ -12,4 +14,6 @@ public interface UserRepository {
     User save(User user);
 
     User getByName(String userName);
+
+    List<User> getAll();
 }

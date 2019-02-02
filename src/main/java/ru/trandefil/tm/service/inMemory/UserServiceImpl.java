@@ -1,9 +1,12 @@
-package ru.trandefil.tm.service;
+package ru.trandefil.tm.service.inMemory;
 
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.repository.UserRepository;
+import ru.trandefil.tm.service.UserService;
 
-public class UserServiceImpl implements UserSevice {
+import java.util.List;
+
+public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
@@ -28,5 +31,10 @@ public class UserServiceImpl implements UserSevice {
     @Override
     public User getByName(String userName) {
         return userRepository.getByName(userName);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.getAll();
     }
 }

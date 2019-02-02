@@ -2,7 +2,9 @@ package ru.trandefil.tm.service;
 
 import ru.trandefil.tm.entity.User;
 
-public interface UserSevice {
+import java.util.List;
+
+public interface UserService {
     User delete(User user);
 
     User deleteByName(String name);
@@ -10,4 +12,6 @@ public interface UserSevice {
     User save(User user);
 
     User getByName(String userName);
+
+    List<User> getAll();
 }

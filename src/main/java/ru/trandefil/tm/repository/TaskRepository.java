@@ -2,32 +2,17 @@ package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.entity.Task;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
-public class TaskRepository implements AbstractRepository {
-    public Map<String, Task> tasks = new ConcurrentHashMap<>();
+public interface TaskRepository {
 
-    public Task save(Task task){
-        tasks.put(task.getName(),task);
-        return task;
-    }
+    List<Task> getAll();
 
-    public Task delete(Task task){
-        return tasks.remove(task.getName());
-    }
+    Task save(Task task);
 
-    public Task deleteByName(String name){
-        return tasks.remove(name);
-    }
+    Task delete(Task task);
 
-    public Collection<Task> getAll(){
-        return tasks.values();
-    }
+    Task deleteByName(String name);
 
-    public Task getByName(String name){
-        return tasks.get(name);
-    }
-
+    Task getByName(String name);
 }

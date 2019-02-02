@@ -2,9 +2,9 @@ package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.ProjectService;
-import ru.trandefil.tm.service.TaskService;
-import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.service.inMemory.ProjectServiceImpl;
+import ru.trandefil.tm.service.inMemory.TaskServiceImpl;
+import ru.trandefil.tm.service.inMemory.TerminalService;
 
 import static ru.trandefil.tm.util.UserInputUtil.*;
 
@@ -29,14 +29,14 @@ public class TaskRemoveCommand extends AbstractCommand {
 
         final String projectName =
                 getNotNullString(terminalService,"Enter project name to remove task");
-        final ProjectService projectService = serviceLocator.getProjectService();
+        final ProjectServiceImpl projectService = serviceLocator.getProjectService();
         final Project project = projectService.getByName(projectName);
         if(project == null){
             System.out.println("Wrong project name");
             return;
         }
         final String taskName = getNotNullString(terminalService,"Enter task name");
-        final TaskService taskService = serviceLocator.getTaskService();
+        final TaskServiceImpl taskService = serviceLocator.getTaskService();
         taskService.deleteByName(taskName);
 
     }

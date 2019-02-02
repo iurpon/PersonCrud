@@ -2,36 +2,17 @@ package ru.trandefil.tm.service;
 
 import ru.trandefil.tm.entity.Task;
 
-import ru.trandefil.tm.repository.TaskRepository;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class TaskService{
-    private TaskRepository taskRepository;
+public interface TaskService {
 
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
+     List<Task> getAll();
 
-    public List<Task> getAll() {
-        return new ArrayList(taskRepository.getAll());
-    }
+     Task save(Task task);
 
-    public Task save(Task task){
-        return taskRepository.save(task);
-    }
+     Task delete(Task task);
 
-    public Task delete(Task task){
-        return taskRepository.delete(task);
-    }
+     Task deleteByName(String name);
 
-    public Task deleteByName(String name){
-        return taskRepository.deleteByName(name);
-    }
-
-    public Task getByName(String name){
-        return taskRepository.getByName(name);
-    }
-
+     Task getByName(String name);
 }

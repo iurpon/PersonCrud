@@ -2,7 +2,7 @@ package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.service.inMemory.TerminalService;
 import ru.trandefil.tm.service.UserService;
 
 import static ru.trandefil.tm.util.UserInputUtil.*;

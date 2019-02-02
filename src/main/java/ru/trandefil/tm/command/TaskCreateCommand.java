@@ -4,9 +4,9 @@ package ru.trandefil.tm.command;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.ProjectService;
-import ru.trandefil.tm.service.TaskService;
-import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.service.inMemory.ProjectServiceImpl;
+import ru.trandefil.tm.service.inMemory.TaskServiceImpl;
+import ru.trandefil.tm.service.inMemory.TerminalService;
 
 import static ru.trandefil.tm.util.UserInputUtil.*;
 
@@ -34,7 +34,7 @@ public class TaskCreateCommand extends AbstractCommand {
 
         final String projectName =
                 getNotNullString(terminalService, "enter project name to add new task :");
-        final ProjectService projectService = serviceLocator.getProjectService();
+        final ProjectServiceImpl projectService = serviceLocator.getProjectService();
         final Project project = projectService.getByName(projectName);
         if (project == null) {
             System.out.println("Wrong project name");
@@ -49,7 +49,7 @@ public class TaskCreateCommand extends AbstractCommand {
         }
 
         final Task newTask = new Task(UUID.randomUUID().toString(), taskName, taskDesc, taskBegin, taskEnd, project);
-        final TaskService taskService = serviceLocator.getTaskService();
+        final TaskServiceImpl taskService = serviceLocator.getTaskService();
         taskService.save(newTask);
 
     }

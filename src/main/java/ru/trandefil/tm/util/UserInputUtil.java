@@ -1,6 +1,6 @@
 package ru.trandefil.tm.util;
 
-import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.service.inMemory.TerminalService;
 
 import java.text.ParseException;
 import java.util.Date;

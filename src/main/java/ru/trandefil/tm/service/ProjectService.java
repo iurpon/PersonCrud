@@ -1,44 +1,18 @@
 package ru.trandefil.tm.service;
 
-
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectService {
-    private ProjectRepositoryImpl projectRepository;
+public interface ProjectService {
 
-    public ProjectService(ProjectRepositoryImpl projectRepository) {
-        this.projectRepository = projectRepository;
-    }
+     Project save(Project project);
 
+     List<Project> getAll();
 
-    public Project save(Project project){
-        projectRepository.projects.put(project.getName(),project);
-        return project;
-    }
+     Project getByName(String name);
 
-    public List<Project> getAll() {
-        return new ArrayList(projectRepository.projects.values());
-    }
+     void delete(Project project);
 
-    public Project getByName(String name) {
-        return  projectRepository.projects.get(name);
-    }
-
-    public void delete(Project project){
-       projectRepository.projects.remove(project.getName());
-    }
-
-    public void deleteByName(String projectName){
-        Project removed =  projectRepository.projects.remove(projectName);
-        if(removed != null){
-            System.out.println("LOGGER: object removed");
-            return;
-        }
-        System.out.println("LOGGER: no this name object ");
-
-    }
+     void deleteByName(String projectName);
 }

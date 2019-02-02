@@ -1,4 +1,4 @@
-package ru.trandefil.tm.service;
+package ru.trandefil.tm.service.inMemory;
 
 import java.util.Scanner;
 

@@ -1,13 +1,12 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TaskService;
 import ru.trandefil.tm.service.TerminalService;
 
-import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
+import static ru.trandefil.tm.util.UserInputUtil.*;
 
 public class TaskRemoveCommand extends AbstractCommand {
     public TaskRemoveCommand(ServiceLocator serviceLocator) {

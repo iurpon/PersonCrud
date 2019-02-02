@@ -2,15 +2,15 @@ package ru.trandefil.tm.service;
 
 
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.repository.ProjectRepository;
+import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectService {
-    private ProjectRepository projectRepository;
+    private ProjectRepositoryImpl projectRepository;
 
-    public ProjectService(ProjectRepository projectRepository) {
+    public ProjectService(ProjectRepositoryImpl projectRepository) {
         this.projectRepository = projectRepository;
     }
 

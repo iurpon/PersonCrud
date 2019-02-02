@@ -10,7 +10,7 @@ import ru.trandefil.tm.service.TerminalService;
 
 import java.util.Date;
 
-import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
+import static ru.trandefil.tm.util.UserInputUtil.*;
 
 public class TaskUpdateCommand extends AbstractCommand {
     public TaskUpdateCommand(ServiceLocator serviceLocator) {

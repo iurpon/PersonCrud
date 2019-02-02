@@ -5,7 +5,7 @@ import ru.trandefil.tm.service.TerminalService;
 import java.text.ParseException;
 import java.util.Date;
 
-public class ValidateUserInputUtil {
+public class UserInputUtil {
 
     public static Date getDate(TerminalService scanner, String str) {
         boolean correctDate = false;

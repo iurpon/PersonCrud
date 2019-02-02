@@ -2,7 +2,7 @@ package ru.trandefil.tm;
 
 import ru.trandefil.tm.command.*;
 import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.repository.ProjectRepository;
+import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepository;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TaskService;
@@ -26,7 +26,7 @@ public class BootStrap  implements ServiceLocator {
         commandMap.put("task-update",new TaskUpdateCommand(this));
     }
 
-    private ProjectRepository projectRepository = new ProjectRepository();
+    private ProjectRepositoryImpl projectRepository = new ProjectRepositoryImpl();
     private TaskRepository taskRepository = new TaskRepository();
     private ProjectService projectService = new ProjectService(projectRepository);
     private TaskService taskService = new TaskService(taskRepository);

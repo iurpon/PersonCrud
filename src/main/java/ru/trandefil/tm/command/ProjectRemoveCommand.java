@@ -3,7 +3,7 @@ import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TerminalService;
 
-import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
+import static ru.trandefil.tm.util.UserInputUtil.*;
 
 
 

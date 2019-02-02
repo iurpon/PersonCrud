@@ -37,4 +37,9 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> getAll() {
         return new ArrayList<>(userMap.values());
     }
+
+    @Override
+    public User getLoginUser(String userName, String userPassword) {
+        return userMap.get(userName);
+    }
 }

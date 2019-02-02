@@ -12,13 +12,13 @@ public class UserInputUtil {
         Date date = null;
         while (!correctDate) {
             System.out.format("Enter the %s date with format dd-MM-yyyy : ", str);
-            String dateString = scanner.nextLine();
+            final String dateStringInput = scanner.nextLine();
 
-            if (dateString.isEmpty()) {
+            if (dateStringInput.isEmpty()) {
                 return null;
             }
             try {
-                date = DateFormatterUtil.parse(dateString);
+                date = DateFormatterUtil.parse(dateStringInput);
                 correctDate = true;
             } catch (ParseException e) {
                 System.out.println("Incorrect date format");
@@ -28,22 +28,21 @@ public class UserInputUtil {
         return date;
     }
 
-    public static String getNotNullString(TerminalService scanner, String requestedStringName) {
-        System.out.format("%s : ", requestedStringName);
-        boolean notNull = false;
-        String requestString = null;
-        while (!notNull) {
-            requestString = scanner.nextLine();
-            if ("return".equals(requestString)) {
+    public static String getNotNullString(TerminalService scanner, String incomingString) {
+        System.out.format("%s : ", incomingString);
+        boolean notEmptyInput = false;
+        String userInput = null;
+        while (!notEmptyInput) {
+            userInput = scanner.nextLine();
+            if ("return".equals(userInput)) {
                 return null;
             }
-            if (requestString.isEmpty()) {
-                System.out.println("empty string isn't valid");
+            if (userInput.isEmpty()) {
+                System.out.println("empty string doesn't valid");
                 continue;
             }
-            notNull = true;
-
+            notEmptyInput = true;
         }
-        return requestString;
+        return userInput;
     }
 }

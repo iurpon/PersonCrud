@@ -37,4 +37,13 @@ public class UserServiceImpl implements UserService {
     public List<User> getAll() {
         return userRepository.getAll();
     }
+
+    @Override
+    public User getLoginUser(String userName, String userPassword) {
+        User user = userRepository.getLoginUser(userName,userPassword);
+        if(user == null){
+            return null;
+        }
+        return userPassword.equals(user.getPassword()) ? user : null;
+    }
 }

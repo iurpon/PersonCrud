@@ -8,6 +8,7 @@ import ru.trandefil.tm.repository.UserRepository;
 import ru.trandefil.tm.repository.inMemory.UserRepositoryImpl;
 import ru.trandefil.tm.service.*;
 import ru.trandefil.tm.service.inMemory.UserServiceImpl;
+import ru.trandefil.tm.util.UserLoginUtil;
 
 
 import java.util.HashMap;
@@ -42,8 +43,8 @@ public class BootStrap  implements ServiceLocator {
 
 
     public void init() {
+        UserLoginUtil.login(userService,terminalService);
         System.out.println("enter help to see commands & exit to stop program ");
-
             while(true){
                 String s = terminalService.nextLine();
                 if("help".equals(s)){
@@ -53,7 +54,6 @@ public class BootStrap  implements ServiceLocator {
                 if("exit".equals(s)){
                     break;
                 }
-
                 AbstractCommand abstractCommand = commandMap.get(s);
                 if(abstractCommand == null){
                     System.out.println("Bad command.");

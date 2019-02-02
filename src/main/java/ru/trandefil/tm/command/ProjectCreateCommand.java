@@ -28,9 +28,9 @@ public class ProjectCreateCommand extends AbstractCommand {
     @Override
     public void execute() {
         final TerminalService scanner = serviceLocator.getTerminalService();
-        final String name = getNotNullString(scanner,"Enter project name : ");
-        final String description = getNotNullString(scanner,"Enter project description");
-        final Project newProject = new Project(UUID.randomUUID().toString(),name,description);
+        final String name = getNotNullString(scanner, "Enter project name : ");
+        final String description = getNotNullString(scanner, "Enter project description");
+        final Project newProject = new Project(UUID.randomUUID().toString(), name, description);
         final ProjectService projectService = serviceLocator.getProjectService();
         projectService.save(newProject);
 

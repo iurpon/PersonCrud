@@ -6,10 +6,11 @@ import ru.trandefil.tm.repository.UserRepository;
 import java.util.*;
 
 public class UserRepositoryImpl implements UserRepository {
-    private static Map<String,User> userMap = new HashMap<>();
+    private static Map<String, User> userMap = new HashMap<>();
+
     static {
-        userMap.put("Admin",new User(UUID.randomUUID().toString(),"Admin","adminPassword"));
-        userMap.put("User",new User(UUID.randomUUID().toString(),"User","userPassword"));
+        userMap.put("Admin", new User(UUID.randomUUID().toString(), "Admin", "adminPassword"));
+        userMap.put("User", new User(UUID.randomUUID().toString(), "User", "userPassword"));
     }
 
 
@@ -25,7 +26,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(User user) {
-        return userMap.put(user.getName(),user);
+        return userMap.put(user.getName(), user);
     }
 
     @Override

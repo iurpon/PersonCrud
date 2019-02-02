@@ -50,7 +50,7 @@ public class TaskUpdateCommand extends AbstractCommand {
         final String newDescription = getNotNullString(terminalService, "Enter new Task descrip:");
         final Date beginDate = getDate(terminalService, "begin date");
         Date endDate = null;
-        if(beginDate != null){
+        if (beginDate != null) {
             endDate = getDate(terminalService, "end date");
         }
 

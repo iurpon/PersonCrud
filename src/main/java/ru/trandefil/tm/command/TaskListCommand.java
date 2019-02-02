@@ -11,8 +11,7 @@ import java.util.stream.Collectors;
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
 
 
-
-public class TaskListCommand  extends AbstractCommand{
+public class TaskListCommand extends AbstractCommand {
 
     public TaskListCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
@@ -32,7 +31,7 @@ public class TaskListCommand  extends AbstractCommand{
     public void execute() {
         final TerminalService terminalService = serviceLocator.getTerminalService();
         final String projectName =
-                getNotNullString(terminalService,"Enter the project name to see tasks:");
+                getNotNullString(terminalService, "Enter the project name to see tasks:");
         final TaskService taskService = serviceLocator.getTaskService();
         final List<Task> collect = taskService.getAll().stream().filter(t -> t.getProject().getName().equals(projectName))
                 .collect(Collectors.toList());

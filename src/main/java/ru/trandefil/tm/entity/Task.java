@@ -11,7 +11,7 @@ public class Task extends BaseEntity {
     private Project project;
 
     public Task(String id, String name, String description, Date begin, Date end, Project project) {
-        super(id,name);
+        super(id, name);
         this.description = description;
         this.begin = begin;
         this.end = end;

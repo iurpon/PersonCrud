@@ -28,14 +28,14 @@ public class TaskRemoveCommand extends AbstractCommand {
         final TerminalService terminalService = serviceLocator.getTerminalService();
 
         final String projectName =
-                getNotNullString(terminalService,"Enter project name to remove task");
+                getNotNullString(terminalService, "Enter project name to remove task");
         final ProjectService projectService = serviceLocator.getProjectService();
         final Project project = projectService.getByName(projectName);
-        if(project == null){
+        if (project == null) {
             System.out.println("Wrong project name");
             return;
         }
-        final String taskName = getNotNullString(terminalService,"Enter task name");
+        final String taskName = getNotNullString(terminalService, "Enter task name");
         final TaskService taskService = serviceLocator.getTaskService();
         taskService.deleteByName(taskName);
 

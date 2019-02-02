@@ -36,8 +36,8 @@ public class ProjectUpdateCommand extends AbstractCommand {
             System.out.println("wrong project name");
             return;
         }
-        final String newName = getNotNullString(terminalService,"enter new project name");
-        final String newDescription = getNotNullString(terminalService,"enter new project description");
+        final String newName = getNotNullString(terminalService, "enter new project name");
+        final String newDescription = getNotNullString(terminalService, "enter new project description");
         final Project newProject = new Project(project.getId(), newName, newDescription);
         projectService.delete(project);
         projectService.save(newProject);

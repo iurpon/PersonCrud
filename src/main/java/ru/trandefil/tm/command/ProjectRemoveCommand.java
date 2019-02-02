@@ -7,8 +7,7 @@ import ru.trandefil.tm.service.inMemory.TerminalService;
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
 
 
-
-public class ProjectRemoveCommand  extends AbstractCommand {
+public class ProjectRemoveCommand extends AbstractCommand {
 
     public ProjectRemoveCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
@@ -28,7 +27,7 @@ public class ProjectRemoveCommand  extends AbstractCommand {
     public void execute() {
         final TerminalService terminalService = serviceLocator.getTerminalService();
         final String projectName = getNotNullString(terminalService,
-                                                    "Plz enter project name you want to delete : ");
+                "Plz enter project name you want to delete : ");
         final ProjectService projectService = serviceLocator.getProjectService();
         projectService.deleteByName(projectName);
     }

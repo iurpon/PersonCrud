@@ -8,15 +8,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ProjectRepositoryImpl  implements ProjectRepository {
-    private  Map<String, Project> projects = new HashMap<>();
+public class ProjectRepositoryImpl implements ProjectRepository {
+    private Map<String, Project> projects = new HashMap<>();
+
     {
-        projects.put("simpleProject",new Project("id","simpleProject","no description"));
+        projects.put("simpleProject", new Project("id", "simpleProject", "no description"));
     }
 
     @Override
     public Project save(Project project) {
-        projects.put(project.getName(),project);
+        projects.put(project.getName(), project);
         return project;
     }
 

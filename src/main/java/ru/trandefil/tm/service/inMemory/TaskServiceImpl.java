@@ -18,19 +18,19 @@ public class TaskServiceImpl implements TaskService {
         return new ArrayList(taskRepository.getAll());
     }
 
-    public Task save(Task task){
+    public Task save(Task task) {
         return taskRepository.save(task);
     }
 
-    public Task delete(Task task){
+    public Task delete(Task task) {
         return taskRepository.delete(task);
     }
 
-    public Task deleteByName(String name){
+    public Task deleteByName(String name) {
         return taskRepository.deleteByName(name);
     }
 
-    public Task getByName(String name){
+    public Task getByName(String name) {
         return taskRepository.getByName(name);
     }
 

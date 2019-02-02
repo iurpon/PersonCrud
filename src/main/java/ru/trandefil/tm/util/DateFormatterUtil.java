@@ -8,11 +8,11 @@ import java.util.SimpleTimeZone;
 public class DateFormatterUtil {
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-mm-yyyy");
 
-    public static Date  parse(String dateString) throws ParseException {
+    public static Date parse(String dateString) throws ParseException {
         return simpleDateFormat.parse(dateString);
     }
 
-    public static String format(Date date){
+    public static String format(Date date) {
         return simpleDateFormat.format(date);
     }
 }

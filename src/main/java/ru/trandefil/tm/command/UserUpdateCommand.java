@@ -26,15 +26,15 @@ public class UserUpdateCommand extends AbstractCommand {
     public void execute() {
         final UserService userService = serviceLocator.getUserService();
         final TerminalService terminalService = serviceLocator.getTerminalService();
-        final String userName = getNotNullString(terminalService,"enter user name for update");
+        final String userName = getNotNullString(terminalService, "enter user name for update");
         final User userForUpdate = userService.getByName(userName);
-        if(userForUpdate == null){
+        if (userForUpdate == null) {
             System.out.format("user with name %s doesn't exist");
             return;
         }
-        final String newUserName = getNotNullString(terminalService,"enter new user name");
-        final String newPassword = getNotNullString(terminalService,"enter new user password");
-        final User updated = new User(userForUpdate.getId(),newUserName,newPassword);
+        final String newUserName = getNotNullString(terminalService, "enter new user name");
+        final String newPassword = getNotNullString(terminalService, "enter new user password");
+        final User updated = new User(userForUpdate.getId(), newUserName, newPassword);
         userService.delete(userForUpdate);
         userService.save(updated);
     }

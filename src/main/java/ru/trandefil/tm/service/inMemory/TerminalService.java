@@ -9,7 +9,7 @@ public class TerminalService {
         this.scanner = scanner;
     }
 
-    public String nextLine(){
+    public String nextLine() {
         return scanner.nextLine();
     }
 }

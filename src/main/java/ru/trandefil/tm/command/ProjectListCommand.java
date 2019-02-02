@@ -3,8 +3,7 @@ package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.inMemory.ProjectServiceImpl;
-
+import ru.trandefil.tm.service.ProjectService;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class ProjectListCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final ProjectServiceImpl projectService = serviceLocator.getProjectService();
+        final ProjectService projectService = serviceLocator.getProjectService();
         final List<Project> projectList = projectService.getAll();
         projectList.forEach(System.out::println);
     }

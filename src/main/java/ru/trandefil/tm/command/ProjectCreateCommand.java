@@ -4,7 +4,7 @@ import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TerminalService;
-import static ru.trandefil.tm.util.ValidateUserInput.*;
+import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
 
 
 import java.util.UUID;
@@ -27,11 +27,11 @@ public class ProjectCreateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        TerminalService scanner = serviceLocator.getTerminalService();
-        String name = getNotNullString(scanner,"Enter project name : ");
-        String description = getNotNullString(scanner,"Enter project description");
-        Project newProject = new Project(UUID.randomUUID().toString(),name,description);
-        ProjectService projectService = serviceLocator.getProjectService();
+        final TerminalService scanner = serviceLocator.getTerminalService();
+        final String name = getNotNullString(scanner,"Enter project name : ");
+        final String description = getNotNullString(scanner,"Enter project description");
+        final Project newProject = new Project(UUID.randomUUID().toString(),name,description);
+        final ProjectService projectService = serviceLocator.getProjectService();
         projectService.save(newProject);
 
     }

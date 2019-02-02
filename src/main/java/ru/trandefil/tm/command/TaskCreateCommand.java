@@ -8,13 +8,10 @@ import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TaskService;
 import ru.trandefil.tm.service.TerminalService;
 
-
+import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
 
 import java.util.Date;
 import java.util.UUID;
-
-import static ru.trandefil.tm.util.ValidateUserInput.getDate;
-import static ru.trandefil.tm.util.ValidateUserInput.getNotNullString;
 
 public class TaskCreateCommand extends AbstractCommand {
     public TaskCreateCommand(ServiceLocator serviceLocator) {
@@ -33,23 +30,28 @@ public class TaskCreateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        TerminalService scanner = serviceLocator.getTerminalService();
-        System.out.println("enter project name to add new task :");
-        String projectName = scanner.nextLine();
-        ProjectService projectService = serviceLocator.getProjectService();
-        Project project = projectService.getByName(projectName);
-        if(project == null){
+        final TerminalService terminalService = serviceLocator.getTerminalService();
+
+        final String projectName =
+                getNotNullString(terminalService, "enter project name to add new task :");
+        final ProjectService projectService = serviceLocator.getProjectService();
+        final Project project = projectService.getByName(projectName);
+        if (project == null) {
             System.out.println("Wrong project name");
             return;
-        }else{
-            String taskName = getNotNullString(scanner,"Enter task name");
-            String taskDesc = getNotNullString(scanner,"Enter task description");
-            Date taskBegin = getDate(scanner,"task start ");
-            Date taskEnd = getDate(scanner,"task end");
-            Task newTask = new Task(UUID.randomUUID().toString(),taskName,taskDesc,taskBegin,taskEnd,project);
-            TaskService taskService = serviceLocator.getTaskService();
-            taskService.save(newTask);
         }
+        final String taskName = getNotNullString(terminalService, "Enter task name");
+        final String taskDesc = getNotNullString(terminalService, "Enter task description");
+        final Date taskBegin = getDate(terminalService, "task start ");
+        Date taskEnd = null;
+        if (taskBegin != null) {
+            taskEnd = getDate(terminalService, "task end");
+        }
+
+        final Task newTask = new Task(UUID.randomUUID().toString(), taskName, taskDesc, taskBegin, taskEnd, project);
+        final TaskService taskService = serviceLocator.getTaskService();
+        taskService.save(newTask);
+
     }
 
 }

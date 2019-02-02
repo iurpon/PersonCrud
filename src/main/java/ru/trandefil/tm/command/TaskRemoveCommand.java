@@ -1,12 +1,13 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
+import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TaskService;
 import ru.trandefil.tm.service.TerminalService;
 
-import static ru.trandefil.tm.util.ValidateUserInput.*;
+import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
 
 public class TaskRemoveCommand extends AbstractCommand {
     public TaskRemoveCommand(ServiceLocator serviceLocator) {
@@ -25,18 +26,19 @@ public class TaskRemoveCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        TerminalService scanner = serviceLocator.getTerminalService();
+        final TerminalService terminalService = serviceLocator.getTerminalService();
 
-        String projectName = getNotNullString(scanner,"Enter project name to remove task");
-        ProjectService projectService = serviceLocator.getProjectService();
-        Project project = projectService.getByName(projectName);
+        final String projectName =
+                getNotNullString(terminalService,"Enter project name to remove task");
+        final ProjectService projectService = serviceLocator.getProjectService();
+        final Project project = projectService.getByName(projectName);
         if(project == null){
             System.out.println("Wrong project name");
             return;
-        }else{
-            String taskName = getNotNullString(scanner,"Enter task name");
-            TaskService taskService = serviceLocator.getTaskService();
-            taskService.deleteByName(taskName);
         }
+        final String taskName = getNotNullString(terminalService,"Enter task name");
+        final TaskService taskService = serviceLocator.getTaskService();
+        taskService.deleteByName(taskName);
+
     }
 }

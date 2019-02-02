@@ -1,6 +1,9 @@
 package ru.trandefil.tm.command;
 import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
+import ru.trandefil.tm.service.TerminalService;
+
+import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
 
 
 
@@ -22,10 +25,11 @@ public class ProjectRemoveCommand  extends AbstractCommand {
 
     @Override
     public void execute() {
-        System.out.println("Plz enter project name you want to delete : ");
-        String name = getServiceLocator().getTerminalService().nextLine();
-        ProjectService projectService = serviceLocator.getProjectService();
-        projectService.deleteByName(name);
+        final TerminalService terminalService = serviceLocator.getTerminalService();
+        final String projectName = getNotNullString(terminalService,
+                                                    "Plz enter project name you want to delete : ");
+        final ProjectService projectService = serviceLocator.getProjectService();
+        projectService.deleteByName(projectName);
     }
 
 }

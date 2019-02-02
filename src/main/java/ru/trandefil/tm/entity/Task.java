@@ -1,6 +1,6 @@
 package ru.trandefil.tm.entity;
 
-import ru.trandefil.tm.util.DateTimeFormatter;
+import ru.trandefil.tm.util.DateFormatterUtil;
 
 import java.util.*;
 
@@ -74,8 +74,8 @@ public class Task extends BaseEntity {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", begin=" + (begin == null ? "Didn't start" : DateTimeFormatter.format(begin)) +
-                ", end=" + (end == null ? "Still in production" : DateTimeFormatter.format(end)) +
+                ", begin=" + (begin == null ? "Didn't start" : DateFormatterUtil.format(begin)) +
+                ", end=" + (end == null ? "Still in production" : DateFormatterUtil.format(end)) +
                 ", project='" + project + '\'' +
                 '}';
     }

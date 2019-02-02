@@ -2,7 +2,7 @@ package ru.trandefil.tm;
 
 
 
-public class NewAppRun {
+public class AppRun {
 
     public static void main(String[] args) {
         BootStrap bootStrap = new BootStrap();

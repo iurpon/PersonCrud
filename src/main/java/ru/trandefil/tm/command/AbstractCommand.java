@@ -10,15 +10,9 @@ public abstract class AbstractCommand {
           this.serviceLocator = serviceLocator;
      }
 
-     public AbstractCommand() {
-     }
-
      public abstract String command();
      public abstract String description();
      public abstract void execute();
-     public ServiceLocator getServiceLocator(){
-          return serviceLocator;
-     }
 
 
 }

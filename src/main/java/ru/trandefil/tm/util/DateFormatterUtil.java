@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.SimpleTimeZone;
 
-public class DateTimeFormatter {
+public class DateFormatterUtil {
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-mm-yyyy");
 
     public static Date  parse(String dateString) throws ParseException {

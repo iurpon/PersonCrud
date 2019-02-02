@@ -10,7 +10,7 @@ import ru.trandefil.tm.service.TerminalService;
 
 import java.util.Date;
 
-import static ru.trandefil.tm.util.ValidateUserInput.*;
+import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
 
 public class TaskUpdateCommand extends AbstractCommand {
     public TaskUpdateCommand(ServiceLocator serviceLocator) {
@@ -29,29 +29,34 @@ public class TaskUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        TerminalService terminalService = serviceLocator.getTerminalService();
-        String projectName = getNotNullString(terminalService,"Enter project name : ");
-        ProjectService projectService = serviceLocator.getProjectService();
-        Project project = projectService.getByName(projectName);
-        if(project == null){
+        final TerminalService terminalService = serviceLocator.getTerminalService();
+        final String projectName =
+                getNotNullString(terminalService, "Enter project name to update task : ");
+        final ProjectService projectService = serviceLocator.getProjectService();
+        final Project project = projectService.getByName(projectName);
+        if (project == null) {
             System.out.println("Wrong project name.");
             return;
-        }else{
-            String taskName = getNotNullString(terminalService,"Enter task name for update : ");
-            TaskService taskService = serviceLocator.getTaskService();
-            Task task = taskService.getByName(taskName);
-            if(task == null){
-                System.out.println("Wrong task name");
-                return;
-            }else{
-                String newName = getNotNullString(terminalService,"Enter new Task name :");
-                String newDescription = getNotNullString(terminalService,"Enter new Task descrip:");
-                Date beginDate = getDate(terminalService,"begin date");
-                Date endDate = getDate(terminalService,"end date");
-                Task newTask = new Task(task.getId(),newName,newDescription,beginDate,endDate,project);
-                taskService.deleteByName(task.getName());
-                taskService.save(newTask);
-            }
         }
+        final String taskName = getNotNullString(terminalService, "Enter task name for update : ");
+        final TaskService taskService = serviceLocator.getTaskService();
+        final Task task = taskService.getByName(taskName);
+        if (task == null) {
+            System.out.println("Wrong task name");
+            return;
+        }
+        final String newName = getNotNullString(terminalService, "Enter new Task name :");
+        final String newDescription = getNotNullString(terminalService, "Enter new Task descrip:");
+        final Date beginDate = getDate(terminalService, "begin date");
+        Date endDate = null;
+        if(beginDate != null){
+            endDate = getDate(terminalService, "end date");
+        }
+
+        final Task newTask = new Task(task.getId(), newName, newDescription, beginDate, endDate, project);
+        taskService.deleteByName(task.getName());
+        taskService.save(newTask);
+
     }
+
 }

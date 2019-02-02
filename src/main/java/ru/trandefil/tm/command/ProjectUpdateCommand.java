@@ -6,6 +6,8 @@ import ru.trandefil.tm.locator.ServiceLocator;
 import ru.trandefil.tm.service.ProjectService;
 import ru.trandefil.tm.service.TerminalService;
 
+import static ru.trandefil.tm.util.ValidateUserInputUtil.*;
+
 
 public class ProjectUpdateCommand extends AbstractCommand {
 
@@ -25,22 +27,20 @@ public class ProjectUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        TerminalService scanner = serviceLocator.getTerminalService();
+        final TerminalService terminalService = serviceLocator.getTerminalService();
         System.out.println("you are trying to update project :");
-        System.out.println("plz enter project name :");
-        String projectName = scanner.nextLine();
-        ProjectService projectService = serviceLocator.getProjectService();
-        Project project = projectService.getByName(projectName);
-        if(project == null){
+        final String projectName = getNotNullString(terminalService, "plz enter project name :");
+        final ProjectService projectService = serviceLocator.getProjectService();
+        final Project project = projectService.getByName(projectName);
+        if (project == null) {
             System.out.println("wrong project name");
-         }else{
-            System.out.println("enter new project name");
-            String newName = scanner.nextLine();
-            System.out.println("enter new project description");
-            String newDescription = scanner.nextLine();
-            Project newProject = new Project(project.getId(),newName,newDescription);
-            projectService.delete(project);
-            projectService.save(newProject);
+            return;
         }
+        final String newName = getNotNullString(terminalService,"enter new project name");
+        final String newDescription = getNotNullString(terminalService,"enter new project description");
+        final Project newProject = new Project(project.getId(), newName, newDescription);
+        projectService.delete(project);
+        projectService.save(newProject);
+
     }
 }

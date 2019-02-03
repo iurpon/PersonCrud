@@ -7,16 +7,15 @@ import ru.trandefil.tm.api.UserService;
 import static ru.trandefil.tm.util.UserInputUtil.*;
 
 public class UserLoginUtil {
-    public static void login(UserService userService, TerminalService terminalService) {
-        System.out.println("Plz login before start work : ");
-        while (true) {
+
+    public static User login(UserService userService, TerminalService terminalService) {
             final String userName = getNotNullString(terminalService, "enter user name");
             final String userPass = getNotNullString(terminalService, "enter user password");
             final User user = userService.getLoginUser(userName, userPass);
             if (user != null) {
-                return;
+                return user;
             }
-            System.out.println("wrong user name or password. try again.");
-        }
+            System.out.println("wrong user name or password.");
     }
+
 }

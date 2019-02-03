@@ -2,6 +2,7 @@ package ru.trandefil.tm;
 
 import ru.trandefil.tm.api.*;
 import ru.trandefil.tm.command.*;
+import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepositoryImpl;
 import ru.trandefil.tm.repository.UserRepositoryImpl;
@@ -10,56 +11,35 @@ import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.TerminalService;
 import ru.trandefil.tm.service.UserServiceImpl;
 import ru.trandefil.tm.util.UserLoginUtil;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class Bootstrap implements ServiceLocator {
 
-    final private ProjectRepository projectRepository = new ProjectRepositoryImpl();
-    final private TaskRepository taskRepository = new TaskRepositoryImpl();
-    final private ProjectService projectService = new ProjectServiceImpl(projectRepository);
-    final private TaskService taskService = new TaskServiceImpl(taskRepository);
-    final private TerminalService terminalService = new TerminalService(new Scanner(System.in));
-    final private UserRepository userRepository = new UserRepositoryImpl();
-    final private UserService userService = new UserServiceImpl(userRepository);
+    private User loggedUser = null;
+
+    private final ProjectRepository projectRepository = new ProjectRepositoryImpl();
+
+    private final TaskRepository taskRepository = new TaskRepositoryImpl();
+
+    private final ProjectService projectService = new ProjectServiceImpl(projectRepository);
+
+    private final TaskService taskService = new TaskServiceImpl(taskRepository);
+
+    private final TerminalService terminalService = new TerminalService(new Scanner(System.in));
+
+    private final UserRepository userRepository = new UserRepositoryImpl();
+
+    private final UserService userService = new UserServiceImpl(userRepository);
 
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
 
-    {
-        commandMap.put("project-list", new ProjectListCommand(this));
-        commandMap.put("project-create", new ProjectCreateCommand(this));
-        commandMap.put("project-remove", new ProjectRemoveCommand(this));
-        commandMap.put("project-update", new ProjectUpdateCommand(this));
-        commandMap.put("task-list", new TaskListCommand(this));
-        commandMap.put("task-create", new TaskCreateCommand(this));
-        commandMap.put("task-remove", new TaskRemoveCommand(this));
-        commandMap.put("task-update", new TaskUpdateCommand(this));
-        commandMap.put("user-list", new UserListCommand(this));
-        commandMap.put("user-create", new UserCreateCommand(this));
-        commandMap.put("user-delete", new UserDeleteCommand(this));
-        commandMap.put("user-update", new UserUpdateCommand(this));
+    public User getLoggedUser() {
+        return loggedUser;
     }
 
-    public void init() {
-        UserLoginUtil.login(userService, terminalService);
-        System.out.println("enter help to see commands & exit to stop program ");
-        while (true) {
-            String s = terminalService.nextLine();
-            if ("help".equals(s)) {
-                commandMap.keySet().forEach(System.out::println);
-                continue;
-            }
-            if ("exit".equals(s)) {
-                break;
-            }
-            AbstractCommand abstractCommand = commandMap.get(s);
-            if (abstractCommand == null) {
-                System.out.println("Bad command.");
-                continue;
-            }
-            abstractCommand.execute();
-        }
+    public void setLoggedUser(User loggedUser) {
+        this.loggedUser = loggedUser;
     }
 
     @Override
@@ -80,6 +60,53 @@ public class Bootstrap implements ServiceLocator {
     @Override
     public UserService getUserService() {
         return this.userService;
+    }
+
+    public void fillMap(AbstractCommand abstractCommand){
+        commandMap.put(abstractCommand.command(),abstractCommand);
+    }
+
+    public void initAbstractCommandMap(){
+        List<AbstractCommand> abstractCommandList = new ArrayList<>();
+        abstractCommandList.add(new ProjectListCommand(this));
+        abstractCommandList.add( new ProjectCreateCommand(this));
+        abstractCommandList.add(new ProjectRemoveCommand(this));
+        abstractCommandList.add(new ProjectUpdateCommand(this));
+        abstractCommandList.add(new TaskListCommand(this));
+        abstractCommandList.add(new TaskCreateCommand(this));
+        abstractCommandList.add(new TaskRemoveCommand(this));
+        abstractCommandList.add(new TaskUpdateCommand(this));
+        abstractCommandList.add(new UserListCommand(this));
+        abstractCommandList.add(new UserCreateCommand(this));
+        abstractCommandList.add(new UserDeleteCommand(this));
+        abstractCommandList.add(new UserUpdateCommand(this));
+        abstractCommandList.add(new HelpCommand(this,commandMap));
+        abstractCommandList.add(new ExitCommand(this));
+        abstractCommandList.add(new LoginCommand(this));
+        abstractCommandList.add(new LogoutCommand(this));
+        abstractCommandList.forEach(this::fillMap);
+    }
+
+    public void init() {
+        UserLoginUtil.login(userService, terminalService);
+        initAbstractCommandMap();
+        System.out.println("enter help to see commands & exit to stop program ");
+        while (true) {
+            String s = terminalService.nextLine();
+            if ("help".equals(s)) {
+                commandMap.keySet().forEach(System.out::println);
+                continue;
+            }
+            if ("exit".equals(s)) {
+                break;
+            }
+            AbstractCommand abstractCommand = commandMap.get(s);
+            if (abstractCommand == null) {
+                System.out.println("Bad command.");
+                continue;
+            }
+            abstractCommand.execute();
+        }
     }
 
 }

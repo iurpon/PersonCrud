@@ -3,6 +3,7 @@ package ru.trandefil.tm.entity;
 import java.util.Objects;
 
 public class Project extends BaseEntity {
+
     private String description;
 
     public Project(String id, String name, String description) {

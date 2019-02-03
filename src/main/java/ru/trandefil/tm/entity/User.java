@@ -1,6 +1,7 @@
 package ru.trandefil.tm.entity;
 
 public class User extends BaseEntity {
+
     private String password;
 
     public User(String id, String name, String password) {
@@ -24,4 +25,5 @@ public class User extends BaseEntity {
                 ", name='" + name + '\'' +
                 '}';
     }
+
 }

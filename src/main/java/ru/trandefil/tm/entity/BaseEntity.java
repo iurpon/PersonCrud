@@ -1,7 +1,9 @@
 package ru.trandefil.tm.entity;
 
 public abstract class BaseEntity {
+
     protected String id;
+
     protected String name;
 
     public BaseEntity() {

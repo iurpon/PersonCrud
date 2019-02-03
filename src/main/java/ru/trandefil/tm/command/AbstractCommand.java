@@ -1,9 +1,9 @@
 package ru.trandefil.tm.command;
 
-
 import ru.trandefil.tm.api.ServiceLocator;
 
 public abstract class AbstractCommand {
+
     protected ServiceLocator serviceLocator;
 
     public AbstractCommand(ServiceLocator serviceLocator) {
@@ -17,6 +17,5 @@ public abstract class AbstractCommand {
     public abstract void execute();
 
     public abstract boolean secure();
-
 
 }

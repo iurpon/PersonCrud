@@ -5,9 +5,13 @@ import ru.trandefil.tm.util.DateFormatterUtil;
 import java.util.*;
 
 public class Task extends BaseEntity {
+
     private String description;
+
     private Date begin;
+
     private Date end;
+
     private Project project;
 
     public Task(String id, String name, String description, Date begin, Date end, Project project) {

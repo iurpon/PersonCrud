@@ -1,13 +1,14 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.inMemory.TerminalService;
-import ru.trandefil.tm.service.UserService;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.api.UserService;
 
 import static ru.trandefil.tm.util.UserInputUtil.*;
 
 public class UserUpdateCommand extends AbstractCommand {
+
     public UserUpdateCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
     }
@@ -38,4 +39,10 @@ public class UserUpdateCommand extends AbstractCommand {
         userService.delete(userForUpdate);
         userService.save(updated);
     }
+
+    @Override
+    public boolean secure() {
+        return true;
+    }
+
 }

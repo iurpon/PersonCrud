@@ -1,18 +1,17 @@
-package ru.trandefil.tm.repository.inMemory;
+package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.repository.UserRepository;
-
+import ru.trandefil.tm.api.UserRepository;
 import java.util.*;
 
 public class UserRepositoryImpl implements UserRepository {
+
     private static Map<String, User> userMap = new HashMap<>();
 
     static {
         userMap.put("Admin", new User(UUID.randomUUID().toString(), "Admin", "adminPassword"));
         userMap.put("User", new User(UUID.randomUUID().toString(), "User", "userPassword"));
     }
-
 
     @Override
     public User delete(User user) {
@@ -43,4 +42,5 @@ public class UserRepositoryImpl implements UserRepository {
     public User getLoginUser(String userName, String userPassword) {
         return userMap.get(userName);
     }
+
 }

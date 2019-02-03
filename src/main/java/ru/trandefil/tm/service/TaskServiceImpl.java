@@ -1,8 +1,8 @@
-package ru.trandefil.tm.service.inMemory;
+package ru.trandefil.tm.service;
 
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.repository.TaskRepository;
-import ru.trandefil.tm.service.TaskService;
+import ru.trandefil.tm.api.TaskRepository;
+import ru.trandefil.tm.api.TaskService;
 
 import java.util.ArrayList;
 import java.util.List;

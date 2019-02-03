@@ -1,12 +1,10 @@
-package ru.trandefil.tm.service.inMemory;
+package ru.trandefil.tm.service;
 
 
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.repository.ProjectRepository;
-import ru.trandefil.tm.repository.inMemory.ProjectRepositoryImpl;
-import ru.trandefil.tm.service.ProjectService;
+import ru.trandefil.tm.api.ProjectRepository;
+import ru.trandefil.tm.api.ProjectService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectServiceImpl implements ProjectService {

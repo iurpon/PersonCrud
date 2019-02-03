@@ -1,12 +1,10 @@
 package ru.trandefil.tm;
 
-
-
-public class AppRun {
+public class App {
 
     public static void main(String[] args) {
-        BootStrap bootStrap = new BootStrap();
+        Bootstrap bootStrap = new Bootstrap();
         bootStrap.init();
-
     }
+
 }

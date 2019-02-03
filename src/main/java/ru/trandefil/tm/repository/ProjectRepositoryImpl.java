@@ -1,7 +1,7 @@
-package ru.trandefil.tm.repository.inMemory;
+package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.repository.ProjectRepository;
+import ru.trandefil.tm.api.ProjectRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,14 +1,15 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.ProjectService;
-import ru.trandefil.tm.service.TaskService;
-import ru.trandefil.tm.service.inMemory.TerminalService;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.api.ProjectService;
+import ru.trandefil.tm.api.TaskService;
+import ru.trandefil.tm.service.TerminalService;
 
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
 
 public class TaskRemoveCommand extends AbstractCommand {
+
     public TaskRemoveCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
     }
@@ -26,7 +27,6 @@ public class TaskRemoveCommand extends AbstractCommand {
     @Override
     public void execute() {
         final TerminalService terminalService = serviceLocator.getTerminalService();
-
         final String projectName =
                 getNotNullString(terminalService, "Enter project name to remove task");
         final ProjectService projectService = serviceLocator.getProjectService();
@@ -38,6 +38,11 @@ public class TaskRemoveCommand extends AbstractCommand {
         final String taskName = getNotNullString(terminalService, "Enter task name");
         final TaskService taskService = serviceLocator.getTaskService();
         taskService.deleteByName(taskName);
-
     }
+
+    @Override
+    public boolean secure() {
+        return true;
+    }
+
 }

@@ -1,15 +1,14 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.TaskService;
-import ru.trandefil.tm.service.inMemory.TerminalService;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.api.TaskService;
+import ru.trandefil.tm.service.TerminalService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
-
 
 public class TaskListCommand extends AbstractCommand {
 
@@ -37,4 +36,10 @@ public class TaskListCommand extends AbstractCommand {
                 .collect(Collectors.toList());
         collect.forEach(System.out::println);
     }
+
+    @Override
+    public boolean secure() {
+        return true;
+    }
+
 }

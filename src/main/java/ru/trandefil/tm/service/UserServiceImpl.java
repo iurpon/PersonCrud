@@ -1,12 +1,12 @@
-package ru.trandefil.tm.service.inMemory;
+package ru.trandefil.tm.service;
 
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.repository.UserRepository;
-import ru.trandefil.tm.service.UserService;
-
+import ru.trandefil.tm.api.UserRepository;
+import ru.trandefil.tm.api.UserService;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
+
     private UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
@@ -46,4 +46,5 @@ public class UserServiceImpl implements UserService {
         }
         return userPassword.equals(user.getPassword()) ? user : null;
     }
+
 }

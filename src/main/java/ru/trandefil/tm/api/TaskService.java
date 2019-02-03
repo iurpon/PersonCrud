@@ -1,4 +1,4 @@
-package ru.trandefil.tm.service;
+package ru.trandefil.tm.api;
 
 import ru.trandefil.tm.entity.Task;
 

@@ -1,15 +1,16 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.inMemory.TerminalService;
-import ru.trandefil.tm.service.UserService;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.api.UserService;
 
 import java.util.UUID;
 
 import static ru.trandefil.tm.util.UserInputUtil.*;
 
 public class UserCreateCommand extends AbstractCommand {
+
     public UserCreateCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
     }
@@ -33,4 +34,10 @@ public class UserCreateCommand extends AbstractCommand {
         final User user = new User(UUID.randomUUID().toString(), userName, userPass);
         userService.save(user);
     }
+
+    @Override
+    public boolean secure() {
+        return true;
+    }
+
 }

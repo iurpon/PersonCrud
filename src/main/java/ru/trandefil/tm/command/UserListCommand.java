@@ -1,12 +1,13 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.UserService;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.api.UserService;
 
 import java.util.List;
 
 public class UserListCommand extends AbstractCommand {
+
     public UserListCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
     }
@@ -27,4 +28,10 @@ public class UserListCommand extends AbstractCommand {
         final List<User> userList = userService.getAll();
         userList.forEach(System.out::println);
     }
+
+    @Override
+    public boolean secure() {
+        return true;
+    }
+
 }

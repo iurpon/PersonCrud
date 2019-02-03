@@ -3,10 +3,10 @@ package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.ProjectService;
-import ru.trandefil.tm.service.TaskService;
-import ru.trandefil.tm.service.inMemory.TerminalService;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.api.ProjectService;
+import ru.trandefil.tm.api.TaskService;
+import ru.trandefil.tm.service.TerminalService;
 
 import java.util.Date;
 
@@ -14,6 +14,7 @@ import static ru.trandefil.tm.util.UserInputUtil.getDate;
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
 
 public class TaskUpdateCommand extends AbstractCommand {
+
     public TaskUpdateCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
     }
@@ -53,11 +54,14 @@ public class TaskUpdateCommand extends AbstractCommand {
         if (beginDate != null) {
             endDate = getDate(terminalService, "end date");
         }
-
         final Task newTask = new Task(task.getId(), newName, newDescription, beginDate, endDate, project);
         taskService.deleteByName(task.getName());
         taskService.save(newTask);
+    }
 
+    @Override
+    public boolean secure() {
+        return true;
     }
 
 }

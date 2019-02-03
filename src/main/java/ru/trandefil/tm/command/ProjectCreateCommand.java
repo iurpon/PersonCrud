@@ -1,9 +1,9 @@
 package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.locator.ServiceLocator;
-import ru.trandefil.tm.service.ProjectService;
-import ru.trandefil.tm.service.inMemory.TerminalService;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.api.ProjectService;
+import ru.trandefil.tm.service.TerminalService;
 
 import java.util.UUID;
 
@@ -33,6 +33,11 @@ public class ProjectCreateCommand extends AbstractCommand {
         final Project newProject = new Project(UUID.randomUUID().toString(), name, description);
         final ProjectService projectService = serviceLocator.getProjectService();
         projectService.save(newProject);
-
     }
+
+    @Override
+    public boolean secure() {
+        return true;
+    }
+
 }

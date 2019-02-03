@@ -1,10 +1,12 @@
-package ru.trandefil.tm.service;
+package ru.trandefil.tm.api;
 
 import ru.trandefil.tm.entity.User;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserRepository {
+
+
     User delete(User user);
 
     User deleteByName(String name);

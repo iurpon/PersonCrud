@@ -1,15 +1,14 @@
-package ru.trandefil.tm.repository.inMemory;
+package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.repository.TaskRepository;
-
+import ru.trandefil.tm.api.TaskRepository;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TaskRepositoryImpl implements TaskRepository {
+
     public Map<String, Task> tasks = new ConcurrentHashMap<>();
 
     public Task save(Task task) {

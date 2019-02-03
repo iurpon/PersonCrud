@@ -1,11 +1,9 @@
-package ru.trandefil.tm.repository;
+package ru.trandefil.tm.api;
 
 import ru.trandefil.tm.entity.User;
-
 import java.util.List;
 
-public interface UserRepository {
-
+public interface UserService {
 
     User delete(User user);
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TaskServiceImpl implements TaskService {
+
     private TaskRepository taskRepository;
 
     public TaskServiceImpl(TaskRepository taskRepository) {

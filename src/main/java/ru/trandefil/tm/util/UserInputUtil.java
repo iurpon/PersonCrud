@@ -2,12 +2,15 @@ package ru.trandefil.tm.util;
 
 import ru.trandefil.tm.service.TerminalService;
 
+import javax.xml.bind.DatatypeConverter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.Date;
 
 public class UserInputUtil {
 
-    public static Date getDate(TerminalService scanner, String str) {
+    public static Date getDate(final TerminalService scanner, final String str) {
         boolean correctDate = false;
         Date date = null;
         while (!correctDate) {
@@ -28,7 +31,7 @@ public class UserInputUtil {
         return date;
     }
 
-    public static String getNotNullString(TerminalService scanner, String incomingString) {
+    public static String getNotNullString(final TerminalService scanner, final String incomingString) {
         System.out.format("%s : ", incomingString);
         boolean notEmptyInput = false;
         String userInput = null;
@@ -45,4 +48,19 @@ public class UserInputUtil {
         }
         return userInput;
     }
+
+    public static String hashPassword(final String password) {
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        md.update(password.getBytes());
+        final byte[] digest = md.digest();
+        final String myHash = DatatypeConverter
+                .printHexBinary(digest).toUpperCase();
+        return myHash;
+    }
+
 }

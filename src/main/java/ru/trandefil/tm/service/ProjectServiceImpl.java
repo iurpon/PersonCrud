@@ -8,6 +8,7 @@ import ru.trandefil.tm.api.ProjectService;
 import java.util.List;
 
 public class ProjectServiceImpl implements ProjectService {
+
     private ProjectRepository projectRepository;
 
     public ProjectServiceImpl(ProjectRepository projectRepository) {
@@ -33,6 +34,6 @@ public class ProjectServiceImpl implements ProjectService {
 
     public void deleteByName(String projectName) {
         projectRepository.deleteByName(projectName);
-
     }
+
 }

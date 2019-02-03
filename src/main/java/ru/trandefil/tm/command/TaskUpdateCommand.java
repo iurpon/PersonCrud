@@ -47,8 +47,8 @@ public class TaskUpdateCommand extends AbstractCommand {
             System.out.println("Wrong task name");
             return;
         }
-        final String newName = getNotNullString(terminalService, "Enter new Task name :");
-        final String newDescription = getNotNullString(terminalService, "Enter new Task descrip:");
+        final String newName = getNotNullString(terminalService, "Enter new Task name : ");
+        final String newDescription = getNotNullString(terminalService, "Enter new Task description : ");
         final Date beginDate = getDate(terminalService, "begin date");
         Date endDate = null;
         if (beginDate != null) {

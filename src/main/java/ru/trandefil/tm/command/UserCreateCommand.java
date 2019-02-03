@@ -30,7 +30,7 @@ public class UserCreateCommand extends AbstractCommand {
         final UserService userService = serviceLocator.getUserService();
         final TerminalService terminalService = serviceLocator.getTerminalService();
         final String userName = getNotNullString(terminalService, "enter user name");
-        final String userPass = getNotNullString(terminalService, "enter user password");
+        final String userPass = hashPassword(getNotNullString(terminalService, "enter user password"));
         final User user = new User(UUID.randomUUID().toString(), userName, userPass);
         userService.save(user);
     }

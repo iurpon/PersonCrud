@@ -3,6 +3,7 @@ package ru.trandefil.tm.service;
 import java.util.Scanner;
 
 public class TerminalService {
+
     private Scanner scanner;
 
     public TerminalService(Scanner scanner) {
@@ -12,4 +13,5 @@ public class TerminalService {
     public String nextLine() {
         return scanner.nextLine();
     }
+
 }

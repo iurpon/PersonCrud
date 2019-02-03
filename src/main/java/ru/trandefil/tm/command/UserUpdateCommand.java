@@ -34,7 +34,8 @@ public class UserUpdateCommand extends AbstractCommand {
             return;
         }
         final String newUserName = getNotNullString(terminalService, "enter new user name");
-        final String newPassword = getNotNullString(terminalService, "enter new user password");
+        final String newPassword =
+                hashPassword(getNotNullString(terminalService, "enter new user password"));
         final User updated = new User(userForUpdate.getId(), newUserName, newPassword);
         userService.delete(userForUpdate);
         userService.save(updated);

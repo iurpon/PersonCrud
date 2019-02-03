@@ -10,7 +10,6 @@ import ru.trandefil.tm.service.ProjectServiceImpl;
 import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.TerminalService;
 import ru.trandefil.tm.service.UserServiceImpl;
-import ru.trandefil.tm.util.UserLoginUtil;
 
 import java.util.*;
 
@@ -62,14 +61,14 @@ public class Bootstrap implements ServiceLocator {
         return this.userService;
     }
 
-    public void fillMap(AbstractCommand abstractCommand){
-        commandMap.put(abstractCommand.command(),abstractCommand);
+    public void fillMap(AbstractCommand abstractCommand) {
+        commandMap.put(abstractCommand.command(), abstractCommand);
     }
 
-    public void initAbstractCommandMap(){
+    public void initAbstractCommandMap() {
         List<AbstractCommand> abstractCommandList = new ArrayList<>();
         abstractCommandList.add(new ProjectListCommand(this));
-        abstractCommandList.add( new ProjectCreateCommand(this));
+        abstractCommandList.add(new ProjectCreateCommand(this));
         abstractCommandList.add(new ProjectRemoveCommand(this));
         abstractCommandList.add(new ProjectUpdateCommand(this));
         abstractCommandList.add(new TaskListCommand(this));
@@ -80,7 +79,7 @@ public class Bootstrap implements ServiceLocator {
         abstractCommandList.add(new UserCreateCommand(this));
         abstractCommandList.add(new UserDeleteCommand(this));
         abstractCommandList.add(new UserUpdateCommand(this));
-        abstractCommandList.add(new HelpCommand(this,commandMap));
+        abstractCommandList.add(new HelpCommand(this, commandMap));
         abstractCommandList.add(new ExitCommand(this));
         abstractCommandList.add(new LoginCommand(this));
         abstractCommandList.add(new LogoutCommand(this));
@@ -88,21 +87,22 @@ public class Bootstrap implements ServiceLocator {
     }
 
     public void init() {
-        UserLoginUtil.login(userService, terminalService);
         initAbstractCommandMap();
-        System.out.println("enter help to see commands & exit to stop program ");
+        System.out.println("enter help to see commands.");
         while (true) {
-            String s = terminalService.nextLine();
-            if ("help".equals(s)) {
-                commandMap.keySet().forEach(System.out::println);
-                continue;
-            }
-            if ("exit".equals(s)) {
-                break;
-            }
-            AbstractCommand abstractCommand = commandMap.get(s);
+            final String s = terminalService.nextLine();
+            final AbstractCommand abstractCommand = commandMap.get(s);
             if (abstractCommand == null) {
                 System.out.println("Bad command.");
+                continue;
+            }
+            if(!abstractCommand.secure()){
+                abstractCommand.execute();
+                continue;
+            }
+            final AbstractCommand loginCommand = commandMap.get("login");
+            loginCommand.execute();
+            if(loggedUser == null){
                 continue;
             }
             abstractCommand.execute();

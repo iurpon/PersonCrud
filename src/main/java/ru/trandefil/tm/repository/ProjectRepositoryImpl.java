@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ProjectRepositoryImpl implements ProjectRepository {
+
     private Map<String, Project> projects = new HashMap<>();
 
     {
@@ -40,4 +41,5 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     public void deleteByName(String projectName) {
         projects.remove(projectName);
     }
+
 }

@@ -15,4 +15,5 @@ public interface TaskRepository {
     Task deleteByName(String name);
 
     Task getByName(String name);
+
 }

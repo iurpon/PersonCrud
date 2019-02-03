@@ -1,6 +1,7 @@
 package ru.trandefil.tm.api;
 
 import ru.trandefil.tm.entity.User;
+
 import java.util.List;
 
 public interface UserService {
@@ -16,4 +17,5 @@ public interface UserService {
     List<User> getAll();
 
     User getLoginUser(String userName, String userPassword);
+
 }

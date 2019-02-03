@@ -27,6 +27,7 @@ public class HelpCommand extends AbstractCommand {
     public void execute() {
         if(abstractCommandMap != null){
             abstractCommandMap.keySet().forEach(System.out::println);
+            return;
         }
     }
 

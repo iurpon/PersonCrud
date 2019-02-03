@@ -8,14 +8,15 @@ import static ru.trandefil.tm.util.UserInputUtil.*;
 
 public class UserLoginUtil {
 
-    public static User login(UserService userService, TerminalService terminalService) {
-            final String userName = getNotNullString(terminalService, "enter user name");
-            final String userPass = getNotNullString(terminalService, "enter user password");
-            final User user = userService.getLoginUser(userName, userPass);
-            if (user != null) {
-                return user;
-            }
-            System.out.println("wrong user name or password.");
+    public static User login(final UserService userService, final TerminalService terminalService) {
+        final String userName = getNotNullString(terminalService, "enter user name");
+        final String userPass = hashPassword(getNotNullString(terminalService, "enter user password"));
+        final User user = userService.getLoginUser(userName, userPass);
+        if (user != null) {
+            return user;
+        }
+        System.out.println("wrong user name or password.");
+        return null;
     }
 
 }

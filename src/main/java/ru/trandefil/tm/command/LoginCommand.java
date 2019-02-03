@@ -26,7 +26,7 @@ public class LoginCommand extends AbstractCommand {
     public void execute() {
         final UserService userService = serviceLocator.getUserService();
         final TerminalService terminalService = serviceLocator.getTerminalService();
-        User loggedUser = UserLoginUtil.login(userService,terminalService);
+        final User loggedUser = UserLoginUtil.login(userService,terminalService);
         serviceLocator.setLoggedUser(loggedUser);
     }
 

@@ -27,8 +27,8 @@ public class UserCreateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final UserService userService = serviceLocator.getUserService();
-        final TerminalService terminalService = serviceLocator.getTerminalService();
+        final UserService userService = getServiceLocator().getUserService();
+        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "enter user name");
         final String userPass = hashPassword(getNotNullString(terminalService, "enter user password"));
         final User user = new User(UUID.randomUUID().toString(), userName, userPass);

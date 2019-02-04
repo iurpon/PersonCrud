@@ -25,10 +25,10 @@ public class ProjectUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = serviceLocator.getTerminalService();
+        final TerminalService terminalService = getServiceLocator().getTerminalService();
         System.out.println("you are trying to update project : ");
         final String projectName = getNotNullString(terminalService, "plz enter project name : ");
-        final ProjectService projectService = serviceLocator.getProjectService();
+        final ProjectService projectService = getServiceLocator().getProjectService();
         final Project project = projectService.getByName(projectName);
         if (project == null) {
             System.out.println("wrong project name.");

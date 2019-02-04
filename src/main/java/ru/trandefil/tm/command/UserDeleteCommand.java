@@ -25,8 +25,8 @@ public class UserDeleteCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final UserService userService = serviceLocator.getUserService();
-        final TerminalService terminalService = serviceLocator.getTerminalService();
+        final UserService userService = getServiceLocator().getUserService();
+        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "enter user name for remove");
         final User userForRemove = userService.getByName(userName);
         if (userForRemove == null) {

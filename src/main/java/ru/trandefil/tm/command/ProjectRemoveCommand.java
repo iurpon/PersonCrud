@@ -24,10 +24,10 @@ public class ProjectRemoveCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = serviceLocator.getTerminalService();
+        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String projectName = getNotNullString(terminalService,
                 "Plz enter project name you want to delete : ");
-        final ProjectService projectService = serviceLocator.getProjectService();
+        final ProjectService projectService = getServiceLocator().getProjectService();
         projectService.deleteByName(projectName);
     }
 

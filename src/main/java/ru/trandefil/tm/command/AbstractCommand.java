@@ -4,7 +4,7 @@ import ru.trandefil.tm.api.ServiceLocator;
 
 public abstract class AbstractCommand {
 
-    protected ServiceLocator serviceLocator;
+    private ServiceLocator serviceLocator;
 
     public AbstractCommand(ServiceLocator serviceLocator) {
         this.serviceLocator = serviceLocator;
@@ -18,4 +18,7 @@ public abstract class AbstractCommand {
 
     public abstract boolean secure();
 
+    public ServiceLocator getServiceLocator() {
+        return serviceLocator;
+    }
 }

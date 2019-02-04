@@ -28,10 +28,10 @@ public class TaskListCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = serviceLocator.getTerminalService();
+        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String projectName =
                 getNotNullString(terminalService, "Enter the project name to see tasks:");
-        final TaskService taskService = serviceLocator.getTaskService();
+        final TaskService taskService = getServiceLocator().getTaskService();
         final List<Task> collect = taskService.getAll().stream().filter(t -> t.getProject().getName().equals(projectName))
                 .collect(Collectors.toList());
         collect.forEach(System.out::println);

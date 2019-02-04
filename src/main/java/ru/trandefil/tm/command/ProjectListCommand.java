@@ -24,7 +24,7 @@ public class ProjectListCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final ProjectService projectService = serviceLocator.getProjectService();
+        final ProjectService projectService = getServiceLocator().getProjectService();
         final List<Project> projectList = projectService.getAll();
         projectList.forEach(System.out::println);
     }

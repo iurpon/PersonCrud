@@ -2,15 +2,13 @@ package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.api.ServiceLocator;
 
+import java.util.Collection;
 import java.util.Map;
 
 public class HelpCommand extends AbstractCommand {
 
-    private Map<String,AbstractCommand> abstractCommandMap;
-
-    public HelpCommand(ServiceLocator serviceLocator, Map<String, AbstractCommand> abstractCommandMap) {
+    public HelpCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
-        this.abstractCommandMap = abstractCommandMap;
     }
 
     @Override
@@ -25,10 +23,7 @@ public class HelpCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        if(abstractCommandMap != null){
-            abstractCommandMap.keySet().forEach(System.out::println);
-            return;
-        }
+       getServiceLocator().getCommandMap().values().forEach(System.out::println);
     }
 
     @Override

@@ -6,9 +6,6 @@ public abstract class BaseEntity {
 
     protected String name;
 
-    public BaseEntity() {
-    }
-
     public BaseEntity(String id, String name) {
         this.id = id;
         this.name = name;

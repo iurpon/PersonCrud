@@ -20,7 +20,7 @@ public class LogoutCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        serviceLocator.setLoggedUser(null);
+        getServiceLocator().setLoggedUser(null);
     }
 
     @Override

@@ -42,6 +42,11 @@ public class Bootstrap implements ServiceLocator {
     }
 
     @Override
+    public Map<String, AbstractCommand> getCommandMap() {
+        return commandMap;
+    }
+
+    @Override
     public ProjectService getProjectService() {
         return this.projectService;
     }
@@ -79,7 +84,7 @@ public class Bootstrap implements ServiceLocator {
         abstractCommandList.add(new UserCreateCommand(this));
         abstractCommandList.add(new UserDeleteCommand(this));
         abstractCommandList.add(new UserUpdateCommand(this));
-        abstractCommandList.add(new HelpCommand(this, commandMap));
+        abstractCommandList.add(new HelpCommand(this));
         abstractCommandList.add(new ExitCommand(this));
         abstractCommandList.add(new LoginCommand(this));
         abstractCommandList.add(new LogoutCommand(this));

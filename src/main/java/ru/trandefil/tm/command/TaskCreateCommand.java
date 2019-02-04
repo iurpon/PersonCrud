@@ -31,10 +31,10 @@ public class TaskCreateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = serviceLocator.getTerminalService();
+        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String projectName =
                 getNotNullString(terminalService, "enter project name to add new task :");
-        final ProjectService projectService = serviceLocator.getProjectService();
+        final ProjectService projectService = getServiceLocator().getProjectService();
         final Project project = projectService.getByName(projectName);
         if (project == null) {
             System.out.println("Wrong project name");
@@ -48,7 +48,7 @@ public class TaskCreateCommand extends AbstractCommand {
             taskEnd = getDate(terminalService, "task end");
         }
         final Task newTask = new Task(UUID.randomUUID().toString(), taskName, taskDesc, taskBegin, taskEnd, project);
-        final TaskService taskService = serviceLocator.getTaskService();
+        final TaskService taskService = getServiceLocator().getTaskService();
         taskService.save(newTask);
     }
 

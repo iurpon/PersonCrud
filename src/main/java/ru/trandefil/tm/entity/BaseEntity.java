@@ -1,6 +1,8 @@
 package ru.trandefil.tm.entity;
 
-public abstract class BaseEntity {
+import java.io.Serializable;
+
+public abstract class BaseEntity implements Serializable {
 
     protected String id;
 

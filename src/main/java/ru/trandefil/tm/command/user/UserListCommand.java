@@ -1,5 +1,6 @@
-package ru.trandefil.tm.command;
+package ru.trandefil.tm.command.user;
 
+import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.api.UserService;

@@ -1,29 +1,30 @@
-package ru.trandefil.tm.command;
+package ru.trandefil.tm.command.service;
 
 import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.command.AbstractCommand;
 
-public class LogoutCommand extends AbstractCommand {
+public class ExitCommand extends AbstractCommand {
 
-    public LogoutCommand(ServiceLocator serviceLocator) {
+    public ExitCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
     }
 
-    public LogoutCommand() {
+    public ExitCommand() {
     }
 
     @Override
     public String command() {
-        return "logout";
+        return "exit";
     }
 
     @Override
     public String description() {
-        return "logout user from system.";
+        return "stop program execution";
     }
 
     @Override
     public void execute() {
-        getServiceLocator().setLoggedUser(null);
+        System.exit(0);
     }
 
     @Override

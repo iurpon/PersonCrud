@@ -1,6 +1,7 @@
-package ru.trandefil.tm.command;
+package ru.trandefil.tm.command.task;
 
 
+import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.api.ServiceLocator;
@@ -50,8 +51,8 @@ public class TaskUpdateCommand extends AbstractCommand {
             System.out.println("Wrong task name");
             return;
         }
-        final String newName = getNotNullString(terminalService, "Enter new Task name : ");
-        final String newDescription = getNotNullString(terminalService, "Enter new Task description : ");
+        final String newName = getNotNullString(terminalService, "Enter new task name : ");
+        final String newDescription = getNotNullString(terminalService, "Enter new task description : ");
         final Date beginDate = getDate(terminalService, "begin date");
         Date endDate = null;
         if (beginDate != null) {

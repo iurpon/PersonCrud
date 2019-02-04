@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Project extends BaseEntity {
 
+    private static final long serialVersionUID = 1L;
+
     private String description;
 
     private User user;

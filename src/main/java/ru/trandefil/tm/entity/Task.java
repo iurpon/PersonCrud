@@ -6,6 +6,8 @@ import java.util.*;
 
 public class Task extends BaseEntity {
 
+    private static final long serialVersionUID = 2L;
+
     private String description;
 
     private Date begin;
@@ -76,13 +78,13 @@ public class Task extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "task{" +
                 "description='" + description + '\'' +
                 ", begin=" + (begin == null ? "Didn't start" : DateFormatterUtil.format(begin)) +
                 ", end=" + (end == null ? "Still in production" : DateFormatterUtil.format(end)) +
-                ", project=" + project +
-                ", assignee=" + assignee +
-                ", executer=" + executer +
+                ", project=" + project.getName() +
+                ", assignee=" + assignee.getName() +
+                ", executer=" + executer.getName() +
                 ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';

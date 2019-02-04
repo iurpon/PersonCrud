@@ -1,9 +1,10 @@
-package ru.trandefil.tm.command;
+package ru.trandefil.tm.command.task;
 
 import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.api.UserService;
+import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.entity.User;

@@ -1,5 +1,6 @@
-package ru.trandefil.tm.command;
+package ru.trandefil.tm.command.project;
 
+import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.api.ProjectService;
@@ -31,7 +32,7 @@ public class ProjectCreateCommand extends AbstractCommand {
     @Override
     public void execute() {
         final TerminalService scanner = getServiceLocator().getTerminalService();
-        final String name = getNotNullString(scanner, "Enter project name : ");
+        final String name = getNotNullString(scanner, "Enter project name");
         final String description = getNotNullString(scanner, "Enter project description");
         final Project newProject = new Project(UUID.randomUUID().toString(), name, description);
         newProject.setUser(getServiceLocator().getLoggedUser());

@@ -67,14 +67,14 @@ public class Bootstrap implements ServiceLocator {
         return this.userService;
     }
 
-    private void getClassesAndFillMap(String packageInfo){
+    private void getClassesAndFillMap(String packageInfo) {
         Reflections refilections = new Reflections(packageInfo);
         Set<Class<? extends AbstractCommand>> subTypes = refilections.getSubTypesOf(AbstractCommand.class);
         subTypes.forEach(cl -> {
             try {
                 AbstractCommand ac = cl.newInstance();
                 ac.setServiceLocator(this);
-                commandMap.put(ac.command(),ac);
+                commandMap.put(ac.command(), ac);
             } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -91,12 +91,14 @@ public class Bootstrap implements ServiceLocator {
                 System.out.println("Bad command.");
                 continue;
             }
-            if(!abstractCommand.secure()){
+            if (!abstractCommand.secure()) {
                 abstractCommand.execute();
                 continue;
             }
-            final AbstractCommand loginCommand = commandMap.get("login");
-            loginCommand.execute();
+            if (loggedUser == null) {
+                final AbstractCommand loginCommand = commandMap.get("login");
+                loginCommand.execute();
+            }
             if(loggedUser == null){
                 continue;
             }

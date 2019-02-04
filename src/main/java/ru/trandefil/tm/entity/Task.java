@@ -14,6 +14,10 @@ public class Task extends BaseEntity {
 
     private Project project;
 
+    private User assignee;
+
+    private User executer;
+
     public Task(String id, String name, String description, Date begin, Date end, Project project) {
         super(id, name);
         this.description = description;
@@ -22,6 +26,21 @@ public class Task extends BaseEntity {
         this.project = project;
     }
 
+    public User getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
+    }
+
+    public User getExecuter() {
+        return executer;
+    }
+
+    public void setExecuter(User executer) {
+        this.executer = executer;
+    }
 
     public String getDescription() {
         return description;
@@ -58,13 +77,14 @@ public class Task extends BaseEntity {
     @Override
     public String toString() {
         return "Task{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
+                "description='" + description + '\'' +
                 ", begin=" + (begin == null ? "Didn't start" : DateFormatterUtil.format(begin)) +
                 ", end=" + (end == null ? "Still in production" : DateFormatterUtil.format(end)) +
-                ", project='" + project + '\'' +
+                ", project=" + project +
+                ", assignee=" + assignee +
+                ", executer=" + executer +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
-
 }

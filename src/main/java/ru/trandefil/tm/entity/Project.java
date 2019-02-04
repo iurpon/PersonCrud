@@ -6,9 +6,17 @@ public class Project extends BaseEntity {
 
     private String description;
 
+    private User user;
+
     public Project(String id, String name, String description) {
         super(id, name);
         this.description = description;
+    }
+
+    public Project(String id, String name, String description,User user) {
+        super(id, name);
+        this.description = description;
+        this.user = user;
     }
 
     public String getDescription() {
@@ -19,12 +27,21 @@ public class Project extends BaseEntity {
         this.description = description;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
-                "id='" + id + '\'' +
+                "description='" + description + '\'' +
+                ", user=" + user +
+                ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
                 '}';
     }
 

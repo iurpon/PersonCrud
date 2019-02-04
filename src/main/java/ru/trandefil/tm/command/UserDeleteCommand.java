@@ -13,9 +13,7 @@ public class UserDeleteCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new UserDeleteCommand(getServiceLocator());
+    public UserDeleteCommand() {
     }
 
     @Override

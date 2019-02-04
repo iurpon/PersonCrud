@@ -12,9 +12,7 @@ public class ProjectRemoveCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new ProjectRemoveCommand(getServiceLocator());
+    public ProjectRemoveCommand() {
     }
 
     @Override

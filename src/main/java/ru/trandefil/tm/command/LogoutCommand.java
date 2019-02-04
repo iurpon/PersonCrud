@@ -8,9 +8,7 @@ public class LogoutCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new LogoutCommand(getServiceLocator());
+    public LogoutCommand() {
     }
 
     @Override

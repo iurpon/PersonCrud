@@ -7,13 +7,11 @@ import java.util.Map;
 
 public class HelpCommand extends AbstractCommand {
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new HelpCommand(getServiceLocator());
-    }
-
     public HelpCommand(ServiceLocator serviceLocator) {
         super(serviceLocator);
+    }
+
+    public HelpCommand() {
     }
 
     @Override
@@ -28,7 +26,7 @@ public class HelpCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-       getServiceLocator().getCommandMap().values().forEach(System.out::println);
+        getServiceLocator().getCommandMap().values().forEach(System.out::println);
     }
 
     @Override

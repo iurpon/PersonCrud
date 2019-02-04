@@ -13,9 +13,7 @@ public class UserUpdateCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new UserUpdateCommand(getServiceLocator());
+    public UserUpdateCommand() {
     }
 
     @Override

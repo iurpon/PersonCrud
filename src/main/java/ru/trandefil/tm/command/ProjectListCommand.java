@@ -12,6 +12,9 @@ public class ProjectListCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
+    public ProjectListCommand() {
+    }
+
     @Override
     public String command() {
         return "project-list";
@@ -20,11 +23,6 @@ public class ProjectListCommand extends AbstractCommand {
     @Override
     public String description() {
         return "show all created projects";
-    }
-
-    @Override
-    public AbstractCommand getInstance() {
-        return new ProjectListCommand(getServiceLocator());
     }
 
     @Override

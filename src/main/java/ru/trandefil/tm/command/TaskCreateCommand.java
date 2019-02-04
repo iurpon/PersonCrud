@@ -1,14 +1,16 @@
 package ru.trandefil.tm.command;
 
+import ru.trandefil.tm.api.ProjectService;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.api.TaskService;
+import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.api.ServiceLocator;
-import ru.trandefil.tm.api.ProjectService;
-import ru.trandefil.tm.api.TaskService;
+import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.Date;
-import java.util.UUID;
 
 import static ru.trandefil.tm.util.UserInputUtil.getDate;
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
@@ -19,9 +21,7 @@ public class TaskCreateCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new TaskCreateCommand(getServiceLocator());
+    public TaskCreateCommand() {
     }
 
     @Override
@@ -52,7 +52,16 @@ public class TaskCreateCommand extends AbstractCommand {
         if (taskBegin != null) {
             taskEnd = getDate(terminalService, "task end");
         }
-        final Task newTask = new Task(UUID.randomUUID().toString(), taskName, taskDesc, taskBegin, taskEnd, project);
+        final Task newTask = new Task(UUIDUtil.getUniqueString(), taskName, taskDesc, taskBegin, taskEnd, project);
+        newTask.setAssignee(getServiceLocator().getLoggedUser());
+        final String executerUser = getNotNullString(terminalService,"which user will execute this task");
+        final UserService userService = getServiceLocator().getUserService();
+        final User executer = userService.getByName(executerUser);
+        if(executer == null){
+            System.out.println("wrong user name.");
+            return;
+        }
+        newTask.setExecuter(executer);
         final TaskService taskService = getServiceLocator().getTaskService();
         taskService.save(newTask);
     }

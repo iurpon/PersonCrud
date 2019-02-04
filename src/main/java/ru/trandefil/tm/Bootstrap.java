@@ -1,5 +1,6 @@
 package ru.trandefil.tm;
 
+import org.reflections.Reflections;
 import ru.trandefil.tm.api.*;
 import ru.trandefil.tm.command.*;
 import ru.trandefil.tm.entity.User;
@@ -66,33 +67,22 @@ public class Bootstrap implements ServiceLocator {
         return this.userService;
     }
 
-    private void fillMap(AbstractCommand abstractCommand) {
-        commandMap.put(abstractCommand.command(), abstractCommand);
-    }
-
-    private void initAbstractCommandMap() {
-        List<AbstractCommand> abstractCommandList = new ArrayList<>();
-        abstractCommandList.add(new ProjectListCommand(this));
-        abstractCommandList.add(new ProjectCreateCommand(this));
-        abstractCommandList.add(new ProjectRemoveCommand(this));
-        abstractCommandList.add(new ProjectUpdateCommand(this));
-        abstractCommandList.add(new TaskListCommand(this));
-        abstractCommandList.add(new TaskCreateCommand(this));
-        abstractCommandList.add(new TaskRemoveCommand(this));
-        abstractCommandList.add(new TaskUpdateCommand(this));
-        abstractCommandList.add(new UserListCommand(this));
-        abstractCommandList.add(new UserCreateCommand(this));
-        abstractCommandList.add(new UserDeleteCommand(this));
-        abstractCommandList.add(new UserUpdateCommand(this));
-        abstractCommandList.add(new HelpCommand(this));
-        abstractCommandList.add(new ExitCommand(this));
-        abstractCommandList.add(new LoginCommand(this));
-        abstractCommandList.add(new LogoutCommand(this));
-        abstractCommandList.forEach(this::fillMap);
+    private void getClassesAndFillMap(String packageInfo){
+        Reflections refilections = new Reflections(packageInfo);
+        Set<Class<? extends AbstractCommand>> subTypes = refilections.getSubTypesOf(AbstractCommand.class);
+        subTypes.forEach(cl -> {
+            try {
+                AbstractCommand ac = cl.newInstance();
+                ac.setServiceLocator(this);
+                commandMap.put(ac.command(),ac);
+            } catch (InstantiationException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public void init() {
-        initAbstractCommandMap();
+        getClassesAndFillMap("ru.trandefil.tm.command");
         System.out.println("enter help to see commands.");
         while (true) {
             final String s = terminalService.nextLine();

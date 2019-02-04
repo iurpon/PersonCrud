@@ -15,6 +15,9 @@ public class ProjectCreateCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
+    public ProjectCreateCommand() {
+    }
+
     @Override
     public String command() {
         return "project-create";
@@ -26,16 +29,12 @@ public class ProjectCreateCommand extends AbstractCommand {
     }
 
     @Override
-    public AbstractCommand getInstance() {
-        return new ProjectCreateCommand(getServiceLocator());
-    }
-
-    @Override
     public void execute() {
         final TerminalService scanner = getServiceLocator().getTerminalService();
         final String name = getNotNullString(scanner, "Enter project name : ");
         final String description = getNotNullString(scanner, "Enter project description");
         final Project newProject = new Project(UUID.randomUUID().toString(), name, description);
+        newProject.setUser(getServiceLocator().getLoggedUser());
         final ProjectService projectService = getServiceLocator().getProjectService();
         projectService.save(newProject);
     }

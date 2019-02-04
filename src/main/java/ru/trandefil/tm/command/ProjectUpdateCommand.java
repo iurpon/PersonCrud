@@ -13,9 +13,7 @@ public class ProjectUpdateCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new ProjectUpdateCommand(getServiceLocator());
+    public ProjectUpdateCommand() {
     }
 
     @Override
@@ -42,6 +40,7 @@ public class ProjectUpdateCommand extends AbstractCommand {
         final String newName = getNotNullString(terminalService, "enter new project name");
         final String newDescription = getNotNullString(terminalService, "enter new project description");
         final Project newProject = new Project(project.getId(), newName, newDescription);
+        newProject.setUser(getServiceLocator().getLoggedUser());
         projectService.delete(project);
         projectService.save(newProject);
     }

@@ -12,9 +12,7 @@ public class LoginCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new LoginCommand(getServiceLocator());
+    public LoginCommand() {
     }
 
     @Override
@@ -31,7 +29,7 @@ public class LoginCommand extends AbstractCommand {
     public void execute() {
         final UserService userService = getServiceLocator().getUserService();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
-        final User loggedUser = UserLoginUtil.login(userService,terminalService);
+        final User loggedUser = UserLoginUtil.login(userService, terminalService);
         getServiceLocator().setLoggedUser(loggedUser);
     }
 

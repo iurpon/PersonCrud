@@ -19,9 +19,7 @@ public class TaskUpdateCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new TaskUpdateCommand(getServiceLocator());
+    public TaskUpdateCommand() {
     }
 
     @Override

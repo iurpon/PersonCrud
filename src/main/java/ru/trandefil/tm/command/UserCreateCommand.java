@@ -15,9 +15,7 @@ public class UserCreateCommand extends AbstractCommand {
         super(serviceLocator);
     }
 
-    @Override
-    public AbstractCommand getInstance() {
-        return new UserCreateCommand(getServiceLocator());
+    public UserCreateCommand() {
     }
 
     @Override

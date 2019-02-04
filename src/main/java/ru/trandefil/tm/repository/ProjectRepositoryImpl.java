@@ -8,12 +8,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static ru.trandefil.tm.repository.UserRepositoryImpl.USER;
+
 public class ProjectRepositoryImpl implements ProjectRepository {
 
     private Map<String, Project> projects = new HashMap<>();
 
     {
-        projects.put("simpleProject", new Project("id", "simpleProject", "no description"));
+        projects.put("simpleProject", new Project("id", "simpleProject", "no description",USER));
     }
 
     @Override

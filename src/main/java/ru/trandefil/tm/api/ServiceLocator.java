@@ -18,6 +18,8 @@ public interface ServiceLocator {
 
     void setLoggedUser(User loggedUser);
 
+    User getLoggedUser();
+
     Map<String, AbstractCommand> getCommandMap();
 
 }

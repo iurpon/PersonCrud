@@ -17,6 +17,11 @@ public class TaskListCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new TaskListCommand(getServiceLocator());
+    }
+
+    @Override
     public String command() {
         return "task-list";
     }

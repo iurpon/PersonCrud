@@ -26,6 +26,11 @@ public class ProjectCreateCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new ProjectCreateCommand(getServiceLocator());
+    }
+
+    @Override
     public void execute() {
         final TerminalService scanner = getServiceLocator().getTerminalService();
         final String name = getNotNullString(scanner, "Enter project name : ");

@@ -9,6 +9,11 @@ public class ExitCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new ExitCommand(getServiceLocator());
+    }
+
+    @Override
     public String command() {
         return "exit";
     }

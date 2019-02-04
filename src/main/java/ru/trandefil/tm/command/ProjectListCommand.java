@@ -23,6 +23,11 @@ public class ProjectListCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new ProjectListCommand(getServiceLocator());
+    }
+
+    @Override
     public void execute() {
         final ProjectService projectService = getServiceLocator().getProjectService();
         final List<Project> projectList = projectService.getAll();

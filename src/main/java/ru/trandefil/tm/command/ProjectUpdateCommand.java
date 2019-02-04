@@ -14,6 +14,11 @@ public class ProjectUpdateCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new ProjectUpdateCommand(getServiceLocator());
+    }
+
+    @Override
     public String command() {
         return "project-update";
     }

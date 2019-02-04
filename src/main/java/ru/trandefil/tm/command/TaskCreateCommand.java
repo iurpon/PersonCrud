@@ -20,6 +20,11 @@ public class TaskCreateCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new TaskCreateCommand(getServiceLocator());
+    }
+
+    @Override
     public String command() {
         return "task-create";
     }

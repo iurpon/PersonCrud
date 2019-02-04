@@ -13,6 +13,11 @@ public class UserListCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new UserListCommand(getServiceLocator());
+    }
+
+    @Override
     public String command() {
         return "user-list";
     }

@@ -20,5 +20,4 @@ public interface ServiceLocator {
 
     Map<String, AbstractCommand> getCommandMap();
 
-
 }

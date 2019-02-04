@@ -21,4 +21,7 @@ public abstract class AbstractCommand {
     public ServiceLocator getServiceLocator() {
         return serviceLocator;
     }
+
+    public abstract AbstractCommand getInstance();
+
 }

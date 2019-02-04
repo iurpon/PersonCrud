@@ -13,6 +13,11 @@ public class ProjectRemoveCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new ProjectRemoveCommand(getServiceLocator());
+    }
+
+    @Override
     public String command() {
         return "project-remove";
     }

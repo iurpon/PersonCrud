@@ -15,6 +15,11 @@ public class TaskRemoveCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new TaskRemoveCommand(getServiceLocator());
+    }
+
+    @Override
     public String command() {
         return "task-remove";
     }

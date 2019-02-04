@@ -66,11 +66,11 @@ public class Bootstrap implements ServiceLocator {
         return this.userService;
     }
 
-    public void fillMap(AbstractCommand abstractCommand) {
+    private void fillMap(AbstractCommand abstractCommand) {
         commandMap.put(abstractCommand.command(), abstractCommand);
     }
 
-    public void initAbstractCommandMap() {
+    private void initAbstractCommandMap() {
         List<AbstractCommand> abstractCommandList = new ArrayList<>();
         abstractCommandList.add(new ProjectListCommand(this));
         abstractCommandList.add(new ProjectCreateCommand(this));

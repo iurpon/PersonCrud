@@ -13,6 +13,11 @@ public class LoginCommand extends AbstractCommand {
     }
 
     @Override
+    public AbstractCommand getInstance() {
+        return new LoginCommand(getServiceLocator());
+    }
+
+    @Override
     public String command() {
         return "login";
     }

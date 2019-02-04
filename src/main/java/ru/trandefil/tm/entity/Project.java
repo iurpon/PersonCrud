@@ -10,6 +10,13 @@ public class Project extends BaseEntity {
 
     private User user;
 
+    public Project() {
+    }
+
+    public Project(String id, String name) {
+        super(id, name);
+    }
+
     public Project(String id, String name, String description) {
         super(id, name);
         this.description = description;

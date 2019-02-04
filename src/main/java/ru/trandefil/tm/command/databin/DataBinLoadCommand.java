@@ -24,7 +24,7 @@ public class DataBinLoadCommand extends AbstractCommand {
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             Project[] projects = (Project[]) objectInputStream.readObject();
             Arrays.stream(projects)
-                    .filter(project -> project.getUser().equals(getServiceLocator().getLoggedUser()))
+//                    .filter(project -> project.getUser().equals(getServiceLocator().getLoggedUser()))
                     .forEach(System.out::println);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

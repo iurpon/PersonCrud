@@ -5,6 +5,7 @@ import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.TaskService;
+import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.service.TerminalService;
 
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
@@ -31,16 +32,13 @@ public class TaskRemoveCommand extends AbstractCommand {
     @Override
     public void execute() {
         final TerminalService terminalService = getServiceLocator().getTerminalService();
-        final String projectName =
-                getNotNullString(terminalService, "Enter project name to remove task");
-        final ProjectService projectService = getServiceLocator().getProjectService();
-        final Project project = projectService.getByName(projectName);
-        if (project == null) {
-            System.out.println("Wrong project name");
-            return;
-        }
         final String taskName = getNotNullString(terminalService, "Enter task name");
         final TaskService taskService = getServiceLocator().getTaskService();
+        final Task requestedTask = taskService.getByName(taskName);
+        if(requestedTask == null && !requestedTask.getAssignee().equals(getServiceLocator().getLoggedUser())){
+            System.out.println("wrong task name or no permission to delete task.");
+            return;
+        }
         taskService.deleteByName(taskName);
     }
 

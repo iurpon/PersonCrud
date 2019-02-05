@@ -1,9 +1,9 @@
 package ru.trandefil.tm.command.project;
 
+import ru.trandefil.tm.api.ProjectService;
+import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.api.ServiceLocator;
-import ru.trandefil.tm.api.ProjectService;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,7 +1,7 @@
 package ru.trandefil.tm.repository;
 
-import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.api.TaskRepository;
+import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.ArrayList;
@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static ru.trandefil.tm.repository.ProjectRepositoryImpl.*;
-import static ru.trandefil.tm.repository.UserRepositoryImpl.*;
+import static ru.trandefil.tm.repository.ProjectRepositoryImpl.PROJECT1;
+import static ru.trandefil.tm.repository.UserRepositoryImpl.ADMIN;
+import static ru.trandefil.tm.repository.UserRepositoryImpl.USER;
 
 public class TaskRepositoryImpl implements TaskRepository {
 
@@ -23,9 +24,9 @@ public class TaskRepositoryImpl implements TaskRepository {
     public Map<String, Task> tasks = new ConcurrentHashMap<>();
 
     {
-        tasks.put(TASK1.getName(),TASK1);
-        tasks.put(TASK2.getName(),TASK2);
-        tasks.put(TASK3.getName(),TASK3);
+        tasks.put(TASK1.getName(), TASK1);
+        tasks.put(TASK2.getName(), TASK2);
+        tasks.put(TASK3.getName(), TASK3);
     }
 
     public Task save(Task task) {

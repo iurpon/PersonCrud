@@ -36,30 +36,24 @@ public class TaskUpdateCommand extends AbstractCommand {
     @Override
     public void execute() {
         final TerminalService terminalService = getServiceLocator().getTerminalService();
-        final String projectName =
-                getNotNullString(terminalService, "Enter project name to update task : ");
-        final ProjectService projectService = getServiceLocator().getProjectService();
-        final Project project = projectService.getByName(projectName);
-        if (project == null) {
-            System.out.println("Wrong project name.");
-            return;
-        }
         final String taskName = getNotNullString(terminalService, "Enter task name for update : ");
         final TaskService taskService = getServiceLocator().getTaskService();
-        final Task task = taskService.getByName(taskName);
-        if (task == null) {
-            System.out.println("Wrong task name");
+        final Task requestedTask = taskService.getByName(taskName);
+        if(requestedTask == null && !requestedTask.getAssignee().equals(getServiceLocator().getLoggedUser())){
+            System.out.println("wrong task name or no permission to delete task.");
             return;
         }
-        final String newName = getNotNullString(terminalService, "Enter new task name : ");
-        final String newDescription = getNotNullString(terminalService, "Enter new task description : ");
+        final String newName = getNotNullString(terminalService, "Enter new task name");
+        final String newDescription = getNotNullString(terminalService, "Enter new task description");
         final Date beginDate = getDate(terminalService, "begin date");
         Date endDate = null;
         if (beginDate != null) {
             endDate = getDate(terminalService, "end date");
         }
-        final Task newTask = new Task(task.getId(), newName, newDescription, beginDate, endDate, project);
-        taskService.deleteByName(task.getName());
+        final Task newTask =
+                new Task(requestedTask.getId(), newName, newDescription, beginDate, endDate,
+                        requestedTask.getProject(),requestedTask.getAssignee(),requestedTask.getExecuter());
+        taskService.deleteByName(requestedTask.getName());
         taskService.save(newTask);
     }
 

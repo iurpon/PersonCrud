@@ -1,7 +1,7 @@
 package ru.trandefil.tm.repository;
 
-import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.api.ProjectRepository;
+import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.ArrayList;
@@ -9,19 +9,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static ru.trandefil.tm.repository.UserRepositoryImpl.USER;
 import static ru.trandefil.tm.repository.UserRepositoryImpl.ADMIN;
+import static ru.trandefil.tm.repository.UserRepositoryImpl.USER;
 
 public class ProjectRepositoryImpl implements ProjectRepository {
 
     public static final Project PROJECT1
-            = new Project(UUIDUtil.getUniqueString(), "simpleProject1", "no description1",ADMIN);
+            = new Project(UUIDUtil.getUniqueString(), "simpleProject1", "no description1", ADMIN);
 
     public static final Project PROJECT2
-            = new Project(UUIDUtil.getUniqueString(), "simpleProject2", "no description2",ADMIN);
+            = new Project(UUIDUtil.getUniqueString(), "simpleProject2", "no description2", ADMIN);
 
     public static final Project PROJECT3
-            = new Project(UUIDUtil.getUniqueString(), "simpleProject3", "no description3",USER);
+            = new Project(UUIDUtil.getUniqueString(), "simpleProject3", "no description3", USER);
 
     private Map<String, Project> projects = new HashMap<>();
 

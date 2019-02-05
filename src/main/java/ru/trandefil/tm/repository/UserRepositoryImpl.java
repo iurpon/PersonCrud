@@ -1,10 +1,13 @@
 package ru.trandefil.tm.repository;
 
-import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.api.UserRepository;
+import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.util.UUIDUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class UserRepositoryImpl implements UserRepository {
 

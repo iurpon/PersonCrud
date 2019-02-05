@@ -47,9 +47,9 @@ public class Project extends BaseEntity {
     @Override
     public String toString() {
         return "Project{" +
-                "description='" + description + '\'' +
+/*                "description='" + description + '\'' +
                 ", user=" + user +
-                ", id='" + id + '\'' +
+                ", id='" + id + '\'' +*/
                 ", name='" + name + '\'' +
                 '}';
     }

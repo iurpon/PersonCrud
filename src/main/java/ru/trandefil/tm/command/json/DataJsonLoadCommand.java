@@ -37,13 +37,6 @@ public class DataJsonLoadCommand extends AbstractCommand {
         }
     }
 
-    private <T> void printCollection(List<T> list) {
-        if (list == null || list.isEmpty()) {
-            return;
-        }
-        list.forEach(System.out::println);
-    }
-
     @Override
     public boolean secure() {
         return true;

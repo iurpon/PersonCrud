@@ -31,8 +31,8 @@ public class User extends BaseEntity {
     @Override
     public String toString() {
         return "User{" +
-                "password='" + password + '\'' +
-                ", id='" + id + '\'' +
+/*                "password='" + password + '\'' +
+                ", id='" + id + '\'' +*/
                 ", name='" + name + '\'' +
                 '}';
     }

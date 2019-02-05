@@ -28,6 +28,16 @@ public class Task extends BaseEntity {
         this.project = project;
     }
 
+    public Task(String id, String name, String description, Date begin, Date end, Project project,User assignee,User executer) {
+        super(id, name);
+        this.description = description;
+        this.begin = begin;
+        this.end = end;
+        this.project = project;
+        this.assignee = assignee;
+        this.executer = executer;
+    }
+
     public User getAssignee() {
         return assignee;
     }
@@ -79,13 +89,13 @@ public class Task extends BaseEntity {
     @Override
     public String toString() {
         return "task{" +
-                "description='" + description + '\'' +
+/*                "description='" + description + '\'' +
                 ", begin=" + (begin == null ? "Didn't start" : DateFormatterUtil.format(begin)) +
                 ", end=" + (end == null ? "Still in production" : DateFormatterUtil.format(end)) +
-                ", project=" + project.getName() +
+                ", project=" + project.getName() +*/
                 ", assignee=" + assignee.getName() +
                 ", executer=" + executer.getName() +
-                ", id='" + id + '\'' +
+/*                ", id='" + id + '\'' +*/
                 ", name='" + name + '\'' +
                 '}';
     }

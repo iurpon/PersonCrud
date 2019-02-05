@@ -26,9 +26,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     private Map<String, Project> projects = new HashMap<>();
 
     {
-        projects.put("simpleProject", PROJECT1);
-        projects.put("simpleProject", PROJECT2);
-        projects.put("simpleProject", PROJECT3);
+        projects.put(PROJECT1.getName(), PROJECT1);
+        projects.put(PROJECT2.getName(), PROJECT2);
+        projects.put(PROJECT3.getName(), PROJECT3);
     }
 
     @Override

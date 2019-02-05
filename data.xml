@@ -5,7 +5,7 @@
       <name>simpleProject</name>
       <description>no description</description>
       <user>
-        <id>20a312dc-d9e8-48d2-828e-7f7aa8dc561b</id>
+        <id>e6d3664e-5b7a-4276-a903-e4f1acae7e2d</id>
         <name>User</name>
         <password>221068207E125B97BEB4E2D062E888B1</password>
       </user>
@@ -13,12 +13,12 @@
   </projectList>
   <userList>
     <userList>
-      <id>20a312dc-d9e8-48d2-828e-7f7aa8dc561b</id>
+      <id>e6d3664e-5b7a-4276-a903-e4f1acae7e2d</id>
       <name>User</name>
       <password>221068207E125B97BEB4E2D062E888B1</password>
     </userList>
     <userList>
-      <id>4bb30910-40a7-4e3d-a8ba-29c9d737751a</id>
+      <id>46abdb0f-0c2d-4ac5-b78d-785f1029ac73</id>
       <name>Admin</name>
       <password>33D87FD364516F6604124FCC76FDD279</password>
     </userList>

@@ -2,7 +2,9 @@ package ru.trandefil.tm.command.json;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.junit.Test;
+import ru.trandefil.tm.command.ObjectFactory;
 import ru.trandefil.tm.entity.Project;
 
 import java.io.IOException;
@@ -15,14 +17,13 @@ import static org.junit.Assert.*;
 public class DataJsonLoadCommandTest {
 
     @Test
-    public void execute() {
-        try {
+    public void execute() throws IOException {
+
+            String xmlString = new String(Files.readAllBytes(Paths.get("data.json")));
             ObjectMapper objectMapper = new ObjectMapper();
-            String json = new String(Files.readAllBytes(Paths.get("data.json")));
-            List<Project> projects = objectMapper.readValue(json,new TypeReference<List<Project>>(){});
-            projects.forEach(System.out::println);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            ObjectFactory objectFactory = objectMapper.readValue(xmlString,ObjectFactory.class);
+            objectFactory.getProjectList().forEach(System.out::println);
+//        objectFactory.getTaskList().forEach(System.out::println);
+            objectFactory.getUserList().forEach(System.out::println);
     }
 }

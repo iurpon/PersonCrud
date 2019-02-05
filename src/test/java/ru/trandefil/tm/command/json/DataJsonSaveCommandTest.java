@@ -1,15 +1,22 @@
 package ru.trandefil.tm.command.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Test;
 import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.api.UserService;
-import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.command.ObjectFactory;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.entity.User;
+import ru.trandefil.tm.repository.ProjectRepositoryImpl;
+import ru.trandefil.tm.repository.TaskRepositoryImpl;
+import ru.trandefil.tm.repository.UserRepositoryImpl;
+import ru.trandefil.tm.service.ProjectServiceImpl;
+import ru.trandefil.tm.service.TaskServiceImpl;
+import ru.trandefil.tm.service.UserServiceImpl;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -17,23 +24,15 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class DataJsonSaveCommand extends AbstractCommand {
+import static org.junit.Assert.*;
 
-    @Override
-    public String command() {
-        return "data-json-save";
-    }
+public class DataJsonSaveCommandTest {
 
-    @Override
-    public String description() {
-        return "convert object to json and save it to file.";
-    }
-
-    @Override
+    @Test
     public void execute() {
-        final ProjectService projectService = getServiceLocator().getProjectService();
-        final TaskService taskService = getServiceLocator().getTaskService();
-        final UserService userService = getServiceLocator().getUserService();
+        final ProjectService projectService = new ProjectServiceImpl(new ProjectRepositoryImpl());
+        final UserService userService = new UserServiceImpl(new UserRepositoryImpl());
+        final TaskService taskService = new TaskServiceImpl(new TaskRepositoryImpl());
         final List<Project> projectList = projectService.getAll();
         final List<User> userList = userService.getAll();
         final List<Task> taskList = taskService.getAll();
@@ -48,12 +47,6 @@ public class DataJsonSaveCommand extends AbstractCommand {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
-
-
-    @Override
-    public boolean secure() {
-        return false;
-    }
-
 }

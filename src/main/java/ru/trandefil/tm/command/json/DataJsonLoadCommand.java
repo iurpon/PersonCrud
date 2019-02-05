@@ -3,6 +3,7 @@ package ru.trandefil.tm.command.json;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.command.ObjectFactory;
 import ru.trandefil.tm.entity.Project;
 
 import java.io.FileInputStream;
@@ -29,11 +30,21 @@ public class DataJsonLoadCommand extends AbstractCommand {
     public void execute() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            String json = new String(Files.readAllBytes(Paths.get("data.json")));
-            List<Project> projects = objectMapper.readValue(json,new TypeReference<List<Project>>(){});
+            String xmlString = new String(Files.readAllBytes(Paths.get("data.json")));
+            ObjectFactory objectFactory = objectMapper.readValue(xmlString, ObjectFactory.class);
+            printCollection(objectFactory.getProjectList());
+            printCollection(objectFactory.getUserList());
+            printCollection(objectFactory.getTaskList());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("is empty.");
         }
+    }
+
+    private <T> void printCollection(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            return;
+        }
+        list.forEach(System.out::println);
     }
 
     @Override

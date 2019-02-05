@@ -29,16 +29,16 @@ public class TaskRepositoryImpl implements TaskRepository {
         tasks.put(TASK3.getName(), TASK3);
     }
 
-    public Task save(Task task) {
+    public Task save(final Task task) {
         tasks.put(task.getName(), task);
         return task;
     }
 
-    public Task delete(Task task) {
+    public Task delete(final Task task) {
         return tasks.remove(task.getName());
     }
 
-    public Task deleteByName(String name) {
+    public Task deleteByName(final String name) {
         return tasks.remove(name);
     }
 
@@ -46,7 +46,7 @@ public class TaskRepositoryImpl implements TaskRepository {
         return new ArrayList(tasks.values());
     }
 
-    public Task getByName(String name) {
+    public Task getByName(final String name) {
         return tasks.get(name);
     }
 

@@ -3,7 +3,7 @@ package ru.trandefil.tm.command.xml;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.command.ObjectFactory;
+import ru.trandefil.tm.command.Domain;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,7 +28,7 @@ public class DataXmlLoadCommand extends AbstractCommand {
         try {
             ObjectMapper objectMapper = new XmlMapper();
             String xmlString = new String(Files.readAllBytes(Paths.get("data.xml")));
-            ObjectFactory objectFactory = objectMapper.readValue(xmlString, ObjectFactory.class);
+            Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
             printProjectCollection(objectFactory.getProjectList(), getServiceLocator().getLoggedUser());
             printUserCollection(objectFactory.getUserList(), getServiceLocator().getLoggedUser());
             printTaskCollection(objectFactory.getTaskList(), getServiceLocator().getLoggedUser());

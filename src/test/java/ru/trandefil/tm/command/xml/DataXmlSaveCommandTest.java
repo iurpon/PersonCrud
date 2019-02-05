@@ -6,7 +6,7 @@ import org.junit.Test;
 import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.api.UserService;
-import ru.trandefil.tm.command.ObjectFactory;
+import ru.trandefil.tm.command.Domain;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.entity.User;
@@ -17,10 +17,8 @@ import ru.trandefil.tm.service.ProjectServiceImpl;
 import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.UserServiceImpl;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -34,7 +32,7 @@ public class DataXmlSaveCommandTest {
         final List<Project> projectList = projectService.getAll();
         final List<User> userList = userService.getAll();
         final List<Task> taskList = taskService.getAll();
-        ObjectFactory objectFactory = new ObjectFactory();
+        Domain objectFactory = new Domain();
         objectFactory.setProjectList(projectList);
         objectFactory.setTaskList(taskList);
         objectFactory.setUserList(userList);

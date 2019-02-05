@@ -6,7 +6,7 @@ import ru.trandefil.tm.entity.User;
 
 import java.util.List;
 
-public class ObjectFactory {
+public class Domain {
 
     private List<Project> projectList;
 

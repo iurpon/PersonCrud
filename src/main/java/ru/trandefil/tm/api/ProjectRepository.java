@@ -10,9 +10,9 @@ public interface ProjectRepository {
 
     List<Project> getAll();
 
-    Project getByName(String name);
+    Project getByName(final String name);
 
-    void delete(Project project);
+    void delete(final Project project);
 
-    void deleteByName(String projectName);
+    void deleteByName(final String projectName);
 }

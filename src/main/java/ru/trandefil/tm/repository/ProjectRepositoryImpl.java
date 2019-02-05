@@ -32,7 +32,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project save(Project project) {
+    public Project save(final Project project) {
         projects.put(project.getName(), project);
         return project;
     }
@@ -43,17 +43,17 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project getByName(String name) {
+    public Project getByName(final String name) {
         return projects.get(name);
     }
 
     @Override
-    public void delete(Project project) {
+    public void delete(final Project project) {
         projects.remove(project.getName());
     }
 
     @Override
-    public void deleteByName(String projectName) {
+    public void deleteByName(final String projectName) {
         projects.remove(projectName);
     }
 

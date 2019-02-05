@@ -3,9 +3,6 @@ package ru.trandefil.tm.command.service;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 
-import java.util.Collection;
-import java.util.Map;
-
 public class HelpCommand extends AbstractCommand {
 
     public HelpCommand(ServiceLocator serviceLocator) {
@@ -27,7 +24,10 @@ public class HelpCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        getServiceLocator().getCommandMap().keySet().forEach(System.out::println);
+        getServiceLocator().getCommandMap().keySet().stream()
+                .sorted()
+                .forEach(s -> System.out.format("%s ( %s ) \n"
+                        , s, getServiceLocator().getCommandMap().get(s).description()));
     }
 
     @Override

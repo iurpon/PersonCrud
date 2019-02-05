@@ -6,7 +6,7 @@ import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.command.ObjectFactory;
+import ru.trandefil.tm.command.Domain;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.entity.User;
@@ -36,7 +36,7 @@ public class DataXmlSaveCommand extends AbstractCommand {
         final List<Project> projectList = projectService.getAll();
         final List<User> userList = userService.getAll();
         final List<Task> taskList = taskService.getAll();
-        final ObjectFactory objectFactory = new ObjectFactory();
+        final Domain objectFactory = new Domain();
         objectFactory.setProjectList(projectList);
         objectFactory.setTaskList(taskList);
         objectFactory.setUserList(userList);

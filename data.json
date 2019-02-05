@@ -4,17 +4,17 @@
     "name" : "simpleProject",
     "description" : "no description",
     "user" : {
-      "id" : "f5f44269-37f7-4489-b9c4-4d364d6300bb",
+      "id" : "7c817846-fbd6-4311-adb6-ac298cbbb23b",
       "name" : "User",
       "password" : "221068207E125B97BEB4E2D062E888B1"
     }
   } ],
   "userList" : [ {
-    "id" : "f5f44269-37f7-4489-b9c4-4d364d6300bb",
+    "id" : "7c817846-fbd6-4311-adb6-ac298cbbb23b",
     "name" : "User",
     "password" : "221068207E125B97BEB4E2D062E888B1"
   }, {
-    "id" : "783441a1-7640-4a8b-9461-8afc2ba419ce",
+    "id" : "62b90973-2ba9-4e7c-840b-74ba4a261f7d",
     "name" : "Admin",
     "password" : "33D87FD364516F6604124FCC76FDD279"
   } ],

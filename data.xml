@@ -1,12 +1,27 @@
-<ArrayList>
-  <item>
-    <id>id</id>
-    <name>simpleProject</name>
-    <description>no description</description>
-    <user>
-      <id>f275ad75-facf-4408-953c-a198c6bf5875</id>
+<ObjectFactory>
+  <projectList>
+    <projectList>
+      <id>id</id>
+      <name>simpleProject</name>
+      <description>no description</description>
+      <user>
+        <id>20a312dc-d9e8-48d2-828e-7f7aa8dc561b</id>
+        <name>User</name>
+        <password>221068207E125B97BEB4E2D062E888B1</password>
+      </user>
+    </projectList>
+  </projectList>
+  <userList>
+    <userList>
+      <id>20a312dc-d9e8-48d2-828e-7f7aa8dc561b</id>
       <name>User</name>
       <password>221068207E125B97BEB4E2D062E888B1</password>
-    </user>
-  </item>
-</ArrayList>
+    </userList>
+    <userList>
+      <id>4bb30910-40a7-4e3d-a8ba-29c9d737751a</id>
+      <name>Admin</name>
+      <password>33D87FD364516F6604124FCC76FDD279</password>
+    </userList>
+  </userList>
+  <taskList/>
+</ObjectFactory>

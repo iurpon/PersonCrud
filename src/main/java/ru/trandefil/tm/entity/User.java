@@ -49,4 +49,5 @@ public class User extends BaseEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

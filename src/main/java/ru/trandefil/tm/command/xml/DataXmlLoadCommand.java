@@ -1,10 +1,9 @@
 package ru.trandefil.tm.command.xml;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.entity.Project;
+import ru.trandefil.tm.command.ObjectFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class DataXmlLoadCommand extends AbstractCommand {
+
     @Override
     public String command() {
         return "data-xml-load";
@@ -26,17 +26,26 @@ public class DataXmlLoadCommand extends AbstractCommand {
     public void execute() {
         try {
             ObjectMapper objectMapper = new XmlMapper();
-            String xml = new String(Files.readAllBytes(Paths.get("data.xml")));
-            List<Project> projects = objectMapper.readValue(xml, new TypeReference<List<Project>>() {});
-            projects.forEach(System.out::println);
+            String xmlString = new String(Files.readAllBytes(Paths.get("data.xml")));
+            ObjectFactory objectFactory = objectMapper.readValue(xmlString, ObjectFactory.class);
+            printCollection(objectFactory.getProjectList());
+            printCollection(objectFactory.getUserList());
+            printCollection(objectFactory.getTaskList());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("is empty.");
         }
     }
 
     @Override
     public boolean secure() {
         return true;
+    }
+
+    private <T> void printCollection(List<T> list) {
+        if (list == null || list.isEmpty()) {
+            return;
+        }
+        list.forEach(System.out::println);
     }
 
 }

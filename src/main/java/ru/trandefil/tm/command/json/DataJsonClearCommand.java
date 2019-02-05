@@ -1,24 +1,24 @@
-package ru.trandefil.tm.command.xml;
+package ru.trandefil.tm.command.json;
 
 import ru.trandefil.tm.command.AbstractCommand;
 
 import java.io.File;
 
-public class DataXmlClearCommand extends AbstractCommand {
+public class DataJsonClearCommand extends AbstractCommand {
 
     @Override
     public String command() {
-        return "data-xml-clear";
+        return "data-json-clear";
     }
 
     @Override
     public String description() {
-        return "delete file with xml data";
+        return "return json data";
     }
 
     @Override
     public void execute() {
-        File file = new File("data.xml");
+        File file = new File("data.json");
         file.delete();
     }
 

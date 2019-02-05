@@ -8,7 +8,8 @@ import ru.trandefil.tm.command.ObjectFactory;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
+
+import static ru.trandefil.tm.util.FilterCollectionUtil.*;
 
 public class DataXmlLoadCommand extends AbstractCommand {
 
@@ -28,9 +29,9 @@ public class DataXmlLoadCommand extends AbstractCommand {
             ObjectMapper objectMapper = new XmlMapper();
             String xmlString = new String(Files.readAllBytes(Paths.get("data.xml")));
             ObjectFactory objectFactory = objectMapper.readValue(xmlString, ObjectFactory.class);
-            printCollection(objectFactory.getProjectList());
-            printCollection(objectFactory.getUserList());
-            printCollection(objectFactory.getTaskList());
+            printProjectCollection(objectFactory.getProjectList(), getServiceLocator().getLoggedUser());
+            printUserCollection(objectFactory.getUserList(), getServiceLocator().getLoggedUser());
+            printTaskCollection(objectFactory.getTaskList(), getServiceLocator().getLoggedUser());
         } catch (IOException e) {
             System.out.println("is empty.");
         }
@@ -41,11 +42,6 @@ public class DataXmlLoadCommand extends AbstractCommand {
         return true;
     }
 
-    private <T> void printCollection(List<T> list) {
-        if (list == null || list.isEmpty()) {
-            return;
-        }
-        list.forEach(System.out::println);
-    }
+
 
 }

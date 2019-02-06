@@ -5,9 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>InMemoryCRUD</groupId>
-    <artifactId>InMemoryCRUD</artifactId>
+    <artifactId>parent</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
+    <name>Parent</name>
 
 
     <properties>

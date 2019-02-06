@@ -7,14 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="client" />
-        <module name="InMemoryCRUD (1)" />
         <module name="server" />
-      </profile>
-      <profile name="Annotation profile for InMemoryCRUD" enabled="true">
-        <sourceOutputDir name="parent/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="parent/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="InMemoryCRUD" />
       </profile>
     </annotationProcessing>
   </component>

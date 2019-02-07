@@ -1,12 +1,7 @@
 package ru.trandefil.tm.command.user;
 
-import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.api.ServiceLocator;
-import ru.trandefil.tm.service.TerminalService;
-import ru.trandefil.tm.api.UserService;
-
-import static ru.trandefil.tm.util.UserInputUtil.*;
+import ru.trandefil.tm.command.AbstractCommand;
 
 public class UserUpdateCommand extends AbstractCommand {
 
@@ -29,20 +24,7 @@ public class UserUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final UserService userService = getServiceLocator().getUserService();
-        final TerminalService terminalService = getServiceLocator().getTerminalService();
-        final String userName = getNotNullString(terminalService, "enter user name for update");
-        final User userForUpdate = userService.getByName(userName);
-        if (userForUpdate == null) {
-            System.out.format("user with name %s doesn't exist");
-            return;
-        }
-        final String newUserName = getNotNullString(terminalService, "enter new user name");
-        final String newPassword =
-                hashPassword(getNotNullString(terminalService, "enter new user password"));
-        final User updated = new User(userForUpdate.getId(), newUserName, newPassword);
-        userService.delete(userForUpdate);
-        userService.save(updated);
+
     }
 
     @Override

@@ -6,6 +6,7 @@
 
 package ru.trandefil.tm.api;
 
+import java.util.List;
 import java.util.logging.Logger;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -117,6 +118,11 @@ public class ProjectEndPointImplPortImpl implements ProjectEndPoint {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
+    }
+
+    public static void main(String[] args){
+        List<Project> projectList = new ProjectEndPointImplPortImpl().getAll();
+        projectList.forEach(System.out::println);
     }
 
 }

@@ -1,12 +1,7 @@
 package ru.trandefil.tm.command.project;
 
-import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.entity.Project;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ProjectListCommand extends AbstractCommand {
 
@@ -29,11 +24,7 @@ public class ProjectListCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final ProjectService projectService = getServiceLocator().getProjectService();
-        final List<Project> projectList = projectService.getAll().stream()
-                .filter(p -> p.getUser().equals(getServiceLocator().getLoggedUser()))
-                .collect(Collectors.toList());
-        projectList.forEach(System.out::println);
+
     }
 
     @Override

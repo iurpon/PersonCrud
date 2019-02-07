@@ -33,7 +33,7 @@
                             <sourceRoot>${project.basedir}/src/main/java</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>http://localhost:8080/simpleWebService?wsdl</wsdl>
+                                    <wsdl>http://localhost:8080/projectEndPoint?wsdl</wsdl>
                                     <extraargs>
                                         <extraarg>-impl</extraarg>
                                         <extraarg>-verbose</extraarg>

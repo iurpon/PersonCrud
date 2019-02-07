@@ -36,7 +36,7 @@
                         <manifest>
                             <!-- Jar file entry point -->
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.trandefil.tm.App</mainClass>
+                            <mainClass>ru.trandefil.tm.ClientApp</mainClass>
                             <classpathPrefix>dependency-jars/</classpathPrefix>
                         </manifest>
                     </archive>

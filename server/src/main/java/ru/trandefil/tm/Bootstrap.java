@@ -3,6 +3,7 @@ package ru.trandefil.tm;
 import org.reflections.Reflections;
 import ru.trandefil.tm.api.*;
 import ru.trandefil.tm.command.*;
+import ru.trandefil.tm.endpoint.ProjectEndPointImpl;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepositoryImpl;
@@ -32,6 +33,8 @@ public class Bootstrap implements ServiceLocator {
 
     private final UserService userService = new UserServiceImpl(userRepository);
 
+    private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService);
+
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
 
     public User getLoggedUser() {
@@ -55,6 +58,11 @@ public class Bootstrap implements ServiceLocator {
     @Override
     public TaskService getTaskService() {
         return this.taskService;
+    }
+
+    @Override
+    public ProjectEndPoint getProjectEndPoint() {
+        return projectEndPoint;
     }
 
     @Override

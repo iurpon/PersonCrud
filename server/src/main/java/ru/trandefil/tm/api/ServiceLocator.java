@@ -16,6 +16,8 @@ public interface ServiceLocator {
 
     UserService getUserService();
 
+    ProjectEndPoint getProjectEndPoint();
+
     void setLoggedUser(User loggedUser);
 
     User getLoggedUser();

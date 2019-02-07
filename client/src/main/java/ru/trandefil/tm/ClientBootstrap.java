@@ -14,7 +14,7 @@ import ru.trandefil.tm.service.UserServiceImpl;
 
 import java.util.*;
 
-public class Bootstrap implements ServiceLocator {
+public class ClientBootstrap implements ServiceLocator {
 
     private User loggedUser = null;
 

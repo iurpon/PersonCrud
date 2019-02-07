@@ -4,12 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.command.Domain;
 
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static ru.trandefil.tm.util.FilterCollectionUtil.*;
 
+@WebService
 public class DataJsonLoadCommand extends AbstractCommand {
 
     @Override
@@ -23,6 +26,7 @@ public class DataJsonLoadCommand extends AbstractCommand {
     }
 
     @Override
+    @WebMethod
     public void execute() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();

@@ -2,6 +2,10 @@ package ru.trandefil.tm.command;
 
 import ru.trandefil.tm.api.ServiceLocator;
 
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+
+@WebService
 public abstract class AbstractCommand {
 
     private ServiceLocator serviceLocator;
@@ -17,6 +21,7 @@ public abstract class AbstractCommand {
 
     public abstract String description();
 
+    @WebMethod
     public abstract void execute();
 
     public abstract boolean secure();

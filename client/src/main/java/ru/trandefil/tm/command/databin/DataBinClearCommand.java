@@ -5,6 +5,7 @@ import ru.trandefil.tm.command.AbstractCommand;
 import java.io.File;
 
 public class DataBinClearCommand extends AbstractCommand {
+
     @Override
     public String command() {
         return "data-bin-clear";
@@ -17,8 +18,9 @@ public class DataBinClearCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        File file = new File("data.bin");
-        file.delete();
+/*        File file = new File("data.bin");
+        file.delete();*/
+//        AbstractWebServerService.
     }
 
     @Override

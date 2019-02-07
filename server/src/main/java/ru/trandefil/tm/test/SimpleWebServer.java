@@ -11,8 +11,14 @@ public class SimpleWebServer {
 
     @WebMethod
     public int sum(@WebParam(name = "a") int a, @WebParam(name = "b") int b){
-        System.out.println("inside web method");
+        System.out.println("inside sum method");
         return a + b;
+    }
+
+    @WebMethod
+    public int div(@WebParam(name = "a") int a, @WebParam(name = "b") int b){
+        System.out.println("inside div method");
+        return a/b;
     }
 
     public static void main(String[] args){

@@ -1,36 +1,21 @@
 package ru.trandefil.tm;
 
 import org.reflections.Reflections;
-import ru.trandefil.tm.api.*;
-import ru.trandefil.tm.command.*;
-import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.repository.ProjectRepositoryImpl;
-import ru.trandefil.tm.repository.TaskRepositoryImpl;
-import ru.trandefil.tm.repository.UserRepositoryImpl;
-import ru.trandefil.tm.service.ProjectServiceImpl;
-import ru.trandefil.tm.service.TaskServiceImpl;
+import ru.trandefil.tm.api.ServiceLocator;
+import ru.trandefil.tm.api.User;
+import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.service.TerminalService;
-import ru.trandefil.tm.service.UserServiceImpl;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
 
 public class ClientBootstrap implements ServiceLocator {
 
     private User loggedUser = null;
 
-    private final ProjectRepository projectRepository = new ProjectRepositoryImpl();
-
-    private final TaskRepository taskRepository = new TaskRepositoryImpl();
-
-    private final ProjectService projectService = new ProjectServiceImpl(projectRepository);
-
-    private final TaskService taskService = new TaskServiceImpl(taskRepository);
-
     private final TerminalService terminalService = new TerminalService(new Scanner(System.in));
-
-    private final UserRepository userRepository = new UserRepositoryImpl();
-
-    private final UserService userService = new UserServiceImpl(userRepository);
 
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
 
@@ -48,23 +33,8 @@ public class ClientBootstrap implements ServiceLocator {
     }
 
     @Override
-    public ProjectService getProjectService() {
-        return this.projectService;
-    }
-
-    @Override
-    public TaskService getTaskService() {
-        return this.taskService;
-    }
-
-    @Override
     public TerminalService getTerminalService() {
         return this.terminalService;
-    }
-
-    @Override
-    public UserService getUserService() {
-        return this.userService;
     }
 
     private void getClassesAndFillMap(String packageInfo) {

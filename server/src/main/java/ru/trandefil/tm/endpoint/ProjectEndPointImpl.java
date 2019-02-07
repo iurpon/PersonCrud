@@ -54,5 +54,4 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
                 new ProjectEndPointImpl(new ProjectServiceImpl(new ProjectRepositoryImpl())));
     }
 
-
 }

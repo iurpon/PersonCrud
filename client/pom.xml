@@ -34,15 +34,15 @@
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>http://localhost:8080/projectEndPoint?wsdl</wsdl>
-                                    <extraargs>
+<!--                                    <extraargs>
                                         <extraarg>-impl</extraarg>
                                         <extraarg>-verbose</extraarg>
-                                    </extraargs>
-                                    <wsdl>http://localhost:8085/simpleWebService?wsdl</wsdl>
-                                    <extraargs>
+                                    </extraargs>-->
+                                    <!--<wsdl>http://localhost:8085/simpleWebService?wsdl</wsdl>-->
+   <!--                                 <extraargs>
                                         <extraarg>-impl</extraarg>
                                         <extraarg>-verbose</extraarg>
-                                    </extraargs>
+                                    </extraargs>-->
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>

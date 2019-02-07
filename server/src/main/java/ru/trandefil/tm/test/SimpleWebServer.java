@@ -22,7 +22,7 @@ public class SimpleWebServer {
     }
 
     public static void main(String[] args){
-        Endpoint.publish("http://localhost:8080/simpleWebService?wsdl",new SimpleWebServer());
+        Endpoint.publish("http://localhost:8085/simpleWebService?wsdl",new SimpleWebServer());
     }
 
 }

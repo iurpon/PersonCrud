@@ -2,7 +2,6 @@ package ru.trandefil.tm;
 
 import org.reflections.Reflections;
 import ru.trandefil.tm.api.ServiceLocator;
-import ru.trandefil.tm.api.User;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.service.TerminalService;
 
@@ -13,19 +12,11 @@ import java.util.Set;
 
 public class ClientBootstrap implements ServiceLocator {
 
-    private User loggedUser = null;
 
     private final TerminalService terminalService = new TerminalService(new Scanner(System.in));
 
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
 
-    public User getLoggedUser() {
-        return loggedUser;
-    }
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
 
     @Override
     public Map<String, AbstractCommand> getCommandMap() {
@@ -65,13 +56,7 @@ public class ClientBootstrap implements ServiceLocator {
                 abstractCommand.execute();
                 continue;
             }
-            if (loggedUser == null) {
-                final AbstractCommand loginCommand = commandMap.get("login");
-                loginCommand.execute();
-            }
-            if(loggedUser == null){
-                continue;
-            }
+
             abstractCommand.execute();
         }
     }

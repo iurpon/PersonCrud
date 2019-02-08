@@ -1,12 +1,14 @@
 package ru.trandefil.tm;
 
-import org.reflections.Reflections;
 import ru.trandefil.tm.api.*;
-import ru.trandefil.tm.command.*;
+import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.endpoint.ProjectEndPointImpl;
+import ru.trandefil.tm.endpoint.TaskEndPointImpl;
 import ru.trandefil.tm.endpoint.UserEndPointImpl;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.generated.ProjectEndPoint;
+import ru.trandefil.tm.generated.TaskEndPoint;
+import ru.trandefil.tm.generated.UserEndPoint;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepositoryImpl;
 import ru.trandefil.tm.repository.UserRepositoryImpl;
@@ -37,10 +39,21 @@ public class Bootstrap implements ServiceLocator {
 
     private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService);
 
-//    private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
+    private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
 
+    private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
 
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
+
+    private final List<PublishEndPoint> publishEndPoints = new ArrayList<>();
+
+    public TaskEndPoint getTaskEndPoint() {
+        return taskEndPoint;
+    }
+
+    public UserEndPoint getUserEndPoint() {
+        return userEndPoint;
+    }
 
     public User getLoggedUser() {
         return loggedUser;
@@ -80,43 +93,15 @@ public class Bootstrap implements ServiceLocator {
         return this.userService;
     }
 
-    private void getClassesAndFillMap(String packageInfo) {
-        Reflections refilections = new Reflections(packageInfo);
-        Set<Class<? extends AbstractCommand>> subTypes = refilections.getSubTypesOf(AbstractCommand.class);
-        subTypes.forEach(cl -> {
-            try {
-                AbstractCommand ac = cl.newInstance();
-                ac.setServiceLocator(this);
-                commandMap.put(ac.command(), ac);
-            } catch (InstantiationException | IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        });
+    public void fillAbstractEndPoint(){
+        publishEndPoints.add(projectEndPoint);
+        publishEndPoints.add(userEndPoint);
+        publishEndPoints.add(taskEndPoint);
     }
 
     public void init() {
-        getClassesAndFillMap("ru.trandefil.tm.command");
-        System.out.println("enter help to see commands.");
-        while (true) {
-            final String s = terminalService.nextLine();
-            final AbstractCommand abstractCommand = commandMap.get(s);
-            if (abstractCommand == null) {
-                System.out.println("Bad command.");
-                continue;
-            }
-            if (!abstractCommand.secure()) {
-                abstractCommand.execute();
-                continue;
-            }
-            if (loggedUser == null) {
-                final AbstractCommand loginCommand = commandMap.get("login");
-                loginCommand.execute();
-            }
-            if(loggedUser == null){
-                continue;
-            }
-            abstractCommand.execute();
-        }
+        fillAbstractEndPoint();
+        publishEndPoints.forEach(PublishEndPoint::publish);
     }
 
 }

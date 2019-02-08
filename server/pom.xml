@@ -17,6 +17,29 @@
     <name>Server</name>
     <packaging>jar</packaging>
 
+    <build>
+        <plugins>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Jar file entry point -->
+                            <addClasspath>true</addClasspath>
+                            <mainClass>ru.trandefil.tm.App</mainClass>
+                            <classpathPrefix>dependency-jars/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+
+
+    </build>
+
 
     
 </project>

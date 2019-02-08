@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the ru.trandefil.tm.generated package.
+ * generated in the ru.trandefil.tm.generated package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -34,6 +34,8 @@ public class ObjectFactory {
     private final static QName _GetByIdResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByIdResponse");
     private final static QName _GetByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByName");
     private final static QName _GetByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByNameResponse");
+    private final static QName _Publish_QNAME = new QName("http://generated.tm.trandefil.ru/", "publish");
+    private final static QName _PublishResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "publishResponse");
     private final static QName _Save_QNAME = new QName("http://generated.tm.trandefil.ru/", "save");
     private final static QName _SaveResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveResponse");
 
@@ -122,6 +124,22 @@ public class ObjectFactory {
      */
     public GetByNameResponse createGetByNameResponse() {
         return new GetByNameResponse();
+    }
+
+    /**
+     * Create an instance of {@link Publish }
+     * 
+     */
+    public Publish createPublish() {
+        return new Publish();
+    }
+
+    /**
+     * Create an instance of {@link PublishResponse }
+     * 
+     */
+    public PublishResponse createPublishResponse() {
+        return new PublishResponse();
     }
 
     /**
@@ -244,6 +262,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getByNameResponse")
     public JAXBElement<GetByNameResponse> createGetByNameResponse(GetByNameResponse value) {
         return new JAXBElement<GetByNameResponse>(_GetByNameResponse_QNAME, GetByNameResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Publish }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "publish")
+    public JAXBElement<Publish> createPublish(Publish value) {
+        return new JAXBElement<Publish>(_Publish_QNAME, Publish.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PublishResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "publishResponse")
+    public JAXBElement<PublishResponse> createPublishResponse(PublishResponse value) {
+        return new JAXBElement<PublishResponse>(_PublishResponse_QNAME, PublishResponse.class, null, value);
     }
 
     /**

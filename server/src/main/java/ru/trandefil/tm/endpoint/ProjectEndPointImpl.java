@@ -11,11 +11,22 @@ import javax.xml.ws.Endpoint;
 import java.util.List;
 
 @WebService(endpointInterface = "ru.trandefil.tm.generated.ProjectEndPoint")
-public class ProjectEndPointImpl extends AbstractEndPoint implements ProjectEndPoint {
+public class ProjectEndPointImpl implements ProjectEndPoint {
 
     private ProjectService projectService;
 
     public ProjectEndPointImpl(ProjectService projectService) {
+        this.projectService = projectService;
+    }
+
+    public ProjectEndPointImpl() {
+    }
+
+    public ProjectService getProjectService() {
+        return projectService;
+    }
+
+    public void setProjectService(ProjectService projectService) {
         this.projectService = projectService;
     }
 
@@ -49,13 +60,9 @@ public class ProjectEndPointImpl extends AbstractEndPoint implements ProjectEndP
         return projectService.getByName(projectName);
     }
 
-    public static void main(String[] args) {
-        Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl",
-                new ProjectEndPointImpl(new ProjectServiceImpl(new ProjectRepositoryImpl())));
+    @Override
+    public void publish() {
+        Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl",this);
     }
 
-    @Override
-    void publish() {
-//        Endpoint.publish()
-    }
 }

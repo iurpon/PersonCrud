@@ -1,5 +1,6 @@
 package ru.trandefil.tm.generated;
 
+import ru.trandefil.tm.api.PublishEndPoint;
 import ru.trandefil.tm.entity.User;
 
 import javax.jws.WebMethod;
@@ -8,7 +9,7 @@ import javax.jws.WebService;
 import java.util.List;
 
 @WebService
-public interface UserEndPoint {
+public interface UserEndPoint extends PublishEndPoint {
 
     @WebMethod
     User delete(@WebParam(name = "user") User user);

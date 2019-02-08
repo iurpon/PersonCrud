@@ -21,6 +21,22 @@
 
         <plugins>
 
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Jar file entry point -->
+                            <addClasspath>true</addClasspath>
+                            <mainClass>ru.trandefil.tm.ClientApp</mainClass>
+                            <classpathPrefix>dependency-jars/</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
@@ -33,7 +49,9 @@
                             <sourceRoot>${project.basedir}/src/main/java</sourceRoot>
                             <wsdlOptions>
                                 <wsdlOption>
-                                    <wsdl>http://localhost:8080/projectEndPoint?wsdl</wsdl>
+                                    <!--<wsdl>http://localhost:8080/projectEndPoint?wsdl</wsdl>-->
+                                    <wsdl>http://localhost:8080/taskEndPoint?wsdl</wsdl>
+                                    <!--<wsdl>http://localhost:8080/UserEndPoint?wsdl</wsdl>-->
 <!--                                    <extraargs>
                                         <extraarg>-impl</extraarg>
                                         <extraarg>-verbose</extraarg>

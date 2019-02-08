@@ -1,6 +1,5 @@
 package ru.trandefil.tm.generated;
 
-import ru.trandefil.tm.api.PublishEndPoint;
 import ru.trandefil.tm.entity.Task;
 
 import javax.jws.WebMethod;
@@ -9,7 +8,7 @@ import javax.jws.WebService;
 import java.util.List;
 
 @WebService
-public interface TaskEndPoint  extends PublishEndPoint {
+public interface TaskEndPoint {
 
     @WebMethod
     List<Task> getAllTasks();

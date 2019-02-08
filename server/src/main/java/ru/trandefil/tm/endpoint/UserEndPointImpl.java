@@ -56,12 +56,4 @@ public class UserEndPointImpl implements UserEndPoint {
         return userService.getAll();
     }
 
-
-    @Override
-    public void publish() {
-        Endpoint endpoint = Endpoint.create(this);
-        endpoint.publish("http://localhost:8080/userEndPoint?wsdl");
-
-    }
-
 }

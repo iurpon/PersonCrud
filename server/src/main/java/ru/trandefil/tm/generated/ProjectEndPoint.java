@@ -1,6 +1,5 @@
 package ru.trandefil.tm.generated;
 
-import ru.trandefil.tm.api.PublishEndPoint;
 import ru.trandefil.tm.entity.Project;
 
 import javax.jws.WebMethod;
@@ -10,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebService
-public interface ProjectEndPoint  extends PublishEndPoint {
+public interface ProjectEndPoint {
 
     @WebMethod
     Project saveProject(@WebParam(name = "project") Project project);

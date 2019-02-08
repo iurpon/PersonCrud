@@ -56,10 +56,4 @@ public class TaskEndPointImpl implements TaskEndPoint {
         return taskService.getByName(name);
     }
 
-    @Override
-    public void publish() {
-        Endpoint endpoint = Endpoint.create(this);
-        endpoint.publish("http://localhost:8080/taskEndPoint?wsdl");
-    }
-
 }

@@ -46,8 +46,6 @@ public class Bootstrap implements ServiceLocator {
 
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
 
-    private final List<PublishEndPoint> publishEndPoints = new ArrayList<>();
-
     public TaskEndPoint getTaskEndPoint() {
         return taskEndPoint;
     }

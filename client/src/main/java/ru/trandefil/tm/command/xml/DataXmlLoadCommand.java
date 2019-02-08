@@ -1,7 +1,6 @@
 package ru.trandefil.tm.command.xml;
 
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.generated.ProjectEndPoint;
 
 public class DataXmlLoadCommand extends AbstractCommand {
 
@@ -19,13 +18,12 @@ public class DataXmlLoadCommand extends AbstractCommand {
     public void execute() {
         String xml = getServiceLocator().getProjectEndPoint().getFile();
         System.out.println(xml);
-}
+    }
 
     @Override
     public boolean secure() {
         return true;
     }
-
 
 
 }

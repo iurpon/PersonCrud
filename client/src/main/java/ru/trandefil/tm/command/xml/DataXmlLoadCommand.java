@@ -25,5 +25,4 @@ public class DataXmlLoadCommand extends AbstractCommand {
         return true;
     }
 
-
 }

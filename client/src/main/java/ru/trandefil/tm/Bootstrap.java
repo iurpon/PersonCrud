@@ -4,7 +4,11 @@ import org.reflections.Reflections;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.endpoint.ProjectEndPointImplService;
+import ru.trandefil.tm.endpoint.TaskEndPointImplService;
+import ru.trandefil.tm.endpoint.UserEndPointImplService;
 import ru.trandefil.tm.generated.ProjectEndPoint;
+import ru.trandefil.tm.generated.TaskEndPoint;
+import ru.trandefil.tm.generated.UserEndPoint;
 import ru.trandefil.tm.service.TerminalService;
 
 import java.util.HashMap;
@@ -12,22 +16,34 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class ClientBootstrap implements ServiceLocator {
+public class Bootstrap implements ServiceLocator {
 
     private final TerminalService terminalService = new TerminalService(new Scanner(System.in));
 
     private final ProjectEndPoint projectEndPoint =
             new ProjectEndPointImplService().getProjectEndPointImplPort();
 
+    private final TaskEndPoint taskEndPoint = new TaskEndPointImplService().getTaskEndPointImplPort();
+
+    private final UserEndPoint userEndPoint = new UserEndPointImplService().getUserEndPointImplPort();
+
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
+
+    @Override
+    public Map<String, AbstractCommand> getCommandMap() {
+        return commandMap;
+    }
 
     public ProjectEndPoint getProjectEndPoint() {
         return projectEndPoint;
     }
 
-    @Override
-    public Map<String, AbstractCommand> getCommandMap() {
-        return commandMap;
+    public TaskEndPoint getTaskEndPoint() {
+        return taskEndPoint;
+    }
+
+    public UserEndPoint getUserEndPoint() {
+        return userEndPoint;
     }
 
     @Override
@@ -63,7 +79,6 @@ public class ClientBootstrap implements ServiceLocator {
                 abstractCommand.execute();
                 continue;
             }
-
             abstractCommand.execute();
         }
     }

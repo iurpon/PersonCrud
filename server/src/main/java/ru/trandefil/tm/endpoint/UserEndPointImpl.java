@@ -3,8 +3,6 @@ package ru.trandefil.tm.endpoint;
 import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.generated.UserEndPoint;
-import ru.trandefil.tm.repository.UserRepositoryImpl;
-import ru.trandefil.tm.service.UserServiceImpl;
 
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
@@ -17,9 +15,6 @@ public class UserEndPointImpl implements UserEndPoint {
 
     public UserEndPointImpl(UserService userService) {
         this.userService = userService;
-    }
-
-    public UserEndPointImpl() {
     }
 
     public UserService getUserService() {
@@ -57,11 +52,9 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     public void publish() {
-        Endpoint.publish("http://localhost:8080/userEndPoint?wsdl",this);
-    }
+        Endpoint endpoint = Endpoint.create(this);
+        endpoint.publish("http://localhost:8080/userEndPoint?wsdl");
 
-    public static void main(String[] args){
-        Endpoint.publish("http://localhost:8080/userEndPoint?wsdl",new UserEndPointImpl(new UserServiceImpl(new UserRepositoryImpl())));
     }
 
 }

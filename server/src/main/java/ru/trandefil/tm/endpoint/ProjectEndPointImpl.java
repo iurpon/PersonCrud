@@ -1,10 +1,8 @@
 package ru.trandefil.tm.endpoint;
 
-import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.repository.ProjectRepositoryImpl;
-import ru.trandefil.tm.service.ProjectServiceImpl;
+import ru.trandefil.tm.generated.ProjectEndPoint;
 
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
@@ -17,9 +15,6 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
 
     public ProjectEndPointImpl(ProjectService projectService) {
         this.projectService = projectService;
-    }
-
-    public ProjectEndPointImpl() {
     }
 
     public ProjectService getProjectService() {
@@ -62,7 +57,8 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
 
     @Override
     public void publish() {
-        Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl",this);
+        Endpoint endpoint = Endpoint.create(this);
+        endpoint.publish("http://localhost:8080/projectEndPoint?wsdl");
     }
 
 }

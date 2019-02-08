@@ -21,7 +21,7 @@ public interface UserEndPoint extends PublishEndPoint {
     User save(@WebParam(name = "user") User user);
 
     @WebMethod
-    User getByName(@WebParam(name = "userName") String userName);
+    User getByName(@WebParam(name = "name") String name);
 
     @WebMethod
     List<User> getAll();

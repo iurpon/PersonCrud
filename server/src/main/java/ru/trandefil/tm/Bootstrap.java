@@ -17,6 +17,7 @@ import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.TerminalService;
 import ru.trandefil.tm.service.UserServiceImpl;
 
+import javax.xml.ws.Endpoint;
 import java.util.*;
 
 public class Bootstrap implements ServiceLocator {
@@ -93,15 +94,20 @@ public class Bootstrap implements ServiceLocator {
         return this.userService;
     }
 
-    public void fillAbstractEndPoint(){
-        publishEndPoints.add(projectEndPoint);
+/*    public void fillAbstractEndPoint(){
         publishEndPoints.add(userEndPoint);
         publishEndPoints.add(taskEndPoint);
+        publishEndPoints.add(projectEndPoint);
+    }*/
+
+    public void server() {
+        Endpoint.publish("http://localhost:8080/taskEndPoint?wsdl", taskEndPoint);
+        Endpoint.publish("http://localhost:8080/userEndPoint?wsdl", userEndPoint);
+        Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl", projectEndPoint);
     }
 
-    public void init() {
-        fillAbstractEndPoint();
-        publishEndPoints.forEach(PublishEndPoint::publish);
+    public void init() throws InterruptedException {
+        server();
     }
 
 }

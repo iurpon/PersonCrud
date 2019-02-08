@@ -30,8 +30,6 @@ public class ObjectFactory {
     private final static QName _DeleteResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteResponse");
     private final static QName _GetAll_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAll");
     private final static QName _GetAllResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllResponse");
-    private final static QName _GetById_QNAME = new QName("http://generated.tm.trandefil.ru/", "getById");
-    private final static QName _GetByIdResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByIdResponse");
     private final static QName _GetByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByName");
     private final static QName _GetByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByNameResponse");
     private final static QName _Publish_QNAME = new QName("http://generated.tm.trandefil.ru/", "publish");
@@ -95,22 +93,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetById }
-     * 
-     */
-    public GetById createGetById() {
-        return new GetById();
-    }
-
-    /**
-     * Create an instance of {@link GetByIdResponse }
-     * 
-     */
-    public GetByIdResponse createGetByIdResponse() {
-        return new GetByIdResponse();
-    }
-
-    /**
      * Create an instance of {@link GetByName }
      * 
      */
@@ -159,11 +141,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Project }
+     * Create an instance of {@link Task }
      * 
      */
-    public Project createProject() {
-        return new Project();
+    public Task createTask() {
+        return new Task();
     }
 
     /**
@@ -172,6 +154,14 @@ public class ObjectFactory {
      */
     public User createUser() {
         return new User();
+    }
+
+    /**
+     * Create an instance of {@link Project }
+     * 
+     */
+    public Project createProject() {
+        return new Project();
     }
 
     /**
@@ -226,24 +216,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllResponse")
     public JAXBElement<GetAllResponse> createGetAllResponse(GetAllResponse value) {
         return new JAXBElement<GetAllResponse>(_GetAllResponse_QNAME, GetAllResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetById }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getById")
-    public JAXBElement<GetById> createGetById(GetById value) {
-        return new JAXBElement<GetById>(_GetById_QNAME, GetById.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetByIdResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getByIdResponse")
-    public JAXBElement<GetByIdResponse> createGetByIdResponse(GetByIdResponse value) {
-        return new JAXBElement<GetByIdResponse>(_GetByIdResponse_QNAME, GetByIdResponse.class, null, value);
     }
 
     /**

@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="project" type="{http://generated.tm.trandefil.ru/}project" minOccurs="0"/&gt;
+ *         &lt;element name="task" type="{http://generated.tm.trandefil.ru/}task" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,34 +27,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "save", propOrder = {
-    "project"
+    "task"
 })
 public class Save {
 
-    protected Project project;
+    protected Task task;
 
     /**
-     * Gets the value of the project property.
+     * Gets the value of the task property.
      * 
      * @return
      *     possible object is
-     *     {@link Project }
+     *     {@link Task }
      *     
      */
-    public Project getProject() {
-        return project;
+    public Task getTask() {
+        return task;
     }
 
     /**
-     * Sets the value of the project property.
+     * Sets the value of the task property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Project }
+     *     {@link Task }
      *     
      */
-    public void setProject(Project value) {
-        this.project = value;
+    public void setTask(Task value) {
+        this.task = value;
     }
 
 }

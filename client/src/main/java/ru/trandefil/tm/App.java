@@ -1,9 +1,9 @@
 package ru.trandefil.tm;
 
-public class ClientApp {
+public class App {
 
     public static void main(String[] args) {
-        ClientBootstrap bootStrap = new ClientBootstrap();
+        Bootstrap bootStrap = new Bootstrap();
         bootStrap.init();
     }
 

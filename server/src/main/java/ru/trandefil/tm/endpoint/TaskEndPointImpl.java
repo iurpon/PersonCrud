@@ -1,23 +1,20 @@
 package ru.trandefil.tm.endpoint;
 
-import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.entity.Task;
+import ru.trandefil.tm.generated.TaskEndPoint;
 
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 import java.util.List;
 
 @WebService(endpointInterface = "ru.trandefil.tm.generated.TaskEndPoint")
-public class TaskEndPointImpl  implements TaskEndPoint {
+public class TaskEndPointImpl implements TaskEndPoint {
 
     private TaskService taskService;
 
     public TaskEndPointImpl(TaskService taskService) {
         this.taskService = taskService;
-    }
-
-    public TaskEndPointImpl() {
     }
 
     public TaskService getTaskService() {
@@ -55,7 +52,8 @@ public class TaskEndPointImpl  implements TaskEndPoint {
 
     @Override
     public void publish() {
-        Endpoint.publish("http://localhost:8080/taskEndPoint?wsdl",this);
+        Endpoint endpoint = Endpoint.create(this);
+        endpoint.publish("http://localhost:8082/taskEndPoint?wsdl");
     }
 
 }

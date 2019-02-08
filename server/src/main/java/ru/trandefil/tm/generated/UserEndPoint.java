@@ -25,4 +25,7 @@ public interface UserEndPoint {
     @WebMethod
     List<User> getAllUsers();
 
+    @WebMethod
+    User getLoggedUser(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);
+
 }

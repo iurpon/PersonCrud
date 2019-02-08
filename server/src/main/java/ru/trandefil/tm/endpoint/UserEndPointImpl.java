@@ -6,7 +6,6 @@ import ru.trandefil.tm.generated.UserEndPoint;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.xml.ws.Endpoint;
 import java.util.List;
 
 @WebService(endpointInterface = "ru.trandefil.tm.generated.UserEndPoint")
@@ -54,6 +53,12 @@ public class UserEndPointImpl implements UserEndPoint {
     @Override
     public List<User> getAllUsers() {
         return userService.getAll();
+    }
+
+    @WebMethod
+    @Override
+    public User getLoggedUser(String userName, String password) {
+        return userService.getLoginUser(userName, password);
     }
 
 }

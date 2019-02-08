@@ -2,6 +2,12 @@ package ru.trandefil.tm.command.service;
 
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.generated.User;
+import ru.trandefil.tm.generated.UserEndPoint;
+import ru.trandefil.tm.service.TerminalService;
+import ru.trandefil.tm.util.UserInputUtil;
+
+import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
 
 public class LoginCommand extends AbstractCommand {
 
@@ -24,7 +30,11 @@ public class LoginCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-
+        TerminalService terminalService = getServiceLocator().getTerminalService();
+        String userName = getNotNullString(terminalService,"login name");
+        String userPassword = getNotNullString(terminalService,"login password");
+        UserEndPoint userEndPoint = getServiceLocator().getUserEndPoint();
+//        User logged = userEndPoint.
     }
 
     @Override

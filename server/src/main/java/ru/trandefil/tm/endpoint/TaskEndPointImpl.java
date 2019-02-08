@@ -4,6 +4,7 @@ import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.generated.TaskEndPoint;
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 import java.util.List;
@@ -25,26 +26,31 @@ public class TaskEndPointImpl implements TaskEndPoint {
         this.taskService = taskService;
     }
 
+    @WebMethod
     @Override
     public List<Task> getAll() {
         return taskService.getAll();
     }
 
+    @WebMethod
     @Override
     public Task save(Task task) {
         return taskService.save(task);
     }
 
+    @WebMethod
     @Override
     public Task delete(Task task) {
         return taskService.delete(task);
     }
 
+    @WebMethod
     @Override
     public Task deleteByName(String name) {
         return taskService.deleteByName(name);
     }
 
+    @WebMethod
     @Override
     public Task getByName(String name) {
         return taskService.getByName(name);

@@ -1,5 +1,5 @@
 
-package ru.trandefil.tm.api;
+package ru.trandefil.tm.generatied;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,10 +14,10 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="project"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://api.tm.trandefil.ru/}baseEntity"&gt;
+ *     &lt;extension base="{http://generatied.tm.trandefil.ru/}baseEntity"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="user" type="{http://api.tm.trandefil.ru/}user" minOccurs="0"/&gt;
+ *         &lt;element name="user" type="{http://generatied.tm.trandefil.ru/}user" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;

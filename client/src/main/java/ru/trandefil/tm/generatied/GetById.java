@@ -1,5 +1,5 @@
 
-package ru.trandefil.tm.api;
+package ru.trandefil.tm.generatied;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

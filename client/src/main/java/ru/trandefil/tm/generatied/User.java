@@ -1,5 +1,5 @@
 
-package ru.trandefil.tm.api;
+package ru.trandefil.tm.generatied;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlType;
  * <pre>
  * &lt;complexType name="user"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://api.tm.trandefil.ru/}baseEntity"&gt;
+ *     &lt;extension base="{http://generatied.tm.trandefil.ru/}baseEntity"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;

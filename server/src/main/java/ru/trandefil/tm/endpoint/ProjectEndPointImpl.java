@@ -1,6 +1,6 @@
 package ru.trandefil.tm.endpoint;
 
-import ru.trandefil.tm.api.ProjectEndPoint;
+import ru.trandefil.tm.generatied.ProjectEndPoint;
 import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
@@ -10,7 +10,7 @@ import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 import java.util.List;
 
-@WebService(endpointInterface = "ru.trandefil.tm.api.ProjectEndPoint")
+@WebService(endpointInterface = "ru.trandefil.tm.generatied.ProjectEndPoint")
 public class ProjectEndPointImpl implements ProjectEndPoint {
 
     private ProjectService projectService;

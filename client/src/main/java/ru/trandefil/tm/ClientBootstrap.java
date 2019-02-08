@@ -3,6 +3,8 @@ package ru.trandefil.tm;
 import org.reflections.Reflections;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.endpoint.ProjectEndPointImplService;
+import ru.trandefil.tm.generatied.ProjectEndPoint;
 import ru.trandefil.tm.service.TerminalService;
 
 import java.util.HashMap;
@@ -12,11 +14,16 @@ import java.util.Set;
 
 public class ClientBootstrap implements ServiceLocator {
 
-
     private final TerminalService terminalService = new TerminalService(new Scanner(System.in));
+
+    private final ProjectEndPoint projectEndPoint =
+            new ProjectEndPointImplService().getProjectEndPointImplPort();
 
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
 
+    public ProjectEndPoint getProjectEndPoint() {
+        return projectEndPoint;
+    }
 
     @Override
     public Map<String, AbstractCommand> getCommandMap() {

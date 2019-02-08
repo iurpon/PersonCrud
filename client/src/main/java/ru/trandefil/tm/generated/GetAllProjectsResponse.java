@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getAllResponse complex type.
+ * <p>Java class for getAllProjectsResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="getAllResponse"&gt;
+ * &lt;complexType name="getAllProjectsResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://generated.tm.trandefil.ru/}task" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://generated.tm.trandefil.ru/}project" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getAllResponse", propOrder = {
+@XmlType(name = "getAllProjectsResponse", propOrder = {
     "_return"
 })
-public class GetAllResponse {
+public class GetAllProjectsResponse {
 
     @XmlElement(name = "return")
-    protected List<Task> _return;
+    protected List<Project> _return;
 
     /**
      * Gets the value of the return property.
@@ -55,13 +55,13 @@ public class GetAllResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Task }
+     * {@link Project }
      * 
      * 
      */
-    public List<Task> getReturn() {
+    public List<Project> getReturn() {
         if (_return == null) {
-            _return = new ArrayList<Task>();
+            _return = new ArrayList<Project>();
         }
         return this._return;
     }

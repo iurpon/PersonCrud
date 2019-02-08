@@ -94,20 +94,10 @@ public class Bootstrap implements ServiceLocator {
         return this.userService;
     }
 
-/*    public void fillAbstractEndPoint(){
-        publishEndPoints.add(userEndPoint);
-        publishEndPoints.add(taskEndPoint);
-        publishEndPoints.add(projectEndPoint);
-    }*/
-
-    public void server() {
+    public void init() throws InterruptedException {
+        Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl", projectEndPoint);
         Endpoint.publish("http://localhost:8080/taskEndPoint?wsdl", taskEndPoint);
         Endpoint.publish("http://localhost:8080/userEndPoint?wsdl", userEndPoint);
-        Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl", projectEndPoint);
-    }
-
-    public void init() throws InterruptedException {
-        server();
     }
 
 }

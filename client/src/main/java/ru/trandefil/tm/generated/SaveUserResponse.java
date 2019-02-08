@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteResponse complex type.
+ * <p>Java class for saveUserResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="deleteResponse"&gt;
+ * &lt;complexType name="saveUserResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://generated.tm.trandefil.ru/}task" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://generated.tm.trandefil.ru/}user" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,23 +27,23 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteResponse", propOrder = {
+@XmlType(name = "saveUserResponse", propOrder = {
     "_return"
 })
-public class DeleteResponse {
+public class SaveUserResponse {
 
     @XmlElement(name = "return")
-    protected Task _return;
+    protected User _return;
 
     /**
      * Gets the value of the return property.
      * 
      * @return
      *     possible object is
-     *     {@link Task }
+     *     {@link User }
      *     
      */
-    public Task getReturn() {
+    public User getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class DeleteResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Task }
+     *     {@link User }
      *     
      */
-    public void setReturn(Task value) {
+    public void setReturn(User value) {
         this._return = value;
     }
 

@@ -6,27 +6,31 @@ import ru.trandefil.tm.entity.Project;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
+import java.io.IOException;
 import java.util.List;
 
 @WebService
 public interface ProjectEndPoint  extends PublishEndPoint {
 
     @WebMethod
-    Project save(@WebParam(name = "project") Project project);
+    Project saveProject(@WebParam(name = "project") Project project);
 
     @WebMethod
-    List<Project> getAll();
+    List<Project> getAllProjects();
 
     @WebMethod
-    Project getById(@WebParam(name = "id") String id);
+    Project getProjectById(@WebParam(name = "id") String id);
 
     @WebMethod
-    void delete(@WebParam(name = "project") Project project);
+    void deleteProject(@WebParam(name = "project") Project project);
 
     @WebMethod
-    void deleteByName(@WebParam(name = "projectName") String projectName);
+    void deleteProjectByName(@WebParam(name = "projectName") String projectName);
 
     @WebMethod
-    Project getByName(@WebParam(name = "projectName") String projectName);
+    Project getProjectByName(@WebParam(name = "projectName") String projectName);
+
+    @WebMethod
+    String getFile() throws IOException;
 
 }

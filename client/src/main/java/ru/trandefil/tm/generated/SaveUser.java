@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for delete complex type.
+ * <p>Java class for saveUser complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="delete"&gt;
+ * &lt;complexType name="saveUser"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="task" type="{http://generated.tm.trandefil.ru/}task" minOccurs="0"/&gt;
+ *         &lt;element name="user" type="{http://generated.tm.trandefil.ru/}user" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -26,35 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "delete", propOrder = {
-    "task"
+@XmlType(name = "saveUser", propOrder = {
+    "user"
 })
-public class Delete {
+public class SaveUser {
 
-    protected Task task;
+    protected User user;
 
     /**
-     * Gets the value of the task property.
+     * Gets the value of the user property.
      * 
      * @return
      *     possible object is
-     *     {@link Task }
+     *     {@link User }
      *     
      */
-    public Task getTask() {
-        return task;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Sets the value of the task property.
+     * Sets the value of the user property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Task }
+     *     {@link User }
      *     
      */
-    public void setTask(Task value) {
-        this.task = value;
+    public void setUser(User value) {
+        this.user = value;
     }
 
 }

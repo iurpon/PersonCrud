@@ -34,12 +34,12 @@
                         <configuration>
                             <sourceRoot>${project.basedir}/src/main/java</sourceRoot>
                             <wsdlOptions>
-<!--                                <wsdlOption>
+                                <wsdlOption>
                                     <wsdl>http://localhost:8080/projectEndPoint?wsdl</wsdl>
-                                </wsdlOption>-->
-<!--                                <wsdlOption>
+                                </wsdlOption>
+                                <wsdlOption>
                                     <wsdl>http://localhost:8080/userEndPoint?wsdl</wsdl>
-                                </wsdlOption>-->
+                                </wsdlOption>
                                 <wsdlOption>
                                     <wsdl>http://localhost:8080/taskEndPoint?wsdl</wsdl>
                                 </wsdlOption>

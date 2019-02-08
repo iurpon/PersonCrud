@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteByName complex type.
+ * <p>Java class for deleteTaskByName complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="deleteByName"&gt;
+ * &lt;complexType name="deleteTaskByName"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteByName", propOrder = {
+@XmlType(name = "deleteTaskByName", propOrder = {
     "name"
 })
-public class DeleteByName {
+public class DeleteTaskByName {
 
     protected String name;
 

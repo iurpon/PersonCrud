@@ -28,31 +28,31 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @WebMethod
     @Override
-    public User delete(User user) {
+    public User deleteUser(User user) {
         return userService.delete(user);
     }
 
     @WebMethod
     @Override
-    public User deleteByName(String name) {
+    public User deleteUserByName(String name) {
         return userService.deleteByName(name);
     }
 
     @WebMethod
     @Override
-    public User save(User user) {
+    public User saveUser(User user) {
         return userService.save(user);
     }
 
     @WebMethod
     @Override
-    public User getByName(String userName) {
+    public User getUserByName(String userName) {
         return userService.getByName(userName);
     }
 
     @WebMethod
     @Override
-    public List<User> getAll() {
+    public List<User> getAllUsers() {
         return userService.getAll();
     }
 

@@ -24,18 +24,18 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Delete_QNAME = new QName("http://generated.tm.trandefil.ru/", "delete");
-    private final static QName _DeleteByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteByName");
-    private final static QName _DeleteByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteByNameResponse");
-    private final static QName _DeleteResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteResponse");
-    private final static QName _GetAll_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAll");
-    private final static QName _GetAllResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllResponse");
-    private final static QName _GetByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByName");
-    private final static QName _GetByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByNameResponse");
+    private final static QName _DeleteTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTask");
+    private final static QName _DeleteTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskByName");
+    private final static QName _DeleteTaskByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskByNameResponse");
+    private final static QName _DeleteTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskResponse");
+    private final static QName _GetAllTasks_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasks");
+    private final static QName _GetAllTasksResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasksResponse");
+    private final static QName _GetTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByName");
+    private final static QName _GetTaskByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByNameResponse");
     private final static QName _Publish_QNAME = new QName("http://generated.tm.trandefil.ru/", "publish");
     private final static QName _PublishResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "publishResponse");
-    private final static QName _Save_QNAME = new QName("http://generated.tm.trandefil.ru/", "save");
-    private final static QName _SaveResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveResponse");
+    private final static QName _SaveTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveTask");
+    private final static QName _SaveTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveTaskResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ru.trandefil.tm.generated
@@ -45,67 +45,67 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Delete }
+     * Create an instance of {@link DeleteTask }
      * 
      */
-    public Delete createDelete() {
-        return new Delete();
+    public DeleteTask createDeleteTask() {
+        return new DeleteTask();
     }
 
     /**
-     * Create an instance of {@link DeleteByName }
+     * Create an instance of {@link DeleteTaskByName }
      * 
      */
-    public DeleteByName createDeleteByName() {
-        return new DeleteByName();
+    public DeleteTaskByName createDeleteTaskByName() {
+        return new DeleteTaskByName();
     }
 
     /**
-     * Create an instance of {@link DeleteByNameResponse }
+     * Create an instance of {@link DeleteTaskByNameResponse }
      * 
      */
-    public DeleteByNameResponse createDeleteByNameResponse() {
-        return new DeleteByNameResponse();
+    public DeleteTaskByNameResponse createDeleteTaskByNameResponse() {
+        return new DeleteTaskByNameResponse();
     }
 
     /**
-     * Create an instance of {@link DeleteResponse }
+     * Create an instance of {@link DeleteTaskResponse }
      * 
      */
-    public DeleteResponse createDeleteResponse() {
-        return new DeleteResponse();
+    public DeleteTaskResponse createDeleteTaskResponse() {
+        return new DeleteTaskResponse();
     }
 
     /**
-     * Create an instance of {@link GetAll }
+     * Create an instance of {@link GetAllTasks }
      * 
      */
-    public GetAll createGetAll() {
-        return new GetAll();
+    public GetAllTasks createGetAllTasks() {
+        return new GetAllTasks();
     }
 
     /**
-     * Create an instance of {@link GetAllResponse }
+     * Create an instance of {@link GetAllTasksResponse }
      * 
      */
-    public GetAllResponse createGetAllResponse() {
-        return new GetAllResponse();
+    public GetAllTasksResponse createGetAllTasksResponse() {
+        return new GetAllTasksResponse();
     }
 
     /**
-     * Create an instance of {@link GetByName }
+     * Create an instance of {@link GetTaskByName }
      * 
      */
-    public GetByName createGetByName() {
-        return new GetByName();
+    public GetTaskByName createGetTaskByName() {
+        return new GetTaskByName();
     }
 
     /**
-     * Create an instance of {@link GetByNameResponse }
+     * Create an instance of {@link GetTaskByNameResponse }
      * 
      */
-    public GetByNameResponse createGetByNameResponse() {
-        return new GetByNameResponse();
+    public GetTaskByNameResponse createGetTaskByNameResponse() {
+        return new GetTaskByNameResponse();
     }
 
     /**
@@ -125,19 +125,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Save }
+     * Create an instance of {@link SaveTask }
      * 
      */
-    public Save createSave() {
-        return new Save();
+    public SaveTask createSaveTask() {
+        return new SaveTask();
     }
 
     /**
-     * Create an instance of {@link SaveResponse }
+     * Create an instance of {@link SaveTaskResponse }
      * 
      */
-    public SaveResponse createSaveResponse() {
-        return new SaveResponse();
+    public SaveTaskResponse createSaveTaskResponse() {
+        return new SaveTaskResponse();
     }
 
     /**
@@ -165,75 +165,75 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Delete }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTask }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "delete")
-    public JAXBElement<Delete> createDelete(Delete value) {
-        return new JAXBElement<Delete>(_Delete_QNAME, Delete.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTask")
+    public JAXBElement<DeleteTask> createDeleteTask(DeleteTask value) {
+        return new JAXBElement<DeleteTask>(_DeleteTask_QNAME, DeleteTask.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteByName }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskByName }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteByName")
-    public JAXBElement<DeleteByName> createDeleteByName(DeleteByName value) {
-        return new JAXBElement<DeleteByName>(_DeleteByName_QNAME, DeleteByName.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskByName")
+    public JAXBElement<DeleteTaskByName> createDeleteTaskByName(DeleteTaskByName value) {
+        return new JAXBElement<DeleteTaskByName>(_DeleteTaskByName_QNAME, DeleteTaskByName.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteByNameResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskByNameResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteByNameResponse")
-    public JAXBElement<DeleteByNameResponse> createDeleteByNameResponse(DeleteByNameResponse value) {
-        return new JAXBElement<DeleteByNameResponse>(_DeleteByNameResponse_QNAME, DeleteByNameResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskByNameResponse")
+    public JAXBElement<DeleteTaskByNameResponse> createDeleteTaskByNameResponse(DeleteTaskByNameResponse value) {
+        return new JAXBElement<DeleteTaskByNameResponse>(_DeleteTaskByNameResponse_QNAME, DeleteTaskByNameResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteResponse")
-    public JAXBElement<DeleteResponse> createDeleteResponse(DeleteResponse value) {
-        return new JAXBElement<DeleteResponse>(_DeleteResponse_QNAME, DeleteResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskResponse")
+    public JAXBElement<DeleteTaskResponse> createDeleteTaskResponse(DeleteTaskResponse value) {
+        return new JAXBElement<DeleteTaskResponse>(_DeleteTaskResponse_QNAME, DeleteTaskResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAll }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTasks }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAll")
-    public JAXBElement<GetAll> createGetAll(GetAll value) {
-        return new JAXBElement<GetAll>(_GetAll_QNAME, GetAll.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllTasks")
+    public JAXBElement<GetAllTasks> createGetAllTasks(GetAllTasks value) {
+        return new JAXBElement<GetAllTasks>(_GetAllTasks_QNAME, GetAllTasks.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTasksResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllResponse")
-    public JAXBElement<GetAllResponse> createGetAllResponse(GetAllResponse value) {
-        return new JAXBElement<GetAllResponse>(_GetAllResponse_QNAME, GetAllResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllTasksResponse")
+    public JAXBElement<GetAllTasksResponse> createGetAllTasksResponse(GetAllTasksResponse value) {
+        return new JAXBElement<GetAllTasksResponse>(_GetAllTasksResponse_QNAME, GetAllTasksResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetByName }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTaskByName }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getByName")
-    public JAXBElement<GetByName> createGetByName(GetByName value) {
-        return new JAXBElement<GetByName>(_GetByName_QNAME, GetByName.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getTaskByName")
+    public JAXBElement<GetTaskByName> createGetTaskByName(GetTaskByName value) {
+        return new JAXBElement<GetTaskByName>(_GetTaskByName_QNAME, GetTaskByName.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetByNameResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTaskByNameResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getByNameResponse")
-    public JAXBElement<GetByNameResponse> createGetByNameResponse(GetByNameResponse value) {
-        return new JAXBElement<GetByNameResponse>(_GetByNameResponse_QNAME, GetByNameResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getTaskByNameResponse")
+    public JAXBElement<GetTaskByNameResponse> createGetTaskByNameResponse(GetTaskByNameResponse value) {
+        return new JAXBElement<GetTaskByNameResponse>(_GetTaskByNameResponse_QNAME, GetTaskByNameResponse.class, null, value);
     }
 
     /**
@@ -255,21 +255,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Save }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveTask }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "save")
-    public JAXBElement<Save> createSave(Save value) {
-        return new JAXBElement<Save>(_Save_QNAME, Save.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveTask")
+    public JAXBElement<SaveTask> createSaveTask(SaveTask value) {
+        return new JAXBElement<SaveTask>(_SaveTask_QNAME, SaveTask.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveTaskResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveResponse")
-    public JAXBElement<SaveResponse> createSaveResponse(SaveResponse value) {
-        return new JAXBElement<SaveResponse>(_SaveResponse_QNAME, SaveResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveTaskResponse")
+    public JAXBElement<SaveTaskResponse> createSaveTaskResponse(SaveTaskResponse value) {
+        return new JAXBElement<SaveTaskResponse>(_SaveTaskResponse_QNAME, SaveTaskResponse.class, null, value);
     }
 
 }

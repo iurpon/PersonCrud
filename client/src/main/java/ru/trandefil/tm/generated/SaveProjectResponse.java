@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for saveResponse complex type.
+ * <p>Java class for saveProjectResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="saveResponse"&gt;
+ * &lt;complexType name="saveProjectResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://generated.tm.trandefil.ru/}task" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://generated.tm.trandefil.ru/}project" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,23 +27,23 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "saveResponse", propOrder = {
+@XmlType(name = "saveProjectResponse", propOrder = {
     "_return"
 })
-public class SaveResponse {
+public class SaveProjectResponse {
 
     @XmlElement(name = "return")
-    protected Task _return;
+    protected Project _return;
 
     /**
      * Gets the value of the return property.
      * 
      * @return
      *     possible object is
-     *     {@link Task }
+     *     {@link Project }
      *     
      */
-    public Task getReturn() {
+    public Project getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class SaveResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link Task }
+     *     {@link Project }
      *     
      */
-    public void setReturn(Task value) {
+    public void setReturn(Project value) {
         this._return = value;
     }
 

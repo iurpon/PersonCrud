@@ -7,6 +7,9 @@ import ru.trandefil.tm.generated.ProjectEndPoint;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 @WebService(endpointInterface = "ru.trandefil.tm.generated.ProjectEndPoint")
@@ -28,39 +31,47 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
 
     @WebMethod
     @Override
-    public Project save(Project project) {
+    public Project saveProject(Project project) {
         return projectService.save(project);
     }
 
     @WebMethod
     @Override
-    public List<Project> getAll() {
+    public List<Project> getAllProjects() {
         return projectService.getAll();
     }
 
     @WebMethod
     @Override
-    public Project getById(String id) {
+    public Project getProjectById(String id) {
         return projectService.getById(id);
     }
 
     @WebMethod
     @Override
-    public void delete(Project project) {
+    public void deleteProject(Project project) {
         projectService.delete(project);
     }
 
     @WebMethod
     @Override
-    public void deleteByName(String projectName) {
+    public void deleteProjectByName(String projectName) {
         projectService.deleteByName(projectName);
     }
 
     @WebMethod
     @Override
-    public Project getByName(String projectName) {
+    public Project getProjectByName(String projectName) {
         return projectService.getByName(projectName);
     }
+
+    @Override
+    @WebMethod
+    public String getFile() throws IOException {
+        return new String(Files.readAllBytes(Paths.get("data.xml")));
+    }
+
+    @WebMethod
 
     @Override
     public void publish() {

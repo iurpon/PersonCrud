@@ -12,18 +12,18 @@ import java.util.List;
 public interface UserEndPoint extends PublishEndPoint {
 
     @WebMethod
-    User delete(@WebParam(name = "user") User user);
+    User deleteUser(@WebParam(name = "user") User user);
 
     @WebMethod
-    User deleteByName(@WebParam(name = "name") String name);
+    User deleteUserByName(@WebParam(name = "name") String name);
 
     @WebMethod
-    User save(@WebParam(name = "user") User user);
+    User saveUser(@WebParam(name = "user") User user);
 
     @WebMethod
-    User getByName(@WebParam(name = "name") String name);
+    User getUserByName(@WebParam(name = "name") String name);
 
     @WebMethod
-    List<User> getAll();
+    List<User> getAllUsers();
 
 }

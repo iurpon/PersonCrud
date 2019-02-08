@@ -28,38 +28,38 @@ public class TaskEndPointImpl implements TaskEndPoint {
 
     @WebMethod
     @Override
-    public List<Task> getAll() {
+    public List<Task> getAllTasks() {
         return taskService.getAll();
     }
 
     @WebMethod
     @Override
-    public Task save(Task task) {
+    public Task saveTask(Task task) {
         return taskService.save(task);
     }
 
     @WebMethod
     @Override
-    public Task delete(Task task) {
+    public Task deleteTask(Task task) {
         return taskService.delete(task);
     }
 
     @WebMethod
     @Override
-    public Task deleteByName(String name) {
+    public Task deleteTaskByName(String name) {
         return taskService.deleteByName(name);
     }
 
     @WebMethod
     @Override
-    public Task getByName(String name) {
+    public Task getTaskByName(String name) {
         return taskService.getByName(name);
     }
 
     @Override
     public void publish() {
         Endpoint endpoint = Endpoint.create(this);
-        endpoint.publish("http://localhost:8082/taskEndPoint?wsdl");
+        endpoint.publish("http://localhost:8080/taskEndPoint?wsdl");
     }
 
 }

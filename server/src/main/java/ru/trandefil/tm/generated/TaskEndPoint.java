@@ -12,18 +12,18 @@ import java.util.List;
 public interface TaskEndPoint  extends PublishEndPoint {
 
     @WebMethod
-    List<Task> getAll();
+    List<Task> getAllTasks();
 
     @WebMethod
-    Task save(@WebParam(name = "task") Task task);
+    Task saveTask(@WebParam(name = "task") Task task);
 
     @WebMethod
-    Task delete(@WebParam(name = "task") Task task);
+    Task deleteTask(@WebParam(name = "task") Task task);
 
     @WebMethod
-    Task deleteByName(@WebParam(name = "name") String name);
+    Task deleteTaskByName(@WebParam(name = "name") String name);
 
     @WebMethod
-    Task getByName(@WebParam(name = "name") String name);
+    Task getTaskByName(@WebParam(name = "name") String name);
 
 }

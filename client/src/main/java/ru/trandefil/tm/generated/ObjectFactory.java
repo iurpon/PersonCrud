@@ -1,5 +1,5 @@
 
-package ru.trandefil.tm.generatied;
+package ru.trandefil.tm.generated;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the ru.trandefil.tm.generatied package. 
+ * generated in the ru.trandefil.tm.generated package.
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -24,21 +24,21 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Delete_QNAME = new QName("http://generatied.tm.trandefil.ru/", "delete");
-    private final static QName _DeleteByName_QNAME = new QName("http://generatied.tm.trandefil.ru/", "deleteByName");
-    private final static QName _DeleteByNameResponse_QNAME = new QName("http://generatied.tm.trandefil.ru/", "deleteByNameResponse");
-    private final static QName _DeleteResponse_QNAME = new QName("http://generatied.tm.trandefil.ru/", "deleteResponse");
-    private final static QName _GetAll_QNAME = new QName("http://generatied.tm.trandefil.ru/", "getAll");
-    private final static QName _GetAllResponse_QNAME = new QName("http://generatied.tm.trandefil.ru/", "getAllResponse");
-    private final static QName _GetById_QNAME = new QName("http://generatied.tm.trandefil.ru/", "getById");
-    private final static QName _GetByIdResponse_QNAME = new QName("http://generatied.tm.trandefil.ru/", "getByIdResponse");
-    private final static QName _GetByName_QNAME = new QName("http://generatied.tm.trandefil.ru/", "getByName");
-    private final static QName _GetByNameResponse_QNAME = new QName("http://generatied.tm.trandefil.ru/", "getByNameResponse");
-    private final static QName _Save_QNAME = new QName("http://generatied.tm.trandefil.ru/", "save");
-    private final static QName _SaveResponse_QNAME = new QName("http://generatied.tm.trandefil.ru/", "saveResponse");
+    private final static QName _Delete_QNAME = new QName("http://generated.tm.trandefil.ru/", "delete");
+    private final static QName _DeleteByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteByName");
+    private final static QName _DeleteByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteByNameResponse");
+    private final static QName _DeleteResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteResponse");
+    private final static QName _GetAll_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAll");
+    private final static QName _GetAllResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllResponse");
+    private final static QName _GetById_QNAME = new QName("http://generated.tm.trandefil.ru/", "getById");
+    private final static QName _GetByIdResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByIdResponse");
+    private final static QName _GetByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByName");
+    private final static QName _GetByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getByNameResponse");
+    private final static QName _Save_QNAME = new QName("http://generated.tm.trandefil.ru/", "save");
+    private final static QName _SaveResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ru.trandefil.tm.generatied
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ru.trandefil.tm.generated
      * 
      */
     public ObjectFactory() {
@@ -160,7 +160,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Delete }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "delete")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "delete")
     public JAXBElement<Delete> createDelete(Delete value) {
         return new JAXBElement<Delete>(_Delete_QNAME, Delete.class, null, value);
     }
@@ -169,7 +169,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteByName }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "deleteByName")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteByName")
     public JAXBElement<DeleteByName> createDeleteByName(DeleteByName value) {
         return new JAXBElement<DeleteByName>(_DeleteByName_QNAME, DeleteByName.class, null, value);
     }
@@ -178,7 +178,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteByNameResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "deleteByNameResponse")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteByNameResponse")
     public JAXBElement<DeleteByNameResponse> createDeleteByNameResponse(DeleteByNameResponse value) {
         return new JAXBElement<DeleteByNameResponse>(_DeleteByNameResponse_QNAME, DeleteByNameResponse.class, null, value);
     }
@@ -187,7 +187,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "deleteResponse")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteResponse")
     public JAXBElement<DeleteResponse> createDeleteResponse(DeleteResponse value) {
         return new JAXBElement<DeleteResponse>(_DeleteResponse_QNAME, DeleteResponse.class, null, value);
     }
@@ -196,7 +196,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAll }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "getAll")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAll")
     public JAXBElement<GetAll> createGetAll(GetAll value) {
         return new JAXBElement<GetAll>(_GetAll_QNAME, GetAll.class, null, value);
     }
@@ -205,7 +205,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetAllResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "getAllResponse")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllResponse")
     public JAXBElement<GetAllResponse> createGetAllResponse(GetAllResponse value) {
         return new JAXBElement<GetAllResponse>(_GetAllResponse_QNAME, GetAllResponse.class, null, value);
     }
@@ -214,7 +214,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetById }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "getById")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getById")
     public JAXBElement<GetById> createGetById(GetById value) {
         return new JAXBElement<GetById>(_GetById_QNAME, GetById.class, null, value);
     }
@@ -223,7 +223,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetByIdResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "getByIdResponse")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getByIdResponse")
     public JAXBElement<GetByIdResponse> createGetByIdResponse(GetByIdResponse value) {
         return new JAXBElement<GetByIdResponse>(_GetByIdResponse_QNAME, GetByIdResponse.class, null, value);
     }
@@ -232,7 +232,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetByName }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "getByName")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getByName")
     public JAXBElement<GetByName> createGetByName(GetByName value) {
         return new JAXBElement<GetByName>(_GetByName_QNAME, GetByName.class, null, value);
     }
@@ -241,7 +241,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link GetByNameResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "getByNameResponse")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getByNameResponse")
     public JAXBElement<GetByNameResponse> createGetByNameResponse(GetByNameResponse value) {
         return new JAXBElement<GetByNameResponse>(_GetByNameResponse_QNAME, GetByNameResponse.class, null, value);
     }
@@ -250,7 +250,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link Save }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "save")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "save")
     public JAXBElement<Save> createSave(Save value) {
         return new JAXBElement<Save>(_Save_QNAME, Save.class, null, value);
     }
@@ -259,7 +259,7 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link SaveResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generatied.tm.trandefil.ru/", name = "saveResponse")
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveResponse")
     public JAXBElement<SaveResponse> createSaveResponse(SaveResponse value) {
         return new JAXBElement<SaveResponse>(_SaveResponse_QNAME, SaveResponse.class, null, value);
     }

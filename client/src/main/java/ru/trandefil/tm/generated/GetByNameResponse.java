@@ -1,5 +1,5 @@
 
-package ru.trandefil.tm.generatied;
+package ru.trandefil.tm.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getByIdResponse complex type.
+ * <p>Java class for getByNameResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="getByIdResponse"&gt;
+ * &lt;complexType name="getByNameResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getByIdResponse", propOrder = {
+@XmlType(name = "getByNameResponse", propOrder = {
     "_return"
 })
-public class GetByIdResponse {
+public class GetByNameResponse {
 
     @XmlElement(name = "return")
     protected Project _return;

@@ -1,5 +1,5 @@
 
-package ru.trandefil.tm.generatied;
+package ru.trandefil.tm.generated;
 
 import java.util.ArrayList;
 import java.util.List;

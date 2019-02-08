@@ -1,5 +1,5 @@
 
-package ru.trandefil.tm.generatied;
+package ru.trandefil.tm.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for delete complex type.
+ * <p>Java class for save complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="delete"&gt;
+ * &lt;complexType name="save"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -26,10 +26,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "delete", propOrder = {
+@XmlType(name = "save", propOrder = {
     "project"
 })
-public class Delete {
+public class Save {
 
     protected Project project;
 

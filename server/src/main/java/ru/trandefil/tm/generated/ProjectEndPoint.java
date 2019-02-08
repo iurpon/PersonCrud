@@ -1,4 +1,4 @@
-package ru.trandefil.tm.generatied;
+package ru.trandefil.tm.generated;
 
 import ru.trandefil.tm.entity.Project;
 

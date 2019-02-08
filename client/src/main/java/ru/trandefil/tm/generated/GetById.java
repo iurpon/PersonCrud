@@ -1,23 +1,22 @@
 
-package ru.trandefil.tm.generatied;
+package ru.trandefil.tm.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for saveResponse complex type.
+ * <p>Java class for getById complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="saveResponse"&gt;
+ * &lt;complexType name="getById"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://generatied.tm.trandefil.ru/}project" minOccurs="0"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "saveResponse", propOrder = {
-    "_return"
+@XmlType(name = "getById", propOrder = {
+    "id"
 })
-public class SaveResponse {
+public class GetById {
 
-    @XmlElement(name = "return")
-    protected Project _return;
+    protected String id;
 
     /**
-     * Gets the value of the return property.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
-     *     {@link Project }
+     *     {@link String }
      *     
      */
-    public Project getReturn() {
-        return _return;
+    public String getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the return property.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Project }
+     *     {@link String }
      *     
      */
-    public void setReturn(Project value) {
-        this._return = value;
+    public void setId(String value) {
+        this.id = value;
     }
 
 }

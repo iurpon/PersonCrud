@@ -2,7 +2,7 @@ package ru.trandefil.tm.command.project;
 
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.generatied.Project;
+import ru.trandefil.tm.generated.Project;
 
 import java.util.List;
 

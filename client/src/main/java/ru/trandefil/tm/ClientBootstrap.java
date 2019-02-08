@@ -4,7 +4,7 @@ import org.reflections.Reflections;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.endpoint.ProjectEndPointImplService;
-import ru.trandefil.tm.generatied.ProjectEndPoint;
+import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.service.TerminalService;
 
 import java.util.HashMap;

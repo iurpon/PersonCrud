@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="userName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="session" type="{http://generated.tm.trandefil.ru/}session" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -29,12 +30,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getLoggedUser", propOrder = {
     "userName",
-    "password"
+    "password",
+    "session"
 })
 public class GetLoggedUser {
 
     protected String userName;
     protected String password;
+    protected Session session;
 
     /**
      * Gets the value of the userName property.
@@ -82,6 +85,30 @@ public class GetLoggedUser {
      */
     public void setPassword(String value) {
         this.password = value;
+    }
+
+    /**
+     * Gets the value of the session property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Session }
+     *     
+     */
+    public Session getSession() {
+        return session;
+    }
+
+    /**
+     * Sets the value of the session property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Session }
+     *     
+     */
+    public void setSession(Session value) {
+        this.session = value;
     }
 
 }

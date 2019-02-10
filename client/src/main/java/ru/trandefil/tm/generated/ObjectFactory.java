@@ -123,6 +123,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Session }
+     * 
+     */
+    public Session createSession() {
+        return new Session();
+    }
+
+    /**
      * Create an instance of {@link Task }
      * 
      */

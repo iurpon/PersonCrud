@@ -26,7 +26,7 @@ public class DataXmlSaveCommandTest {
 
     @Test
     public void execute() throws IOException {
-        final ProjectService projectService = new ProjectServiceImpl(new ProjectRepositoryImpl());
+/*        final ProjectService projectService = new ProjectServiceImpl(new ProjectRepositoryImpl());
         final UserService userService = new UserServiceImpl(new UserRepositoryImpl());
         final TaskService taskService = new TaskServiceImpl(new TaskRepositoryImpl());
         final List<Project> projectList = projectService.getAll();
@@ -38,7 +38,7 @@ public class DataXmlSaveCommandTest {
         objectFactory.setUserList(userList);
         ObjectMapper objectMapper = new XmlMapper();
         String xml = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectFactory);
-        Files.write(Paths.get("data.xml"), xml.getBytes());
+        Files.write(Paths.get("data.xml"), xml.getBytes());*/
     }
 
 }

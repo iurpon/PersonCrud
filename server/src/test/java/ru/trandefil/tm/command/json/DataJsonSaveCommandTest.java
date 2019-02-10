@@ -25,7 +25,7 @@ public class DataJsonSaveCommandTest {
 
     @Test
     public void execute() {
-        final ProjectService projectService = new ProjectServiceImpl(new ProjectRepositoryImpl());
+/*        final ProjectService projectService = new ProjectServiceImpl(new ProjectRepositoryImpl());
         final UserService userService = new UserServiceImpl(new UserRepositoryImpl());
         final TaskService taskService = new TaskServiceImpl(new TaskRepositoryImpl());
         final List<Project> projectList = projectService.getAll();
@@ -41,7 +41,7 @@ public class DataJsonSaveCommandTest {
             Files.write(Paths.get("data.json"), json.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 }

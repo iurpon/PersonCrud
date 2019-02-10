@@ -29,7 +29,7 @@ public class AbstractCommandTest {
 
     @Before
     public void setUp() throws Exception {
-        projectRepository.clear();
+/*        projectRepository.clear();
         projectService.save(PROJECT1);
         projectService.save(PROJECT2);
         projectService.save(PROJECT3);
@@ -39,7 +39,7 @@ public class AbstractCommandTest {
         taskRepository.clear();
         taskService.save(TASK1);
         taskService.save(TASK2);
-        taskService.save(TASK3);
+        taskService.save(TASK3);*/
     }
 
 }

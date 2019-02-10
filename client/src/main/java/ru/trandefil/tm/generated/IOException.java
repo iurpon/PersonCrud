@@ -7,18 +7,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for user complex type.
+ * <p>Java class for IOException complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="user"&gt;
+ * &lt;complexType name="IOException"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://generated.tm.trandefil.ru/}baseNamedEntity"&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *     &lt;/extension&gt;
+ *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
@@ -26,37 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "user", propOrder = {
-    "password"
+@XmlType(name = "IOException", propOrder = {
+    "message"
 })
-public class User
-    extends BaseNamedEntity
-{
+public class IOException {
 
-    protected String password;
+    protected String message;
 
     /**
-     * Gets the value of the password property.
+     * Gets the value of the message property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getPassword() {
-        return password;
+    public String getMessage() {
+        return message;
     }
 
     /**
-     * Sets the value of the password property.
+     * Sets the value of the message property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setPassword(String value) {
-        this.password = value;
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }

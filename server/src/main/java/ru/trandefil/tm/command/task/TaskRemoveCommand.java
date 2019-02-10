@@ -31,7 +31,7 @@ public class TaskRemoveCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = getServiceLocator().getTerminalService();
+/*        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String taskName = getNotNullString(terminalService, "Enter task name");
         final TaskService taskService = getServiceLocator().getTaskService();
         final Task requestedTask = taskService.getByName(taskName);
@@ -39,7 +39,7 @@ public class TaskRemoveCommand extends AbstractCommand {
             System.out.println("wrong task name or no permission to delete task.");
             return;
         }
-        taskService.deleteByName(taskName);
+        taskService.deleteByName(taskName);*/
     }
 
     @Override

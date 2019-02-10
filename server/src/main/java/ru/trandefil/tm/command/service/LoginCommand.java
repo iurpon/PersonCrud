@@ -28,10 +28,10 @@ public class LoginCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final UserService userService = getServiceLocator().getUserService();
+/*        final UserService userService = getServiceLocator().getUserService();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final User loggedUser = UserLoginUtil.login(userService, terminalService);
-        getServiceLocator().setLoggedUser(loggedUser);
+        getServiceLocator().setLoggedUser(loggedUser);*/
     }
 
     @Override

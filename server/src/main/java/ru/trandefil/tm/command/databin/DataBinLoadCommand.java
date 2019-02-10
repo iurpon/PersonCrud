@@ -28,7 +28,7 @@ public class DataBinLoadCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        try (InputStream inputStream = new FileInputStream("data.bin")) {
+/*        try (InputStream inputStream = new FileInputStream("data.bin")) {
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             Project[] projects = (Project[]) objectInputStream.readObject();
             User[] users = (User[]) objectInputStream.readObject();
@@ -38,7 +38,7 @@ public class DataBinLoadCommand extends AbstractCommand {
             printTaskCollection(Arrays.asList(tasks),getServiceLocator().getLoggedUser());
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("is empty.");
-        }
+        }*/
     }
 
     @Override

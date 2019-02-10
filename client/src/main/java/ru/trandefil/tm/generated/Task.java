@@ -16,7 +16,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <pre>
  * &lt;complexType name="task"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://generated.tm.trandefil.ru/}baseEntity"&gt;
+ *     &lt;extension base="{http://generated.tm.trandefil.ru/}baseNamedEntity"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="assignee" type="{http://generated.tm.trandefil.ru/}user" minOccurs="0"/&gt;
  *         &lt;element name="begin" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
@@ -42,7 +42,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "project"
 })
 public class Task
-    extends BaseEntity
+    extends BaseNamedEntity
 {
 
     protected User assignee;

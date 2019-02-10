@@ -29,7 +29,7 @@ public class UserDeleteCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final UserService userService = getServiceLocator().getUserService();
+/*        final UserService userService = getServiceLocator().getUserService();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "enter user name for remove");
         final User userForRemove = userService.getByName(userName);
@@ -37,7 +37,7 @@ public class UserDeleteCommand extends AbstractCommand {
             System.out.format("user with name %s doesn't exist", userName);
             return;
         }
-        userService.delete(userForRemove);
+        userService.delete(userForRemove);*/
     }
 
     @Override

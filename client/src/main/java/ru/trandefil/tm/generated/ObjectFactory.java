@@ -32,8 +32,6 @@ public class ObjectFactory {
     private final static QName _GetAllTasksResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasksResponse");
     private final static QName _GetTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByName");
     private final static QName _GetTaskByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByNameResponse");
-    private final static QName _Publish_QNAME = new QName("http://generated.tm.trandefil.ru/", "publish");
-    private final static QName _PublishResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "publishResponse");
     private final static QName _SaveTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveTask");
     private final static QName _SaveTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveTaskResponse");
 
@@ -106,22 +104,6 @@ public class ObjectFactory {
      */
     public GetTaskByNameResponse createGetTaskByNameResponse() {
         return new GetTaskByNameResponse();
-    }
-
-    /**
-     * Create an instance of {@link Publish }
-     * 
-     */
-    public Publish createPublish() {
-        return new Publish();
-    }
-
-    /**
-     * Create an instance of {@link PublishResponse }
-     * 
-     */
-    public PublishResponse createPublishResponse() {
-        return new PublishResponse();
     }
 
     /**
@@ -234,24 +216,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getTaskByNameResponse")
     public JAXBElement<GetTaskByNameResponse> createGetTaskByNameResponse(GetTaskByNameResponse value) {
         return new JAXBElement<GetTaskByNameResponse>(_GetTaskByNameResponse_QNAME, GetTaskByNameResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Publish }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "publish")
-    public JAXBElement<Publish> createPublish(Publish value) {
-        return new JAXBElement<Publish>(_Publish_QNAME, Publish.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PublishResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "publishResponse")
-    public JAXBElement<PublishResponse> createPublishResponse(PublishResponse value) {
-        return new JAXBElement<PublishResponse>(_PublishResponse_QNAME, PublishResponse.class, null, value);
     }
 
     /**

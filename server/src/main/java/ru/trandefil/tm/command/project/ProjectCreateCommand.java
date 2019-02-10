@@ -31,13 +31,13 @@ public class ProjectCreateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService scanner = getServiceLocator().getTerminalService();
+/*        final TerminalService scanner = getServiceLocator().getTerminalService();
         final String name = getNotNullString(scanner, "Enter project name");
         final String description = getNotNullString(scanner, "Enter project description");
         final Project newProject = new Project(null, name, description);
         newProject.setUser(getServiceLocator().getLoggedUser());
         final ProjectService projectService = getServiceLocator().getProjectService();
-        projectService.save(newProject);
+        projectService.save(newProject);*/
     }
 
     @Override

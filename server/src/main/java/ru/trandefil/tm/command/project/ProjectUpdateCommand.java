@@ -29,7 +29,7 @@ public class ProjectUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = getServiceLocator().getTerminalService();
+/*        final TerminalService terminalService = getServiceLocator().getTerminalService();
         System.out.println("you are trying to update project : ");
         final String projectName = getNotNullString(terminalService, "plz enter project name : ");
         final ProjectService projectService = getServiceLocator().getProjectService();
@@ -43,7 +43,7 @@ public class ProjectUpdateCommand extends AbstractCommand {
         final Project newProject = new Project(project.getId(), newName, newDescription);
         newProject.setUser(getServiceLocator().getLoggedUser());
         projectService.delete(project);
-        projectService.save(newProject);
+        projectService.save(newProject);*/
     }
 
     @Override

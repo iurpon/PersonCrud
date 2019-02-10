@@ -7,18 +7,19 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for user complex type.
+ * <p>Java class for getLoggedUser complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="user"&gt;
+ * &lt;complexType name="getLoggedUser"&gt;
  *   &lt;complexContent&gt;
- *     &lt;extension base="{http://generated.tm.trandefil.ru/}baseNamedEntity"&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="userName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *     &lt;/extension&gt;
+ *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
@@ -26,14 +27,38 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "user", propOrder = {
+@XmlType(name = "getLoggedUser", propOrder = {
+    "userName",
     "password"
 })
-public class User
-    extends BaseNamedEntity
-{
+public class GetLoggedUser {
 
+    protected String userName;
     protected String password;
+
+    /**
+     * Gets the value of the userName property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * Sets the value of the userName property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setUserName(String value) {
+        this.userName = value;
+    }
 
     /**
      * Gets the value of the password property.

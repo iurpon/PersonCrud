@@ -29,7 +29,7 @@ public class ProjectRemoveCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = getServiceLocator().getTerminalService();
+/*        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String projectName = getNotNullString(terminalService,
                 "Plz enter project name you want to delete : ");
         final ProjectService projectService = getServiceLocator().getProjectService();
@@ -38,7 +38,7 @@ public class ProjectRemoveCommand extends AbstractCommand {
             System.out.println("have no permition to delete this project.");
             return;
         }
-        projectService.deleteByName(projectName);
+        projectService.deleteByName(projectName);*/
     }
 
     @Override

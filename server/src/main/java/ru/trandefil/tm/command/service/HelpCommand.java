@@ -24,10 +24,10 @@ public class HelpCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        getServiceLocator().getCommandMap().keySet().stream()
+/*        getServiceLocator().getCommandMap().keySet().stream()
                 .sorted()
                 .forEach(s -> System.out.format("%s ( %s ) \n"
-                        , s, getServiceLocator().getCommandMap().get(s).description()));
+                        , s, getServiceLocator().getCommandMap().get(s).description()));*/
     }
 
     @Override

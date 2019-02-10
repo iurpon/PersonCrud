@@ -16,8 +16,8 @@ public class DataXmlLoadCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        String xml = getServiceLocator().getProjectEndPoint().getFile();
-        System.out.println(xml);
+/*        String xml = getServiceLocator().getProjectEndPoint().getFile();
+        System.out.println(xml);*/
     }
 
     @Override

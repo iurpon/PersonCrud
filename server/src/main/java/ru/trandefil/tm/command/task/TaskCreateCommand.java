@@ -37,7 +37,7 @@ public class TaskCreateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = getServiceLocator().getTerminalService();
+/*        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String projectName =
                 getNotNullString(terminalService, "enter project name to add new task :");
         final ProjectService projectService = getServiceLocator().getProjectService();
@@ -64,7 +64,7 @@ public class TaskCreateCommand extends AbstractCommand {
         }
         newTask.setExecuter(executer);
         final TaskService taskService = getServiceLocator().getTaskService();
-        taskService.save(newTask);
+        taskService.save(newTask);*/
     }
 
     @Override

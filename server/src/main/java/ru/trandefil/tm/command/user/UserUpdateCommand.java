@@ -29,7 +29,7 @@ public class UserUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final UserService userService = getServiceLocator().getUserService();
+/*        final UserService userService = getServiceLocator().getUserService();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "enter user name for update");
         final User userForUpdate = userService.getByName(userName);
@@ -42,7 +42,7 @@ public class UserUpdateCommand extends AbstractCommand {
                 hashPassword(getNotNullString(terminalService, "enter new user password"));
         final User updated = new User(userForUpdate.getId(), newUserName, newPassword);
         userService.delete(userForUpdate);
-        userService.save(updated);
+        userService.save(updated);*/
     }
 
     @Override

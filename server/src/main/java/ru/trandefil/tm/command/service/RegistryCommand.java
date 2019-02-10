@@ -25,7 +25,7 @@ public class RegistryCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        System.out.println("This is registaration form.");
+/*        System.out.println("This is registaration form.");
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final UserService userService = getServiceLocator().getUserService();
         final String userName = getNotNullString(terminalService,"enter your name");
@@ -37,7 +37,7 @@ public class RegistryCommand extends AbstractCommand {
             System.out.println("Registry success");
             getServiceLocator().setLoggedUser(registred);
         }
-        System.out.println("duplicate name. registry failed.");
+        System.out.println("duplicate name. registry failed.");*/
     }
 
     @Override

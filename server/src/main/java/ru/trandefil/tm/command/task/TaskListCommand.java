@@ -32,13 +32,13 @@ public class TaskListCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = getServiceLocator().getTerminalService();
+/*        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final TaskService taskService = getServiceLocator().getTaskService();
         final List<Task> collect = taskService.getAll()
                 .stream()
                 .filter(t -> t.getExecuter().equals(getServiceLocator().getLoggedUser()))
                 .collect(Collectors.toList());
-        collect.forEach(System.out::println);
+        collect.forEach(System.out::println);*/
     }
 
     @Override

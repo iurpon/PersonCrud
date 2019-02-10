@@ -35,7 +35,7 @@ public class TaskUpdateCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final TerminalService terminalService = getServiceLocator().getTerminalService();
+/*        final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String taskName = getNotNullString(terminalService, "Enter task name for update : ");
         final TaskService taskService = getServiceLocator().getTaskService();
         final Task requestedTask = taskService.getByName(taskName);
@@ -54,7 +54,7 @@ public class TaskUpdateCommand extends AbstractCommand {
                 new Task(requestedTask.getId(), newName, newDescription, beginDate, endDate,
                         requestedTask.getProject(),requestedTask.getAssignee(),requestedTask.getExecuter());
         taskService.deleteByName(requestedTask.getName());
-        taskService.save(newTask);
+        taskService.save(newTask);*/
     }
 
     @Override

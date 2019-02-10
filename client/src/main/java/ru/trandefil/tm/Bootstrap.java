@@ -6,10 +6,7 @@ import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.endpoint.ProjectEndPointImplService;
 import ru.trandefil.tm.endpoint.TaskEndPointImplService;
 import ru.trandefil.tm.endpoint.UserEndPointImplService;
-import ru.trandefil.tm.generated.ProjectEndPoint;
-import ru.trandefil.tm.generated.TaskEndPoint;
-import ru.trandefil.tm.generated.User;
-import ru.trandefil.tm.generated.UserEndPoint;
+import ru.trandefil.tm.generated.*;
 import ru.trandefil.tm.service.TerminalService;
 
 import java.util.HashMap;
@@ -21,7 +18,7 @@ public class Bootstrap implements ServiceLocator {
 
     private User loggedUser = null;
 
-//    private Session session = null;
+    private Session session = null;
 
     private final TerminalService terminalService = new TerminalService(new Scanner(System.in));
 
@@ -40,6 +37,14 @@ public class Bootstrap implements ServiceLocator {
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 
     @Override
@@ -93,7 +98,7 @@ public class Bootstrap implements ServiceLocator {
                 continue;
             }
             commandMap.get("login");
-            if(loggedUser == null){
+            if (loggedUser == null) {
                 continue;
             }
             abstractCommand.execute();

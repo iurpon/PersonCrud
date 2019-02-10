@@ -1,6 +1,7 @@
 package ru.trandefil.tm.endpoint;
 
 import ru.trandefil.tm.api.UserService;
+import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.generated.UserEndPoint;
 
@@ -17,48 +18,40 @@ public class UserEndPointImpl implements UserEndPoint {
         this.userService = userService;
     }
 
-    public UserService getUserService() {
-        return userService;
-    }
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
+    @WebMethod
+    @Override
+    public User deleteUser(User user, Session session) {
+        return userService.delete(user,session);
     }
 
     @WebMethod
     @Override
-    public User deleteUser(User user) {
-        return userService.delete(user);
+    public User deleteUserByName(String name,Session session) {
+        return userService.deleteByName(name,session);
     }
 
     @WebMethod
     @Override
-    public User deleteUserByName(String name) {
-        return userService.deleteByName(name);
+    public User saveUser(User user,Session session) {
+        return userService.save(user,session);
     }
 
     @WebMethod
     @Override
-    public User saveUser(User user) {
-        return userService.save(user);
+    public User getUserByName(String userName,Session session) {
+        return userService.getByName(userName,session);
     }
 
     @WebMethod
     @Override
-    public User getUserByName(String userName) {
-        return userService.getByName(userName);
+    public List<User> getAllUsers(Session session) {
+        return userService.getAll(session);
     }
 
     @WebMethod
     @Override
-    public List<User> getAllUsers() {
-        return userService.getAll();
-    }
-
-    @WebMethod
-    @Override
-    public User getLoggedUser(String userName, String password) {
-        return userService.getLoginUser(userName, password);
+    public User getLoggedUser(String userName, String password, Session session) {
+        return userService.getLoginUser(userName, password,session);
     }
 
 }

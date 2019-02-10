@@ -8,6 +8,8 @@ public class User extends BaseNamedEntity {
 
     private String password;
 
+    private Session session;
+
     public User() {
     }
 
@@ -18,6 +20,14 @@ public class User extends BaseNamedEntity {
     public User(String id, String name, String password) {
         super(id, name);
         this.password = password;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 
     public String getPassword() {

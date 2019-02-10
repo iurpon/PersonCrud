@@ -28,9 +28,9 @@ public class UserListCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final UserService userService = getServiceLocator().getUserService();
+/*        final UserService userService = getServiceLocator().getUserService();
         final List<User> userList = userService.getAll();
-        userList.forEach(System.out::println);
+        userList.forEach(System.out::println);*/
     }
 
     @Override

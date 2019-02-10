@@ -25,7 +25,7 @@ public class DataBinSaveCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        try(OutputStream outputStream = new FileOutputStream("data.bin")){
+/*        try(OutputStream outputStream = new FileOutputStream("data.bin")){
             final ProjectService projectService = getServiceLocator().getProjectService();
             final UserService userService = getServiceLocator().getUserService();
             final TaskService taskService = getServiceLocator().getTaskService();
@@ -45,7 +45,7 @@ public class DataBinSaveCommand extends AbstractCommand {
             objectOutputStream.close();
         }catch (IOException e){
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override

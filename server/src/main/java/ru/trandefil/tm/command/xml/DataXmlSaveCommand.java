@@ -30,7 +30,7 @@ public class DataXmlSaveCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final ProjectService projectService = getServiceLocator().getProjectService();
+/*        final ProjectService projectService = getServiceLocator().getProjectService();
         final TaskService taskService = getServiceLocator().getTaskService();
         final UserService userService = getServiceLocator().getUserService();
         final List<Project> projectList = projectService.getAll();
@@ -46,7 +46,7 @@ public class DataXmlSaveCommand extends AbstractCommand {
             Files.write(Paths.get("data.xml"), xml.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override

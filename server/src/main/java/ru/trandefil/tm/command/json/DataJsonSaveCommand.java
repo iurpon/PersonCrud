@@ -29,7 +29,7 @@ public class DataJsonSaveCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final ProjectService projectService = getServiceLocator().getProjectService();
+/*        final ProjectService projectService = getServiceLocator().getProjectService();
         final TaskService taskService = getServiceLocator().getTaskService();
         final UserService userService = getServiceLocator().getUserService();
         final List<Project> projectList = projectService.getAll();
@@ -45,7 +45,7 @@ public class DataJsonSaveCommand extends AbstractCommand {
             Files.write(Paths.get("data.json"), json.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 

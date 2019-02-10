@@ -25,7 +25,7 @@ public class DataXmlLoadCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        try {
+/*        try {
             ObjectMapper objectMapper = new XmlMapper();
             String xmlString = new String(Files.readAllBytes(Paths.get("data.xml")));
             Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
@@ -34,7 +34,7 @@ public class DataXmlLoadCommand extends AbstractCommand {
             printTaskCollection(objectFactory.getTaskList(), getServiceLocator().getLoggedUser());
         } catch (IOException e) {
             System.out.println("is empty.");
-        }
+        }*/
     }
 
     @Override

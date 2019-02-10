@@ -8,9 +8,11 @@ import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
+import ru.trandefil.tm.repository.SessionRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepositoryImpl;
 import ru.trandefil.tm.repository.UserRepositoryImpl;
 import ru.trandefil.tm.service.ProjectServiceImpl;
+import ru.trandefil.tm.service.SessionServiceImpl;
 import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.UserServiceImpl;
 
@@ -35,6 +37,15 @@ public class Bootstrap implements ServiceLocator {
     private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
 
     private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
+
+    private final SessionRepository sessionRepository = new SessionRepositoryImpl();
+
+    private final SessionService sessionService = new SessionServiceImpl(sessionRepository);
+
+    @Override
+    public SessionService getSessionService() {
+        return sessionService;
+    }
 
     @Override
     public ProjectService getProjectService() {

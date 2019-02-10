@@ -10,8 +10,6 @@ public interface ServiceLocator {
 
     UserService getUserService();
 
-    User getLoggedUser();
-
-    void setLoggedUser(User loggedUser);
+    SessionService getSessionService();
 
 }

@@ -21,6 +21,8 @@ public class Bootstrap implements ServiceLocator {
 
     private User loggedUser = null;
 
+//    private Session session = null;
+
     private final TerminalService terminalService = new TerminalService(new Scanner(System.in));
 
     private final ProjectEndPoint projectEndPoint =

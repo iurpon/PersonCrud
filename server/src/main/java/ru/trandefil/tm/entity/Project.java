@@ -2,7 +2,7 @@ package ru.trandefil.tm.entity;
 
 import java.util.Objects;
 
-public class Project extends BaseEntity {
+public class Project extends BaseNamedEntity {
 
     private static final long serialVersionUID = 1L;
 

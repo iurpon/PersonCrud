@@ -23,7 +23,7 @@ public abstract class BaseEntity implements Serializable {
     }
 
     public boolean isNew(){
-        return id != null;
+        return id == null;
     }
 
 }

@@ -21,8 +21,7 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public Session saveSassion(Session session,String userId) {
-        Session session1 = new Session(UUIDUtil.getUniqueString(), new Date().getTime(),userId,"signs");
+    public Session saveSession(Session session) {
         return sessionRepository.save(session);
     }
 

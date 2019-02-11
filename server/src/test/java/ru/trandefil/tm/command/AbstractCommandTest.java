@@ -3,9 +3,11 @@ package ru.trandefil.tm.command;
 import org.junit.Before;
 import ru.trandefil.tm.api.*;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
+import ru.trandefil.tm.repository.SessionRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepositoryImpl;
 import ru.trandefil.tm.repository.UserRepositoryImpl;
 import ru.trandefil.tm.service.ProjectServiceImpl;
+import ru.trandefil.tm.service.SessionServiceImpl;
 import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.UserServiceImpl;
 
@@ -21,7 +23,11 @@ public class AbstractCommandTest {
 
     protected ProjectRepository projectRepository = new ProjectRepositoryImpl();
 
-    protected UserService userService = new UserServiceImpl(userRepository);
+    protected SessionRepository sessionRepository = new SessionRepositoryImpl();
+
+    protected SessionService sessionService = new SessionServiceImpl(sessionRepository);
+
+    protected UserService userService = new UserServiceImpl(userRepository,sessionService);
 
     protected TaskService taskService = new TaskServiceImpl(taskRepository);
 

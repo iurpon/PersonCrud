@@ -6,6 +6,6 @@ public interface SessionService {
 
     Session getSession(String id);
 
-    Session saveSassion(Session session,String userId);
+    Session saveSession(Session session);
 
 }

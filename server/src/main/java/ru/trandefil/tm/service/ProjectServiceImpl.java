@@ -19,6 +19,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     public Project save(Project project, Session session) {
+        if(!SignatureUtil.checkCorrectSession(session)){
+            return null;
+        }
         if (project.isNew()) {
             project.setId(UUIDUtil.getUniqueString());
             return projectRepository.save(project);

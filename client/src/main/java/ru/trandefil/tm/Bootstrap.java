@@ -87,7 +87,10 @@ public class Bootstrap implements ServiceLocator {
                 abstractCommand.execute();
                 continue;
             }
-            commandMap.get("login");
+            if(session == null){
+                AbstractCommand loginCommand = commandMap.get("login");
+                loginCommand.execute();
+            }
             if (session == null) {
                 continue;
             }

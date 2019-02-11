@@ -1,6 +1,6 @@
 package ru.trandefil.tm.service;
 
-import ru.trandefil.tm.api.SessionRepository;
+import ru.trandefil.tm.api.SessionService;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Session;
@@ -14,11 +14,11 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
-    private SessionRepository sessionRepository;
+    private SessionService sessionService;
 
-    public UserServiceImpl(UserRepository userRepository, SessionRepository sessionRepository) {
+    public UserServiceImpl(UserRepository userRepository, SessionService sessionService) {
         this.userRepository = userRepository;
-        this.sessionRepository = sessionRepository;
+        this.sessionService = sessionService;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
         long timeStamp = System.nanoTime();
         String signature = SignatureUtil.createSignature(uuid, userId, timeStamp);
         Session created = new Session(uuid, timeStamp, userId, signature);
-        sessionRepository.save(created);
+        sessionService.saveSession(created);
         return created;
     }
 

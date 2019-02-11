@@ -36,6 +36,10 @@ public class SignatureUtil {
     }
 
     public static boolean checkCorrectSession(Session session) {
+        if(session == null){
+            System.out.println("session is null");
+            return false;
+        }
         if (session.getId() == null) {
             return false;
         }

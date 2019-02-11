@@ -11,17 +11,7 @@ import java.util.Map;
 
 public class UserRepositoryImpl implements UserRepository {
 
-
-    public static final User USER = new User(UUIDUtil.getUniqueString(), "User", "221068207E125B97BEB4E2D062E888B1");//userPassword
-
-    public static final User ADMIN = new User(UUIDUtil.getUniqueString(), "Admin", "33D87FD364516F6604124FCC76FDD279");//adminPassword
-
-    private static Map<String, User> userMap = new HashMap<>();
-
-    {
-        userMap.put(USER.getName(),USER);
-        userMap.put(ADMIN.getName(),ADMIN);
-    }
+    private Map<String, User> userMap = new HashMap<>();
 
     @Override
     public void clear() {
@@ -30,22 +20,36 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User delete(User user) {
-        return deleteByName(user.getName());
+        return userMap.remove(user.getId());
     }
 
     @Override
     public User deleteByName(String name) {
-        return userMap.remove(name);
+        User user = getByName(name);
+        if(user == null){
+            System.out.println("User deleteByName null");
+            return null;
+        }
+        System.out.println("deleting " + user);
+        return userMap.remove(user.getId());
     }
 
     @Override
     public User save(User user) {
-        return userMap.put(user.getName(), user);
+        return userMap.put(user.getId(), user);
     }
 
     @Override
     public User getByName(String userName) {
-        return userMap.get(userName);
+        User user = getAll().stream()
+                .filter(u -> u.getName().equals(userName))
+                .findAny()
+                .orElse(null);
+        if(user == null){
+            System.out.println("User getByName null");
+            return null;
+        }
+        return user;
     }
 
     @Override
@@ -55,7 +59,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getLoginUser(String userName, String userPassword) {
-        return userMap.get(userName);
+        return getAll().stream()
+                .filter(u -> u.getName().equals(userName))
+                .findAny()
+                .orElse(null);
     }
 
 }

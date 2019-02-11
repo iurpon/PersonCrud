@@ -21,6 +21,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     public Project save(Project project, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
             return null;
         }
         if (project.isNew()) {
@@ -35,6 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     public List<Project> getAll(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
             return null;
         }
         List<Project> filteredBySessionUserId = projectRepository.getAll().stream()

@@ -2,22 +2,18 @@ package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.api.ProjectRepository;
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static ru.trandefil.tm.repository.UserRepositoryImpl.ADMIN;
-import static ru.trandefil.tm.repository.UserRepositoryImpl.USER;
-
 public class ProjectRepositoryImpl implements ProjectRepository {
 
     private Map<String, Project> projects = new HashMap<>();
 
 
-    public static final Project PROJECT1
+/*    public static final Project PROJECT1
             = new Project(UUIDUtil.getUniqueString(), "simpleProject1", "no description1", ADMIN.getId());
 
     public static final Project PROJECT2
@@ -30,7 +26,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         projects.put(PROJECT1.getId(), PROJECT1);
         projects.put(PROJECT2.getId(), PROJECT2);
         projects.put(PROJECT3.getId(), PROJECT3);
-    }
+    }*/
 
     @Override
     public void clear() {

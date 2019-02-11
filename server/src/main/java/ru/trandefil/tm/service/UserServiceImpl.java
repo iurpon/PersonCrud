@@ -23,21 +23,37 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User delete(User user, Session session) {
+        if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
+            return null;
+        }
         return userRepository.delete(user);
     }
 
     @Override
     public User deleteByName(String name, Session session) {
+        if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
+            return null;
+        }
         return userRepository.deleteByName(name);
     }
 
     @Override
     public User save(User user, Session session) {
+        if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
+            return null;
+        }
         return userRepository.save(user);
     }
 
     @Override
     public User getByName(String userName, Session session) {
+        if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
+            return null;
+        }
         return userRepository.getByName(userName);
     }
 
@@ -50,8 +66,10 @@ public class UserServiceImpl implements UserService {
     public Session getSession(String userName, String userPassword) {
         User user = userRepository.getLoginUser(userName, userPassword);
         if (user == null) {
+            System.out.println("bad login.");
             return null;
         }
+        System.out.println("logged " + user.getName());
         Session newSess = createNewSession(user.getId());
         return newSess;
     }

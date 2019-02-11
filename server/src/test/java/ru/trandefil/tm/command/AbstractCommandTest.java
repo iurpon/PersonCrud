@@ -2,6 +2,7 @@ package ru.trandefil.tm.command;
 
 import org.junit.Before;
 import ru.trandefil.tm.api.*;
+import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 import ru.trandefil.tm.repository.SessionRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepositoryImpl;
@@ -12,8 +13,9 @@ import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.UserServiceImpl;
 
 import static ru.trandefil.tm.command.ProjectCommandTestData.*;
-import static ru.trandefil.tm.command.UserCommandTestData.*;
 import static ru.trandefil.tm.command.TaskCommandTestData.*;
+import static ru.trandefil.tm.command.UserCommandTestData.ADMIN;
+import static ru.trandefil.tm.command.UserCommandTestData.USER;
 
 public class AbstractCommandTest {
 
@@ -33,19 +35,25 @@ public class AbstractCommandTest {
 
     protected ProjectService projectService = new ProjectServiceImpl(projectRepository);
 
+    protected Session sessionAdmin = null;
+
+    protected Session sessionUser = null;
+
     @Before
     public void setUp() throws Exception {
-/*        projectRepository.clear();
-        projectService.save(PROJECT1);
-        projectService.save(PROJECT2);
-        projectService.save(PROJECT3);
+        projectRepository.clear();
+        projectRepository.save(PROJECT1);
+        projectRepository.save(PROJECT2);
+        projectRepository.save(PROJECT3);
         userRepository.clear();
-        userService.save(USER);
-        userService.save(ADMIN);
+        userRepository.save(USER);
+        userRepository.save(ADMIN);
         taskRepository.clear();
-        taskService.save(TASK1);
-        taskService.save(TASK2);
-        taskService.save(TASK3);*/
+        taskRepository.save(TASK1);
+        taskRepository.save(TASK2);
+        taskRepository.save(TASK3);
+        sessionAdmin = userService.getSession(ADMIN.getName(), ADMIN.getPassword());
+        sessionUser = userService.getSession(USER.getName(),USER.getPassword());
     }
 
 }

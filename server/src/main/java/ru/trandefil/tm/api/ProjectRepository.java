@@ -19,4 +19,5 @@ public interface ProjectRepository {
     void deleteByName(final String projectName);
 
     void clear();
+
 }

@@ -27,8 +27,6 @@ public interface UserEndPoint {
     List<User> getAllUsers(@WebParam(name = "session") Session session);
 
     @WebMethod
-    User getLoggedUser(@WebParam(name = "userName") String userName
-            , @WebParam(name = "password") String password
-            , @WebParam(name = "session") Session session);
+    Session getSession(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);
 
 }

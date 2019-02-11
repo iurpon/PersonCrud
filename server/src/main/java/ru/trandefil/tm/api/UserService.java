@@ -17,6 +17,6 @@ public interface UserService {
 
     List<User> getAll(Session session);
 
-    User getLoginUser(String userName, String userPassword,Session session);
+    Session getSession(String userName, String userPassword);
 
 }

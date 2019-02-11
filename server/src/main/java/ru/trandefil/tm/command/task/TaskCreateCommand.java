@@ -44,7 +44,7 @@ public class TaskCreateCommand extends AbstractCommand {
             taskEnd = getDate(terminalService, "task end");
         }
         final Task newTask = new Task(UUIDUtil.getUniqueString(), taskName, taskDesc, taskBegin, taskEnd, project);
-        newTask.setAssignee(getServiceLocator().getLoggedUser());
+        newTask.setAssignee(getServiceLocator().getSession());
         final String executerUser = getNotNullString(terminalService,"which user will execute this task");
         final UserService userService = getServiceLocator().getUserService();
         final User executer = userService.getByName(executerUser);

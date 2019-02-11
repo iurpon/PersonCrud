@@ -30,7 +30,7 @@ public class TaskRemoveCommand extends AbstractCommand {
         final String taskName = getNotNullString(terminalService, "Enter task name");
         final TaskService taskService = getServiceLocator().getTaskService();
         final Task requestedTask = taskService.getByName(taskName);
-        if(requestedTask == null && !requestedTask.getAssignee().equals(getServiceLocator().getLoggedUser())){
+        if(requestedTask == null && !requestedTask.getAssignee().equals(getServiceLocator().getSession())){
             System.out.println("wrong task name or no permission to delete task.");
             return;
         }

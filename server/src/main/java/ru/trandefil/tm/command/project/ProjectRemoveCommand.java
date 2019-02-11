@@ -31,7 +31,7 @@ public class ProjectRemoveCommand extends AbstractCommand {
                 "Plz enter project name you want to delete : ");
         final ProjectService projectService = getServiceLocator().getProjectService();
         final Project project = projectService.getById(projectName);
-        if (!project.getUser().equals(getServiceLocator().getLoggedUser())) {
+        if (!project.getUser().equals(getServiceLocator().getSession())) {
             System.out.println("have no permition to delete this project.");
             return;
         }

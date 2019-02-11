@@ -41,12 +41,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getLoginUser(String userName, String userPassword,Session session) {
+    public Session getSession(String userName, String userPassword) {
         User user = userRepository.getLoginUser(userName, userPassword);
         if (user == null) {
             return null;
         }
-        return userPassword.equals(user.getPassword()) ? user : null;
+        return  null;
     }
 
 }

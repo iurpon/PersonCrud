@@ -30,7 +30,7 @@ public class TaskListCommand extends AbstractCommand {
         final TaskService taskService = getServiceLocator().getTaskService();
         final List<Task> collect = taskService.getAll()
                 .stream()
-                .filter(t -> t.getExecuter().equals(getServiceLocator().getLoggedUser()))
+                .filter(t -> t.getExecuter().equals(getServiceLocator().getSession()))
                 .collect(Collectors.toList());
         collect.forEach(System.out::println);*/
     }

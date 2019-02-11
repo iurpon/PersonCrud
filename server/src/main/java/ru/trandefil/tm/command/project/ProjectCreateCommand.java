@@ -1,9 +1,7 @@
 package ru.trandefil.tm.command.project;
 
-import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.api.ServiceLocator;
-
-import static ru.trandefil.tm.util.HashUtil.getNotNullString;
+import ru.trandefil.tm.command.AbstractCommand;
 
 public class ProjectCreateCommand extends AbstractCommand {
 
@@ -30,7 +28,7 @@ public class ProjectCreateCommand extends AbstractCommand {
         final String name = getNotNullString(scanner, "Enter project name");
         final String description = getNotNullString(scanner, "Enter project description");
         final Project newProject = new Project(null, name, description);
-        newProject.setUser(getServiceLocator().getLoggedUser());
+        newProject.setUser(getServiceLocator().getSession());
         final ProjectService projectService = getServiceLocator().getProjectService();
         projectService.save(newProject);*/
     }

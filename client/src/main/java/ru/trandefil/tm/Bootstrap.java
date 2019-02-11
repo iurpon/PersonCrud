@@ -16,8 +16,6 @@ import java.util.Set;
 
 public class Bootstrap implements ServiceLocator {
 
-    private User loggedUser = null;
-
     private Session session = null;
 
     private final TerminalService terminalService = new TerminalService(new Scanner(System.in));
@@ -30,14 +28,6 @@ public class Bootstrap implements ServiceLocator {
     private final UserEndPoint userEndPoint = new UserEndPointImplService().getUserEndPointImplPort();
 
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
-
-    public User getLoggedUser() {
-        return loggedUser;
-    }
-
-    public void setLoggedUser(User loggedUser) {
-        this.loggedUser = loggedUser;
-    }
 
     public Session getSession() {
         return session;
@@ -98,7 +88,7 @@ public class Bootstrap implements ServiceLocator {
                 continue;
             }
             commandMap.get("login");
-            if (loggedUser == null) {
+            if (session == null) {
                 continue;
             }
             abstractCommand.execute();

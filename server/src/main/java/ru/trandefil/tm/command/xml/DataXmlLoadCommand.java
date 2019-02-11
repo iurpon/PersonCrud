@@ -29,9 +29,9 @@ public class DataXmlLoadCommand extends AbstractCommand {
             ObjectMapper objectMapper = new XmlMapper();
             String xmlString = new String(Files.readAllBytes(Paths.get("data.xml")));
             Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
-            printProjectCollection(objectFactory.getProjectList(), getServiceLocator().getLoggedUser());
-            printUserCollection(objectFactory.getUserList(), getServiceLocator().getLoggedUser());
-            printTaskCollection(objectFactory.getTaskList(), getServiceLocator().getLoggedUser());
+            printProjectCollection(objectFactory.getProjectList(), getServiceLocator().getSession());
+            printUserCollection(objectFactory.getUserList(), getServiceLocator().getSession());
+            printTaskCollection(objectFactory.getTaskList(), getServiceLocator().getSession());
         } catch (IOException e) {
             System.out.println("is empty.");
         }*/

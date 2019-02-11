@@ -50,8 +50,8 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @WebMethod
     @Override
-    public User getLoggedUser(String userName, String password, Session session) {
-        return userService.getLoginUser(userName, password,session);
+    public Session getSession(String userName, String password) {
+        return userService.getSession(userName, password);
     }
 
 }

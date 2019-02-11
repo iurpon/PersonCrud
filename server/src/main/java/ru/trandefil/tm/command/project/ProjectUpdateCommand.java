@@ -3,8 +3,6 @@ package ru.trandefil.tm.command.project;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 
-import static ru.trandefil.tm.util.HashUtil.getNotNullString;
-
 public class ProjectUpdateCommand extends AbstractCommand {
 
     public ProjectUpdateCommand(ServiceLocator serviceLocator) {

@@ -1,11 +1,7 @@
 package ru.trandefil.tm.command.service;
 
 import ru.trandefil.tm.api.ServiceLocator;
-import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.service.TerminalService;
-import ru.trandefil.tm.util.UserLoginUtil;
 
 public class LoginCommand extends AbstractCommand {
 

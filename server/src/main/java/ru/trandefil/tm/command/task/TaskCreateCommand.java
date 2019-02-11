@@ -3,9 +3,6 @@ package ru.trandefil.tm.command.task;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 
-import static ru.trandefil.tm.util.HashUtil.getDate;
-import static ru.trandefil.tm.util.HashUtil.getNotNullString;
-
 public class TaskCreateCommand extends AbstractCommand {
 
     public TaskCreateCommand(ServiceLocator serviceLocator) {

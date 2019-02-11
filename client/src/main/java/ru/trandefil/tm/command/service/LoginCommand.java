@@ -32,11 +32,11 @@ public class LoginCommand extends AbstractCommand {
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "login name");
         final String userPassword = getNotNullString(terminalService, "login password");
-        final UserEndPoint userEndPoint = getServiceLocator().getUserEndPoint();
+/*        final UserEndPoint userEndPoint = getServiceLocator().getUserEndPoint();
         final User logged = userEndPoint.getLoggedUser(userName, userPassword, getServiceLocator().getSession());
         if (logged == null) {
             return;
-        }
+        }*/
 /*        getServiceLocator().setLoggedUser(logged);
         if (getServiceLocator().getSession() == null) {
             if (logged.getSession() == null) {

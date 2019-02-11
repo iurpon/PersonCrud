@@ -9,6 +9,7 @@ import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProjectServiceImpl implements ProjectService {
 
@@ -19,7 +20,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     public Project save(Project project, Session session) {
-        if(!SignatureUtil.checkCorrectSession(session)){
+        if (!SignatureUtil.checkCorrectSession(session)) {
             return null;
         }
         if (project.isNew()) {
@@ -36,19 +37,33 @@ public class ProjectServiceImpl implements ProjectService {
         if (!SignatureUtil.checkCorrectSession(session)) {
             return null;
         }
-        return projectRepository.getAll();
+        List<Project> filteredBySessionUserId = projectRepository.getAll().stream()
+                .filter(p -> p.getUserId().equals(session.getUserId()))
+                .collect(Collectors.toList());
+        return filteredBySessionUserId;
 
     }
 
     public Project getById(String name, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
             return null;
         }
-        return projectRepository.getById(name);
+        Project byId = projectRepository.getById(name);
+        if(byId == null){
+            System.out.println("Wrong project name.");
+            return null;
+        }
+        if(!byId.getUserId().equals(session.getUserId())){
+            System.out.println("don't have permission to update this project.");
+            return null;
+        }
+        return byId;
     }
 
     public void delete(Project project, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
             return;
         }
         projectRepository.delete(project);
@@ -56,6 +71,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     public void deleteByName(String projectName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
             return;
         }
         projectRepository.deleteByName(projectName);
@@ -64,9 +80,19 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public Project getByName(String projectName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
             return null;
         }
-        return projectRepository.getByName(projectName);
+        Project byName = projectRepository.getByName(projectName);
+        if(byName == null){
+            System.out.println("Wrong project name.");
+            return null;
+        }
+        if(!byName.getUserId().equals(session.getUserId())){
+            System.out.println("don't have permission to update this project.");
+            return null;
+        }
+        return byName;
     }
 
 }

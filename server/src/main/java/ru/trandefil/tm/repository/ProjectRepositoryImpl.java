@@ -27,9 +27,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
             = new Project(UUIDUtil.getUniqueString(), "simpleProject3", "no description3", USER.getId());
 
     {
-        projects.put(PROJECT1.getId(),PROJECT1);
-        projects.put(PROJECT2.getId(),PROJECT2);
-        projects.put(PROJECT3.getId(),PROJECT3);
+        projects.put(PROJECT1.getId(), PROJECT1);
+        projects.put(PROJECT2.getId(), PROJECT2);
+        projects.put(PROJECT3.getId(), PROJECT3);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     @Override
     public Project getByName(String projectName) {
         return getAll().stream()
-                .filter(p-> p.getName().equals(projectName))
+                .filter(p -> p.getName().equals(projectName))
                 .findAny()
                 .orElse(null);
     }
@@ -69,7 +69,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     @Override
     public void deleteByName(final String projectName) {
         final Project project = getByName(projectName);
-        delete(project );
+        if(project == null){
+            return;
+        }
+        delete(project);
     }
 
 }

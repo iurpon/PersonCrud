@@ -8,7 +8,7 @@ public class SignatureUtil {
 
     public static String generateSignature() {
         final String uuid = UUIDUtil.getUniqueString();
-        final String uuidHash = UserInputUtil.hashPassword(uuid);
+        final String uuidHash = HashUtil.hashPassword(uuid);
         try (InputStream inputStream = ClassLoader.getSystemResourceAsStream("prop.properties")) {
             final Properties properties = new Properties();
             properties.load(inputStream);
@@ -26,7 +26,7 @@ public class SignatureUtil {
         final String saltHah = salt + uuidHash + salt;
         final String[] str = new String[1];
         str[0] = saltHah;
-        IntStream.range(0, cycle).forEach((i) -> str[0] = UserInputUtil.hashPassword(str[0]));
+        IntStream.range(0, cycle).forEach((i) -> str[0] = HashUtil.hashPassword(str[0]));
         return str[0];
     }
 

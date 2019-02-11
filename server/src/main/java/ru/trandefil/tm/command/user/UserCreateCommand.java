@@ -1,14 +1,7 @@
 package ru.trandefil.tm.command.user;
 
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.api.ServiceLocator;
-import ru.trandefil.tm.service.TerminalService;
-import ru.trandefil.tm.api.UserService;
-
-import java.util.UUID;
-
-import static ru.trandefil.tm.util.UserInputUtil.*;
 
 public class UserCreateCommand extends AbstractCommand {
 

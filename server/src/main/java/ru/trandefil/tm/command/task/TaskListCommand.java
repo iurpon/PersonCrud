@@ -1,15 +1,9 @@
 package ru.trandefil.tm.command.task;
 
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.api.ServiceLocator;
-import ru.trandefil.tm.api.TaskService;
-import ru.trandefil.tm.service.TerminalService;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
+import static ru.trandefil.tm.util.HashUtil.getNotNullString;
 
 public class TaskListCommand extends AbstractCommand {
 

@@ -1,12 +1,9 @@
 package ru.trandefil.tm.command.project;
 
-import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.service.TerminalService;
 
-import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
+import static ru.trandefil.tm.util.HashUtil.getNotNullString;
 
 public class ProjectRemoveCommand extends AbstractCommand {
 

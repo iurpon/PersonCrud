@@ -18,12 +18,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://generated.tm.trandefil.ru/}baseNamedEntity"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="assignee" type="{http://generated.tm.trandefil.ru/}user" minOccurs="0"/&gt;
+ *         &lt;element name="assigneeId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="begin" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="end" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="executer" type="{http://generated.tm.trandefil.ru/}user" minOccurs="0"/&gt;
- *         &lt;element name="project" type="{http://generated.tm.trandefil.ru/}project" minOccurs="0"/&gt;
+ *         &lt;element name="executerId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="projectId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
@@ -34,48 +34,48 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "task", propOrder = {
-    "assignee",
+    "assigneeId",
     "begin",
     "description",
     "end",
-    "executer",
-    "project"
+    "executerId",
+    "projectId"
 })
 public class Task
     extends BaseNamedEntity
 {
 
-    protected User assignee;
+    protected String assigneeId;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar begin;
     protected String description;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar end;
-    protected User executer;
-    protected Project project;
+    protected String executerId;
+    protected String projectId;
 
     /**
-     * Gets the value of the assignee property.
+     * Gets the value of the assigneeId property.
      * 
      * @return
      *     possible object is
-     *     {@link User }
+     *     {@link String }
      *     
      */
-    public User getAssignee() {
-        return assignee;
+    public String getAssigneeId() {
+        return assigneeId;
     }
 
     /**
-     * Sets the value of the assignee property.
+     * Sets the value of the assigneeId property.
      * 
      * @param value
      *     allowed object is
-     *     {@link User }
+     *     {@link String }
      *     
      */
-    public void setAssignee(User value) {
-        this.assignee = value;
+    public void setAssigneeId(String value) {
+        this.assigneeId = value;
     }
 
     /**
@@ -151,51 +151,51 @@ public class Task
     }
 
     /**
-     * Gets the value of the executer property.
+     * Gets the value of the executerId property.
      * 
      * @return
      *     possible object is
-     *     {@link User }
+     *     {@link String }
      *     
      */
-    public User getExecuter() {
-        return executer;
+    public String getExecuterId() {
+        return executerId;
     }
 
     /**
-     * Sets the value of the executer property.
+     * Sets the value of the executerId property.
      * 
      * @param value
      *     allowed object is
-     *     {@link User }
+     *     {@link String }
      *     
      */
-    public void setExecuter(User value) {
-        this.executer = value;
+    public void setExecuterId(String value) {
+        this.executerId = value;
     }
 
     /**
-     * Gets the value of the project property.
+     * Gets the value of the projectId property.
      * 
      * @return
      *     possible object is
-     *     {@link Project }
+     *     {@link String }
      *     
      */
-    public Project getProject() {
-        return project;
+    public String getProjectId() {
+        return projectId;
     }
 
     /**
-     * Sets the value of the project property.
+     * Sets the value of the projectId property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Project }
+     *     {@link String }
      *     
      */
-    public void setProject(Project value) {
-        this.project = value;
+    public void setProjectId(String value) {
+        this.projectId = value;
     }
 
 }

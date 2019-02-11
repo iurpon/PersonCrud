@@ -2,6 +2,7 @@ package ru.trandefil.tm.command.service;
 
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.generated.Session;
 import ru.trandefil.tm.generated.User;
 import ru.trandefil.tm.generated.UserEndPoint;
 import ru.trandefil.tm.service.TerminalService;
@@ -32,19 +33,12 @@ public class LoginCommand extends AbstractCommand {
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "login name");
         final String userPassword = getNotNullString(terminalService, "login password");
-/*        final UserEndPoint userEndPoint = getServiceLocator().getUserEndPoint();
-        final User logged = userEndPoint.getLoggedUser(userName, userPassword, getServiceLocator().getSession());
-        if (logged == null) {
+        final UserEndPoint userEndPoint = getServiceLocator().getUserEndPoint();
+        final Session session = userEndPoint.getSession(userName,userPassword);
+        if(session == null){
             return;
-        }*/
-/*        getServiceLocator().setLoggedUser(logged);
-        if (getServiceLocator().getSession() == null) {
-            if (logged.getSession() == null) {
-                System.out.println("Server error. Session is empty.");
-                return;
-            }
-            getServiceLocator().setSession(logged.getSession());
-        }*/
+        }
+        getServiceLocator().setSession(session);
     }
 
     @Override

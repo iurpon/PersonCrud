@@ -1,5 +1,7 @@
 package ru.trandefil.tm.util;
 
+import ru.trandefil.tm.entity.Session;
+
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.stream.IntStream;
@@ -31,6 +33,22 @@ public class SignatureUtil {
     public static String createSignature(final String id, final String userId, final long timeStamp) {
         final String sessionFiels = id + userId + timeStamp;
         return generateSignature(sessionFiels);
+    }
+
+    public static boolean checkCorrectSession(Session session) {
+        if (session.getId() == null) {
+            return false;
+        }
+        if (session.getUserId() == null) {
+            return false;
+        }
+        if (session.getTimeStamp() == 0) {
+            return false;
+        }
+        if (session.getSignature() == null) {
+            return false;
+        }
+        return session.getSignature().equals(createSignature(session.getId(), session.getUserId(), session.getTimeStamp()));
     }
 
 }

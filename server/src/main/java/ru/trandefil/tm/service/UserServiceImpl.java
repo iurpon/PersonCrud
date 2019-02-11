@@ -16,8 +16,9 @@ public class UserServiceImpl implements UserService {
 
     private SessionRepository sessionRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, SessionRepository sessionRepository) {
         this.userRepository = userRepository;
+        this.sessionRepository = sessionRepository;
     }
 
     @Override

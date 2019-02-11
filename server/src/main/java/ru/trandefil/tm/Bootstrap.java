@@ -30,17 +30,17 @@ public class Bootstrap implements ServiceLocator {
 
     private final UserRepository userRepository = new UserRepositoryImpl();
 
-    private final UserService userService = new UserServiceImpl(userRepository);
-
     private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService);
-
-    private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
-
-    private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
 
     private final SessionRepository sessionRepository = new SessionRepositoryImpl();
 
     private final SessionService sessionService = new SessionServiceImpl(sessionRepository);
+
+    private final UserService userService = new UserServiceImpl(userRepository, sessionRepository);
+
+    private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
+
+    private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
 
     @Override
     public SessionService getSessionService() {

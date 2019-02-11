@@ -10,10 +10,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TaskRepositoryImpl implements TaskRepository {
 
-    public Map<String, Task> tasks = new ConcurrentHashMap<>();
+    private Map<String, Task> tasks = new ConcurrentHashMap<>();
 
     public Task save(final Task task) {
-        tasks.put(task.getName(), task);
+        tasks.put(task.getId(), task);
         return task;
     }
 
@@ -23,11 +23,15 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     public Task delete(final Task task) {
-        return tasks.remove(task.getName());
+        return tasks.remove(task.getId());
     }
 
     public Task deleteByName(final String name) {
-        return tasks.remove(name);
+        Task removing = getAll().stream()
+                .filter(t -> t.getName().equals(name))
+                .findAny()
+                .orElse(null);
+        return tasks.remove(removing.getId());
     }
 
     public List<Task> getAll() {
@@ -35,15 +39,15 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     public Task getByName(final String name) {
-        return tasks.get(name);
+        Task byName = getAll().stream()
+                .filter(t -> t.getName().equals(name))
+                .findAny()
+                .orElse(null);
+        return byName;
     }
 
-    public Map<String, Task> getTasks() {
-        return tasks;
+    @Override
+    public Task getByid(String id) {
+        return tasks.get(id);
     }
-
-    public void setTasks(Map<String, Task> tasks) {
-        this.tasks = tasks;
-    }
-
 }

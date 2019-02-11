@@ -1,18 +1,6 @@
 package ru.trandefil.tm.command.databin;
 
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.entity.User;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import static ru.trandefil.tm.util.FilterCollectionUtil.*;
 
 public class DataBinLoadCommand extends AbstractCommand {
 

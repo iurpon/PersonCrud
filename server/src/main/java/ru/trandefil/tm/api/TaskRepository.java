@@ -18,4 +18,6 @@ public interface TaskRepository {
 
     void clear();
 
+    Task getByid(String id);
+
 }

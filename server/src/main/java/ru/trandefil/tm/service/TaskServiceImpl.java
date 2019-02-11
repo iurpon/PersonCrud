@@ -5,8 +5,10 @@ import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.util.SignatureUtil;
+import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class TaskServiceImpl implements TaskService {
@@ -32,7 +34,17 @@ public class TaskServiceImpl implements TaskService {
             System.out.println("bad signature.");
             return null;
         }
-        return taskRepository.save(task);
+        if(task.isNew()){
+            task.setId(UUIDUtil.getUniqueString());
+            return taskRepository.save(task);
+        }
+        Task updated = taskRepository.getByid(task.getId());
+        updated.setBegin(task.getBegin());
+        updated.setEnd(task.getEnd());
+        updated.setName(task.getName());
+        updated.setDescription(task.getDescription());
+        updated.setExecuterId(task.getExecuterId());
+        return taskRepository.save(updated);
     }
 
     public Task delete(Task task, Session session) {

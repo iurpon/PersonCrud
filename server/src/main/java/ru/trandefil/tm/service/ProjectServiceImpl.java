@@ -52,11 +52,11 @@ public class ProjectServiceImpl implements ProjectService {
             return null;
         }
         Project byId = projectRepository.getById(name);
-        if(byId == null){
+        if (byId == null) {
             System.out.println("Wrong project name.");
             return null;
         }
-        if(!byId.getUserId().equals(session.getUserId())){
+        if (!byId.getUserId().equals(session.getUserId())) {
             System.out.println("don't have permission to update this project.");
             return null;
         }
@@ -86,11 +86,11 @@ public class ProjectServiceImpl implements ProjectService {
             return null;
         }
         Project byName = projectRepository.getByName(projectName);
-        if(byName == null){
+        if (byName == null) {
             System.out.println("Wrong project name.");
             return null;
         }
-        if(!byName.getUserId().equals(session.getUserId())){
+        if (!byName.getUserId().equals(session.getUserId())) {
             System.out.println("don't have permission to update this project.");
             return null;
         }

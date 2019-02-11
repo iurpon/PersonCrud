@@ -2,7 +2,6 @@ package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +25,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User deleteByName(String name) {
         User user = getByName(name);
-        if(user == null){
+        if (user == null) {
             System.out.println("User deleteByName null");
             return null;
         }
@@ -45,7 +44,7 @@ public class UserRepositoryImpl implements UserRepository {
                 .filter(u -> u.getName().equals(userName))
                 .findAny()
                 .orElse(null);
-        if(user == null){
+        if (user == null) {
             System.out.println("User getByName null");
             return null;
         }

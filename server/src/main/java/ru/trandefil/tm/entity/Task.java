@@ -12,47 +12,47 @@ public class Task extends BaseNamedEntity {
 
     private Date end;
 
-    private Project project;
+    private String projectId;
 
-    private User assignee;
+    private String assigneeId;
 
-    private User executer;
+    private String executerId;
 
     public Task() {
     }
 
-    public Task(String id, String name, String description, Date begin, Date end, Project project) {
+    public Task(String id, String name, String description, Date begin, Date end, String projectId, String assigneeId, String executerId) {
         super(id, name);
         this.description = description;
         this.begin = begin;
         this.end = end;
-        this.project = project;
+        this.projectId = projectId;
+        this.assigneeId = assigneeId;
+        this.executerId = executerId;
     }
 
-    public Task(String id, String name, String description, Date begin, Date end, Project project, User assignee, User executer) {
-        super(id, name);
-        this.description = description;
-        this.begin = begin;
-        this.end = end;
-        this.project = project;
-        this.assignee = assignee;
-        this.executer = executer;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public User getAssignee() {
-        return assignee;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
-    public void setAssignee(User assignee) {
-        this.assignee = assignee;
+    public String getAssigneeId() {
+        return assigneeId;
     }
 
-    public User getExecuter() {
-        return executer;
+    public void setAssigneeId(String assigneeId) {
+        this.assigneeId = assigneeId;
     }
 
-    public void setExecuter(User executer) {
-        this.executer = executer;
+    public String getExecuterId() {
+        return executerId;
+    }
+
+    public void setExecuterId(String executerId) {
+        this.executerId = executerId;
     }
 
     public String getDescription() {
@@ -79,13 +79,6 @@ public class Task extends BaseNamedEntity {
         this.end = end;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
 
     @Override
     public String toString() {
@@ -94,8 +87,8 @@ public class Task extends BaseNamedEntity {
                 ", begin=" + (begin == null ? "Didn't start" : DateFormatterUtil.format(begin)) +
                 ", end=" + (end == null ? "Still in production" : DateFormatterUtil.format(end)) +
                 ", project=" + project.getName() +*/
-                ", assignee=" + assignee.getName() +
-                ", executer=" + executer.getName() +
+                ", assignee=" + assigneeId +
+                ", executer=" + executerId +
                 /*                ", id='" + id + '\'' +*/
                 ", name='" + name + '\'' +
                 '}';

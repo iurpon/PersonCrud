@@ -8,7 +8,7 @@ public class Project extends BaseNamedEntity {
 
     private String description;
 
-    private User user;
+    private String userId;
 
     public Project() {
     }
@@ -22,10 +22,18 @@ public class Project extends BaseNamedEntity {
         this.description = description;
     }
 
-    public Project(String id, String name, String description,User user) {
+    public Project(String id, String name, String description, String userId) {
         super(id, name);
         this.description = description;
-        this.user = user;
+        this.userId = userId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getDescription() {
@@ -34,14 +42,6 @@ public class Project extends BaseNamedEntity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     @Override

@@ -44,7 +44,16 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task deleteByName(String name, String userId) {
-        return taskRepository.deleteByName(name);
+        Task removing = taskRepository.deleteByName(name);
+        if(removing == null){
+            System.out.println("wrong task name.");
+            return null;
+        }
+        if(!removing.getAssigneeId().equals(userId)){
+            System.out.println("Only creator can delete task.");
+            return null;
+        }
+        return removing;
     }
 
     public Task getByName(String name, String userId) {

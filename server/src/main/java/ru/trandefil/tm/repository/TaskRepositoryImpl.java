@@ -53,6 +53,9 @@ public class TaskRepositoryImpl implements TaskRepository {
                 .filter(t -> t.getName().equals(name))
                 .findAny()
                 .orElse(null);
+        if(removing == null){
+            return null;
+        }
         return tasks.remove(removing.getId());
     }
 

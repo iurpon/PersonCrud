@@ -5,7 +5,6 @@ import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
-import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -55,7 +54,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             return null;
         }
-        Task newTask = new Task(null,name,desc,start,end,projectId,session.getUserId(),executorId);
+        Task newTask = new Task(null, name, desc, start, end, projectId, session.getUserId(), executorId);
         return taskService.save(newTask);
     }
 

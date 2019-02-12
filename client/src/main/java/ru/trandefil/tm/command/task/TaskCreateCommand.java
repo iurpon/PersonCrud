@@ -5,7 +5,11 @@ import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.generated.*;
 import ru.trandefil.tm.service.TerminalService;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import static ru.trandefil.tm.util.UserInputUtil.getDate;
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
@@ -52,7 +56,27 @@ public class TaskCreateCommand extends AbstractCommand {
         final String taskDesc = getNotNullString(terminalService,"enter task description");
         final Date startDate = getDate(terminalService,"enter task start date");
         final Date endDate = getDate(terminalService,"enter task end date");
-//        taskEndPoint
+
+
+        try {
+            GregorianCalendar c = new GregorianCalendar();
+            c.setTime(startDate);
+            XMLGregorianCalendar start = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+            c.setTime(endDate);
+            XMLGregorianCalendar end = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+            Task created = taskEndPoint.saveTask(taskName, taskDesc, start, end,
+                    updating.getId(), executer.getId(), session);
+            if(created == null){
+                System.out.println("fail to create new task");
+                return;
+            }
+            System.out.println("new task succesfully created");
+        } catch (DatatypeConfigurationException e) {
+            e.printStackTrace();
+        }
+
+
+
 
 
     }

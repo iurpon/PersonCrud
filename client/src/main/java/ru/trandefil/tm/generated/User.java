@@ -59,10 +59,4 @@ public class User
         this.password = value;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }

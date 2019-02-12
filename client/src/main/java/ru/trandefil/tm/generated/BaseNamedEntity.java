@@ -31,7 +31,9 @@ import javax.xml.bind.annotation.XmlType;
     "name"
 })
 @XmlSeeAlso({
-    Task.class
+    Project.class,
+    Task.class,
+    User.class
 })
 public abstract class BaseNamedEntity
     extends BaseEntity

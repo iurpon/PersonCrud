@@ -24,16 +24,24 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _DeleteTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTask");
-    private final static QName _DeleteTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskByName");
-    private final static QName _DeleteTaskByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskByNameResponse");
-    private final static QName _DeleteTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskResponse");
-    private final static QName _GetAllTasks_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasks");
-    private final static QName _GetAllTasksResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasksResponse");
-    private final static QName _GetTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByName");
-    private final static QName _GetTaskByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByNameResponse");
-    private final static QName _SaveTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveTask");
-    private final static QName _SaveTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveTaskResponse");
+    private final static QName _ClearBin_QNAME = new QName("http://generated.tm.trandefil.ru/", "clearBin");
+    private final static QName _ClearBinResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "clearBinResponse");
+    private final static QName _ClearJson_QNAME = new QName("http://generated.tm.trandefil.ru/", "clearJson");
+    private final static QName _ClearJsonResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "clearJsonResponse");
+    private final static QName _ClearXml_QNAME = new QName("http://generated.tm.trandefil.ru/", "clearXml");
+    private final static QName _ClearXmlResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "clearXmlResponse");
+    private final static QName _LoadBin_QNAME = new QName("http://generated.tm.trandefil.ru/", "loadBin");
+    private final static QName _LoadBinResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "loadBinResponse");
+    private final static QName _LoadJson_QNAME = new QName("http://generated.tm.trandefil.ru/", "loadJson");
+    private final static QName _LoadJsonResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "loadJsonResponse");
+    private final static QName _LoadXml_QNAME = new QName("http://generated.tm.trandefil.ru/", "loadXml");
+    private final static QName _LoadXmlResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "loadXmlResponse");
+    private final static QName _SaveBin_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveBin");
+    private final static QName _SaveBinResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveBinResponse");
+    private final static QName _SaveJson_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveJson");
+    private final static QName _SaveJsonResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveJsonResponse");
+    private final static QName _SaveXml_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveXml");
+    private final static QName _SaveXmlResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveXmlResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ru.trandefil.tm.generated
@@ -43,91 +51,163 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteTask }
+     * Create an instance of {@link ClearBin }
      * 
      */
-    public DeleteTask createDeleteTask() {
-        return new DeleteTask();
+    public ClearBin createClearBin() {
+        return new ClearBin();
     }
 
     /**
-     * Create an instance of {@link DeleteTaskByName }
+     * Create an instance of {@link ClearBinResponse }
      * 
      */
-    public DeleteTaskByName createDeleteTaskByName() {
-        return new DeleteTaskByName();
+    public ClearBinResponse createClearBinResponse() {
+        return new ClearBinResponse();
     }
 
     /**
-     * Create an instance of {@link DeleteTaskByNameResponse }
+     * Create an instance of {@link ClearJson }
      * 
      */
-    public DeleteTaskByNameResponse createDeleteTaskByNameResponse() {
-        return new DeleteTaskByNameResponse();
+    public ClearJson createClearJson() {
+        return new ClearJson();
     }
 
     /**
-     * Create an instance of {@link DeleteTaskResponse }
+     * Create an instance of {@link ClearJsonResponse }
      * 
      */
-    public DeleteTaskResponse createDeleteTaskResponse() {
-        return new DeleteTaskResponse();
+    public ClearJsonResponse createClearJsonResponse() {
+        return new ClearJsonResponse();
     }
 
     /**
-     * Create an instance of {@link GetAllTasks }
+     * Create an instance of {@link ClearXml }
      * 
      */
-    public GetAllTasks createGetAllTasks() {
-        return new GetAllTasks();
+    public ClearXml createClearXml() {
+        return new ClearXml();
     }
 
     /**
-     * Create an instance of {@link GetAllTasksResponse }
+     * Create an instance of {@link ClearXmlResponse }
      * 
      */
-    public GetAllTasksResponse createGetAllTasksResponse() {
-        return new GetAllTasksResponse();
+    public ClearXmlResponse createClearXmlResponse() {
+        return new ClearXmlResponse();
     }
 
     /**
-     * Create an instance of {@link GetTaskByName }
+     * Create an instance of {@link LoadBin }
      * 
      */
-    public GetTaskByName createGetTaskByName() {
-        return new GetTaskByName();
+    public LoadBin createLoadBin() {
+        return new LoadBin();
     }
 
     /**
-     * Create an instance of {@link GetTaskByNameResponse }
+     * Create an instance of {@link LoadBinResponse }
      * 
      */
-    public GetTaskByNameResponse createGetTaskByNameResponse() {
-        return new GetTaskByNameResponse();
+    public LoadBinResponse createLoadBinResponse() {
+        return new LoadBinResponse();
     }
 
     /**
-     * Create an instance of {@link SaveTask }
+     * Create an instance of {@link LoadJson }
      * 
      */
-    public SaveTask createSaveTask() {
-        return new SaveTask();
+    public LoadJson createLoadJson() {
+        return new LoadJson();
     }
 
     /**
-     * Create an instance of {@link SaveTaskResponse }
+     * Create an instance of {@link LoadJsonResponse }
      * 
      */
-    public SaveTaskResponse createSaveTaskResponse() {
-        return new SaveTaskResponse();
+    public LoadJsonResponse createLoadJsonResponse() {
+        return new LoadJsonResponse();
     }
 
     /**
-     * Create an instance of {@link Session }
+     * Create an instance of {@link LoadXml }
      * 
      */
-    public Session createSession() {
-        return new Session();
+    public LoadXml createLoadXml() {
+        return new LoadXml();
+    }
+
+    /**
+     * Create an instance of {@link LoadXmlResponse }
+     * 
+     */
+    public LoadXmlResponse createLoadXmlResponse() {
+        return new LoadXmlResponse();
+    }
+
+    /**
+     * Create an instance of {@link SaveBin }
+     * 
+     */
+    public SaveBin createSaveBin() {
+        return new SaveBin();
+    }
+
+    /**
+     * Create an instance of {@link SaveBinResponse }
+     * 
+     */
+    public SaveBinResponse createSaveBinResponse() {
+        return new SaveBinResponse();
+    }
+
+    /**
+     * Create an instance of {@link SaveJson }
+     * 
+     */
+    public SaveJson createSaveJson() {
+        return new SaveJson();
+    }
+
+    /**
+     * Create an instance of {@link SaveJsonResponse }
+     * 
+     */
+    public SaveJsonResponse createSaveJsonResponse() {
+        return new SaveJsonResponse();
+    }
+
+    /**
+     * Create an instance of {@link SaveXml }
+     * 
+     */
+    public SaveXml createSaveXml() {
+        return new SaveXml();
+    }
+
+    /**
+     * Create an instance of {@link SaveXmlResponse }
+     * 
+     */
+    public SaveXmlResponse createSaveXmlResponse() {
+        return new SaveXmlResponse();
+    }
+
+    /**
+     * Create an instance of {@link Domain }
+     * 
+     */
+    public Domain createDomain() {
+        return new Domain();
+    }
+
+    /**
+     * Create an instance of {@link Project }
+     * 
+     */
+    public Project createProject() {
+        return new Project();
     }
 
     /**
@@ -139,93 +219,173 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTask }{@code >}}
+     * Create an instance of {@link User }
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTask")
-    public JAXBElement<DeleteTask> createDeleteTask(DeleteTask value) {
-        return new JAXBElement<DeleteTask>(_DeleteTask_QNAME, DeleteTask.class, null, value);
+    public User createUser() {
+        return new User();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskByName }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClearBin }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskByName")
-    public JAXBElement<DeleteTaskByName> createDeleteTaskByName(DeleteTaskByName value) {
-        return new JAXBElement<DeleteTaskByName>(_DeleteTaskByName_QNAME, DeleteTaskByName.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "clearBin")
+    public JAXBElement<ClearBin> createClearBin(ClearBin value) {
+        return new JAXBElement<ClearBin>(_ClearBin_QNAME, ClearBin.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskByNameResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClearBinResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskByNameResponse")
-    public JAXBElement<DeleteTaskByNameResponse> createDeleteTaskByNameResponse(DeleteTaskByNameResponse value) {
-        return new JAXBElement<DeleteTaskByNameResponse>(_DeleteTaskByNameResponse_QNAME, DeleteTaskByNameResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "clearBinResponse")
+    public JAXBElement<ClearBinResponse> createClearBinResponse(ClearBinResponse value) {
+        return new JAXBElement<ClearBinResponse>(_ClearBinResponse_QNAME, ClearBinResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClearJson }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskResponse")
-    public JAXBElement<DeleteTaskResponse> createDeleteTaskResponse(DeleteTaskResponse value) {
-        return new JAXBElement<DeleteTaskResponse>(_DeleteTaskResponse_QNAME, DeleteTaskResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "clearJson")
+    public JAXBElement<ClearJson> createClearJson(ClearJson value) {
+        return new JAXBElement<ClearJson>(_ClearJson_QNAME, ClearJson.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTasks }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClearJsonResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllTasks")
-    public JAXBElement<GetAllTasks> createGetAllTasks(GetAllTasks value) {
-        return new JAXBElement<GetAllTasks>(_GetAllTasks_QNAME, GetAllTasks.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "clearJsonResponse")
+    public JAXBElement<ClearJsonResponse> createClearJsonResponse(ClearJsonResponse value) {
+        return new JAXBElement<ClearJsonResponse>(_ClearJsonResponse_QNAME, ClearJsonResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTasksResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClearXml }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllTasksResponse")
-    public JAXBElement<GetAllTasksResponse> createGetAllTasksResponse(GetAllTasksResponse value) {
-        return new JAXBElement<GetAllTasksResponse>(_GetAllTasksResponse_QNAME, GetAllTasksResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "clearXml")
+    public JAXBElement<ClearXml> createClearXml(ClearXml value) {
+        return new JAXBElement<ClearXml>(_ClearXml_QNAME, ClearXml.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetTaskByName }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClearXmlResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getTaskByName")
-    public JAXBElement<GetTaskByName> createGetTaskByName(GetTaskByName value) {
-        return new JAXBElement<GetTaskByName>(_GetTaskByName_QNAME, GetTaskByName.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "clearXmlResponse")
+    public JAXBElement<ClearXmlResponse> createClearXmlResponse(ClearXmlResponse value) {
+        return new JAXBElement<ClearXmlResponse>(_ClearXmlResponse_QNAME, ClearXmlResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetTaskByNameResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoadBin }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getTaskByNameResponse")
-    public JAXBElement<GetTaskByNameResponse> createGetTaskByNameResponse(GetTaskByNameResponse value) {
-        return new JAXBElement<GetTaskByNameResponse>(_GetTaskByNameResponse_QNAME, GetTaskByNameResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "loadBin")
+    public JAXBElement<LoadBin> createLoadBin(LoadBin value) {
+        return new JAXBElement<LoadBin>(_LoadBin_QNAME, LoadBin.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveTask }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoadBinResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveTask")
-    public JAXBElement<SaveTask> createSaveTask(SaveTask value) {
-        return new JAXBElement<SaveTask>(_SaveTask_QNAME, SaveTask.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "loadBinResponse")
+    public JAXBElement<LoadBinResponse> createLoadBinResponse(LoadBinResponse value) {
+        return new JAXBElement<LoadBinResponse>(_LoadBinResponse_QNAME, LoadBinResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveTaskResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoadJson }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveTaskResponse")
-    public JAXBElement<SaveTaskResponse> createSaveTaskResponse(SaveTaskResponse value) {
-        return new JAXBElement<SaveTaskResponse>(_SaveTaskResponse_QNAME, SaveTaskResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "loadJson")
+    public JAXBElement<LoadJson> createLoadJson(LoadJson value) {
+        return new JAXBElement<LoadJson>(_LoadJson_QNAME, LoadJson.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoadJsonResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "loadJsonResponse")
+    public JAXBElement<LoadJsonResponse> createLoadJsonResponse(LoadJsonResponse value) {
+        return new JAXBElement<LoadJsonResponse>(_LoadJsonResponse_QNAME, LoadJsonResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoadXml }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "loadXml")
+    public JAXBElement<LoadXml> createLoadXml(LoadXml value) {
+        return new JAXBElement<LoadXml>(_LoadXml_QNAME, LoadXml.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoadXmlResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "loadXmlResponse")
+    public JAXBElement<LoadXmlResponse> createLoadXmlResponse(LoadXmlResponse value) {
+        return new JAXBElement<LoadXmlResponse>(_LoadXmlResponse_QNAME, LoadXmlResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveBin }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveBin")
+    public JAXBElement<SaveBin> createSaveBin(SaveBin value) {
+        return new JAXBElement<SaveBin>(_SaveBin_QNAME, SaveBin.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveBinResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveBinResponse")
+    public JAXBElement<SaveBinResponse> createSaveBinResponse(SaveBinResponse value) {
+        return new JAXBElement<SaveBinResponse>(_SaveBinResponse_QNAME, SaveBinResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveJson }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveJson")
+    public JAXBElement<SaveJson> createSaveJson(SaveJson value) {
+        return new JAXBElement<SaveJson>(_SaveJson_QNAME, SaveJson.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveJsonResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveJsonResponse")
+    public JAXBElement<SaveJsonResponse> createSaveJsonResponse(SaveJsonResponse value) {
+        return new JAXBElement<SaveJsonResponse>(_SaveJsonResponse_QNAME, SaveJsonResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveXml }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveXml")
+    public JAXBElement<SaveXml> createSaveXml(SaveXml value) {
+        return new JAXBElement<SaveXml>(_SaveXml_QNAME, SaveXml.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveXmlResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveXmlResponse")
+    public JAXBElement<SaveXmlResponse> createSaveXmlResponse(SaveXmlResponse value) {
+        return new JAXBElement<SaveXmlResponse>(_SaveXmlResponse_QNAME, SaveXmlResponse.class, null, value);
     }
 
 }

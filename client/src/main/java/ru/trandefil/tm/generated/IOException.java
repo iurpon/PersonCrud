@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "IOException", propOrder = {
     "message"
 })
-public class IOException {
+public class IOException extends Throwable {
 
     protected String message;
 

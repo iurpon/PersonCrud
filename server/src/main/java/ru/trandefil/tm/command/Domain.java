@@ -14,6 +14,15 @@ public class Domain {
 
     private List<Task> taskList;
 
+    public Domain() {
+    }
+
+    public Domain(List<Project> projectList, List<User> userList, List<Task> taskList) {
+        this.projectList = projectList;
+        this.userList = userList;
+        this.taskList = taskList;
+    }
+
     public List<Project> getProjectList() {
         return projectList;
     }

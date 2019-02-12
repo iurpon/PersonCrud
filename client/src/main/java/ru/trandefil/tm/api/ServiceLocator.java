@@ -18,6 +18,8 @@ public interface ServiceLocator {
 
     UserEndPoint getUserEndPoint();
 
+    FileEndPoint getFileEndPoint();
+
     Session getSession();
 
     void setSession(Session session);

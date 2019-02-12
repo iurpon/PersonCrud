@@ -88,4 +88,10 @@ public class User
         this.role = value;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

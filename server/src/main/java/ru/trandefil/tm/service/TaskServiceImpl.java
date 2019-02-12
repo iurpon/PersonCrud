@@ -19,25 +19,13 @@ public class TaskServiceImpl implements TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> getAll(Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
+    public List<Task> getAll(String userId) {
         return taskRepository.getAll().stream()
-                .filter(t -> t.getExecuterId().equals(session.getUserId()))
+                .filter(t -> t.getExecuterId().equals(userId))
                 .collect(Collectors.toList());
     }
 
-    public Task save(Task task, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
-        if(task.isNew()){
-            task.setId(UUIDUtil.getUniqueString());
-            return taskRepository.save(task);
-        }
+    public Task save(Task task, String userId) {
         Task updated = taskRepository.getByid(task.getId());
         updated.setBegin(task.getBegin());
         updated.setEnd(task.getEnd());
@@ -47,27 +35,15 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.save(updated);
     }
 
-    public Task delete(Task task, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
+    public Task delete(Task task, String userId) {
         return taskRepository.delete(task);
     }
 
-    public Task deleteByName(String name, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
+    public Task deleteByName(String name, String userId) {
         return taskRepository.deleteByName(name);
     }
 
-    public Task getByName(String name, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
+    public Task getByName(String name, String userId) {
         return taskRepository.getByName(name);
     }
 

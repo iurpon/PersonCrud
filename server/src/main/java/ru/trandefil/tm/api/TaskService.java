@@ -7,14 +7,14 @@ import java.util.List;
 
 public interface TaskService {
 
-    List<Task> getAll(Session session);
+    List<Task> getAll(String userId);
 
-    Task save(Task task, Session session);
+    Task save(Task task, String userId);
 
-    Task delete(Task task, Session session);
+    Task delete(Task task, String userId);
 
-    Task deleteByName(String name, Session session);
+    Task deleteByName(String name, String userId);
 
-    Task getByName(String name, Session session);
+    Task getByName(String name, String userId);
 
 }

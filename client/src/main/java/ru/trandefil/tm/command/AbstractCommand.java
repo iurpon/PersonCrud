@@ -21,8 +21,6 @@ public abstract class AbstractCommand {
 
     public abstract boolean secure();
 
-    public abstract boolean isAdmin();
-
     public ServiceLocator getServiceLocator() {
         return serviceLocator;
     }

@@ -104,12 +104,6 @@ public class Bootstrap implements ServiceLocator {
                 continue;
             }
             System.out.println("you loged in.");
-            if(abstractCommand.isAdmin()){
-                if(!session.getRole().equals(Role.ADMIN)){
-                    System.out.println("not authorized to execute command.");
-                    continue;
-                }
-            }
             abstractCommand.execute();
         }
     }

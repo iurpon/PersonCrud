@@ -16,31 +16,31 @@ public class TaskServiceImplTest extends AbstractCommandTest {
 
     @Test
     public void getAll() {
-        Assert.assertEquals(taskService.getAll(sessionUser).size(),2);
+        Assert.assertEquals(taskService.getAll(sessionUser.getUserId()).size(),2);
     }
 
     @Test
     public void save() {
         Task task = new Task(null,"task4","task4",null,null, PROJECT3.getId(),ADMIN.getId(), USER.getId());
-        taskService.save(task,sessionAdmin);
-        Assert.assertEquals(taskService.getAll(sessionUser).size(),3);
+        taskService.save(task);
+        Assert.assertEquals(taskService.getAll(sessionUser.getUserId()).size(),3);
     }
 
     @Test
     public void delete() {
-        taskService.delete(TASK1,sessionAdmin);
+        taskService.delete(TASK1,sessionAdmin.getUserId());
         Assert.assertEquals(taskRepository.getAll().size(),2);
     }
 
     @Test
     public void deleteByName() {
-        Task task = taskService.deleteByName(TASK1.getName(), sessionAdmin);
+        Task task = taskService.deleteByName(TASK1.getName(), sessionAdmin.getUserId());
         Assert.assertEquals(task,TASK1);
     }
 
     @Test
     public void getByName() {
-        Task task = taskService.getByName(TASK2.getName(),sessionAdmin);
+        Task task = taskService.getByName(TASK2.getName(),sessionAdmin.getUserId());
         Assert.assertEquals(task,TASK2);
     }
 

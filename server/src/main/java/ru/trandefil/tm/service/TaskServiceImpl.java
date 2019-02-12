@@ -25,7 +25,11 @@ public class TaskServiceImpl implements TaskService {
                 .collect(Collectors.toList());
     }
 
-    public Task save(Task task, String userId) {
+    public Task save(Task task) {
+        if(task.isNew()){
+            task.setId(UUIDUtil.getUniqueString());
+            return taskRepository.save(task);
+        }
         Task updated = taskRepository.getByid(task.getId());
         updated.setBegin(task.getBegin());
         updated.setEnd(task.getEnd());

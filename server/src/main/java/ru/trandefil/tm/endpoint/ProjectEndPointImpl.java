@@ -5,7 +5,6 @@ import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
-import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -26,7 +25,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
             System.out.println("bad signature.");
             return null;
         }
-        Project created = new Project(null,name,description,session.getUserId());
+        Project created = new Project(null, name, description, session.getUserId());
         return projectService.save(created);
     }
 

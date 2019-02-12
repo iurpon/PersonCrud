@@ -50,10 +50,4 @@ public class ProjectUpdateCommand extends AbstractCommand {
     public boolean secure() {
         return true;
     }
-
-    @Override
-    public boolean isAdmin() {
-        return false;
-    }
-
 }

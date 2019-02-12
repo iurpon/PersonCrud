@@ -12,8 +12,11 @@ import java.util.List;
 public interface ProjectEndPoint {
 
     @WebMethod
-    Project saveProject(@WebParam(name = "project") Project project
+    Project saveProject(@WebParam(name = "name") String name, @WebParam(name = "desc") String desc
             , @WebParam(name = "session") Session session);
+
+    @WebMethod
+    Project updateProject(@WebParam(name = "project") Project project, @WebParam(name = "session") Session session);
 
     @WebMethod
     List<Project> getAllProjects(@WebParam(name = "session") Session session);

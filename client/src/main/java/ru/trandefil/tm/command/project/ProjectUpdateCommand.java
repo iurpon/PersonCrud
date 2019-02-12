@@ -43,7 +43,7 @@ public class ProjectUpdateCommand extends AbstractCommand {
         final String newDesc = getNotNullString(terminalService,"enter new description name");
         updating.setName(newName);
         updating.setDescription(newDesc);
-        projectEndPoint.saveProject(updating,session);
+        projectEndPoint.updateProject(updating,session);
     }
 
     @Override

@@ -35,12 +35,8 @@ public class ProjectCreateCommand extends AbstractCommand {
         final String projectName = getNotNullString(terminalService,"enter project name");
         final String projectDesc = getNotNullString(terminalService,"enter project desription");
         final ProjectEndPoint projectEndPoint = getServiceLocator().getProjectEndPoint();
-        final Project created = new Project();
-        created.setName(projectDesc);
-        created.setDescription(projectDesc);
         final Session session = getServiceLocator().getSession();
-        created.setUserId(session.getUserId());
-        projectEndPoint.saveProject(created,session);
+        projectEndPoint.saveProject(projectName,projectDesc,session);
     }
 
     @Override

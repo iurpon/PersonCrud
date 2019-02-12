@@ -21,11 +21,13 @@ public class ProjectServiceImpl implements ProjectService {
     public Project save(Project project) {
         if (project.isNew()) {
             project.setId(UUIDUtil.getUniqueString());
+            System.out.format("saving new project : %s",project.getName());
             return projectRepository.save(project);
         }
         Project updating = projectRepository.getById(project.getId());
         updating.setName(project.getName());
         updating.setDescription(project.getDescription());
+        System.out.format("updated project : %s",project.getName());
         return updating;
     }
 
@@ -58,7 +60,12 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void deleteByName(String projectName, String userId) {
-        projectRepository.deleteByName(projectName);
+        Project project = projectRepository.getByName(projectName);
+        if(!project.getUserId().equals(userId)){
+            return;
+        }
+        System.out.format("project %s deleted.",project.getName());
+        projectRepository.deleteByName(project.getUserId());
     }
 
     @Override

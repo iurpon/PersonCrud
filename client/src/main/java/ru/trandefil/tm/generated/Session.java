@@ -3,6 +3,7 @@ package ru.trandefil.tm.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -16,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;extension base="{http://generated.tm.trandefil.ru/}baseEntity"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="role" type="{http://generated.tm.trandefil.ru/}role" minOccurs="0"/&gt;
  *         &lt;element name="signature" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="timeStamp" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="userId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -29,6 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "session", propOrder = {
+    "role",
     "signature",
     "timeStamp",
     "userId"
@@ -37,9 +40,35 @@ public class Session
     extends BaseEntity
 {
 
+    @XmlSchemaType(name = "string")
+    protected Role role;
     protected String signature;
     protected long timeStamp;
     protected String userId;
+
+    /**
+     * Gets the value of the role property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Role }
+     *     
+     */
+    public Role getRole() {
+        return role;
+    }
+
+    /**
+     * Sets the value of the role property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Role }
+     *     
+     */
+    public void setRole(Role value) {
+        this.role = value;
+    }
 
     /**
      * Gets the value of the signature property.

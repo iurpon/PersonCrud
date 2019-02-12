@@ -5,6 +5,7 @@ import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
+import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -20,7 +21,17 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     }
 
     @Override
-    public Project saveProject(Project project, Session session) {
+    public Project saveProject(String name, String description, Session session) {
+        if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
+            return null;
+        }
+        Project created = new Project(null,name,description,session.getUserId());
+        return projectService.save(created);
+    }
+
+    @Override
+    public Project updateProject(Project project, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;

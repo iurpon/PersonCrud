@@ -16,37 +16,37 @@ public class ProjectServiceImplTest extends AbstractCommandTest {
     @Test
     public void save() {
         Project created = new Project(null,"newProj","newProj", ADMIN.getId());
-        projectService.save(created,sessionAdmin);
-        Assert.assertEquals(projectService.getAll(sessionAdmin).size(),3);
+        projectService.save(created);
+        Assert.assertEquals(projectService.getAll(sessionAdmin.getUserId()).size(),3);
     }
 
     @Test
     public void getAll() {
-        Assert.assertEquals(projectService.getAll(sessionAdmin).size(),2);
-        Assert.assertEquals(projectService.getAll(sessionUser).size(),1);
+        Assert.assertEquals(projectService.getAll(sessionAdmin.getUserId()).size(),2);
+        Assert.assertEquals(projectService.getAll(sessionUser.getUserId()).size(),1);
     }
 
     @Test
     public void getById() {
-        Project project = projectService.getById(PROJECT1.getId(),sessionAdmin);
+        Project project = projectService.getById(PROJECT1.getId(),sessionAdmin.getUserId());
         Assert.assertEquals(project,PROJECT1);
     }
 
     @Test
     public void delete() {
-        projectService.delete(PROJECT1,sessionAdmin);
-        Assert.assertEquals(projectService.getAll(sessionAdmin).size(),1);
+        projectService.delete(PROJECT1,sessionAdmin.getUserId());
+        Assert.assertEquals(projectService.getAll(sessionAdmin.getUserId()).size(),1);
     }
 
     @Test
     public void deleteByName() {
-        projectService.deleteByName(PROJECT1.getName(),sessionAdmin);
-        Assert.assertEquals(projectService.getAll(sessionAdmin).size(),1);
+        projectService.deleteByName(PROJECT1.getName(),sessionAdmin.getUserId());
+        Assert.assertEquals(projectService.getAll(sessionAdmin.getUserId()).size(),1);
     }
 
     @Test
     public void getByName() {
-        Project project = projectService.getByName(PROJECT1.getName(),sessionAdmin);
+        Project project = projectService.getByName(PROJECT1.getName(),sessionAdmin.getUserId());
         Assert.assertEquals(project,PROJECT1);
     }
 

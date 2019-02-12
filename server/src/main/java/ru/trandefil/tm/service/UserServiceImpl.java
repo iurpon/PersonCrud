@@ -3,6 +3,7 @@ package ru.trandefil.tm.service;
 import ru.trandefil.tm.api.SessionService;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.api.UserService;
+import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.util.SignatureUtil;
@@ -70,15 +71,15 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         System.out.println("logged " + user.getName());
-        Session newSess = createNewSession(user.getId());
+        Session newSess = createNewSession(user.getId(), user.getRole());
         return newSess;
     }
 
-    private Session createNewSession(String userId) {
+    private Session createNewSession(String userId, Role role) {
         String uuid = UUIDUtil.getUniqueString();
         long timeStamp = System.nanoTime();
-        String signature = SignatureUtil.createSignature(uuid, userId, timeStamp);
-        Session created = new Session(uuid, timeStamp, userId, signature);
+        String signature = SignatureUtil.createSignature(uuid, userId, timeStamp, role);
+        Session created = new Session(uuid, timeStamp, userId, role, signature);
         sessionService.saveSession(created);
         return created;
     }

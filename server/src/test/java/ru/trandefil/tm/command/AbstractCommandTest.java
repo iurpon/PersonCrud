@@ -29,7 +29,7 @@ public class AbstractCommandTest {
 
     protected SessionService sessionService = new SessionServiceImpl(sessionRepository);
 
-    protected UserService userService = new UserServiceImpl(userRepository,sessionService);
+    protected UserService userService = new UserServiceImpl(userRepository, sessionService);
 
     protected TaskService taskService = new TaskServiceImpl(taskRepository);
 
@@ -40,7 +40,7 @@ public class AbstractCommandTest {
     protected Session sessionUser = null;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         projectRepository.clear();
         projectRepository.save(PROJECT1);
         projectRepository.save(PROJECT2);
@@ -53,7 +53,7 @@ public class AbstractCommandTest {
         taskRepository.save(TASK2);
         taskRepository.save(TASK3);
         sessionAdmin = userService.getSession(ADMIN.getName(), ADMIN.getPassword());
-        sessionUser = userService.getSession(USER.getName(),USER.getPassword());
+        sessionUser = userService.getSession(USER.getName(), USER.getPassword());
     }
 
 }

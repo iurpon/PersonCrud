@@ -7,16 +7,16 @@ import java.util.List;
 
 public interface ProjectService {
 
-    Project save(Project project, Session session);
+    Project save(Project project);
 
-    List<Project> getAll(Session session);
+    List<Project> getAll(String userId);
 
-    Project getById(String id, Session session);
+    Project getById(String id, String userId);
 
-    void delete(Project project, Session session);
+    void delete(Project project, String userId);
 
-    void deleteByName(String projectName, Session session);
+    void deleteByName(String projectName, String userId);
 
-    Project getByName(String projectName, Session session);
+    Project getByName(String projectName, String userId);
 
 }

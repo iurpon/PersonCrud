@@ -8,16 +8,15 @@ public class User extends BaseNamedEntity {
 
     private String password;
 
+    private Role role;
+
     public User() {
     }
 
-    public User(String id, String name) {
-        super(id, name);
-    }
-
-    public User(String id, String name, String password) {
+    public User(String id, String name, String password, Role role) {
         super(id, name);
         this.password = password;
+        this.role = role;
     }
 
     public String getPassword() {
@@ -26,6 +25,14 @@ public class User extends BaseNamedEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

@@ -35,7 +35,7 @@ public class ProjectListCommand extends AbstractCommand {
         if(projects == null){
             return;
         }
-        projects.stream().filter(p -> p.getUserId().equals(session.getUserId())).forEach(System.out::println);
+        projects.forEach(System.out::println);
     }
 
     @Override

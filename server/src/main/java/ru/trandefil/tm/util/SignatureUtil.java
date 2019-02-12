@@ -1,5 +1,6 @@
 package ru.trandefil.tm.util;
 
+import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 
 import java.io.InputStream;
@@ -30,17 +31,20 @@ public class SignatureUtil {
         return str[0];
     }
 
-    public static String createSignature(final String id, final String userId, final long timeStamp) {
-        final String sessionFiels = id + userId + timeStamp;
-        return generateSignature(sessionFiels);
+    public static String createSignature(final String id, final String userId, final long timeStamp, final Role role) {
+        final String sessionFields = id + userId + timeStamp + role.name();
+        return generateSignature(sessionFields);
     }
 
     public static boolean checkCorrectSession(Session session) {
-        if(session == null){
+        if (session == null) {
             System.out.println("session is null");
             return false;
         }
         if (session.getId() == null) {
+            return false;
+        }
+        if (session.getRole() == null) {
             return false;
         }
         if (session.getUserId() == null) {
@@ -52,7 +56,8 @@ public class SignatureUtil {
         if (session.getSignature() == null) {
             return false;
         }
-        return session.getSignature().equals(createSignature(session.getId(), session.getUserId(), session.getTimeStamp()));
+        return session.getSignature().equals(createSignature(session.getId(),
+                session.getUserId(), session.getTimeStamp(), session.getRole()));
     }
 
 }

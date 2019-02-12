@@ -3,6 +3,7 @@ package ru.trandefil.tm.service;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.trandefil.tm.command.AbstractCommandTest;
+import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.util.SignatureUtil;
@@ -27,7 +28,7 @@ public class UserServiceImplTest extends AbstractCommandTest {
 
     @Test
     public void save() {
-        User newUser = new User(UUIDUtil.getUniqueString(), "newUser", "newPass");
+        User newUser = new User(UUIDUtil.getUniqueString(), "newUser", "newPass", Role.USER);
         userService.save(newUser, sessionUser);
         Assert.assertEquals(userService.getAll(sessionUser).size(), 3);
     }
@@ -48,4 +49,5 @@ public class UserServiceImplTest extends AbstractCommandTest {
         Session session = userService.getSession(USER.getName(),USER.getPassword());
         Assert.assertEquals(true, SignatureUtil.checkCorrectSession(session));
     }
+
 }

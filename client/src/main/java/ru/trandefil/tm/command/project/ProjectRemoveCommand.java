@@ -43,4 +43,9 @@ public class ProjectRemoveCommand extends AbstractCommand {
         return true;
     }
 
+    @Override
+    public boolean isAdmin() {
+        return false;
+    }
+
 }

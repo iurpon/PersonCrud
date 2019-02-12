@@ -21,6 +21,8 @@ public abstract class AbstractCommand {
 
     public abstract boolean secure();
 
+    public abstract boolean isAdmin();
+
     public ServiceLocator getServiceLocator() {
         return serviceLocator;
     }
@@ -28,7 +30,5 @@ public abstract class AbstractCommand {
     public void setServiceLocator(ServiceLocator serviceLocator) {
         this.serviceLocator = serviceLocator;
     }
-
-
 
 }

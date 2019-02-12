@@ -1,7 +1,9 @@
 package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.api.UserRepository;
+import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.User;
+import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,6 +13,15 @@ import java.util.Map;
 public class UserRepositoryImpl implements UserRepository {
 
     private Map<String, User> userMap = new HashMap<>();
+
+    public static final User USER = new User(UUIDUtil.getUniqueString(), "User", "userPassword", Role.USER);//userPassword
+
+    public static final User ADMIN = new User(UUIDUtil.getUniqueString(), "Admin", "adminPassword",Role.ADMIN);//adminPassword
+
+    {
+        userMap.put(USER.getId(),USER);
+        userMap.put(ADMIN.getId(),ADMIN);
+    }
 
     @Override
     public void clear() {

@@ -44,4 +44,9 @@ public class ProjectCreateCommand extends AbstractCommand {
         return true;
     }
 
+    @Override
+    public boolean isAdmin() {
+        return false;
+    }
+
 }

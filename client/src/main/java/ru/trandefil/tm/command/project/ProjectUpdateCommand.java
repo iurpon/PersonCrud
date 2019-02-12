@@ -51,4 +51,9 @@ public class ProjectUpdateCommand extends AbstractCommand {
         return true;
     }
 
+    @Override
+    public boolean isAdmin() {
+        return false;
+    }
+
 }

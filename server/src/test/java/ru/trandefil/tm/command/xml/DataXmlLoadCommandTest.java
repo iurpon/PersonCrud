@@ -3,13 +3,17 @@ package ru.trandefil.tm.command.xml;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.trandefil.tm.command.Domain;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+
 public class DataXmlLoadCommandTest {
+
 
     @Test
     public void execute() throws IOException {

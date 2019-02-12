@@ -43,4 +43,5 @@ public class TaskServiceImplTest extends AbstractCommandTest {
         Task task = taskService.getByName(TASK2.getName(),sessionAdmin);
         Assert.assertEquals(task,TASK2);
     }
+
 }

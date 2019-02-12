@@ -1,9 +1,11 @@
 package ru.trandefil.tm;
 
 import ru.trandefil.tm.api.*;
+import ru.trandefil.tm.endpoint.FileEndPointImpl;
 import ru.trandefil.tm.endpoint.ProjectEndPointImpl;
 import ru.trandefil.tm.endpoint.TaskEndPointImpl;
 import ru.trandefil.tm.endpoint.UserEndPointImpl;
+import ru.trandefil.tm.generated.FileEndPoint;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
@@ -11,10 +13,7 @@ import ru.trandefil.tm.repository.ProjectRepositoryImpl;
 import ru.trandefil.tm.repository.SessionRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepositoryImpl;
 import ru.trandefil.tm.repository.UserRepositoryImpl;
-import ru.trandefil.tm.service.ProjectServiceImpl;
-import ru.trandefil.tm.service.SessionServiceImpl;
-import ru.trandefil.tm.service.TaskServiceImpl;
-import ru.trandefil.tm.service.UserServiceImpl;
+import ru.trandefil.tm.service.*;
 
 import javax.xml.ws.Endpoint;
 
@@ -42,6 +41,10 @@ public class Bootstrap implements ServiceLocator {
 
     private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
 
+    private final FileService fileService = new FileServiceImpl();
+
+    private final FileEndPoint fileEndPoint = new FileEndPointImpl(fileService);
+
     @Override
     public SessionService getSessionService() {
         return sessionService;
@@ -66,6 +69,7 @@ public class Bootstrap implements ServiceLocator {
         Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl", projectEndPoint);
         Endpoint.publish("http://localhost:8080/taskEndPoint?wsdl", taskEndPoint);
         Endpoint.publish("http://localhost:8080/userEndPoint?wsdl", userEndPoint);
+        Endpoint.publish("http://localhost:8080/fileEndPoint?wsdl", fileEndPoint);
     }
 
 }

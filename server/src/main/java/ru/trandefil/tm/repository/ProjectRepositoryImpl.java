@@ -17,7 +17,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     private Map<String, Project> projects = new HashMap<>();
 
 
-    public static final Project PROJECT1
+/*    public static final Project PROJECT1
             = new Project(UUIDUtil.getUniqueString(), "simpleProject1", "no description1", ADMIN.getId());
 
     public static final Project PROJECT2
@@ -30,7 +30,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         projects.put(PROJECT1.getId(), PROJECT1);
         projects.put(PROJECT2.getId(), PROJECT2);
         projects.put(PROJECT3.getId(), PROJECT3);
-    }
+    }*/
 
     @Override
     public void clear() {

@@ -17,7 +17,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     private Map<String, Task> tasks = new ConcurrentHashMap<>();
 
-    public static final Task TASK1 = new Task(UUIDUtil.getUniqueString(),
+/*    public static final Task TASK1 = new Task(UUIDUtil.getUniqueString(),
             "TASK1", "TASK1DESC1", null, null, PROJECT1.getId(), ADMIN.getId(), ADMIN.getId());
 
     public static final Task TASK2 = new Task(UUIDUtil.getUniqueString(),
@@ -30,7 +30,7 @@ public class TaskRepositoryImpl implements TaskRepository {
         tasks.put(TASK1.getId(),TASK1);
         tasks.put(TASK2.getId(),TASK2);
         tasks.put(TASK3.getId(),TASK3);
-    }
+    }*/
 
 
     public Task save(final Task task) {

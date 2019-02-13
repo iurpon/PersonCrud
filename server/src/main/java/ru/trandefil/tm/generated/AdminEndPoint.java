@@ -12,24 +12,6 @@ import javax.jws.WebService;
 public interface AdminEndPoint {
 
     @WebMethod
-    void saveBin(@WebParam(name = "session") Session session);
-
-    @WebMethod
-    void loadBin(@WebParam(name = "session") Session session);
-
-    @WebMethod
-    void clearBin(@WebParam(name = "session") Session session);
-
-    @WebMethod
-    void saveXml(@WebParam(name = "session") Session session);
-
-    @WebMethod
-    void loadXml(@WebParam(name = "session") Session session);
-
-    @WebMethod
-    void clearXml(@WebParam(name = "session") Session session);
-
-    @WebMethod
     void saveJson(@WebParam(name = "session") Session session);
 
     @WebMethod

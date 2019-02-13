@@ -27,8 +27,9 @@ public class LogoutCommand extends AbstractCommand {
     @Override
     public void execute() {
         final UserEndPoint userEndPoint = getServiceLocator().getUserEndPoint();
-        final Session session = getServiceLocator().getSession();
+        Session session = getServiceLocator().getSession();
         userEndPoint.userLogout(session);
+        getServiceLocator().setSession(null);
     }
 
     @Override

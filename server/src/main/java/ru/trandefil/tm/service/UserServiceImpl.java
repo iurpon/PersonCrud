@@ -23,43 +23,36 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User delete(User user, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
+    public User delete(User user) {
         return userRepository.delete(user);
     }
 
     @Override
-    public User deleteByName(String name, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
+    public User deleteByName(String name) {
         return userRepository.deleteByName(name);
     }
 
     @Override
-    public User save(User user, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
+    public User save(User user) {
+        if(user.isNew()){
+            user.setId(UUIDUtil.getUniqueString());
+            return userRepository.save(user);
+        }
+        User updating = userRepository.getById(user.getId());
+        if(updating == null){
+            System.out.println("wrong is updating user");
             return null;
         }
         return userRepository.save(user);
     }
 
     @Override
-    public User getByName(String userName, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
+    public User getByName(String userName) {
         return userRepository.getByName(userName);
     }
 
     @Override
-    public List<User> getAll(Session session) {
+    public List<User> getAll() {
         return userRepository.getAll();
     }
 
@@ -88,4 +81,18 @@ public class UserServiceImpl implements UserService {
     public void logout(String sessionId) {
         sessionService.deleteSession(sessionId);
     }
+
+    @Override
+    public User constractUser(String name, String pass, String role) {
+        role = role.trim().toUpperCase();
+        if("ADMIN".equals(role) || "USER".equals(role)){
+            Role newRole = Enum.valueOf(Role.class, role);
+            User newUser = new User(null, name, pass, newRole);
+            System.out.println("created user with role : " + role.toUpperCase());
+            return save(newUser);
+        }
+        System.out.println("bad user role.");
+        return null;
+    }
+
 }

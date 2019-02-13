@@ -12,13 +12,13 @@ import java.util.List;
 public interface UserEndPoint {
 
     @WebMethod
-    User deleteUser(@WebParam(name = "user") User user, @WebParam(name = "session") Session session);
-
-    @WebMethod
     User deleteUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
     @WebMethod
-    User saveUser(@WebParam(name = "user") User user, @WebParam(name = "session") Session session);
+    User saveUser(@WebParam(name = "name") String name,
+                  @WebParam(name = "pass") String pass,
+                  @WebParam(name = "role") String role,
+                  @WebParam Session session);
 
     @WebMethod
     User getUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
@@ -27,7 +27,7 @@ public interface UserEndPoint {
     List<User> getAllUsers(@WebParam(name = "session") Session session);
 
     @WebMethod
-    void userLogout(@WebParam(name="session") Session session);
+    void userLogout(@WebParam(name = "session") Session session);
 
     @WebMethod
     Session getSession(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);

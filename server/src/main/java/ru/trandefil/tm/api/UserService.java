@@ -7,18 +7,20 @@ import java.util.List;
 
 public interface UserService {
 
-    User delete(User user, Session session);
+    User delete(User user);
 
-    User deleteByName(String name,Session session);
+    User deleteByName(String name);
 
-    User save(User user,Session session);
+    User save(User user);
 
-    User getByName(String userName,Session session);
+    User getByName(String userName);
 
-    List<User> getAll(Session session);
+    List<User> getAll();
 
     Session getSession(String userName, String userPassword);
 
     void logout(String sessionId);
+
+    User constractUser(String name, String pass, String role);
 
 }

@@ -1,6 +1,7 @@
 package ru.trandefil.tm.endpoint;
 
 import ru.trandefil.tm.api.UserService;
+import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.generated.UserEndPoint;
@@ -19,63 +20,59 @@ public class UserEndPointImpl implements UserEndPoint {
         this.userService = userService;
     }
 
-    @WebMethod
     @Override
-    public User deleteUser(User user, Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return null;
-        }
-        return userService.delete(user, session);
-    }
-
     @WebMethod
-    @Override
     public User deleteUserByName(String name, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.deleteByName(name, session);
+        return userService.deleteByName(name);
     }
 
-    @WebMethod
     @Override
-    public User saveUser(User user, Session session) {
+    @WebMethod
+    public User saveUser(String name, String pass, String role, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.save(user, session);
+
+        if (!session.getRole().equals(Role.ADMIN)) {
+            System.out.println("not authorized  to create new user.");
+            return null;
+        }
+        return userService.constractUser(name,pass,role);
     }
 
-    @WebMethod
     @Override
+    @WebMethod
     public User getUserByName(String userName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.getByName(userName, session);
+        return userService.getByName(userName);
     }
 
-    @WebMethod
     @Override
+    @WebMethod
     public List<User> getAllUsers(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.getAll(session);
+        return userService.getAll();
     }
 
-    @WebMethod
     @Override
+    @WebMethod
     public Session getSession(String userName, String password) {
         return userService.getSession(userName, password);
     }
 
     @Override
+    @WebMethod
     public void userLogout(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
@@ -83,4 +80,5 @@ public class UserEndPointImpl implements UserEndPoint {
         }
         userService.logout(session.getId());
     }
+
 }

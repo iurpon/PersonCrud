@@ -16,11 +16,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     public static final User USER = new User(UUIDUtil.getUniqueString(), "User", "userPassword", Role.USER);//userPassword
 
-    public static final User ADMIN = new User(UUIDUtil.getUniqueString(), "Admin", "adminPassword",Role.ADMIN);//adminPassword
+    public static final User ADMIN = new User(UUIDUtil.getUniqueString(), "Admin", "adminPassword", Role.ADMIN);//adminPassword
 
     {
-        userMap.put(USER.getId(),USER);
-        userMap.put(ADMIN.getId(),ADMIN);
+        userMap.put(USER.getId(), USER);
+        userMap.put(ADMIN.getId(), ADMIN);
     }
 
     @Override
@@ -73,6 +73,11 @@ public class UserRepositoryImpl implements UserRepository {
                 .filter(u -> u.getName().equals(userName))
                 .findAny()
                 .orElse(null);
+    }
+
+    @Override
+    public User getById(String id) {
+        return userMap.get(id);
     }
 
 }

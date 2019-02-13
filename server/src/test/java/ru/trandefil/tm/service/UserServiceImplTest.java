@@ -16,26 +16,26 @@ public class UserServiceImplTest extends AbstractCommandTest {
 
     @Test
     public void delete() {
-        userService.delete(USER, sessionUser);
-        Assert.assertEquals(userService.getAll(sessionAdmin).size(), 1);
+        userService.delete(USER );
+        Assert.assertEquals(userService.getAll().size(), 1);
     }
 
     @Test
     public void deleteByName() {
-        userService.deleteByName(ADMIN.getName(), sessionAdmin);
-        Assert.assertEquals(userService.getAll(sessionUser).size(), 1);
+        userService.deleteByName(ADMIN.getName() );
+        Assert.assertEquals(userService.getAll().size(), 1);
     }
 
     @Test
     public void save() {
         User newUser = new User(UUIDUtil.getUniqueString(), "newUser", "newPass", Role.USER);
-        userService.save(newUser, sessionUser);
-        Assert.assertEquals(userService.getAll(sessionUser).size(), 3);
+        userService.save(newUser );
+        Assert.assertEquals(userService.getAll().size(), 3);
     }
 
     @Test
     public void getByName() {
-        User user = userService.getByName(ADMIN.getName(), sessionAdmin);
+        User user = userService.getByName(ADMIN.getName() );
         Assert.assertEquals(user, ADMIN);
     }
 

@@ -49,7 +49,12 @@ public class AdminServiceImpl implements AdminService {
             final ObjectMapper objectMapper = new ObjectMapper();
             final String xmlString = new String(Files.readAllBytes(Paths.get("data.json")));
             final Domain domain = objectMapper.readValue(xmlString, Domain.class);
-
+            userRepository.clear();
+            domain.getUsers().forEach(u -> userRepository.save(u));
+            projectRepository.clear();
+            domain.getProjects().forEach(p -> projectRepository.save(p));
+            taskRepository.clear();
+            domain.getTasks().forEach(t -> taskRepository.save(t));
         } catch (IOException e) {
             System.out.println("is empty.");
             e.printStackTrace();

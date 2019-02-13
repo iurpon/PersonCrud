@@ -3,9 +3,6 @@ package ru.trandefil.tm.service;
 import ru.trandefil.tm.api.SessionRepository;
 import ru.trandefil.tm.api.SessionService;
 import ru.trandefil.tm.entity.Session;
-import ru.trandefil.tm.util.UUIDUtil;
-
-import java.util.Date;
 
 public class SessionServiceImpl implements SessionService {
 
@@ -25,4 +22,8 @@ public class SessionServiceImpl implements SessionService {
         return sessionRepository.save(session);
     }
 
+    @Override
+    public void deleteSession(String sessionId) {
+        sessionRepository.delete(sessionId);
+    }
 }

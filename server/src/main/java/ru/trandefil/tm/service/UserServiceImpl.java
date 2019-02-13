@@ -84,4 +84,8 @@ public class UserServiceImpl implements UserService {
         return created;
     }
 
+    @Override
+    public void logout(String sessionId) {
+        sessionService.deleteSession(sessionId);
+    }
 }

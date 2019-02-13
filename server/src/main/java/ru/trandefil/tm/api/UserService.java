@@ -19,4 +19,6 @@ public interface UserService {
 
     Session getSession(String userName, String userPassword);
 
+    void logout(String sessionId);
+
 }

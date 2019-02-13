@@ -20,4 +20,8 @@ public class SessionRepositoryImpl implements SessionRepository {
         return sessionMap.put(session.getId(),session);
     }
 
+    @Override
+    public void delete(String sesionId) {
+        sessionMap.remove(sesionId);
+    }
 }

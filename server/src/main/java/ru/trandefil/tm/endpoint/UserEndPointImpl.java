@@ -26,37 +26,37 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.delete(user,session);
+        return userService.delete(user, session);
     }
 
     @WebMethod
     @Override
-    public User deleteUserByName(String name,Session session) {
+    public User deleteUserByName(String name, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.deleteByName(name,session);
+        return userService.deleteByName(name, session);
     }
 
     @WebMethod
     @Override
-    public User saveUser(User user,Session session) {
+    public User saveUser(User user, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.save(user,session);
+        return userService.save(user, session);
     }
 
     @WebMethod
     @Override
-    public User getUserByName(String userName,Session session) {
+    public User getUserByName(String userName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.getByName(userName,session);
+        return userService.getByName(userName, session);
     }
 
     @WebMethod
@@ -75,4 +75,12 @@ public class UserEndPointImpl implements UserEndPoint {
         return userService.getSession(userName, password);
     }
 
+    @Override
+    public void userLogout(Session session) {
+        if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
+            return;
+        }
+        userService.logout(session.getId());
+    }
 }

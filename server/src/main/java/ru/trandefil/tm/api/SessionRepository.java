@@ -8,4 +8,6 @@ public interface SessionRepository {
 
     Session save(Session session);
 
+    void delete(String sesionId);
+
 }

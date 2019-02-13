@@ -8,4 +8,6 @@ public interface SessionService {
 
     Session saveSession(Session session);
 
+    void deleteSession(String sessionId);
+
 }

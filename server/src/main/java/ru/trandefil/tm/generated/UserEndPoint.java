@@ -27,6 +27,9 @@ public interface UserEndPoint {
     List<User> getAllUsers(@WebParam(name = "session") Session session);
 
     @WebMethod
+    void userLogout(@WebParam(name="session") Session session);
+
+    @WebMethod
     Session getSession(@WebParam(name = "userName") String userName, @WebParam(name = "password") String password);
 
 }

@@ -1,6 +1,6 @@
 <Domain>
-  <lists>
-    <lists>
+  <projects>
+    <projects>
       <id>979e2cb2-e16f-4c83-8b44-7a24faf13a41</id>
       <name>simpleProject3</name>
       <description>no description3</description>
@@ -9,8 +9,8 @@
         <name>User</name>
         <password>221068207E125B97BEB4E2D062E888B1</password>
       </user>
-    </lists>
-    <lists>
+    </projects>
+    <projects>
       <id>d6f54afe-c96b-4b73-9db1-fc70851615e0</id>
       <name>simpleProject2</name>
       <description>no description2</description>
@@ -19,8 +19,8 @@
         <name>Admin</name>
         <password>33D87FD364516F6604124FCC76FDD279</password>
       </user>
-    </lists>
-    <lists>
+    </projects>
+    <projects>
       <id>eaa14a00-8ed4-4416-bbd7-9a408a0604f7</id>
       <name>simpleProject1</name>
       <description>no description1</description>
@@ -29,8 +29,8 @@
         <name>Admin</name>
         <password>33D87FD364516F6604124FCC76FDD279</password>
       </user>
-    </lists>
-  </lists>
+    </projects>
+  </projects>
   <users>
     <users>
       <id>48575907-77b3-465a-8ef9-7885c5cecaba</id>

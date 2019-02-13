@@ -12,10 +12,12 @@ import ru.trandefil.tm.command.Domain;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.entity.User;
+import ru.trandefil.tm.repository.CasheRepository;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -29,15 +31,18 @@ public class AdminServiceImpl implements AdminService {
 
     private TaskService taskService;
 
-    public AdminServiceImpl(ProjectService projectService, UserService userService, TaskService taskService) {
+    private CasheRepository casheRepository;
+
+    public AdminServiceImpl(ProjectService projectService, UserService userService, TaskService taskService, CasheRepository casheRepository) {
         this.projectService = projectService;
         this.userService = userService;
         this.taskService = taskService;
+        this.casheRepository = casheRepository;
     }
 
     @Override
     public void saveBin() {
-        try(OutputStream outputStream = new FileOutputStream("data.bin")){
+        try (OutputStream outputStream = new FileOutputStream("data.bin")) {
             List<Project> projectList = projectService.getAll();
             List<User> userList = userService.getAll();
             List<Task> taskList = taskService.getAll();
@@ -53,7 +58,7 @@ public class AdminServiceImpl implements AdminService {
             objectOutputStream.writeObject(taskArray);
             objectOutputStream.close();
             logger.info("success");
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -65,7 +70,11 @@ public class AdminServiceImpl implements AdminService {
             Project[] projects = (Project[]) objectInputStream.readObject();
             User[] users = (User[]) objectInputStream.readObject();
             Task[] tasks = (Task[]) objectInputStream.readObject();
-
+            Domain binDomain = new Domain();
+            binDomain.setUsers(Arrays.asList(users));
+            binDomain.setTasks(Arrays.asList(tasks));
+            binDomain.setProjects(Arrays.asList(projects));
+            casheRepository.saveBin(binDomain);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("is empty.");
             e.printStackTrace();
@@ -92,21 +101,33 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void saveJson() {
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<Project> projectList = projectService.getAll();
+            List<User> userList = userService.getAll();
+            List<Task> taskList = taskService.getAll();
+            Domain domain = new Domain();
+            domain.setProjects(projectList);
+            domain.setTasks(taskList);
+            domain.setUsers(userList);
+            try {
+                final String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(domain);
+                Files.write(Paths.get("data.json"), json.getBytes());
+            } catch (IOException e) {
 
+                e.printStackTrace();
+            }
     }
 
     @Override
     public void loadJson() {
-/*        try {
+        try {
             final ObjectMapper objectMapper = new ObjectMapper();
             final String xmlString = new String(Files.readAllBytes(Paths.get("data.json")));
             final Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
-            return objectFactory;
         } catch (IOException e) {
             System.out.println("is empty.");
             e.printStackTrace();
         }
-        return null;*/
     }
 
     @Override

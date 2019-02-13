@@ -37,7 +37,7 @@ public class DataXmlSaveCommand extends AbstractCommand {
         final List<User> userList = userService.getAll();
         final List<Task> taskList = taskService.getAll();
         final Domain objectFactory = new Domain();
-        objectFactory.setLists(projectList);
+        objectFactory.setProjects(projectList);
         objectFactory.setTasks(taskList);
         objectFactory.setUsers(userList);
         final ObjectMapper objectMapper = new XmlMapper();

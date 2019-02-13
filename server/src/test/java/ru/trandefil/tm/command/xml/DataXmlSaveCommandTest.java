@@ -33,7 +33,7 @@ public class DataXmlSaveCommandTest {
         final List<User> userList = userService.getAll();
         final List<Task> taskList = taskService.getAll();
         Domain objectFactory = new Domain();
-        objectFactory.setLists(projectList);
+        objectFactory.setProjects(projectList);
         objectFactory.setTasks(taskList);
         objectFactory.setUsers(userList);
         ObjectMapper objectMapper = new XmlMapper();

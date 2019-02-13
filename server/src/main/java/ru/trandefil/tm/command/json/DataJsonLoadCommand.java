@@ -21,17 +21,7 @@ public class DataJsonLoadCommand extends AbstractCommand {
     @Override
     @WebMethod
     public void execute() {
-/*        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String xmlString = new String(Files.readAllBytes(Paths.get("data.json")));
-            Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
-            printProjectCollection(objectFactory.getLists(), getServiceLocator().getSession());
-            printUserCollection(objectFactory.getUsers(), getServiceLocator().getSession());
-            printTaskCollection(objectFactory.getTasks(), getServiceLocator().getSession());
-        } catch (IOException e) {
-            System.out.println("is empty.");
-            e.printStackTrace();
-        }*/
+
     }
 
     @Override

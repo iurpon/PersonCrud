@@ -1,7 +1,9 @@
 package ru.trandefil.tm.command.json;
 
 import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.generated.FileEndPoint;
+import ru.trandefil.tm.generated.Session;
 
 public class DataJsonLoadCommand extends AbstractCommand {
 
@@ -12,16 +14,14 @@ public class DataJsonLoadCommand extends AbstractCommand {
 
     @Override
     public String description() {
-        return "load json from file and covert to Object";
+        return "load json from file and cache it. Admin only,";
     }
 
     @Override
     public void execute() {
- /*        final FileEndPoint fileEndPoint = getServiceLocator().getFileEndPoint();
-       final Domain domain = fileEndPoint.loadJson();
-        domain.getProjectList().forEach(System.out::println);
-        domain.getTaskList().forEach(System.out::println);
-        domain.getUserList().forEach(System.out::println);*/
+        final AdminEndPoint adminEndPoint = getServiceLocator().getAdminEndPoint();
+        final Session session = getServiceLocator().getSession();
+        adminEndPoint.saveJson(session);
     }
 
     @Override

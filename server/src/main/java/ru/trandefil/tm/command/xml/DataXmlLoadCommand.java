@@ -20,7 +20,7 @@ public class DataXmlLoadCommand extends AbstractCommand {
             ObjectMapper objectMapper = new XmlMapper();
             String xmlString = new String(Files.readAllBytes(Paths.get("data.xml")));
             Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
-            printProjectCollection(objectFactory.getLists(), getServiceLocator().getSession());
+            printProjectCollection(objectFactory.getProjects(), getServiceLocator().getSession());
             printUserCollection(objectFactory.getUsers(), getServiceLocator().getSession());
             printTaskCollection(objectFactory.getTasks(), getServiceLocator().getSession());
         } catch (IOException e) {

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Domain {
 
-    private List<Project> lists;
+    private List<Project> projects;
 
     private List<User> users;
 
@@ -17,18 +17,18 @@ public class Domain {
     public Domain() {
     }
 
-    public Domain(List<Project> lists, List<User> users, List<Task> tasks) {
-        this.lists = lists;
+    public Domain(List<Project> projects, List<User> users, List<Task> tasks) {
+        this.projects = projects;
         this.users = users;
         this.tasks = tasks;
     }
 
-    public List<Project> getLists() {
-        return lists;
+    public List<Project> getProjects() {
+        return projects;
     }
 
-    public void setLists(List<Project> lists) {
-        this.lists = lists;
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     public List<User> getUsers() {

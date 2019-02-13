@@ -1,12 +1,16 @@
 package ru.trandefil.tm.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import ru.trandefil.tm.command.AbstractCommandTest;
+import ru.trandefil.tm.command.Domain;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.entity.User;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -66,10 +70,34 @@ public class AdminServiceImplTest extends AbstractCommandTest {
 
     @Test
     public void saveJson() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Project> projectList = projectService.getAll();
+        List<User> userList = userService.getAll();
+        List<Task> taskList = taskService.getAll();
+        Domain domain = new Domain();
+        domain.setProjects(projectList);
+        domain.setTasks(taskList);
+        domain.setUsers(userList);
+        try {
+            final String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(domain);
+            Files.write(Paths.get("data.json"), json.getBytes());
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
     }
 
     @Test
     public void loadJson() {
+        try {
+            final ObjectMapper objectMapper = new ObjectMapper();
+            final String xmlString = new String(Files.readAllBytes(Paths.get("data.json")));
+            System.out.println(xmlString);
+            final Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
+        } catch (IOException e) {
+            System.out.println("is empty.");
+            e.printStackTrace();
+        }
     }
 
     @Test

@@ -44,7 +44,7 @@
                                     <wsdl>http://localhost:8080/taskEndPoint?wsdl</wsdl>
                                 </wsdlOption>
                                 <wsdlOption>
-                                    <wsdl>http://localhost:8080/fileEndPoint?wsdl</wsdl>
+                                    <wsdl>http://localhost:8080/adminEndPoint?wsdl</wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>

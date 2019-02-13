@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
     "id"
 })
 @XmlSeeAlso({
-    BaseNamedEntity.class
+    Session.class
 })
 public abstract class BaseEntity {
 

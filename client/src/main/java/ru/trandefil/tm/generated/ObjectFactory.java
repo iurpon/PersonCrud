@@ -195,35 +195,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Domain }
+     * Create an instance of {@link Session }
      * 
      */
-    public Domain createDomain() {
-        return new Domain();
-    }
-
-    /**
-     * Create an instance of {@link Project }
-     * 
-     */
-    public Project createProject() {
-        return new Project();
-    }
-
-    /**
-     * Create an instance of {@link Task }
-     * 
-     */
-    public Task createTask() {
-        return new Task();
-    }
-
-    /**
-     * Create an instance of {@link User }
-     * 
-     */
-    public User createUser() {
-        return new User();
+    public Session createSession() {
+        return new Session();
     }
 
     /**

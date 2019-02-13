@@ -17,8 +17,8 @@ public class DataJsonLoadCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        final FileEndPoint fileEndPoint = getServiceLocator().getFileEndPoint();
-/*        final Domain domain = fileEndPoint.loadJson();
+ /*        final FileEndPoint fileEndPoint = getServiceLocator().getFileEndPoint();
+       final Domain domain = fileEndPoint.loadJson();
         domain.getProjectList().forEach(System.out::println);
         domain.getTaskList().forEach(System.out::println);
         domain.getUserList().forEach(System.out::println);*/

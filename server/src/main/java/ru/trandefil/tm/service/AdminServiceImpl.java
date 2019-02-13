@@ -46,11 +46,12 @@ public class AdminServiceImpl implements AdminService {
             projectList.toArray(projectArray);
             userList.toArray(userArray);
             taskList.toArray(taskArray);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("data.bin"));
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             objectOutputStream.writeObject(projectArray);
             objectOutputStream.writeObject(userArray);
             objectOutputStream.writeObject(taskArray);
             objectOutputStream.close();
+            logger.info("success");
         }catch (IOException e){
             e.printStackTrace();
         }

@@ -25,9 +25,9 @@ public class DataJsonLoadCommand extends AbstractCommand {
             ObjectMapper objectMapper = new ObjectMapper();
             String xmlString = new String(Files.readAllBytes(Paths.get("data.json")));
             Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
-            printProjectCollection(objectFactory.getProjectList(), getServiceLocator().getSession());
-            printUserCollection(objectFactory.getUserList(), getServiceLocator().getSession());
-            printTaskCollection(objectFactory.getTaskList(), getServiceLocator().getSession());
+            printProjectCollection(objectFactory.getLists(), getServiceLocator().getSession());
+            printUserCollection(objectFactory.getUsers(), getServiceLocator().getSession());
+            printTaskCollection(objectFactory.getTasks(), getServiceLocator().getSession());
         } catch (IOException e) {
             System.out.println("is empty.");
             e.printStackTrace();

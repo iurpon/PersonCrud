@@ -1,6 +1,8 @@
 package ru.trandefil.tm.command;
 
 import org.junit.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.trandefil.tm.api.*;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
@@ -18,6 +20,8 @@ import static ru.trandefil.tm.command.UserCommandTestData.ADMIN;
 import static ru.trandefil.tm.command.UserCommandTestData.USER;
 
 public class AbstractCommandTest {
+
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     protected UserRepository userRepository = new UserRepositoryImpl();
 

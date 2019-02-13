@@ -1,6 +1,6 @@
 <Domain>
-  <projectList>
-    <projectList>
+  <lists>
+    <lists>
       <id>979e2cb2-e16f-4c83-8b44-7a24faf13a41</id>
       <name>simpleProject3</name>
       <description>no description3</description>
@@ -9,8 +9,8 @@
         <name>User</name>
         <password>221068207E125B97BEB4E2D062E888B1</password>
       </user>
-    </projectList>
-    <projectList>
+    </lists>
+    <lists>
       <id>d6f54afe-c96b-4b73-9db1-fc70851615e0</id>
       <name>simpleProject2</name>
       <description>no description2</description>
@@ -19,8 +19,8 @@
         <name>Admin</name>
         <password>33D87FD364516F6604124FCC76FDD279</password>
       </user>
-    </projectList>
-    <projectList>
+    </lists>
+    <lists>
       <id>eaa14a00-8ed4-4416-bbd7-9a408a0604f7</id>
       <name>simpleProject1</name>
       <description>no description1</description>
@@ -29,22 +29,22 @@
         <name>Admin</name>
         <password>33D87FD364516F6604124FCC76FDD279</password>
       </user>
-    </projectList>
-  </projectList>
-  <userList>
-    <userList>
+    </lists>
+  </lists>
+  <users>
+    <users>
       <id>48575907-77b3-465a-8ef9-7885c5cecaba</id>
       <name>User</name>
       <password>221068207E125B97BEB4E2D062E888B1</password>
-    </userList>
-    <userList>
+    </users>
+    <users>
       <id>99cb94b4-8c93-47f0-9830-28285dbfc818</id>
       <name>Admin</name>
       <password>33D87FD364516F6604124FCC76FDD279</password>
-    </userList>
-  </userList>
-  <taskList>
-    <taskList>
+    </users>
+  </users>
+  <tasks>
+    <tasks>
       <id>f330822e-1c23-4402-8f86-a5cd8b712b3c</id>
       <name>TASK3</name>
       <description>TASK1DESC3</description>
@@ -70,8 +70,8 @@
         <name>User</name>
         <password>221068207E125B97BEB4E2D062E888B1</password>
       </executer>
-    </taskList>
-    <taskList>
+    </tasks>
+    <tasks>
       <id>b96f4ad3-fa39-4187-8c19-062e74fe2ba7</id>
       <name>TASK1</name>
       <description>TASK1DESC1</description>
@@ -97,8 +97,8 @@
         <name>Admin</name>
         <password>33D87FD364516F6604124FCC76FDD279</password>
       </executer>
-    </taskList>
-    <taskList>
+    </tasks>
+    <tasks>
       <id>fdffaf05-63b1-4c3d-8e95-629c0e4886d5</id>
       <name>TASK2</name>
       <description>TASK1DESC2</description>
@@ -124,6 +124,6 @@
         <name>User</name>
         <password>221068207E125B97BEB4E2D062E888B1</password>
       </executer>
-    </taskList>
-  </taskList>
+    </tasks>
+  </tasks>
 </Domain>

@@ -17,6 +17,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class AdminServiceImpl implements AdminService {
 
@@ -59,6 +60,16 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void loadBin() {
+        try (InputStream inputStream = new FileInputStream("data.bin")) {
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            Project[] projects = (Project[]) objectInputStream.readObject();
+            User[] users = (User[]) objectInputStream.readObject();
+            Task[] tasks = (Task[]) objectInputStream.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("is empty.");
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -32,9 +32,9 @@ public class DataJsonSaveCommandTest {
         final List<User> userList = userService.getAll();
         final List<Task> taskList = taskService.getAll();
         final Domain objectFactory = new Domain();
-        objectFactory.setProjectList(projectList);
-        objectFactory.setTaskList(taskList);
-        objectFactory.setUserList(userList);
+        objectFactory.setLists(projectList);
+        objectFactory.setTasks(taskList);
+        objectFactory.setUsers(userList);
         final ObjectMapper objectMapper = new ObjectMapper();
         try {
             final String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectFactory);

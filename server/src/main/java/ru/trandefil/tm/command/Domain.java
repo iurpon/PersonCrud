@@ -8,43 +8,43 @@ import java.util.List;
 
 public class Domain {
 
-    private List<Project> projectList;
+    private List<Project> lists;
 
-    private List<User> userList;
+    private List<User> users;
 
-    private List<Task> taskList;
+    private List<Task> tasks;
 
     public Domain() {
     }
 
-    public Domain(List<Project> projectList, List<User> userList, List<Task> taskList) {
-        this.projectList = projectList;
-        this.userList = userList;
-        this.taskList = taskList;
+    public Domain(List<Project> lists, List<User> users, List<Task> tasks) {
+        this.lists = lists;
+        this.users = users;
+        this.tasks = tasks;
     }
 
-    public List<Project> getProjectList() {
-        return projectList;
+    public List<Project> getLists() {
+        return lists;
     }
 
-    public void setProjectList(List<Project> projectList) {
-        this.projectList = projectList;
+    public void setLists(List<Project> lists) {
+        this.lists = lists;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
-    public List<Task> getTaskList() {
-        return taskList;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public void setTaskList(List<Task> taskList) {
-        this.taskList = taskList;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
 }

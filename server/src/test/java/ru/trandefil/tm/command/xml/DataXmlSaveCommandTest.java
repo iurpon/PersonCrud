@@ -33,9 +33,9 @@ public class DataXmlSaveCommandTest {
         final List<User> userList = userService.getAll();
         final List<Task> taskList = taskService.getAll();
         Domain objectFactory = new Domain();
-        objectFactory.setProjectList(projectList);
-        objectFactory.setTaskList(taskList);
-        objectFactory.setUserList(userList);
+        objectFactory.setLists(projectList);
+        objectFactory.setTasks(taskList);
+        objectFactory.setUsers(userList);
         ObjectMapper objectMapper = new XmlMapper();
         String xml = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectFactory);
         Files.write(Paths.get("data.xml"), xml.getBytes());*/

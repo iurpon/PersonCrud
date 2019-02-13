@@ -16,8 +16,8 @@ public class DataJsonLoadCommandTest {
             String xmlString = new String(Files.readAllBytes(Paths.get("data.json")));
             ObjectMapper objectMapper = new ObjectMapper();
             Domain objectFactory = objectMapper.readValue(xmlString, Domain.class);
-            objectFactory.getProjectList().forEach(System.out::println);
-//        objectFactory.getTaskList().forEach(System.out::println);
-            objectFactory.getUserList().forEach(System.out::println);
+            objectFactory.getLists().forEach(System.out::println);
+//        objectFactory.getTasks().forEach(System.out::println);
+            objectFactory.getUsers().forEach(System.out::println);
     }
 }

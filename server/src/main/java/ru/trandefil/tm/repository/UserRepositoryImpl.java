@@ -3,6 +3,7 @@ package ru.trandefil.tm.repository;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.User;
+import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.ArrayList;

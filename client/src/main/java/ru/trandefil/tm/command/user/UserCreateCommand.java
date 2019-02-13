@@ -26,7 +26,7 @@ public class UserCreateCommand extends AbstractCommand {
 
     @Override
     public String description() {
-        return "create new user";
+        return "create new user. Admin only";
     }
 
     @Override

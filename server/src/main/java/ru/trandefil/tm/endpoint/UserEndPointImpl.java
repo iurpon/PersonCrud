@@ -37,7 +37,6 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("bad signature.");
             return null;
         }
-
         if (!session.getRole().equals(Role.ADMIN)) {
             System.out.println("not authorized  to create new user.");
             return null;
@@ -81,4 +80,17 @@ public class UserEndPointImpl implements UserEndPoint {
         userService.logout(session.getId());
     }
 
+    @Override
+    @WebMethod
+    public User updateUser(User user, Session session) {
+        if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
+            return null;
+        }
+        if (!session.getRole().equals(Role.ADMIN) || !user.getId().equals(session.getUserId())) {
+            System.out.println("not authorized  to create new user.");
+            return null;
+        }
+        return userService.save(user);
+    }
 }

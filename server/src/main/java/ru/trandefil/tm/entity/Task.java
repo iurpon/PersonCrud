@@ -82,14 +82,11 @@ public class Task extends BaseNamedEntity {
 
     @Override
     public String toString() {
-        return "task{" +
-/*                "description='" + description + '\'' +
-                ", begin=" + (begin == null ? "Didn't start" : DateFormatterUtil.format(begin)) +
-                ", end=" + (end == null ? "Still in production" : DateFormatterUtil.format(end)) +
-                ", project=" + project.getName() +*/
-                ", assignee=" + assigneeId +
-                ", executer=" + executerId +
-                /*                ", id='" + id + '\'' +*/
+        return "Task{" +
+                "begin=" + begin +
+                ", end=" + end +
+                ", assigneeId='" + assigneeId + '\'' +
+                ", executerId='" + executerId + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

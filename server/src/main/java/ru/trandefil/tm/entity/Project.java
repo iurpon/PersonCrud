@@ -47,10 +47,7 @@ public class Project extends BaseNamedEntity {
     @Override
     public String toString() {
         return "Project{" +
-/*                "description='" + description + '\'' +
-                ", user=" + user +
-                ", id='" + id + '\'' +*/
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 '}';
     }
 

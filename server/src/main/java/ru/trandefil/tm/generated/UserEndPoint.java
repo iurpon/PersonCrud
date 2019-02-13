@@ -15,6 +15,9 @@ public interface UserEndPoint {
     User deleteUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
     @WebMethod
+    User updateUser(@WebParam(name = "user") User user, @WebParam(name = "session") Session session);
+
+    @WebMethod
     User saveUser(@WebParam(name = "name") String name,
                   @WebParam(name = "pass") String pass,
                   @WebParam(name = "role") String role,

@@ -38,8 +38,7 @@ public class User extends BaseNamedEntity {
     @Override
     public String toString() {
         return "User{" +
-/*                "password='" + password + '\'' +
-                ", id='" + id + '\'' +*/
+                "role=" + role +
                 ", name='" + name + '\'' +
                 '}';
     }

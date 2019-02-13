@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
         }
         User updating = userRepository.getById(user.getId());
         if(updating == null){
-            System.out.println("wrong is updating user");
+            System.out.println("wrong updating user");
             return null;
         }
         return userRepository.save(user);
@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
         if("ADMIN".equals(role) || "USER".equals(role)){
             Role newRole = Enum.valueOf(Role.class, role);
             User newUser = new User(null, name, pass, newRole);
-            System.out.println("created user with role : " + role.toUpperCase());
+            System.out.println("created user : " + newUser);
             return save(newUser);
         }
         System.out.println("bad user role.");

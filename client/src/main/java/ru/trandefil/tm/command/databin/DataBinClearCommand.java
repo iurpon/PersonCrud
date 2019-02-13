@@ -18,9 +18,8 @@ public class DataBinClearCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-/*        File file = new File("data.bin");
-        file.delete();*/
-//        AbstractWebServerService.
+        File file = new File("data.bin");
+        file.delete();
     }
 
     @Override

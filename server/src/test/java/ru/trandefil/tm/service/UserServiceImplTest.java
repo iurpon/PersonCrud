@@ -28,7 +28,7 @@ public class UserServiceImplTest extends AbstractCommandTest {
 
     @Test
     public void save() {
-        User newUser = new User(UUIDUtil.getUniqueString(), "newUser", "newPass", Role.USER);
+        User newUser = new User(null, "newUser", "newPass", Role.USER);
         userService.save(newUser );
         Assert.assertEquals(userService.getAll().size(), 3);
     }

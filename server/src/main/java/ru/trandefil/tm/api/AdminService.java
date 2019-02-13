@@ -2,23 +2,23 @@ package ru.trandefil.tm.api;
 
 import ru.trandefil.tm.command.Domain;
 
-public interface FileService {
+public interface AdminService {
 
     void saveBin();
 
-    Domain loadBin();
+    void loadBin();
 
     void clearBin();
 
     void saveXml();
 
-    Domain loadXml();
+    void loadXml();
 
     void clearXml();
 
     void saveJson();
 
-    Domain loadJson();
+    void loadJson();
 
     void clearJson();
 

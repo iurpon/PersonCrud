@@ -19,4 +19,6 @@ public interface ProjectService {
 
     Project getByName(String projectName, String userId);
 
+    List<Project> getAll();
+
 }

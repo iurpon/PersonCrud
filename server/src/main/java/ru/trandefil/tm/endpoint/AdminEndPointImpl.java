@@ -1,6 +1,7 @@
 package ru.trandefil.tm.endpoint;
 
 import ru.trandefil.tm.api.AdminService;
+import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
@@ -24,6 +25,10 @@ public class AdminEndPointImpl implements AdminEndPoint {
             System.out.println("bad signature.");
             return ;
         }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
+            return ;
+        }
         adminService.saveBin();
     }
 
@@ -32,6 +37,10 @@ public class AdminEndPointImpl implements AdminEndPoint {
     public void loadBin(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
+            return ;
+        }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
             return ;
         }
          adminService.loadBin();
@@ -44,6 +53,10 @@ public class AdminEndPointImpl implements AdminEndPoint {
             System.out.println("bad signature.");
             return ;
         }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
+            return ;
+        }
         adminService.clearBin();
     }
 
@@ -52,6 +65,10 @@ public class AdminEndPointImpl implements AdminEndPoint {
     public void saveXml(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
+            return ;
+        }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
             return ;
         }
         adminService.saveXml();
@@ -64,6 +81,10 @@ public class AdminEndPointImpl implements AdminEndPoint {
             System.out.println("bad signature.");
             return ;
         }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
+            return ;
+        }
         adminService.loadXml();
     }
 
@@ -74,12 +95,24 @@ public class AdminEndPointImpl implements AdminEndPoint {
             System.out.println("bad signature.");
             return ;
         }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
+            return ;
+        }
         adminService.clearXml();
     }
 
     @Override
     @WebMethod
     public void saveJson(Session session) {
+        if (!SignatureUtil.checkCorrectSession(session)) {
+            System.out.println("bad signature.");
+            return ;
+        }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
+            return ;
+        }
         adminService.saveJson();
     }
 
@@ -90,6 +123,10 @@ public class AdminEndPointImpl implements AdminEndPoint {
             System.out.println("bad signature.");
             return ;
         }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
+            return ;
+        }
         adminService.loadJson();
     }
 
@@ -98,6 +135,10 @@ public class AdminEndPointImpl implements AdminEndPoint {
     public void clearJson(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
+            return ;
+        }
+        if (!session.getRole().equals(Role.ADMIN) ) {
+            System.out.println("not authorized  to do this command.");
             return ;
         }
         adminService.clearJson();

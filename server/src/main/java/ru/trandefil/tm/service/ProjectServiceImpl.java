@@ -82,4 +82,9 @@ public class ProjectServiceImpl implements ProjectService {
         return byName;
     }
 
+    @Override
+    public List<Project> getAll() {
+        return projectRepository.getAll();
+    }
+
 }

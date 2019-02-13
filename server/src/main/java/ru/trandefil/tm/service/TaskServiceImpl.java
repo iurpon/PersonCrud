@@ -65,4 +65,9 @@ public class TaskServiceImpl implements TaskService {
         return byName;
     }
 
+    @Override
+    public List<Task> getAll() {
+        return taskRepository.getAll();
+    }
+
 }

@@ -3,10 +3,7 @@ package ru.trandefil.tm;
 import org.reflections.Reflections;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.endpoint.FileEndPointImplService;
-import ru.trandefil.tm.endpoint.ProjectEndPointImplService;
-import ru.trandefil.tm.endpoint.TaskEndPointImplService;
-import ru.trandefil.tm.endpoint.UserEndPointImplService;
+import ru.trandefil.tm.endpoint.*;
 import ru.trandefil.tm.generated.*;
 import ru.trandefil.tm.service.TerminalService;
 
@@ -28,7 +25,7 @@ public class Bootstrap implements ServiceLocator {
 
     private final UserEndPoint userEndPoint = new UserEndPointImplService().getUserEndPointImplPort();
 
-    private final FileEndPoint fileEndPoint = new FileEndPointImplService().getFileEndPointImplPort();
+    private final AdminEndPoint adminEndPoint = new AdminEndPointImplService().getAdminEndPointImplPort();
 
     private final Map<String, AbstractCommand> commandMap = new HashMap<>();
 
@@ -41,8 +38,8 @@ public class Bootstrap implements ServiceLocator {
     }
 
     @Override
-    public FileEndPoint getFileEndPoint() {
-        return fileEndPoint;
+    public AdminEndPoint getAdminEndPoint() {
+        return adminEndPoint;
     }
 
     @Override

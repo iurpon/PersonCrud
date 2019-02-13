@@ -16,4 +16,6 @@ public interface TaskService {
 
     Task getByName(String name, String userId);
 
+    List<Task> getAll();
+
 }

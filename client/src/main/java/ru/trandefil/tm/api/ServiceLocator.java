@@ -18,7 +18,7 @@ public interface ServiceLocator {
 
     UserEndPoint getUserEndPoint();
 
-    FileEndPoint getFileEndPoint();
+    AdminEndPoint getAdminEndPoint();
 
     Session getSession();
 

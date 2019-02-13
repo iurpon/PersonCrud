@@ -41,7 +41,7 @@ public class Bootstrap implements ServiceLocator {
 
     private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
 
-    private final AdminService adminService = new AdminServiceImpl();
+    private final AdminService adminService = new AdminServiceImpl(projectService,userService,taskService);
 
     private final AdminEndPoint adminEndPoint = new AdminEndPointImpl(adminService);
 

@@ -48,6 +48,7 @@ public class Project extends BaseNamedEntity {
     public String toString() {
         return "Project{" +
                 "name='" + name + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 

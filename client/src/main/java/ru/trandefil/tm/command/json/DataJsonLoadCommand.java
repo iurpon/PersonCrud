@@ -21,7 +21,7 @@ public class DataJsonLoadCommand extends AbstractCommand {
     public void execute() {
         final AdminEndPoint adminEndPoint = getServiceLocator().getAdminEndPoint();
         final Session session = getServiceLocator().getSession();
-        adminEndPoint.saveJson(session);
+        adminEndPoint.loadJson(session);
     }
 
     @Override

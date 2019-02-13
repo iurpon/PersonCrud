@@ -40,6 +40,7 @@ public class User extends BaseNamedEntity {
         return "User{" +
                 "role=" + role +
                 ", name='" + name + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 

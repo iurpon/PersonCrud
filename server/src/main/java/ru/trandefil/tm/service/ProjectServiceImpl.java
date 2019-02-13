@@ -25,8 +25,13 @@ public class ProjectServiceImpl implements ProjectService {
             return projectRepository.save(project);
         }
         Project updating = projectRepository.getById(project.getId());
+        if(updating == null){
+            System.out.println("id incorrect. project save fail.");
+            return null;
+        }
         updating.setName(project.getName());
         updating.setDescription(project.getDescription());
+        projectRepository.save(updating);
         System.out.format("updated project : %s",project.getName());
         return updating;
     }

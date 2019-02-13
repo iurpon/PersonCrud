@@ -1,5 +1,7 @@
 package ru.trandefil.tm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 public abstract class BaseEntity implements Serializable {
@@ -22,6 +24,7 @@ public abstract class BaseEntity implements Serializable {
         this.id = id;
     }
 
+    @JsonIgnore
     public boolean isNew(){
         return id == null;
     }

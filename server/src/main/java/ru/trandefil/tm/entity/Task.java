@@ -83,12 +83,8 @@ public class Task extends BaseNamedEntity {
     @Override
     public String toString() {
         return "Task{" +
-                "begin=" + begin +
-                ", end=" + end +
-                ", assigneeId='" + assigneeId + '\'' +
-                ", executerId='" + executerId + '\'' +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
-
 }

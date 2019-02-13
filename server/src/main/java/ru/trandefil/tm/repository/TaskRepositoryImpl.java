@@ -9,8 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import static ru.trandefil.tm.repository.ProjectRepositoryImpl.PROJECT1;
-import static ru.trandefil.tm.repository.ProjectRepositoryImpl.PROJECT2;
+import static ru.trandefil.tm.repository.ProjectRepositoryImpl.*;
 import static ru.trandefil.tm.repository.UserRepositoryImpl.ADMIN;
 import static ru.trandefil.tm.repository.UserRepositoryImpl.USER;
 
@@ -25,7 +24,7 @@ public class TaskRepositoryImpl implements TaskRepository {
             "TASK2", "TASK1DESC2", null, null, PROJECT1.getId(), ADMIN.getId(), USER.getId());
 
     public static final Task TASK3 = new Task(UUIDUtil.getUniqueString(),
-            "TASK3", "TASK1DESC3", null, null, PROJECT2.getId(), USER.getId(), USER.getId());
+            "TASK3", "TASK1DESC3", null, null, PROJECT3.getId(), USER.getId(), USER.getId());
 
     {
         tasks.put(TASK1.getId(),TASK1);
@@ -53,10 +52,7 @@ public class TaskRepositoryImpl implements TaskRepository {
                 .filter(t -> t.getName().equals(name))
                 .findAny()
                 .orElse(null);
-        if(removing == null){
-            return null;
-        }
-        return tasks.remove(removing.getId());
+        return removing;
     }
 
     public List<Task> getAll() {

@@ -44,7 +44,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task deleteByName(String name, String userId) {
-        Task removing = taskRepository.deleteByName(name);
+        Task removing = taskRepository.getByName(name);
         if(removing == null){
             System.out.println("wrong task name.");
             return null;
@@ -53,11 +53,16 @@ public class TaskServiceImpl implements TaskService {
             System.out.println("Only creator can delete task.");
             return null;
         }
-        return removing;
+        return taskRepository.delete(removing);
     }
 
     public Task getByName(String name, String userId) {
-        return taskRepository.getByName(name);
+        Task byName = taskRepository.getByName(name);
+        if(!byName.getAssigneeId().equals(userId)){
+            System.out.println("can't update task you didn't create");
+            return null;
+        }
+        return byName;
     }
 
 }

@@ -74,11 +74,6 @@ public class TaskCreateCommand extends AbstractCommand {
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
-
-
-
-
-
     }
 
     @Override

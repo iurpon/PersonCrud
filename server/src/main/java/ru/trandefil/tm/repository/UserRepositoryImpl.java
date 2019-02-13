@@ -1,11 +1,16 @@
 package ru.trandefil.tm.repository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.trandefil.tm.api.UserRepository;
+import ru.trandefil.tm.command.Domain;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,13 +20,27 @@ public class UserRepositoryImpl implements UserRepository {
 
     private Map<String, User> userMap = new HashMap<>();
 
-    public static final User USER = new User(UUIDUtil.getUniqueString(), "User", "userPassword", Role.USER);//userPassword
+    /*    public static final User USER = new User(UUIDUtil.getUniqueString(), "User", "userPassword", Role.USER);//userPassword
 
-    public static final User ADMIN = new User(UUIDUtil.getUniqueString(), "Admin", "adminPassword", Role.ADMIN);//adminPassword
+        public static final User ADMIN = new User(UUIDUtil.getUniqueString(), "Admin", "adminPassword", Role.ADMIN);//adminPassword
 
+        {
+            userMap.put(USER.getId(), USER);
+            userMap.put(ADMIN.getId(), ADMIN);
+        }*/
     {
-        userMap.put(USER.getId(), USER);
-        userMap.put(ADMIN.getId(), ADMIN);
+        initFromJson();
+    }
+
+    private void initFromJson() {
+        try {
+            final ObjectMapper objectMapper = new ObjectMapper();
+            final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
+            final Domain domain = objectMapper.readValue(jsonString, Domain.class);
+            domain.getUsers().forEach(this::save);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

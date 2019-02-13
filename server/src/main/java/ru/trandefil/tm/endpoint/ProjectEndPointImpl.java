@@ -38,7 +38,6 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
         return projectService.save(project);
     }
 
-    @WebMethod
     @Override
     public List<Project> getAllProjects(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
@@ -48,7 +47,6 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
         return projectService.getAll(session.getUserId());
     }
 
-    @WebMethod
     @Override
     public Project getProjectById(String id, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
@@ -58,7 +56,6 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
         return projectService.getById(id, session.getUserId());
     }
 
-    @WebMethod
     @Override
     public void deleteProject(Project project, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
@@ -68,7 +65,6 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
         projectService.delete(project, session.getUserId());
     }
 
-    @WebMethod
     @Override
     public void deleteProjectByName(String projectName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
@@ -78,7 +74,6 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
         projectService.deleteByName(projectName, session.getUserId());
     }
 
-    @WebMethod
     @Override
     public Project getProjectByName(String projectName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {

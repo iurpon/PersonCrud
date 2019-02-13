@@ -96,8 +96,8 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("bad signature.");
             return null;
         }
-        if (!session.getRole().equals(Role.ADMIN) || !user.getId().equals(session.getUserId())) {
-            System.out.println("not authorized  to create new user.");
+        if (!session.getRole().equals(Role.ADMIN) && !user.getId().equals(session.getUserId())) {
+            System.out.println("not authorized  to update this user.");
             return null;
         }
         return userService.save(user);

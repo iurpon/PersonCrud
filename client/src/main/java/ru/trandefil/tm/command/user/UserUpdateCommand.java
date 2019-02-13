@@ -2,6 +2,7 @@ package ru.trandefil.tm.command.user;
 
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.generated.Role;
 import ru.trandefil.tm.generated.Session;
 import ru.trandefil.tm.generated.User;
 import ru.trandefil.tm.generated.UserEndPoint;
@@ -45,8 +46,23 @@ public class UserUpdateCommand extends AbstractCommand {
             final String newPass = getNotNullString(terminalService,"enter new pass");
             updating.setName(newName);
             updating.setPassword(newPass);
-//            userEndPoint
         }
+        if(session.getRole().equals(Role.ADMIN)){
+            String role = getNotNullString(terminalService,"enter Role(ADMIN/USER)");
+            role = role.trim().toUpperCase();
+            if(!role.equals("ADMIN") && !role.equals("USER")){
+                System.out.println("bad role.");
+                return;
+            }
+            updating.setRole(Enum.valueOf(Role.class,role));
+        }
+        User updated = userEndPoint.updateUser(updating,session);
+        if(updated == null){
+            System.out.println("bad updating.");
+            return;
+        }
+        System.out.println("update succesfull.");
+
     }
 
     @Override

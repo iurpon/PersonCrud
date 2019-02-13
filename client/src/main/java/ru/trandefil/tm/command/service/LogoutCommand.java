@@ -33,7 +33,7 @@ public class LogoutCommand extends AbstractCommand {
 
     @Override
     public boolean secure() {
-        return false;
+        return true;
     }
 
 }

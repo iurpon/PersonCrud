@@ -27,7 +27,16 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("bad signature.");
             return null;
         }
-        return userService.deleteByName(name);
+        User removing = userService.getByName(name);
+        if(removing == null){
+            return null;
+        }
+        if (!session.getRole().equals(Role.ADMIN) && !removing.getId().equals(session.getUserId())) {
+            System.out.println("not authorized  to delete user.");
+            return null;
+        }
+        userService.delete(removing);
+        return removing;
     }
 
     @Override

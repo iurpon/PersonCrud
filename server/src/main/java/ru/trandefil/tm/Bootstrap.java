@@ -9,7 +9,10 @@ import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
-import ru.trandefil.tm.repository.*;
+import ru.trandefil.tm.repository.ProjectRepositoryImpl;
+import ru.trandefil.tm.repository.SessionRepositoryImpl;
+import ru.trandefil.tm.repository.TaskRepositoryImpl;
+import ru.trandefil.tm.repository.UserRepositoryImpl;
 import ru.trandefil.tm.service.*;
 
 import javax.xml.ws.Endpoint;
@@ -38,12 +41,9 @@ public class Bootstrap implements ServiceLocator {
 
     private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
 
-    private final CasheRepository casheRepository = new CasheRepository();
-
-    private final AdminService adminService = new AdminServiceImpl(projectService,userService,taskService,casheRepository);
+    private final AdminService adminService = new AdminServiceImpl(projectService, userService, taskService,projectRepository,userRepository,taskRepository);
 
     private final AdminEndPoint adminEndPoint = new AdminEndPointImpl(adminService);
-
 
 
     @Override

@@ -20,98 +20,14 @@ public class AdminEndPointImpl implements AdminEndPoint {
 
     @Override
     @WebMethod
-    public void saveBin(Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return ;
-        }
-        if (!session.getRole().equals(Role.ADMIN) ) {
-            System.out.println("not authorized  to do this command.");
-            return ;
-        }
-        adminService.saveBin();
-    }
-
-    @Override
-    @WebMethod
-    public void loadBin(Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return ;
-        }
-        if (!session.getRole().equals(Role.ADMIN) ) {
-            System.out.println("not authorized  to do this command.");
-            return ;
-        }
-         adminService.loadBin();
-    }
-
-    @Override
-    @WebMethod
-    public void clearBin(Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return ;
-        }
-        if (!session.getRole().equals(Role.ADMIN) ) {
-            System.out.println("not authorized  to do this command.");
-            return ;
-        }
-        adminService.clearBin();
-    }
-
-    @Override
-    @WebMethod
-    public void saveXml(Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return ;
-        }
-        if (!session.getRole().equals(Role.ADMIN) ) {
-            System.out.println("not authorized  to do this command.");
-            return ;
-        }
-        adminService.saveXml();
-    }
-
-    @Override
-    @WebMethod
-    public void loadXml(Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return ;
-        }
-        if (!session.getRole().equals(Role.ADMIN) ) {
-            System.out.println("not authorized  to do this command.");
-            return ;
-        }
-        adminService.loadXml();
-    }
-
-    @Override
-    @WebMethod
-    public void clearXml(Session session) {
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            return ;
-        }
-        if (!session.getRole().equals(Role.ADMIN) ) {
-            System.out.println("not authorized  to do this command.");
-            return ;
-        }
-        adminService.clearXml();
-    }
-
-    @Override
-    @WebMethod
     public void saveJson(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return ;
+            return;
         }
-        if (!session.getRole().equals(Role.ADMIN) ) {
+        if (!session.getRole().equals(Role.ADMIN)) {
             System.out.println("not authorized  to do this command.");
-            return ;
+            return;
         }
         adminService.saveJson();
     }
@@ -121,11 +37,11 @@ public class AdminEndPointImpl implements AdminEndPoint {
     public void loadJson(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return ;
+            return;
         }
-        if (!session.getRole().equals(Role.ADMIN) ) {
+        if (!session.getRole().equals(Role.ADMIN)) {
             System.out.println("not authorized  to do this command.");
-            return ;
+            return;
         }
         adminService.loadJson();
     }
@@ -135,11 +51,11 @@ public class AdminEndPointImpl implements AdminEndPoint {
     public void clearJson(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return ;
+            return;
         }
-        if (!session.getRole().equals(Role.ADMIN) ) {
+        if (!session.getRole().equals(Role.ADMIN)) {
             System.out.println("not authorized  to do this command.");
-            return ;
+            return;
         }
         adminService.clearJson();
     }

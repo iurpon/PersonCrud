@@ -41,10 +41,16 @@ public class Bootstrap implements ServiceLocator {
 
     private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
 
-    private final AdminService adminService = new AdminServiceImpl(projectService, userService, taskService,projectRepository,userRepository,taskRepository);
+    private final AdminService adminService = new AdminServiceImpl(projectService, userService, taskService, projectRepository, userRepository, taskRepository);
 
     private final AdminEndPoint adminEndPoint = new AdminEndPointImpl(adminService);
 
+    private final ConnectionService connectionService = new ConnectionServiceImpl();
+
+    @Override
+    public ConnectionService getConnectionService() {
+        return connectionService;
+    }
 
     @Override
     public SessionService getSessionService() {

@@ -3,8 +3,7 @@ package ru.trandefil.tm.endpoint;
 import org.junit.Test;
 import ru.trandefil.tm.entity.Role;
 
-import static org.junit.Assert.*;
-import static ru.trandefil.tm.repository.UserRepositoryImpl.ADMIN;
+import static org.junit.Assert.assertEquals;
 
 public class UserEndPointImplTest {
 
@@ -53,6 +52,5 @@ public class UserEndPointImplTest {
             return false;
         }
         return true;
-
     }
 }

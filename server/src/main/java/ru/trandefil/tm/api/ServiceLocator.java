@@ -10,4 +10,6 @@ public interface ServiceLocator {
 
     SessionService getSessionService();
 
+    ConnectionService getConnectionService();
+
 }

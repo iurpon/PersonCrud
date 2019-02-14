@@ -1,8 +1,6 @@
 package ru.trandefil.tm.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ru.trandefil.tm.api.*;
 import ru.trandefil.tm.command.Domain;
 import ru.trandefil.tm.entity.Project;
@@ -16,8 +14,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class AdminServiceImpl implements AdminService {
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final ProjectService projectService;
 
@@ -64,11 +60,11 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void saveJson() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<Project> projectList = projectService.getAll();
-        List<User> userList = userService.getAll();
-        List<Task> taskList = taskService.getAll();
-        Domain domain = new Domain();
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final List<Project> projectList = projectService.getAll();
+        final List<User> userList = userService.getAll();
+        final List<Task> taskList = taskService.getAll();
+        final Domain domain = new Domain();
         domain.setProjects(projectList);
         domain.setTasks(taskList);
         domain.setUsers(userList);
@@ -82,7 +78,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void clearJson() {
-        File file = new File("data.json");
+        final File file = new File("data.json");
         file.delete();
     }
 

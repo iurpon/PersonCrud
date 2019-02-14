@@ -31,7 +31,8 @@ public class ProjectServiceImpl implements ProjectService {
         }
         updating.setName(project.getName());
         updating.setDescription(project.getDescription());
-        projectRepository.save(updating);
+//        projectRepository.save(updating);
+        projectRepository.update(updating);
         System.out.format("updated project : %s",project.getName());
         return updating;
     }

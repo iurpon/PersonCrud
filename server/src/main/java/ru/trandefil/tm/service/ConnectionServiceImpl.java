@@ -11,13 +11,19 @@ import java.util.Properties;
 
 public class ConnectionServiceImpl implements ConnectionService {
 
+    private Connection dbConnect;
+
+    {
+        startConnection();
+    }
+
     @Override
-    public Connection getConnection() {
+    public void startConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            return null;
+            return;
         }
 
         System.out.println("MySql driver registered");
@@ -33,9 +39,13 @@ public class ConnectionServiceImpl implements ConnectionService {
             );
         } catch (IOException | SQLException e) {
             e.printStackTrace();
-            return null;
+            return;
         }
-        return connection;
+        this.dbConnect = connection;
+    }
+
+    public Connection getDbConnect() {
+        return dbConnect;
     }
 
 }

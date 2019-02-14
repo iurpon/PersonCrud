@@ -23,7 +23,11 @@ public class Bootstrap implements ServiceLocator {
 
     private final TaskRepository taskRepository = new TaskRepositoryImpl();
 
-    private final ProjectService projectService = new ProjectServiceImpl(projectRepository);
+    private final ConnectionService connectionService = new ConnectionServiceImpl();
+
+    private final ProjectRepository dbRepository = new ProjectDBRepositoryImpl(connectionService);
+
+    private final ProjectService projectService = new ProjectServiceImpl(dbRepository);
 
     private final TaskService taskService = new TaskServiceImpl(taskRepository);
 
@@ -44,8 +48,6 @@ public class Bootstrap implements ServiceLocator {
     private final AdminService adminService = new AdminServiceImpl(projectService, userService, taskService, projectRepository, userRepository, taskRepository);
 
     private final AdminEndPoint adminEndPoint = new AdminEndPointImpl(adminService);
-
-    private final ConnectionService connectionService = new ConnectionServiceImpl();
 
     @Override
     public ConnectionService getConnectionService() {

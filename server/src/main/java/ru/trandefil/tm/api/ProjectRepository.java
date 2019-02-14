@@ -20,4 +20,6 @@ public interface ProjectRepository {
 
     void clear();
 
+    Project update(Project project);
+
 }

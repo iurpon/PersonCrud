@@ -3,14 +3,9 @@ package ru.trandefil.tm.repository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.command.Domain;
-import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.util.HashUtil;
-import ru.trandefil.tm.util.UUIDUtil;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;

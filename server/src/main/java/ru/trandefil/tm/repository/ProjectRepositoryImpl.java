@@ -55,4 +55,9 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         delete(project);
     }
 
+    @Override
+    public Project update(Project project) {
+        return null;
+    }
+
 }

@@ -3,6 +3,7 @@ package ru.trandefil.tm.endpoint;
 import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Session;
+import ru.trandefil.tm.exception.SecurityAuthentificationException;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
 
@@ -23,7 +24,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     public Project saveProject(String name, String description, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         Project created = new Project(null, name, description, session.getUserId());
         return projectService.save(created);
@@ -33,7 +34,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     public Project updateProject(Project project, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         return projectService.save(project);
     }
@@ -42,7 +43,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     public List<Project> getAllProjects(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         return projectService.getAll(session.getUserId());
     }
@@ -51,7 +52,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     public Project getProjectById(String id, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         return projectService.getById(id, session.getUserId());
     }
@@ -60,7 +61,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     public void deleteProject(Project project, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         projectService.delete(project, session.getUserId());
     }
@@ -69,7 +70,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     public void deleteProjectByName(String projectName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         projectService.deleteByName(projectName, session.getUserId());
     }
@@ -78,7 +79,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
     public Project getProjectByName(String projectName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         return projectService.getByName(projectName, session.getUserId());
     }

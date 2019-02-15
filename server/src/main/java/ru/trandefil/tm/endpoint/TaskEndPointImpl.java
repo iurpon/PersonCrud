@@ -3,6 +3,7 @@ package ru.trandefil.tm.endpoint;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.Task;
+import ru.trandefil.tm.exception.SecurityAuthentificationException;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
 
@@ -55,7 +56,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
     ) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         Task newTask = new Task(id, name, desc, start, end, projectId, session.getUserId(), executorId);
         return taskService.save(newTask);
@@ -66,7 +67,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
     public Task deleteTask(Task task, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         return taskService.delete(task, session.getUserId());
     }
@@ -76,7 +77,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
     public Task deleteTaskByName(String name, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         return taskService.deleteByName(name, session.getUserId());
     }
@@ -86,7 +87,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
     public Task getTaskByName(String name, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
-            return null;
+            throw new SecurityAuthentificationException("security authentification exception.");
         }
         return taskService.getByName(name, session.getUserId());
     }

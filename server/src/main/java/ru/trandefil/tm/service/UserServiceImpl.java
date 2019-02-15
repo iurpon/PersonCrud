@@ -6,6 +6,7 @@ import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
+import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Session getSession(String userName, String userPassword) {
-        User user = userRepository.getLoginUser(userName, userPassword);
+        User user = userRepository.getLoginUser(userName, HashUtil.hashPassword(userPassword));
         if (user == null) {
             System.out.println("bad login.");
             return null;
@@ -87,7 +88,7 @@ public class UserServiceImpl implements UserService {
         role = role.trim().toUpperCase();
         if("ADMIN".equals(role) || "USER".equals(role)){
             Role newRole = Enum.valueOf(Role.class, role);
-            User newUser = new User(null, name, pass, newRole);
+            User newUser = new User(null, name, HashUtil.hashPassword(pass), newRole);
             System.out.println("created user : " + newUser);
             return save(newUser);
         }

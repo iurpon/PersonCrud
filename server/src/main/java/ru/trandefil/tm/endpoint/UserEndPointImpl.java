@@ -5,6 +5,7 @@ import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.generated.UserEndPoint;
+import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
 
 import javax.jws.WebMethod;
@@ -28,7 +29,7 @@ public class UserEndPointImpl implements UserEndPoint {
             return null;
         }
         User removing = userService.getByName(name);
-        if(removing == null){
+        if (removing == null) {
             return null;
         }
         if (!session.getRole().equals(Role.ADMIN) && !removing.getId().equals(session.getUserId())) {
@@ -50,7 +51,7 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("not authorized  to create new user.");
             return null;
         }
-        return userService.constractUser(name,pass,role);
+        return userService.constractUser(name, pass, role);
     }
 
     @Override
@@ -102,4 +103,11 @@ public class UserEndPointImpl implements UserEndPoint {
         }
         return userService.save(user);
     }
+
+    @Override
+    public Session registry(String userName, String password) {
+        userService.save(new User(null, userName, HashUtil.hashPassword(password), Role.USER));
+        return getSession(userName,password);
+    }
+
 }

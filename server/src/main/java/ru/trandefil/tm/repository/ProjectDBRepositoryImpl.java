@@ -1,4 +1,4 @@
-package ru.trandefil.tm.service;
+package ru.trandefil.tm.repository;
 
 import ru.trandefil.tm.api.ConnectionService;
 import ru.trandefil.tm.api.ProjectRepository;

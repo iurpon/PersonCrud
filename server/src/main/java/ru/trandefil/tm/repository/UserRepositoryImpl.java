@@ -17,14 +17,14 @@ public class UserRepositoryImpl implements UserRepository {
 
     private Map<String, User> userMap = new HashMap<>();
 
-    /*    public static final User USER = new User(UUIDUtil.getUniqueString(), "User", "userPassword", Role.USER);//userPassword
+/*        public static final User USER = new User(UUIDUtil.getUniqueString(), "User", "userPassword", Role.USER);//userPassword
 
         public static final User ADMIN = new User(UUIDUtil.getUniqueString(), "Admin", "adminPassword", Role.ADMIN);//adminPassword
 
         {
             userMap.put(USER.getId(), USER);
             userMap.put(ADMIN.getId(), ADMIN);
-        }*/
+        }
     {
         initFromJson();
     }
@@ -38,7 +38,7 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     @Override
     public void clear() {

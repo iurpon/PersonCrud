@@ -9,10 +9,7 @@ import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
-import ru.trandefil.tm.repository.ProjectRepositoryImpl;
-import ru.trandefil.tm.repository.SessionRepositoryImpl;
-import ru.trandefil.tm.repository.TaskRepositoryImpl;
-import ru.trandefil.tm.repository.UserRepositoryImpl;
+import ru.trandefil.tm.repository.*;
 import ru.trandefil.tm.service.*;
 
 import javax.xml.ws.Endpoint;
@@ -25,9 +22,11 @@ public class Bootstrap implements ServiceLocator {
 
     private final ConnectionService connectionService = new ConnectionServiceImpl();
 
-    private final ProjectRepository dbRepository = new ProjectDBRepositoryImpl(connectionService);
+    private final ProjectRepository dbProjectRepository = new ProjectDBRepositoryImpl(connectionService);
 
-    private final ProjectService projectService = new ProjectServiceImpl(dbRepository);
+    private final UserRepository dbUserRepository = new UserDBRepositoryImpl(connectionService);
+
+    private final ProjectService projectService = new ProjectServiceImpl(dbProjectRepository);
 
     private final TaskService taskService = new TaskServiceImpl(taskRepository);
 
@@ -39,7 +38,7 @@ public class Bootstrap implements ServiceLocator {
 
     private final SessionService sessionService = new SessionServiceImpl(sessionRepository);
 
-    private final UserService userService = new UserServiceImpl(userRepository, sessionService);
+    private final UserService userService = new UserServiceImpl(dbUserRepository, sessionService);
 
     private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
 

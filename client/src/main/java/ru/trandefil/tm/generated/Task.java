@@ -198,10 +198,4 @@ public class Task
         this.projectId = value;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }

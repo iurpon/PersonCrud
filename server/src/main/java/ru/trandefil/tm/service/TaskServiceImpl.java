@@ -27,7 +27,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task save(Task task) {
-        if(task.isNew()){
+        if (task.isNew()) {
             task.setId(UUIDUtil.getUniqueString());
             return taskRepository.save(task);
         }
@@ -41,29 +41,29 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.save(updated);*/
     }
 
-    public Task delete(Task task, String userId) {
+    public Task delete(String userId, Task task) {
         return taskRepository.delete(task);
     }
 
-    public Task deleteByName(String name, String userId) {
+    public Task deleteByName(String userId, String name) {
         Task removing = taskRepository.getByName(name);
-        if(removing == null){
+        if (removing == null) {
             System.out.println("wrong task name.");
             return null;
         }
-        if(!removing.getAssigneeId().equals(userId)){
+        if (!removing.getAssigneeId().equals(userId)) {
             System.out.println("Only creator can delete task.");
             return null;
         }
         return taskRepository.delete(removing);
     }
 
-    public Task getByName(String name, String userId) {
+    public Task getByName(String userId, String name) {
         Task byName = taskRepository.getByName(name);
-        if(byName == null){
+        if (byName == null) {
             return null;
         }
-        if(!byName.getAssigneeId().equals(userId)){
+        if (!byName.getAssigneeId().equals(userId)) {
             System.out.println("can't update task you didn't create");
             return null;
         }

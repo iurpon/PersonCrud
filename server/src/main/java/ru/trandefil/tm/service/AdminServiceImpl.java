@@ -41,21 +41,21 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void loadJson() {
-        try {
-            final ObjectMapper objectMapper = new ObjectMapper();
-            final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
-            System.out.println(jsonString);
-            final Domain domain = objectMapper.readValue(jsonString, Domain.class);
-            userRepository.clear();
-            domain.getUsers().forEach(userRepository::save);
-            projectRepository.clear();
-            domain.getProjects().forEach(projectRepository::save);
-            taskRepository.clear();
-            domain.getTasks().forEach(taskRepository::save);
-        } catch (IOException e) {
-            System.out.println("is empty.");
-            e.printStackTrace();
-        }
+            try {
+                final ObjectMapper objectMapper = new ObjectMapper();
+                final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
+                System.out.println(jsonString);
+                final Domain domain = objectMapper.readValue(jsonString, Domain.class);
+                userRepository.clear();
+                domain.getUsers().forEach(userRepository::save);
+                projectRepository.clear();
+                domain.getProjects().forEach(projectRepository::save);
+                taskRepository.clear();
+                domain.getTasks().forEach(taskRepository::save);
+            } catch (IOException e) {
+                System.out.println("is empty.");
+                e.printStackTrace();
+            }
     }
 
     @Override

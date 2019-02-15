@@ -1,7 +1,6 @@
 package ru.trandefil.tm.api;
 
 import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.entity.Session;
 
 import java.util.List;
 
@@ -13,11 +12,11 @@ public interface ProjectService {
 
     Project getById(String id, String userId);
 
-    void delete(Project project, String userId);
+    void delete(String userId, Project project);
 
-    void deleteByName(String projectName, String userId);
+    void deleteByName(String userId, String projectName);
 
-    Project getByName(String projectName, String userId);
+    Project getByName(String userId, String projectName);
 
     List<Project> getAll();
 

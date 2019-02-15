@@ -1,6 +1,6 @@
 package ru.trandefil.tm.api;
 
- import ru.trandefil.tm.entity.Task;
+import ru.trandefil.tm.entity.Task;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ public interface TaskService {
 
     Task save(Task task);
 
-    Task delete(Task task, String userId);
+    Task delete(String userId, Task task);
 
-    Task deleteByName(String name, String userId);
+    Task deleteByName(String userId, String name);
 
-    Task getByName(String name, String userId);
+    Task getByName(String userId, String name);
 
     List<Task> getAll();
 

@@ -32,7 +32,7 @@ public class TaskListCommand extends AbstractCommand {
         final TaskEndPoint taskEndPoint = getServiceLocator().getTaskEndPoint();
         final Session session = getServiceLocator().getSession();
         final List<Task> tasks = taskEndPoint.getAllTasks(session);
-        if(tasks == null){
+        if(tasks == null && tasks.size()== 0){
             System.out.println("no tasks for you.");
             return;
         }

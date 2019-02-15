@@ -35,8 +35,9 @@ public class UserDBRepositoryImpl implements UserRepository {
             if (user == null) {
                 return null;
             }
-            String deleteByName = "DELETE users WHERE user_id = ?";
+            String deleteByName = "DELETE users WHERE name = ?";
             PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(deleteByName);
+            preparedStatement.setString(1, name);
             preparedStatement.executeUpdate();
             return user;
         } catch (SQLException e) {

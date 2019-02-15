@@ -28,11 +28,13 @@ public class RegistryCommand extends AbstractCommand {
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "enter login name");
         final String userPassword = getNotNullString(terminalService, "enter login password");
-        Session session = getServiceLocator().getSession();
-        session = userEndPoint.registry(userName,userPassword);
-        if (session != null) {
-            System.out.println("Welcome");
+        final Session session = userEndPoint.registry(userName, userPassword);
+        if (session == null) {
+            System.out.println("bad registry.");
+            return;
         }
+        System.out.println("Welcome");
+        getServiceLocator().setSession(session);
     }
 
     @Override

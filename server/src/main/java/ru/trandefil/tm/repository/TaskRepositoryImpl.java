@@ -66,4 +66,9 @@ public class TaskRepositoryImpl implements TaskRepository {
     public Task getByid(String id) {
         return tasks.get(id);
     }
+
+    @Override
+    public Task update(Task task) {
+        return null;
+    }
 }

@@ -20,8 +20,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public List<Task> getAll(String userId) {
-        return taskRepository.getAll().stream()
-                .filter(t -> t.getExecuterId().equals(userId))
+        List<Task> all = taskRepository.getAll();
+        return all.stream()
+                .filter(t -> (t.getExecuterId().equals(userId) || t.getAssigneeId().equals(userId)))
                 .collect(Collectors.toList());
     }
 
@@ -30,13 +31,14 @@ public class TaskServiceImpl implements TaskService {
             task.setId(UUIDUtil.getUniqueString());
             return taskRepository.save(task);
         }
-        Task updated = taskRepository.getByid(task.getId());
+        return taskRepository.update(task);
+/*        Task updated = taskRepository.getByid(task.getId());
         updated.setBegin(task.getBegin());
         updated.setEnd(task.getEnd());
         updated.setName(task.getName());
         updated.setDescription(task.getDescription());
         updated.setExecuterId(task.getExecuterId());
-        return taskRepository.save(updated);
+        return taskRepository.save(updated);*/
     }
 
     public Task delete(Task task, String userId) {

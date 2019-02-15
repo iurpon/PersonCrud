@@ -201,9 +201,14 @@ public class Task
     @Override
     public String toString() {
         return "Task{" +
-                "begin=" + begin +
+                "assigneeId='" + assigneeId + '\'' +
+                ", begin=" + begin +
+                ", description='" + description + '\'' +
                 ", end=" + end +
+                ", executerId='" + executerId + '\'' +
+                ", projectId='" + projectId + '\'' +
                 ", name='" + name + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

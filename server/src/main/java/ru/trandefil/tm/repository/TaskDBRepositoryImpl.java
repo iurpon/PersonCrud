@@ -82,7 +82,7 @@ public class TaskDBRepositoryImpl implements TaskRepository {
                 "startDate = ?," +
                 "endDate = ?," +
                 "executor_id = ?" +
-                "where proj_id = ?";
+                "where task_id = ?";
         try {
             final PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(updateTask);
             preparedStatement.setString(1, task.getName());

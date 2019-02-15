@@ -113,7 +113,7 @@ public class TaskDBRepositoryImpl implements TaskRepository {
             if (task == null) {
                 return null;
             }
-            String deleteByName = "DELETE tasks WHERE name = ?";
+            String deleteByName = "DELETE from tasks WHERE name = ?";
             PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(deleteByName);
             preparedStatement.setString(1, name);
             preparedStatement.executeUpdate();
@@ -127,13 +127,13 @@ public class TaskDBRepositoryImpl implements TaskRepository {
 
     @Override
     public Task getByName(String name) {
-        String selectTask = "SELECT * FROM tasks WHERE name = ? ";
+        String selectTask = "SELECT * FROM tasks WHERE name = ?";
         try {
             final PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(selectTask);
             preparedStatement.setString(1, name);
             final ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                final String userId = resultSet.getString("task_id");
+                final String taskId = resultSet.getString("task_id");
                 final String incomeName = resultSet.getString("name");
                 final String desc = resultSet.getString("description");
                 final Date startDate = resultSet.getDate("startDate");
@@ -141,13 +141,15 @@ public class TaskDBRepositoryImpl implements TaskRepository {
                 final String projId = resultSet.getString("proj_id");
                 final String assigner = resultSet.getString("assigner_id");
                 final String executor = resultSet.getString("executor_id");
-                final Task task = new Task(userId, incomeName, desc, startDate, endDate, projId, assigner, executor);
+                final Task task = new Task(taskId, incomeName, desc, startDate, endDate, projId, assigner, executor);
+                logger.info("returning task : " + task);
                 return task;
             }
         } catch (SQLException e) {
             e.printStackTrace();
             logger.info("exception. getByName task failed");
         }
+        logger.info("no task found by name");
         return null;
     }
 

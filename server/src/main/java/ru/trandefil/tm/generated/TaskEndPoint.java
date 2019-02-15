@@ -16,13 +16,15 @@ public interface TaskEndPoint {
     List<Task> getAllTasks(@WebParam(name = "session") Session session);
 
     @WebMethod
-    Task saveTask(@WebParam(name = "name") String name
-            , @WebParam(name = "desc") String desc
-            , @WebParam(name = "start") Date start
-            , @WebParam(name = "end") Date end
-            , @WebParam(name = "projectId") String projectId
-            , @WebParam(name = "executorId") String executorId
-            , @WebParam(name = "session") Session session);
+    Task saveTask(
+            @WebParam(name = "id") String id,
+            @WebParam(name = "name") String name,
+            @WebParam(name = "desc") String desc,
+            @WebParam(name = "start") Date start,
+            @WebParam(name = "end") Date end,
+            @WebParam(name = "projectId") String projectId,
+            @WebParam(name = "executorId") String executorId,
+            @WebParam(name = "session") Session session);
 
     @WebMethod
     Task updateTask(@WebParam(name = "task") Task task, @WebParam(name = "session") Session session);

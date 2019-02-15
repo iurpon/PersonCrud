@@ -44,19 +44,20 @@ public class TaskEndPointImpl implements TaskEndPoint {
     @WebMethod
     @Override
     public Task saveTask(
-            @WebParam(name = "name") String name
-            , @WebParam(name = "desc") String desc
-            , @WebParam(name = "start") Date start
-            , @WebParam(name = "end") Date end
-            , @WebParam(name = "projectId") String projectId
-            , @WebParam(name = "executorId") String executorId
-            , @WebParam(name = "session") Session session
+            @WebParam(name = "id") String id,
+            @WebParam(name = "name") String name,
+            @WebParam(name = "desc") String desc,
+            @WebParam(name = "start") Date start,
+            @WebParam(name = "end") Date end,
+            @WebParam(name = "projectId") String projectId,
+            @WebParam(name = "executorId") String executorId,
+            @WebParam(name = "session") Session session
     ) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             return null;
         }
-        Task newTask = new Task(null, name, desc, start, end, projectId, session.getUserId(), executorId);
+        Task newTask = new Task(id, name, desc, start, end, projectId, session.getUserId(), executorId);
         return taskService.save(newTask);
     }
 

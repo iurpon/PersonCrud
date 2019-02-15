@@ -41,9 +41,9 @@ public class TaskUpdateCommand extends AbstractCommand {
         final ProjectEndPoint projectEndPoint = getServiceLocator().getProjectEndPoint();
         final Session session = getServiceLocator().getSession();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
-        final String taskName = getNotNullString(terminalService,"enter task name to update");
-        final Task updatingTask = taskEndPoint.getTaskByName(taskName,session);
-        if(updatingTask == null){
+        final String taskName = getNotNullString(terminalService, "enter task name to update");
+        final Task updatingTask = taskEndPoint.getTaskByName(taskName, session);
+        if (updatingTask == null) {
             System.out.println("Wrong task name");
             return;
         }
@@ -53,27 +53,25 @@ public class TaskUpdateCommand extends AbstractCommand {
             System.out.println("wrong user name.");
             return;
         }
-        final String projectName = getNotNullString(terminalService,"name of project");
-        final Project updating = projectEndPoint.getProjectByName(projectName,session);
-        if(updating == null){
+        final String projectName = getNotNullString(terminalService, "name of project");
+        final Project project = projectEndPoint.getProjectByName(projectName, session);
+        if (project == null) {
             System.out.println("wrong project name");
             return;
         }
-        final String newTaskName = getNotNullString(terminalService,"enter task name");
-        final String taskDesc = getNotNullString(terminalService,"enter task description");
-        final Date startDate = getDate(terminalService,"enter task start date");
-        final Date endDate = getDate(terminalService,"enter task end date");
-
-
+        final String newTaskName = getNotNullString(terminalService, "enter new task name");
+        final String taskDesc = getNotNullString(terminalService, "enter new task description");
+        final Date startDate = getDate(terminalService, "enter new task start date");
+        final Date endDate = getDate(terminalService, "enter new task end date");
         try {
             GregorianCalendar c = new GregorianCalendar();
             c.setTime(startDate);
             XMLGregorianCalendar start = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
             c.setTime(endDate);
             XMLGregorianCalendar end = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-            Task created = taskEndPoint.saveTask(newTaskName, taskDesc, start, end,
-                    updating.getId(), executer.getId(), session);
-            if(created == null){
+            Task created = taskEndPoint.saveTask(updatingTask.getId(),newTaskName, taskDesc, start, end,
+                    project.getId(), executer.getId(), session);
+            if (created == null) {
                 System.out.println("fail to create new task");
                 return;
             }

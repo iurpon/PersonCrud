@@ -60,6 +60,9 @@ public class TaskServiceImpl implements TaskService {
 
     public Task getByName(String name, String userId) {
         Task byName = taskRepository.getByName(name);
+        if(byName == null){
+            return null;
+        }
         if(!byName.getAssigneeId().equals(userId)){
             System.out.println("can't update task you didn't create");
             return null;

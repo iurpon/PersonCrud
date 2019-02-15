@@ -23,6 +23,9 @@
 
     <build>
         <plugins>
+
+
+
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
@@ -57,11 +60,6 @@
         </plugins>
     </build>
     <dependencies>
-<!--        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>-->
     </dependencies>
 
 

@@ -29,7 +29,7 @@ public class RegistryCommand extends AbstractCommand {
         final String userName = getNotNullString(terminalService, "enter login name");
         final String userPassword = getNotNullString(terminalService, "enter login password");
         Session session = getServiceLocator().getSession();
-        session = userEndPoint.getSession(userName, userPassword);
+        session = userEndPoint.registry(userName,userPassword);
         if (session != null) {
             System.out.println("Welcome");
         }

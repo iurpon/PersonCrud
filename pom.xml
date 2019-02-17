@@ -11,12 +11,73 @@
     <name>Root</name>
 
 
-
     <modules>
-        <module>parent</module>
         <module>client</module>
         <module>server</module>
     </modules>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <finalName>taskmanager</finalName>
+                    <archive>
+                        <manifest>
+                            <!-- Jar file entry point -->
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>../lib</classpathPrefix>
+                            <mainClass>ru.trandefil.tm.App</mainClass>
+                        </manifest>
+                    </archive>
+                    <outputDirectory>${project.build.directory}/taskmanager/bin/</outputDirectory>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>
+                        ${project.build.directory}/taskmanager/lib/
+                    </outputDirectory>
+                    <overWriteReleases>false</overWriteReleases>
+                    <overWriteSnapshots>false</overWriteSnapshots>
+                    <overWriteIfNewer>true</overWriteIfNewer>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.11</version>
+        </dependency>
+    </dependencies>
 
 </project>

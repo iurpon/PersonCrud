@@ -28,7 +28,7 @@ public class TaskServiceImplTest extends AbstractCommandTest {
 
     @Test
     public void delete() {
-        taskService.delete(TASK1,sessionAdmin.getUserId());
+        taskService.delete(sessionAdmin.getUserId(),TASK1);
         Assert.assertEquals(taskRepository.getAll().size(),2);
     }
 

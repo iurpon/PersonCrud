@@ -6,19 +6,19 @@ import java.util.List;
 
 public interface TaskRepository {
 
-    List<Task> getAll();
+    List<Task> getAll(String userId);
 
     Task save(Task task);
 
-    Task delete(Task task);
+    Task delete(String userId,Task task);
 
-    Task deleteByName(String name);
+    Task deleteByName(String userId,String name);
 
-    Task getByName(String name);
+    Task getByName(String userId,String name);
 
     void clear();
 
-    Task getByid(String id);
+    Task getByid(String userId,String id);
 
     Task update(Task task);
 

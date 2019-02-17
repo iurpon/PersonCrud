@@ -23,12 +23,14 @@ public class TaskDBRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public List<Task> getAll() {
+    public List<Task> getAll(String usId) {
         try {
-            String selectAll = "SELECT * FROM tasks";
-            PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(selectAll);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            List<Task> tasks = new ArrayList<>();
+            final String selectAll = "SELECT * FROM tasks WHERE assigner_id = ? OR executor_id = ?";
+            final PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(selectAll);
+            preparedStatement.setString(1, usId);
+            preparedStatement.setString(2, usId);
+            final ResultSet resultSet = preparedStatement.executeQuery();
+            final List<Task> tasks = new ArrayList<>();
             while (resultSet.next()) {
                 final String userId = resultSet.getString("task_id");
                 final String name = resultSet.getString("name");
@@ -102,20 +104,21 @@ public class TaskDBRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task delete(Task task) {
-        return deleteByName(task.getName());
+    public Task delete(String userId, Task task) {
+        return deleteByName(userId, task.getName());
     }
 
     @Override
-    public Task deleteByName(String name) {
+    public Task deleteByName(String userId, String name) {
         try {
-            Task task = getByName(name);
+            Task task = getByName(userId, name);
             if (task == null) {
                 return null;
             }
-            String deleteByName = "DELETE from tasks WHERE name = ?";
+            String deleteByName = "DELETE from tasks WHERE name = ? AND aasigner_id = ?";
             PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(deleteByName);
             preparedStatement.setString(1, name);
+            preparedStatement.setString(2, userId);
             preparedStatement.executeUpdate();
             return task;
         } catch (SQLException e) {
@@ -126,11 +129,13 @@ public class TaskDBRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task getByName(String name) {
-        String selectTask = "SELECT * FROM tasks WHERE name = ?";
+    public Task getByName(String userId, String name) {
+        String selectTask = "SELECT * FROM tasks WHERE name = ? AND assigner_id = ? OR executor_id = ?";
         try {
             final PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(selectTask);
             preparedStatement.setString(1, name);
+            preparedStatement.setString(2, userId);
+            preparedStatement.setString(3, userId);
             final ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 final String taskId = resultSet.getString("task_id");
@@ -166,11 +171,13 @@ public class TaskDBRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task getByid(String id) {
-        String selectTask = "SELECT * FROM tasks WHERE task_id = ? ";
+    public Task getByid(String usrId, String id) {
+        String selectTask = "SELECT * FROM tasks WHERE task_id = ? AND assigner_id = ? OR executor_id = ?";
         try {
             final PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(selectTask);
             preparedStatement.setString(1, id);
+            preparedStatement.setString(2, usrId);
+            preparedStatement.setString(3, usrId);
             final ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 final String userId = resultSet.getString("task_id");

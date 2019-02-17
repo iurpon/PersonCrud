@@ -18,45 +18,45 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project save(final Project project) {
+    public Project save(Project project) {
         projects.put(project.getId(), project);
         return project;
     }
 
     @Override
-    public List<Project> getAll() {
+    public List<Project> getAll(String userId) {
         return new ArrayList<>(projects.values());
     }
 
     @Override
-    public Project getById(final String id) {
+    public Project getById(String userId, String id) {
         return projects.get(id);
     }
 
     @Override
-    public Project getByName(String projectName) {
-        return getAll().stream()
+    public Project getByName(String userId, String projectName) {
+        return getAll(userId).stream()
                 .filter(p -> p.getName().equals(projectName))
                 .findAny()
                 .orElse(null);
     }
 
     @Override
-    public void delete(final Project project) {
+    public void delete(String userId, Project project) {
         projects.remove(project.getId());
     }
 
     @Override
-    public void deleteByName(final String projectName) {
-        final Project project = getByName(projectName);
+    public void deleteByName(String userId, String projectName) {
+        final Project project = getByName(userId,projectName);
         if (project == null) {
             return;
         }
-        delete(project);
+        delete(userId,project);
     }
 
     @Override
-    public Project update(Project project) {
+    public Project update(String userId,Project project) {
         return null;
     }
 

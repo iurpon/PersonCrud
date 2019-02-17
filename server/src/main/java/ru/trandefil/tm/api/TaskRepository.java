@@ -20,6 +20,6 @@ public interface TaskRepository {
 
     Task getByid(String userId,String id);
 
-    Task update(Task task);
+    Task update(String userId,Task task);
 
 }

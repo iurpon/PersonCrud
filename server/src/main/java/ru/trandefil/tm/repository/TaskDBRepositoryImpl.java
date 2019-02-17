@@ -77,14 +77,14 @@ public class TaskDBRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task update(Task task) {
+    public Task update(String userId,Task task) {
         String updateTask = "Update tasks Set " +
                 "name = ?," +
                 "description = ?," +
                 "startDate = ?," +
                 "endDate = ?," +
                 "executor_id = ?" +
-                "where task_id = ?";
+                "where task_id = ? and assigner_id = ?";
         try {
             final PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(updateTask);
             preparedStatement.setString(1, task.getName());
@@ -95,6 +95,7 @@ public class TaskDBRepositoryImpl implements TaskRepository {
                     new java.sql.Date(task.getEnd() == null ? null : task.getEnd().getTime()));
             preparedStatement.setString(5, task.getExecuterId());
             preparedStatement.setString(6, task.getId());
+            preparedStatement.setString(7, userId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

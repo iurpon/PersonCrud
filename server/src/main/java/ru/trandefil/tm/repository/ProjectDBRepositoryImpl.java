@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class ProjectDBRepositoryImpl implements ProjectRepository {
 
-    private Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     private ConnectionService connectionService;
 
@@ -41,10 +41,11 @@ public class ProjectDBRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public List<Project> getAll() {
+    public List<Project> getAll(String usrId) {
         try {
-            String selectAll = "SELECT * FROM projects";
+            String selectAll = "SELECT * FROM projects where userId = ?";
             PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(selectAll);
+            preparedStatement.setString(1,usrId);
             ResultSet resultSet = preparedStatement.executeQuery();
             List<Project> projectList = new ArrayList<>();
             while (resultSet.next()) {
@@ -64,11 +65,12 @@ public class ProjectDBRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project getById(String id) {
+    public Project getById(String usrId,String id) {
         try {
-            String selectById = "SELECT * FROM projects WHERE proj_id = ?";
+            String selectById = "SELECT * FROM projects WHERE proj_id = ? and user_id = ?";
             PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(selectById);
             preparedStatement.setString(1, id);
+            preparedStatement.setString(2, usrId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String projectId = resultSet.getString("proj_id");
@@ -86,11 +88,12 @@ public class ProjectDBRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project getByName(String name) {
+    public Project getByName(String usrId,String name) {
         try {
-            String selectById = "SELECT * FROM projects WHERE name = ?";
+            String selectById = "SELECT * FROM projects WHERE name = ? and user_id = ?";
             PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(selectById);
             preparedStatement.setString(1, name);
+            preparedStatement.setString(2, usrId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String projectId = resultSet.getString("proj_id");
@@ -108,11 +111,12 @@ public class ProjectDBRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public void delete(Project project) {
+    public void delete(String userId,Project project) {
         try {
-            String deleteSQL = "DELETE projects WHERE proj_id = ?";
+            String deleteSQL = "DELETE projects WHERE proj_id = ? and user_id = ?";
             PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(deleteSQL);
             preparedStatement.setString(1, project.getId());
+            preparedStatement.setString(2, userId);
         } catch (SQLException e) {
             e.printStackTrace();
             logger.info("exception. delete failed");
@@ -120,11 +124,12 @@ public class ProjectDBRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public void deleteByName(String projectName) {
+    public void deleteByName(String userId,String projectName) {
         try {
-            String deleteSQL = "DELETE projects WHERE name = ?";
+            String deleteSQL = "DELETE projects WHERE name = ? and user_id = ?";
             PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(deleteSQL);
             preparedStatement.setString(1, projectName);
+            preparedStatement.setString(2, userId);
         } catch (SQLException e) {
             e.printStackTrace();
             logger.info("exception. deleteByName failed");
@@ -137,13 +142,14 @@ public class ProjectDBRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project update(Project project) {
-        String insertProject = "Update projects Set name = ?,description = ? where proj_id = ?";
+    public Project update(String userId,Project project) {
+        String insertProject = "Update projects Set name = ?,description = ? where proj_id = ? and user_id = ?";
         try {
             final PreparedStatement preparedStatement = connectionService.getDbConnect().prepareStatement(insertProject);
             preparedStatement.setString(1, project.getName());
             preparedStatement.setString(2, project.getDescription());
             preparedStatement.setString(3, project.getId());
+            preparedStatement.setString(4, userId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

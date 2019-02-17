@@ -6,20 +6,20 @@ import java.util.List;
 
 public interface ProjectRepository {
 
-    Project save(final Project project);
+    Project save(Project project);
 
-    List<Project> getAll();
+    List<Project> getAll(String userId);
 
-    Project getById(final String id);
+    Project getById(String userId, String id);
 
-    Project getByName(final String name);
+    Project getByName(String userId, String name);
 
-    void delete(final Project project);
+    void delete(String userId, Project project);
 
-    void deleteByName(final String projectName);
+    void deleteByName(String userId, String projectName);
 
     void clear();
 
-    Project update(Project project);
+    Project update(String userId,Project project);
 
 }

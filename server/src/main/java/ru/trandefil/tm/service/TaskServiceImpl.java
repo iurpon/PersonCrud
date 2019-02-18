@@ -20,18 +20,18 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public List<Task> getAll(String userId) {
-        List<Task> all = taskRepository.getAll();
+        List<Task> all = taskRepository.getAll(userId);
         return all.stream()
                 .filter(t -> (t.getExecuterId().equals(userId) || t.getAssigneeId().equals(userId)))
                 .collect(Collectors.toList());
     }
 
-    public Task save(Task task) {
+    public Task save(String userId,Task task) {
         if (task.isNew()) {
             task.setId(UUIDUtil.getUniqueString());
             return taskRepository.save(task);
         }
-        return taskRepository.update(task);
+        return taskRepository.update(userId,task);
 /*        Task updated = taskRepository.getByid(task.getId());
         updated.setBegin(task.getBegin());
         updated.setEnd(task.getEnd());
@@ -42,11 +42,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task delete(String userId, Task task) {
-        return taskRepository.delete(task);
+        return taskRepository.delete(userId,task);
     }
 
     public Task deleteByName(String userId, String name) {
-        Task removing = taskRepository.getByName(name);
+        Task removing = taskRepository.getByName(userId,name);
         if (removing == null) {
             System.out.println("wrong task name.");
             return null;
@@ -55,11 +55,11 @@ public class TaskServiceImpl implements TaskService {
             System.out.println("Only creator can delete task.");
             return null;
         }
-        return taskRepository.delete(removing);
+        return taskRepository.delete(userId,removing);
     }
 
     public Task getByName(String userId, String name) {
-        Task byName = taskRepository.getByName(name);
+        Task byName = taskRepository.getByName(userId,name);
         if (byName == null) {
             return null;
         }
@@ -71,8 +71,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> getAll() {
-        return taskRepository.getAll();
+    public Task getByid(String userId, String id) {
+        return taskRepository.getByid(userId,id);
     }
-
 }

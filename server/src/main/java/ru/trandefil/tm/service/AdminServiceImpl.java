@@ -61,12 +61,12 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void saveJson() {
         final ObjectMapper objectMapper = new ObjectMapper();
-        final List<Project> projectList = projectService.getAll();
+//        final List<Project> projectList = projectService.getAll();
         final List<User> userList = userService.getAll();
-        final List<Task> taskList = taskService.getAll();
+//        final List<Task> taskList = taskService.getAll(ADMIN);
         final Domain domain = new Domain();
-        domain.setProjects(projectList);
-        domain.setTasks(taskList);
+//        domain.setProjects(projectList);
+//        domain.setTasks(taskList);
         domain.setUsers(userList);
         try {
             final String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(domain);

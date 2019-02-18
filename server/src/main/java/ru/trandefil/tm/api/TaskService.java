@@ -8,7 +8,7 @@ public interface TaskService {
 
     List<Task> getAll(String userId);
 
-    Task save(Task task);
+    Task save(String userId,Task task);
 
     Task delete(String userId, Task task);
 
@@ -16,8 +16,6 @@ public interface TaskService {
 
     Task getByName(String userId, String name);
 
-    Task getByid(String userId,String id);
-
-    List<Task> getAll();
+    Task getByid(String userId, String id);
 
 }

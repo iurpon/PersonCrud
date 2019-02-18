@@ -18,13 +18,13 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project save(Project project) {
+    public Project save(String userId,Project project) {
         if (project.isNew()) {
             project.setId(UUIDUtil.getUniqueString());
             System.out.format("saving new project : %s", project.getName());
             return projectRepository.save(project);
         }
-        Project updating = projectRepository.getById(project.getId());
+        Project updating = projectRepository.getById(userId,project.getId());
         if (updating == null) {
             System.out.println("id incorrect. project save fail.");
             return null;
@@ -32,14 +32,14 @@ public class ProjectServiceImpl implements ProjectService {
         updating.setName(project.getName());
         updating.setDescription(project.getDescription());
 //        projectRepository.save(updating);
-        projectRepository.update(updating);
+        projectRepository.update(userId,updating);
         System.out.format("updated project : %s", project.getName());
         return updating;
     }
 
     @Override
     public List<Project> getAll(String userId) {
-        List<Project> filteredBySessionUserId = projectRepository.getAll().stream()
+        List<Project> filteredBySessionUserId = projectRepository.getAll(userId).stream()
                 .filter(p -> p.getUserId().equals(userId))
                 .collect(Collectors.toList());
         return filteredBySessionUserId;
@@ -47,7 +47,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Project getById(String userId, String name) {
-        Project byId = projectRepository.getById(name);
+        Project byId = projectRepository.getById(userId,name);
         if (byId == null) {
             System.out.println("Wrong project name.");
             return null;
@@ -61,22 +61,22 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void delete(String userId, Project project) {
-        projectRepository.delete(project);
+        projectRepository.delete(userId,project);
     }
 
     @Override
     public void deleteByName(String userId, String projectName) {
-        Project project = projectRepository.getByName(projectName);
+        Project project = projectRepository.getByName(userId,projectName);
         if (!project.getUserId().equals(userId)) {
             return;
         }
         System.out.format("project %s deleted.", project.getName());
-        projectRepository.deleteByName(project.getUserId());
+        projectRepository.deleteByName(userId,project.getUserId());
     }
 
     @Override
     public Project getByName(String userId, String projectName) {
-        Project byName = projectRepository.getByName(projectName);
+        Project byName = projectRepository.getByName(userId,projectName);
         if (byName == null) {
             System.out.println("Wrong project name.");
             return null;
@@ -86,11 +86,6 @@ public class ProjectServiceImpl implements ProjectService {
             return null;
         }
         return byName;
-    }
-
-    @Override
-    public List<Project> getAll() {
-        return projectRepository.getAll();
     }
 
 }

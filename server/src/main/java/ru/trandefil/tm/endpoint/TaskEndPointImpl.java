@@ -39,7 +39,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             return null;
         }
-        return taskService.save(task);
+        return taskService.save(session.getUserId(), task);
     }
 
     @WebMethod
@@ -59,7 +59,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             throw new SecurityAuthentificationException("security authentification exception.");
         }
         Task newTask = new Task(id, name, desc, start, end, projectId, session.getUserId(), executorId);
-        return taskService.save(newTask);
+        return taskService.save(session.getUserId(), newTask);
     }
 
     @WebMethod
@@ -69,7 +69,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return taskService.delete(task, session.getUserId());
+        return taskService.delete(session.getUserId(), task);
     }
 
     @WebMethod

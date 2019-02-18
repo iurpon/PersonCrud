@@ -1,10 +1,13 @@
 package ru.trandefil.tm.mappers;
 
+import org.apache.ibatis.annotations.*;
+import ru.trandefil.tm.entity.User;
+
+import java.util.List;
+
 public interface UserMapper {
 
     final String getAll = "select * from users";
-
-    final String getAllFilter = "select * from users where user_id = #{id}";
 
     final String insert = "INSERT INTO users (user_id, name, password, role)" +
             " VALUES (#{id}, #{name}, #{password}, #{role})";
@@ -13,10 +16,49 @@ public interface UserMapper {
 
     final String deleteById = "DELETE from users WHERE user_id = #{userId}";
 
-    final String deleteByName = "DELETE from users WHERE user_id = #{userId}";
+    final String deleteByName = "DELETE from users WHERE name = #{name}";
 
     final String getById = "select * from users where user_id = #{id}";
 
     final String getByName = "select * from users where name = #{name}";
+
+    @Select(getAll)
+    @Results(value = {
+            @Result(property = "id", column = "user_id"),
+            @Result(property = "name", column = "name"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "role", column = "role")
+    })
+    List<User> getAll();
+
+    @Select(getById)
+    @Results(value = {
+            @Result(property = "id", column = "user_id"),
+            @Result(property = "name", column = "name"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "role", column = "role")
+    })
+    User getById(@Param("id")String id, @Param("userId")String userId);
+
+    @Select(getByName)
+    @Results(value = {
+            @Result(property = "id", column = "user_id"),
+            @Result(property = "name", column = "name"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "role", column = "role")
+    })
+    User getByName(@Param("name") String name);
+
+    @Insert(insert)
+    void insert(User user);
+
+    @Update(update)
+    void update(User user);
+
+    @Delete(deleteById)
+    void deleteById(User user);
+
+    @Delete(deleteByName)
+    void deleteByName(@Param("name")String name);
 
 }

@@ -34,7 +34,6 @@ public class ProjectRemoveCommand extends AbstractCommand {
         final ProjectEndPoint projectEndPoint = getServiceLocator().getProjectEndPoint();
         final String removingProject = getNotNullString(terminalService, "enter project name to delete");
         projectEndPoint.deleteProjectByName(removingProject, session);
-
     }
 
     @Override

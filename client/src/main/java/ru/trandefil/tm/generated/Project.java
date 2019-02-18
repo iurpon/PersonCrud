@@ -86,4 +86,10 @@ public class Project
         this.userId = value;
     }
 
+    @Override
+    public String toString() {
+        return "Project{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

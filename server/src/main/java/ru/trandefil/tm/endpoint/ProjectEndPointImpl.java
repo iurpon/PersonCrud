@@ -71,7 +71,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        projectService.deleteByName(projectName, session.getUserId());
+        projectService.deleteByName(session.getUserId(),projectName );
     }
 
     @Override

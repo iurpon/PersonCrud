@@ -12,6 +12,15 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class ProjectDBRepositoryImpl implements ProjectRepository {
+    @Override
+    public void delete(Project project) {
+
+    }
+
+    @Override
+    public Project update(Project project) {
+        return null;
+    }
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -110,7 +119,7 @@ public class ProjectDBRepositoryImpl implements ProjectRepository {
         return null;
     }
 
-    @Override
+    //@Override
     public void delete(String userId,Project project) {
         try {
             String deleteSQL = "DELETE projects WHERE proj_id = ? and user_id = ?";
@@ -141,7 +150,7 @@ public class ProjectDBRepositoryImpl implements ProjectRepository {
 
     }
 
-    @Override
+    //@Override
     public Project update(String userId,Project project) {
         String insertProject = "Update projects Set name = ?,description = ? where proj_id = ? and user_id = ?";
         try {

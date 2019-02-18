@@ -19,4 +19,9 @@
         </environment>
     </environments>
 
+    <mappers>
+        <mapper class="ru.trandefil.tm.mappers.ProjectMapper"/>
+        <mapper class="ru.trandefil.tm.mappers.UserMapper"/>
+    </mappers>
+
 </configuration>

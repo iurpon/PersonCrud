@@ -14,12 +14,12 @@ public interface ProjectRepository {
 
     Project getByName(String userId, String name);
 
-    void delete(String userId, Project project);
+    void delete(Project project);
 
     void deleteByName(String userId, String projectName);
 
     void clear();
 
-    Project update(String userId,Project project);
+    Project update(Project project);
 
 }

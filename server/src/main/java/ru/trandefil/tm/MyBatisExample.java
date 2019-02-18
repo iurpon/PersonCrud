@@ -21,7 +21,7 @@ public class MyBatisExample {
                     .getResourceAsReader("mybatis-config.xml"); //Читаем файл с настройками подключения и настройками MyBatis
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
             SqlSession session = sqlSessionFactory.openSession();
-            session.getConfiguration().addMapper(ProjectMapper.class);
+//            session.getConfiguration().addMapper(ProjectMapper.class);
             mapper = session.getMapper(ProjectMapper.class);
 
             List<Project> subscribers = mapper.getAll();

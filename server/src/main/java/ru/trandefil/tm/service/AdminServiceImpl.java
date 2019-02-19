@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void loadJson() {
-            try {
+/*            try {
                 final ObjectMapper objectMapper = new ObjectMapper();
                 final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
                 System.out.println(jsonString);
@@ -55,12 +55,12 @@ public class AdminServiceImpl implements AdminService {
             } catch (IOException e) {
                 System.out.println("is empty.");
                 e.printStackTrace();
-            }
+            }*/
     }
 
     @Override
     public void saveJson() {
-        final ObjectMapper objectMapper = new ObjectMapper();
+/*        final ObjectMapper objectMapper = new ObjectMapper();
 //        final List<Project> projectList = projectService.getAll();
         final List<User> userList = userService.getAll();
 //        final List<Task> taskList = taskService.getAll(ADMIN);
@@ -73,7 +73,7 @@ public class AdminServiceImpl implements AdminService {
             Files.write(Paths.get("data.json"), json.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override

@@ -1,5 +1,6 @@
 package ru.trandefil.tm.service;
 
+import lombok.NonNull;
 import ru.trandefil.tm.api.SessionService;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.api.UserService;
@@ -24,31 +25,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User delete(User user) {
+    public User delete(@NonNull User user) {
         return userRepository.delete(user);
     }
 
     @Override
-    public User deleteByName(String name) {
+    public User deleteByName(@NonNull String name) {
         return userRepository.deleteByName(name);
     }
 
     @Override
-    public User save(User user) {
+    public User save(@NonNull User user) {
         if(user.isNew()){
             user.setId(UUIDUtil.getUniqueString());
             return userRepository.save(user);
         }
-        User updating = userRepository.getById(user.getId());
-        if(updating == null){
-            System.out.println("wrong updating user");
-            return null;
-        }
-        return userRepository.save(user);
+        return userRepository.update(user);
     }
 
     @Override
-    public User getByName(String userName) {
+    public User getByName(@NonNull String userName) {
         return userRepository.getByName(userName);
     }
 
@@ -58,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Session getSession(String userName, String userPassword) {
+    public Session getSession(@NonNull String userName, @NonNull String userPassword) {
         User user = userRepository.getLoginUser(userName, HashUtil.hashPassword(userPassword));
         if (user == null) {
             System.out.println("bad login.");
@@ -69,7 +65,7 @@ public class UserServiceImpl implements UserService {
         return newSess;
     }
 
-    private Session createNewSession(String userId, Role role) {
+    private Session createNewSession(@NonNull String userId, @NonNull Role role) {
         String uuid = UUIDUtil.getUniqueString();
         long timeStamp = System.nanoTime();
         String signature = SignatureUtil.createSignature(uuid, userId, timeStamp, role);
@@ -79,12 +75,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void logout(String sessionId) {
+    public void logout(@NonNull String sessionId) {
         sessionService.deleteSession(sessionId);
     }
 
     @Override
-    public User constractUser(String name, String pass, String role) {
+    public User constractUser(@NonNull String name, @NonNull String pass, @NonNull String role) {
         role = role.trim().toUpperCase();
         if("ADMIN".equals(role) || "USER".equals(role)){
             Role newRole = Enum.valueOf(Role.class, role);

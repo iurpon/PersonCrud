@@ -3,7 +3,10 @@ package ru.trandefil.tm;
 import org.reflections.Reflections;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.endpoint.*;
+import ru.trandefil.tm.endpoint.AdminEndPointImplService;
+import ru.trandefil.tm.endpoint.ProjectEndPointImplService;
+import ru.trandefil.tm.endpoint.TaskEndPointImplService;
+import ru.trandefil.tm.endpoint.UserEndPointImplService;
 import ru.trandefil.tm.generated.*;
 import ru.trandefil.tm.service.TerminalService;
 
@@ -92,7 +95,7 @@ public class Bootstrap implements ServiceLocator {
                 abstractCommand.execute();
                 continue;
             }
-            if(session == null){
+            if (session == null) {
                 AbstractCommand loginCommand = commandMap.get("login");
                 loginCommand.execute();
             }
@@ -100,7 +103,14 @@ public class Bootstrap implements ServiceLocator {
                 System.out.println("Bad login");
                 continue;
             }
-            System.out.println("you loged in.");
+            if (!abstractCommand.isAdmin()) {
+                abstractCommand.execute();
+                continue;
+            }
+            if (!session.getRole().equals(Role.ADMIN)) {
+                System.out.println("Not authorized. Admin only.");
+                continue;
+            }
             abstractCommand.execute();
         }
     }

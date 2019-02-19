@@ -23,4 +23,6 @@ public interface UserRepository {
 
     User getById(String id);
 
+    User update(User user);
+
 }

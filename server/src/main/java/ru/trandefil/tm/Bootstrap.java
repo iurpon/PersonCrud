@@ -26,6 +26,8 @@ public class Bootstrap implements ServiceLocator {
 
     private final ProjectRepository mbProjectRepository = new ProjectMBRepositoryImpl(sqlSessionService);
 
+    private final UserRepository mbUserRepository = new UserMBRepositoryImpl(sqlSessionService);
+
     private final ProjectRepository dbProjectRepository = new ProjectDBRepositoryImpl(connectionService);
 
     private final UserRepository dbUserRepository = new UserDBRepositoryImpl(connectionService);
@@ -44,7 +46,7 @@ public class Bootstrap implements ServiceLocator {
 
     private final SessionService sessionService = new SessionServiceImpl(sessionRepository);
 
-    private final UserService userService = new UserServiceImpl(dbUserRepository, sessionService);
+    private final UserService userService = new UserServiceImpl(mbUserRepository, sessionService);
 
     private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
 

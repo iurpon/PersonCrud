@@ -14,13 +14,15 @@ public interface UserMapper {
 
     final String update = "UPDATE users SET name = #{name}, password = #{password}, role = #{role} where user_id = #{id}";
 
-    final String deleteById = "DELETE from users WHERE user_id = #{userId}";
+    final String deleteById = "DELETE from users WHERE user_id = #{id}";
 
     final String deleteByName = "DELETE from users WHERE name = #{name}";
 
     final String getById = "select * from users where user_id = #{id}";
 
     final String getByName = "select * from users where name = #{name}";
+
+    final String getByNameAndPass = "select * from users where name = #{name} and password = #{password}";
 
     @Select(getAll)
     @Results(value = {
@@ -38,7 +40,7 @@ public interface UserMapper {
             @Result(property = "password", column = "password"),
             @Result(property = "role", column = "role")
     })
-    User getById(@Param("id")String id, @Param("userId")String userId);
+    User getById(@Param("id")String id);
 
     @Select(getByName)
     @Results(value = {
@@ -48,6 +50,15 @@ public interface UserMapper {
             @Result(property = "role", column = "role")
     })
     User getByName(@Param("name") String name);
+
+    @Select(getByNameAndPass)
+    @Results(value = {
+            @Result(property = "id", column = "user_id"),
+            @Result(property = "name", column = "name"),
+            @Result(property = "password", column = "password"),
+            @Result(property = "role", column = "role")
+    })
+    User getByNameAndPass(@Param("name") String name,@Param("password") String password);
 
     @Insert(insert)
     void insert(User user);

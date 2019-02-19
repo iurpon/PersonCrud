@@ -170,4 +170,8 @@ public class UserDBRepositoryImpl implements UserRepository {
         return null;
     }
 
+    @Override
+    public User update(User user) {
+        return null;
+    }
 }

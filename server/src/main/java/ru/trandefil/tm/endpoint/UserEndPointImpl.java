@@ -30,16 +30,11 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        User removing = userService.getByName(name);
-        if (removing == null) {
-            return null;
-        }
-        if (!session.getRole().equals(Role.ADMIN) && !removing.getId().equals(session.getUserId())) {
+        if (!session.getRole().equals(Role.ADMIN)) {
             System.out.println("not authorized  to delete user.");
             throw new SecurityAuthorizationException("no permitting for execution.");
         }
-        userService.delete(removing);
-        return removing;
+        return userService.deleteByName(name);
     }
 
     @Override
@@ -109,7 +104,7 @@ public class UserEndPointImpl implements UserEndPoint {
     @Override
     public Session registry(String userName, String password) {
         userService.save(new User(null, userName, HashUtil.hashPassword(password), Role.USER));
-        return getSession(userName,password);
+        return getSession(userName, password);
     }
 
 }

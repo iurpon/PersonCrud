@@ -34,6 +34,8 @@ public abstract class AbstractCommand {
         this.serviceLocator = serviceLocator;
     }
 
-
+    public  boolean isAdmin(){
+        return false;
+    }
 
 }

@@ -45,4 +45,9 @@ public class UserUpdateCommand extends AbstractCommand {
         return true;
     }
 
+    @Override
+    public boolean isAdmin() {
+        return super.isAdmin();
+    }
+
 }

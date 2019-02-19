@@ -28,4 +28,8 @@ public class DataJsonSaveCommand extends AbstractCommand {
         return true;
     }
 
+    @Override
+    public boolean isAdmin() {
+        return true;
+    }
 }

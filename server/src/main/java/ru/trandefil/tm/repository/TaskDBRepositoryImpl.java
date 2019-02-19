@@ -23,6 +23,11 @@ public class TaskDBRepositoryImpl implements TaskRepository {
     }
 
     @Override
+    public Task update(Task task) {
+        return null;
+    }
+
+    @Override
     public List<Task> getAll(String usId) {
         try {
             final String selectAll = "SELECT * FROM tasks WHERE assigner_id = ? OR executor_id = ?";
@@ -76,7 +81,7 @@ public class TaskDBRepositoryImpl implements TaskRepository {
         return task;
     }
 
-    @Override
+//    @Override
     public Task update(String userId,Task task) {
         String updateTask = "Update tasks Set " +
                 "name = ?," +

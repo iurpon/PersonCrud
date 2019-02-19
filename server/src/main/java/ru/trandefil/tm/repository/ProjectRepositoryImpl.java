@@ -9,6 +9,15 @@ import java.util.List;
 import java.util.Map;
 
 public class ProjectRepositoryImpl implements ProjectRepository {
+    @Override
+    public void delete(Project project) {
+
+    }
+
+    @Override
+    public Project update(Project project) {
+        return null;
+    }
 
     private Map<String, Project> projects = new HashMap<>();
 
@@ -41,7 +50,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
                 .orElse(null);
     }
 
-    @Override
+//    @Override
     public void delete(String userId, Project project) {
         projects.remove(project.getId());
     }
@@ -55,9 +64,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
         delete(userId,project);
     }
 
-    @Override
+//    @Override
     public Project update(String userId,Project project) {
         return null;
     }
+
 
 }

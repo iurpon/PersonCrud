@@ -36,6 +36,11 @@ public class UserRepositoryImpl implements UserRepository {
     }*/
 
     @Override
+    public User update(User user) {
+        return null;
+    }
+
+    @Override
     public void clear() {
         userMap.clear();
     }

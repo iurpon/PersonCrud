@@ -67,7 +67,7 @@ public class TaskDBRepositoryImpl implements TaskRepository {
                     new java.sql.Date(task.getEnd() == null ? null : task.getEnd().getTime()));
             preparedStatement.setString(6, task.getProjectId());
             preparedStatement.setString(7, task.getAssigneeId());
-            preparedStatement.setString(8, task.getExecuterId());
+            preparedStatement.setString(8, task.getExecutorId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -93,7 +93,7 @@ public class TaskDBRepositoryImpl implements TaskRepository {
                     new java.sql.Date(task.getBegin() == null ? null : task.getBegin().getTime()));
             preparedStatement.setDate(4,
                     new java.sql.Date(task.getEnd() == null ? null : task.getEnd().getTime()));
-            preparedStatement.setString(5, task.getExecuterId());
+            preparedStatement.setString(5, task.getExecutorId());
             preparedStatement.setString(6, task.getId());
             preparedStatement.setString(7, userId);
             preparedStatement.executeUpdate();

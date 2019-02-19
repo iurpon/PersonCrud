@@ -16,19 +16,19 @@ public class Task extends BaseNamedEntity {
 
     private String assigneeId;
 
-    private String executerId;
+    private String executorId;
 
     public Task() {
     }
 
-    public Task(String id, String name, String description, Date begin, Date end, String projectId, String assigneeId, String executerId) {
+    public Task(String id, String name, String description, Date begin, Date end, String projectId, String assigneeId, String executorId) {
         super(id, name);
         this.description = description;
         this.begin = begin;
         this.end = end;
         this.projectId = projectId;
         this.assigneeId = assigneeId;
-        this.executerId = executerId;
+        this.executorId = executorId;
     }
 
     public String getProjectId() {
@@ -47,12 +47,12 @@ public class Task extends BaseNamedEntity {
         this.assigneeId = assigneeId;
     }
 
-    public String getExecuterId() {
-        return executerId;
+    public String getExecutorId() {
+        return executorId;
     }
 
-    public void setExecuterId(String executerId) {
-        this.executerId = executerId;
+    public void setExecutorId(String executorId) {
+        this.executorId = executorId;
     }
 
     public String getDescription() {
@@ -79,7 +79,6 @@ public class Task extends BaseNamedEntity {
         this.end = end;
     }
 
-
     @Override
     public String toString() {
         return "Task{" +
@@ -87,4 +86,5 @@ public class Task extends BaseNamedEntity {
                 ", id='" + id + '\'' +
                 '}';
     }
+
 }

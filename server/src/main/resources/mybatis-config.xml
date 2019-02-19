@@ -22,6 +22,7 @@
     <mappers>
         <mapper class="ru.trandefil.tm.mappers.ProjectMapper"/>
         <mapper class="ru.trandefil.tm.mappers.UserMapper"/>
+        <mapper class="ru.trandefil.tm.mappers.TaskMapper"/>
     </mappers>
 
 </configuration>

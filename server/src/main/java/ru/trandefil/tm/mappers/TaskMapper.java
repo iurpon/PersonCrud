@@ -7,19 +7,19 @@ import java.util.List;
 
 public interface TaskMapper {
 
-
     final String getAll = "select * from tasks";
 
     final String getAllFiltered = "select * from tasks where assigner_id = #{userId} or executor_id = #{userId}";
 
     final String getById = "select * from tasks where task_id = #{id}";
 
-    final String getByName = "select * from tasks where name = #{name}";
+    final String getByName = "select * from tasks where name = #{name} and assigner_id = #{assignerId}";
 
-    final String insert = "INSERT INTO tasks " +
-            "(task_id, name, description, role, startDate, endDate, proj_id, assigner_id, executor_id)" +
-            " VALUES " +
-            "(#{id}, #{name}, #{description}, #{begin}, #{end}, #{projectId}, #{assigneeId}, #{executorId})";
+    final String insert =
+            "INSERT INTO tasks " +
+                    "(task_id, name, description, role, startDate, endDate, proj_id, assigner_id, executor_id)" +
+                    " VALUES " +
+                    "(#{id}, #{name}, #{description}, #{begin}, #{end}, #{projectId}, #{assigneeId}, #{executorId})";
 
     final String update = "UPDATE tasks SET " +
             " name = #{name}," +
@@ -75,12 +75,16 @@ public interface TaskMapper {
 
     @Select(getByName)
     @Results(value = {
-            @Result(property = "id", column = "user_id"),
+            @Result(property = "id", column = "task_id"),
             @Result(property = "name", column = "name"),
-            @Result(property = "password", column = "password"),
-            @Result(property = "role", column = "role")
+            @Result(property = "description", column = "description"),
+            @Result(property = "begin", column = "startDate"),
+            @Result(property = "end", column = "endDate"),
+            @Result(property = "projectId", column = "proj_id"),
+            @Result(property = "assigneeId", column = "assigner_id"),
+            @Result(property = "executerId", column = "executor_id")
     })
-    Task getByName(@Param("name") String name);
+    Task getByName(@Param("assignerId") String assignerId, @Param("name") String name);
 
     @Insert(insert)
     void insert(Task user);

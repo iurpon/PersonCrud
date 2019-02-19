@@ -2,7 +2,7 @@ package ru.trandefil.tm;
 
 import org.reflections.Reflections;
 import ru.trandefil.tm.api.ServiceLocator;
-import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.domain.AbstractCommand;
 import ru.trandefil.tm.endpoint.AdminEndPointImplService;
 import ru.trandefil.tm.endpoint.ProjectEndPointImplService;
 import ru.trandefil.tm.endpoint.TaskEndPointImplService;
@@ -82,13 +82,13 @@ public class Bootstrap implements ServiceLocator {
     }
 
     public void init() {
-        getClassesAndFillMap("ru.trandefil.tm.command");
+        getClassesAndFillMap("ru.trandefil.tm.domain");
         System.out.println("enter help to see commands.");
         while (true) {
             final String s = terminalService.nextLine();
             final AbstractCommand abstractCommand = commandMap.get(s);
             if (abstractCommand == null) {
-                System.out.println("Bad command.");
+                System.out.println("Bad domain.");
                 continue;
             }
             if (!abstractCommand.secure()) {

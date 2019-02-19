@@ -1,12 +1,12 @@
 package ru.trandefil.tm.service;
 
+import lombok.NonNull;
 import ru.trandefil.tm.api.TaskRepository;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TaskServiceImpl implements TaskService {
 
@@ -16,59 +16,35 @@ public class TaskServiceImpl implements TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> getAll(String userId) {
-        List<Task> all = taskRepository.getAll(userId);
-        return all.stream()
-                .filter(t -> (t.getExecutorId().equals(userId) || t.getAssigneeId().equals(userId)))
-                .collect(Collectors.toList());
+    public List<Task> getAll(@NonNull String userId) {
+        return taskRepository.getAll(userId);
     }
 
-    public Task save(String userId,Task task) {
+    public Task save(@NonNull String userId, @NonNull Task task) {
+        if (!userId.equals(task.getAssigneeId())) {
+            return null;
+        }
         if (task.isNew()) {
             task.setId(UUIDUtil.getUniqueString());
             return taskRepository.save(task);
         }
-        return taskRepository.update(userId,task);
-/*        Task updated = taskRepository.getByid(task.getId());
-        updated.setBegin(task.getBegin());
-        updated.setEnd(task.getEnd());
-        updated.setName(task.getName());
-        updated.setDescription(task.getDescription());
-        updated.setExecutorId(task.getExecutorId());
-        return taskRepository.save(updated);*/
+        return taskRepository.update(task);
     }
 
-    public Task delete(String userId, Task task) {
-        return taskRepository.delete(userId,task);
+    public Task delete(@NonNull String userId, @NonNull Task task) {
+        return taskRepository.delete(userId, task);
     }
 
-    public Task deleteByName(String userId, String name) {
-        Task removing = taskRepository.getByName(userId,name);
-        if (removing == null) {
-            System.out.println("wrong task name.");
-            return null;
-        }
-        if (!removing.getAssigneeId().equals(userId)) {
-            System.out.println("Only creator can delete task.");
-            return null;
-        }
-        return taskRepository.delete(userId,removing);
+    public Task deleteByName(@NonNull String userId, @NonNull String name) {
+        return taskRepository.deleteByName(userId, name);
     }
 
-    public Task getByName(String userId, String name) {
-        Task byName = taskRepository.getByName(userId,name);
-        if (byName == null) {
-            return null;
-        }
-        if (!byName.getAssigneeId().equals(userId)) {
-            System.out.println("can't update task you didn't create");
-            return null;
-        }
-        return byName;
+    public Task getByName(@NonNull String userId, @NonNull String name) {
+        return taskRepository.getByName(userId, name);
     }
 
     @Override
-    public Task getByid(String userId, String id) {
-        return taskRepository.getByid(userId,id);
+    public Task getByid(@NonNull String userId, @NonNull String id) {
+        return taskRepository.getByid(userId, id);
     }
 }

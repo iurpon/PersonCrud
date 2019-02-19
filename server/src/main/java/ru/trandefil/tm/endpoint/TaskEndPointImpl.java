@@ -79,7 +79,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return taskService.deleteByName(name, session.getUserId());
+        return taskService.deleteByName(session.getUserId(), name);
     }
 
     @WebMethod
@@ -89,7 +89,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return taskService.getByName(name, session.getUserId());
+        return taskService.getByName(session.getUserId(), name);
     }
 
 }

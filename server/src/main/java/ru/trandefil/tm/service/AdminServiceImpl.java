@@ -1,17 +1,8 @@
 package ru.trandefil.tm.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.trandefil.tm.api.*;
-import ru.trandefil.tm.command.Domain;
-import ru.trandefil.tm.entity.Project;
-import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.entity.User;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
 
 public class AdminServiceImpl implements AdminService {
 

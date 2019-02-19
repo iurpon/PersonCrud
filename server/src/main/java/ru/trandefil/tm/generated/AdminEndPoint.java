@@ -1,7 +1,6 @@
 package ru.trandefil.tm.generated;
 
 
-import ru.trandefil.tm.command.Domain;
 import ru.trandefil.tm.entity.Session;
 
 import javax.jws.WebMethod;

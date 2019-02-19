@@ -1,6 +1,6 @@
 package ru.trandefil.tm.api;
 
-import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.domain.AbstractCommand;
 import ru.trandefil.tm.generated.*;
 import ru.trandefil.tm.service.TerminalService;
 

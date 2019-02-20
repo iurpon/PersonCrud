@@ -12,22 +12,10 @@ public class AdminServiceImpl implements AdminService {
 
     private final TaskService taskService;
 
-    private final ProjectRepository projectRepository;
-
-    private final UserRepository userRepository;
-
-    private final TaskRepository taskRepository;
-
-
-    public AdminServiceImpl(
-            ProjectService projectService, UserService userService, TaskService taskService,
-            ProjectRepository projectRepository, UserRepository userRepository, TaskRepository taskRepository) {
+    public AdminServiceImpl(ProjectService projectService, UserService userService, TaskService taskService) {
         this.projectService = projectService;
         this.userService = userService;
         this.taskService = taskService;
-        this.projectRepository = projectRepository;
-        this.userRepository = userRepository;
-        this.taskRepository = taskRepository;
     }
 
     @Override

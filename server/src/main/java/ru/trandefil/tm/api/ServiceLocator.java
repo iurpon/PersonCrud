@@ -7,9 +7,4 @@ public interface ServiceLocator {
     TaskService getTaskService();
 
     UserService getUserService();
-
-    SessionService getSessionService();
-
-    ConnectionService getConnectionService();
-
 }

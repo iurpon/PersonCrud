@@ -8,7 +8,7 @@ import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.mappers.UserMapper;
+import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
@@ -37,13 +37,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User deleteByName(@NonNull String name) {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        User user = userMapper.getByName(name);
+        UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
+        User user = userRepository.getByName(name);
         if (user == null) {
             logger.info("wrong deleting name.");
             return null;
         }
-        userMapper.deleteById(user);
+        userRepository.deleteById(user);
         sqlSessionService.closeSqlSession(sqlSession);
         return user;
     }
@@ -51,14 +51,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(@NonNull User user) {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
         if (user.isNew()) {
             user.setId(UUIDUtil.getUniqueString());
-            userMapper.insert(user);
+            userRepository.insert(user);
             sqlSessionService.closeSqlSession(sqlSession);
             return user;
         }
-        userMapper.update(user);
+        userRepository.update(user);
         sqlSessionService.closeSqlSession(sqlSession);
         return user;
     }
@@ -66,8 +66,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getByName(@NonNull String userName) {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        User user = userMapper.getByName(userName);
+        UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
+        User user = userRepository.getByName(userName);
         sqlSessionService.closeSqlSession(sqlSession);
         return user;
     }
@@ -75,8 +75,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        List<User> users = userMapper.getAll();
+        UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
+        List<User> users = userRepository.getAll();
         sqlSessionService.closeSqlSession(sqlSession);
         return users;
     }
@@ -84,8 +84,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public Session getSession(@NonNull String userName, @NonNull String userPassword) {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        User user = userMapper.getByNameAndPass(userName, HashUtil.hashPassword(userPassword));
+        UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
+        User user = userRepository.getByNameAndPass(userName, HashUtil.hashPassword(userPassword));
         if (user == null) {
             System.out.println("bad login.");
             sqlSessionService.closeSqlSession(sqlSession);

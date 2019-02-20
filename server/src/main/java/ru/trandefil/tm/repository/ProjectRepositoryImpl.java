@@ -1,6 +1,5 @@
 package ru.trandefil.tm.repository;
 
-import ru.trandefil.tm.api.ProjectRepository;
 import ru.trandefil.tm.entity.Project;
 
 import java.util.ArrayList;

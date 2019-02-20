@@ -20,9 +20,9 @@
     </environments>
 
     <mappers>
-        <mapper class="ru.trandefil.tm.mappers.ProjectMapper"/>
-        <mapper class="ru.trandefil.tm.mappers.UserMapper"/>
-        <mapper class="ru.trandefil.tm.mappers.TaskMapper"/>
+        <mapper class="ru.trandefil.tm.api.ProjectRepository"/>
+        <mapper class="ru.trandefil.tm.api.UserRepository"/>
+        <mapper class="ru.trandefil.tm.api.TaskRepository"/>
     </mappers>
 
 </configuration>

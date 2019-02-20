@@ -1,6 +1,5 @@
 package ru.trandefil.tm.repository;
 
-import ru.trandefil.tm.api.TaskRepository;
 import ru.trandefil.tm.entity.Task;
 
 import java.util.ArrayList;

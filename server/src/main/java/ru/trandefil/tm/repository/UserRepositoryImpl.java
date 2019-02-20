@@ -1,6 +1,5 @@
 package ru.trandefil.tm.repository;
 
-import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.entity.User;
 
 import java.util.ArrayList;

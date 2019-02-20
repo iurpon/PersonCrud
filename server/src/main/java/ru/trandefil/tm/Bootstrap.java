@@ -14,27 +14,14 @@ import ru.trandefil.tm.service.*;
 
 import javax.xml.ws.Endpoint;
 
-public class Bootstrap implements ServiceLocator {
+public class Bootstrap {
 
-    private final ProjectRepository projectRepository = new ProjectRepositoryImpl();
-
-    private final TaskRepository taskRepository = new TaskRepositoryImpl();
-
-    private final ConnectionService connectionService = new ConnectionServiceImpl();
 
     private final SqlSessionService sqlSessionService = new SqlSessionServiceImpl();
-
-    private final ProjectRepository dbProjectRepository = new ProjectDBRepositoryImpl(connectionService);
-
-    private final UserRepository dbUserRepository = new UserDBRepositoryImpl(connectionService);
-
-    private final TaskRepository dbTaskRepository = new TaskDBRepositoryImpl(connectionService);
 
     private final ProjectService projectService = new ProjectServiceImpl(sqlSessionService);
 
     private final TaskService taskService = new TaskServiceImpl(sqlSessionService);
-
-    private final UserRepository userRepository = new UserRepositoryImpl();
 
     private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService);
 
@@ -51,38 +38,9 @@ public class Bootstrap implements ServiceLocator {
     private final AdminService adminService = new AdminServiceImpl(
             projectService,
             userService,
-            taskService,
-            dbProjectRepository,
-            dbUserRepository,
-            dbTaskRepository
-    );
+            taskService);
 
     private final AdminEndPoint adminEndPoint = new AdminEndPointImpl(adminService);
-
-    @Override
-    public ConnectionService getConnectionService() {
-        return connectionService;
-    }
-
-    @Override
-    public SessionService getSessionService() {
-        return sessionService;
-    }
-
-    @Override
-    public ProjectService getProjectService() {
-        return this.projectService;
-    }
-
-    @Override
-    public TaskService getTaskService() {
-        return this.taskService;
-    }
-
-    @Override
-    public UserService getUserService() {
-        return this.userService;
-    }
 
     public void init() {
         Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl", projectEndPoint);

@@ -1,25 +1,47 @@
 package ru.trandefil.tm.api;
 
+import org.apache.ibatis.annotations.*;
 import ru.trandefil.tm.entity.Project;
 
 import java.util.List;
 
 public interface ProjectRepository {
 
-    Project save(Project project);
+    @Select("select * from projects")
+    @Results(value = {
+            @Result(property = "userId", column = "user_id")
+    })
+    List<Project> getAll();
 
-    List<Project> getAll(String userId);
+    @Select("select * from projects where user_id = #{userId}")
+    @Results(value = {
+            @Result(property = "userId", column = "user_id")
+    })
+    List<Project> getAllFilter(@Param("userId") String userId);
 
-    Project getById(String userId, String id);
+    @Select("select * from projects where user_id = #{userId} and name = #{name}")
+    @Results(value = {
+            @Result(property = "userId", column = "user_id")
+    })
+    Project getById(@Param("userId") String userId, @Param("name") String name);
 
-    Project getByName(String userId, String name);
+    @Select("select * from projects where user_id = #{userId} and name = #{name}")
+    @Results(value = {
+            @Result(property = "userId", column = "user_id")
+    })
+    Project getByName(@Param("userId") String userId, @Param("name") String name);
 
-    void delete(Project project);
+    @Insert("INSERT INTO projects (id, name, description, user_id)" +
+            " VALUES (#{id}, #{name}, #{description}, #{userId})")
+    void insert(Project project);
 
-    void deleteByName(String userId, String projectName);
+    @Update("UPDATE projects SET name = #{name}, description = #{description} where id = #{id}")
+    void update(Project project);
 
-    void clear();
+    @Delete("DELETE from projects WHERE id = #{id}")
+    void deleteById(Project project);
 
-    Project update(Project project);
+    @Delete("DELETE from projects WHERE user_id = #{userId} and name = #{name}")
+    void deleteByName(@Param("userId") String userId, @Param("name") String name);
 
 }

@@ -5,7 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import ru.trandefil.tm.api.SqlSessionService;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.mappers.TaskMapper;
+import ru.trandefil.tm.api.TaskRepository;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.List;
@@ -23,8 +23,8 @@ public class TaskServiceImpl implements TaskService {
 
     public List<Task> getAll(@NonNull String userId) {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        TaskMapper taskMapper = sqlSession.getMapper(TaskMapper.class);
-        List<Task> tasks = taskMapper.getAllFiltered(userId);
+        TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
+        List<Task> tasks = taskRepository.getAllFiltered(userId);
         sqlSessionService.closeSqlSession(sqlSession);
         return tasks;
     }
@@ -34,14 +34,14 @@ public class TaskServiceImpl implements TaskService {
             return null;
         }
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        TaskMapper taskMapper = sqlSession.getMapper(TaskMapper.class);
+        TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
         if (task.isNew()) {
             task.setId(UUIDUtil.getUniqueString());
-            taskMapper.insert(task);
+            taskRepository.insert(task);
             sqlSessionService.closeSqlSession(sqlSession);
             return task;
         }
-        taskMapper.update(task);
+        taskRepository.update(task);
         sqlSessionService.closeSqlSession(sqlSession);
         return task;
     }
@@ -52,21 +52,21 @@ public class TaskServiceImpl implements TaskService {
 
     public Task deleteByName(@NonNull String userId, @NonNull String name) {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        TaskMapper taskMapper = sqlSession.getMapper(TaskMapper.class);
-        Task removing = taskMapper.getByName(userId, name);
+        TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
+        Task removing = taskRepository.getByName(userId, name);
         if (removing == null) {
             System.out.println("wrong task name.");
             return null;
         }
-        taskMapper.deleteById(removing);
+        taskRepository.deleteById(removing);
         sqlSessionService.closeSqlSession(sqlSession);
         return removing;
     }
 
     public Task getByName(@NonNull String userId, @NonNull String name) {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
-        TaskMapper taskMapper = sqlSession.getMapper(TaskMapper.class);
-        Task task = taskMapper.getByName(userId, name);
+        TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
+        Task task = taskRepository.getByName(userId, name);
         sqlSessionService.closeSqlSession(sqlSession);
         return task;
     }

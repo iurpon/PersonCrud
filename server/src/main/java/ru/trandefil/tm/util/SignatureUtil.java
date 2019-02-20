@@ -50,14 +50,14 @@ public class SignatureUtil {
         if (session.getUserId() == null) {
             return false;
         }
-        if (session.getTimeStamp() == 0) {
+        if (session.getTimestamp() == 0) {
             return false;
         }
         if (session.getSignature() == null) {
             return false;
         }
         return session.getSignature().equals(createSignature(session.getId(),
-                session.getUserId(), session.getTimeStamp(), session.getRole()));
+                session.getUserId(), session.getTimestamp(), session.getRole()));
     }
 
 }

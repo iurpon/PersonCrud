@@ -9,13 +9,11 @@ import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
-import ru.trandefil.tm.repository.*;
 import ru.trandefil.tm.service.*;
 
 import javax.xml.ws.Endpoint;
 
 public class Bootstrap {
-
 
     private final SqlSessionService sqlSessionService = new SqlSessionServiceImpl();
 
@@ -25,11 +23,7 @@ public class Bootstrap {
 
     private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService);
 
-    private final SessionRepository sessionRepository = new SessionRepositoryImpl();
-
-    private final SessionService sessionService = new SessionServiceImpl(sessionRepository);
-
-    private final UserService userService = new UserServiceImpl(sessionService,sqlSessionService);
+    private final UserService userService = new UserServiceImpl(sqlSessionService);
 
     private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
 

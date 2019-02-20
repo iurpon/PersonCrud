@@ -4,7 +4,7 @@ public class Session extends BaseEntity {
 
     private static final long serialVersionUID = 4L;
 
-    private long timeStamp;
+    private long timestamp;
 
     private String userId;
 
@@ -12,9 +12,9 @@ public class Session extends BaseEntity {
 
     private String signature;
 
-    public Session(String id, long timeStamp, String userId, Role role, String signature) {
+    public Session(String id, long timestamp, String userId, Role role, String signature) {
         super(id);
-        this.timeStamp = timeStamp;
+        this.timestamp = timestamp;
         this.userId = userId;
         this.role = role;
         this.signature = signature;
@@ -23,12 +23,12 @@ public class Session extends BaseEntity {
     public Session() {
     }
 
-    public long getTimeStamp() {
-        return timeStamp;
+    public long getTimestamp() {
+        return timestamp;
     }
 
-    public void setTimeStamp(long timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getUserId() {

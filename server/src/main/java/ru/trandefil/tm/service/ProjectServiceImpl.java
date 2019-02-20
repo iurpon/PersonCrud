@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 public class ProjectServiceImpl implements ProjectService {
 
-    private SqlSessionService sqlSessionService;
+    private final SqlSessionService sqlSessionService;
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -28,8 +28,8 @@ public class ProjectServiceImpl implements ProjectService {
         if (!project.getUserId().equals(userId)) {
             throw new SecurityAuthorizationException(" modifying project denied.");
         }
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
         if (project.isNew()) {
             project.setId(UUIDUtil.getUniqueString());
             System.out.format("saving new project : %s", project.getName());
@@ -44,18 +44,18 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<Project> getAll(@NonNull String userId) {
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
-        List<Project> projectList = projectRepository.getAllFilter(userId);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
+        final List<Project> projectList = projectRepository.getAllFilter(userId);
         sqlSessionService.closeSqlSession(sqlSession);
         return projectList;
     }
 
     @Override
     public Project getById(String userId, String name) {
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
-        Project byId = projectRepository.getById(userId,name);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
+        final Project byId = projectRepository.getById(userId,name);
         sqlSessionService.closeSqlSession(sqlSession);
         if (byId == null) {
             System.out.println("Wrong project name.");
@@ -73,25 +73,25 @@ public class ProjectServiceImpl implements ProjectService {
         if (!project.getUserId().equals(userId)) {
             throw new SecurityAuthorizationException("delete project denied.");
         }
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
         projectRepository.deleteById(project);
         sqlSessionService.closeSqlSession(sqlSession);
     }
 
     @Override
     public void deleteByName(String userId, String projectName) {
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
         projectRepository.deleteByName(userId,projectName);
         sqlSessionService.closeSqlSession(sqlSession);
     }
 
     @Override
     public Project getByName(String projectName, String userId) {
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
-        Project project = projectRepository.getByName(userId,projectName);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
+        final Project project = projectRepository.getByName(userId,projectName);
         sqlSessionService.closeSqlSession(sqlSession);
         return project;
     }

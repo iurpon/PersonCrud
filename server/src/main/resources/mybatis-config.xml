@@ -23,6 +23,7 @@
         <mapper class="ru.trandefil.tm.api.ProjectRepository"/>
         <mapper class="ru.trandefil.tm.api.UserRepository"/>
         <mapper class="ru.trandefil.tm.api.TaskRepository"/>
+        <mapper class="ru.trandefil.tm.api.SessionRepository"/>
     </mappers>
 
 </configuration>

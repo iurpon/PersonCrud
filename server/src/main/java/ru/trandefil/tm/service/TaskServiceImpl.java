@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 
 public class TaskServiceImpl implements TaskService {
 
-    private SqlSessionService sqlSessionService;
+    private final SqlSessionService sqlSessionService;
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());
 
@@ -22,9 +22,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public List<Task> getAll(@NonNull String userId) {
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
-        List<Task> tasks = taskRepository.getAllFiltered(userId);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
+        final List<Task> tasks = taskRepository.getAllFiltered(userId);
         sqlSessionService.closeSqlSession(sqlSession);
         return tasks;
     }
@@ -33,8 +33,8 @@ public class TaskServiceImpl implements TaskService {
         if (!userId.equals(task.getAssigneeId())) {
             return null;
         }
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
         if (task.isNew()) {
             task.setId(UUIDUtil.getUniqueString());
             taskRepository.insert(task);
@@ -51,9 +51,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task deleteByName(@NonNull String userId, @NonNull String name) {
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
-        Task removing = taskRepository.getByName(userId, name);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
+        final Task removing = taskRepository.getByName(userId, name);
         if (removing == null) {
             System.out.println("wrong task name.");
             return null;
@@ -64,9 +64,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task getByName(@NonNull String userId, @NonNull String name) {
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
-        TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
-        Task task = taskRepository.getByName(userId, name);
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
+        final Task task = taskRepository.getByName(userId, name);
         sqlSessionService.closeSqlSession(sqlSession);
         return task;
     }

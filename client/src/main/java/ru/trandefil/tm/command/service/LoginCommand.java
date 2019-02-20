@@ -35,6 +35,7 @@ public class LoginCommand extends AbstractCommand {
         final UserEndPoint userEndPoint = getServiceLocator().getUserEndPoint();
         final Session session = userEndPoint.getSession(userName,userPassword);
         if(session == null){
+            System.out.println("session is null");
             return;
         }
         getServiceLocator().setSession(session);

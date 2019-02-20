@@ -1,13 +1,16 @@
 package ru.trandefil.tm.api;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import ru.trandefil.tm.entity.Session;
 
 public interface SessionRepository {
 
-    Session getSession(String id);
+    @Delete("DELETE from sessions WHERE id = #{id}")
+    void deleteById(String id);
 
-    Session save(Session session);
-
-    void delete(String sesionId);
+    @Insert("INSERT INTO sessions (id, timestamp, user_id, role, signature)" +
+            " VALUES (#{id}, #{timestamp}, #{userId}, #{role}, #{signature})")
+    void insert(Session session);
 
 }

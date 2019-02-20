@@ -10,9 +10,6 @@ public interface UserRepository {
     @Select("select * from users")
     List<User> getAll();
 
-    @Select("select * from users where id = #{id}")
-    User getById(User user);
-
     @Select("select * from users where name = #{name}")
     User getByName(@Param("name") String name);
 

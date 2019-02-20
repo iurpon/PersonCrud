@@ -7,95 +7,57 @@ import java.util.List;
 
 public interface TaskMapper {
 
-    final String getAll = "select * from tasks";
-
-    final String getAllFiltered = "select * from tasks where assigner_id = #{userId} or executor_id = #{userId}";
-
-    final String getById = "select * from tasks where task_id = #{id}";
-
-    final String getByName = "select * from tasks where name = #{name} and assigner_id = #{assigneeId}";
-
-    final String insert =
-            "INSERT INTO tasks " +
-                    "(task_id, name, description,  startDate, endDate, proj_id, assigner_id, executor_id)" +
-                    " VALUES " +
-                    "(#{id}, #{name}, #{description}, #{begin}, #{end}, #{projectId}, #{assigneeId}, #{executorId})";
-
-    final String update = "UPDATE tasks SET " +
-            " name = #{name}," +
-            " description = #{description}," +
-            " startDate = #{begin}, " +
-            " endDate = #{end} ," +
-            " executor_id = #{executorId} " +
-            " where task_id = #{id}";
-
-    final String deleteById = "DELETE from tasks WHERE task_id = #{id}";
-
-    final String deleteByName = "DELETE from tasks WHERE name = #{name}";
-
-
-    @Select(getAll)
+    @Select("select * from tasks")
     @Results(value = {
-            @Result(property = "id", column = "task_id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "description", column = "description"),
-            @Result(property = "begin", column = "startDate"),
-            @Result(property = "end", column = "endDate"),
             @Result(property = "projectId", column = "proj_id"),
             @Result(property = "assigneeId", column = "assigner_id"),
             @Result(property = "executorId", column = "executor_id")
     })
     List<Task> getAll();
 
-    @Select(getAllFiltered)
+    @Select("select * from tasks where assigner_id = #{userId} or executor_id = #{userId}")
     @Results(value = {
-            @Result(property = "id", column = "task_id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "description", column = "description"),
-            @Result(property = "begin", column = "startDate"),
-            @Result(property = "end", column = "endDate"),
             @Result(property = "projectId", column = "proj_id"),
             @Result(property = "assigneeId", column = "assigner_id"),
             @Result(property = "executorId", column = "executor_id")
     })
     List<Task> getAllFiltered(String userId);
 
-    @Select(getById)
+    @Select("select * from tasks where id = #{id}")
     @Results(value = {
-            @Result(property = "id", column = "task_id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "description", column = "description"),
-            @Result(property = "begin", column = "startDate"),
-            @Result(property = "end", column = "endDate"),
             @Result(property = "projectId", column = "proj_id"),
             @Result(property = "assigneeId", column = "assigner_id"),
             @Result(property = "executorId", column = "executor_id")
     })
     Task getById(Task task);
 
-    @Select(getByName)
+    @Select("select * from tasks where name = #{name} and assigner_id = #{assigneeId}")
     @Results(value = {
-            @Result(property = "id", column = "task_id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "description", column = "description"),
-            @Result(property = "begin", column = "startDate"),
-            @Result(property = "end", column = "endDate"),
             @Result(property = "projectId", column = "proj_id"),
             @Result(property = "assigneeId", column = "assigner_id"),
             @Result(property = "executorId", column = "executor_id")
     })
     Task getByName(@Param("assigneeId") String assigneeId, @Param("name") String name);
 
-    @Insert(insert)
+    @Insert("INSERT INTO tasks " +
+            "(id, name, description, begin, end, proj_id, assigner_id, executor_id)" +
+            " VALUES " +
+            "(#{id}, #{name}, #{description}, #{begin}, #{end}, #{projectId}, #{assigneeId}, #{executorId})")
     void insert(Task user);
 
-    @Update(update)
+    @Update("UPDATE tasks SET " +
+            " name = #{name}," +
+            " description = #{description}," +
+            " begin = #{begin}, " +
+            " end = #{end} ," +
+            " executor_id = #{executorId} " +
+            " where id = #{id}")
     void update(Task user);
 
-    @Delete(deleteById)
+    @Delete("DELETE from tasks WHERE id = #{id}")
     void deleteById(Task user);
 
-    @Delete(deleteByName)
+    @Delete("DELETE from tasks WHERE name = #{name}")
     void deleteByName(@Param("name") String name);
 
 }

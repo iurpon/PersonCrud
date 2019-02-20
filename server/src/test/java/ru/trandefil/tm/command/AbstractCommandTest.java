@@ -19,6 +19,7 @@ import static ru.trandefil.tm.command.UserCommandTestData.USER;
 
 public class AbstractCommandTest {
 
+/*
     protected UserRepository userRepository = new UserRepositoryImpl();
 
     protected TaskRepository taskRepository = new TaskRepositoryImpl();
@@ -29,7 +30,7 @@ public class AbstractCommandTest {
 
     protected SessionService sessionService = new SessionServiceImpl(sessionRepository);
 
-    protected UserService userService = new UserServiceImpl(userRepository, sessionService);
+//    protected UserService userService = new UserServiceImpl(userRepository, sessionService);
 
     protected TaskService taskService = new TaskServiceImpl(taskRepository);
 
@@ -52,8 +53,11 @@ public class AbstractCommandTest {
         taskRepository.save(TASK1);
         taskRepository.save(TASK2);
         taskRepository.save(TASK3);
-        sessionAdmin = userService.getSession(ADMIN.getName(), ADMIN.getPassword());
-        sessionUser = userService.getSession(USER.getName(), USER.getPassword());
+*/
+/*        sessionAdmin = userService.getSession(ADMIN.getName(), ADMIN.getPassword());
+        sessionUser = userService.getSession(USER.getName(), USER.getPassword());*//*
+
     }
+*/
 
 }

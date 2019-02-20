@@ -23,7 +23,7 @@ public interface UserMapper {
             " VALUES (#{id}, #{name}, #{password}, #{role})")
     void insert(User user);
 
-    @Update("UPDATE users SET name = #{name}, password = #{password}, role = #{role} where user_id = #{id}")
+    @Update("UPDATE users SET name = #{name}, password = #{password}, role = #{role} where id = #{id}")
     void update(User user);
 
     @Delete("DELETE from users WHERE id = #{id}")

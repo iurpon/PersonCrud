@@ -65,9 +65,9 @@ public class TaskUpdateCommand extends AbstractCommand {
         final Date endDate = getDate(terminalService, "enter new task end date");
         try {
             GregorianCalendar c = new GregorianCalendar();
-            c.setTime(startDate);
+            c.setTime(startDate == null ? new Date(): startDate);
             XMLGregorianCalendar start = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-            c.setTime(endDate);
+            c.setTime(endDate == null ? new Date() : endDate);
             XMLGregorianCalendar end = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
 
 

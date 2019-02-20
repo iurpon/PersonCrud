@@ -19,11 +19,11 @@ public interface ProjectMapper {
     })
     List<Project> getAllFilter(@Param("userId") String userId);
 
-    @Select("select * from projects where id = #{id}")
+    @Select("select * from projects where user_id = #{userId} and name = #{name}")
     @Results(value = {
             @Result(property = "userId", column = "user_id")
     })
-    Project getById(@Param("id") String id, @Param("userId") String userId);
+    Project getById(@Param("userId") String userId, @Param("name") String name);
 
     @Select("select * from projects where user_id = #{userId} and name = #{name}")
     @Results(value = {
@@ -31,14 +31,14 @@ public interface ProjectMapper {
     })
     Project getByName(@Param("userId") String userId, @Param("name") String name);
 
-    @Insert("INSERT INTO projects (proj_id, name, description, user_id)" +
+    @Insert("INSERT INTO projects (id, name, description, user_id)" +
             " VALUES (#{id}, #{name}, #{description}, #{userId})")
     void insert(Project project);
 
     @Update("UPDATE projects SET name = #{name}, description = #{description} where id = #{id}")
     void update(Project project);
 
-    @Delete("DELETE from projects WHERE id = #{id} and user_id = #{userId}")
+    @Delete("DELETE from projects WHERE id = #{id}")
     void deleteById(Project project);
 
     @Delete("DELETE from projects WHERE user_id = #{userId} and name = #{name}")

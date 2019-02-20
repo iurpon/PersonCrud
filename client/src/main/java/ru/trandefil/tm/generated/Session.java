@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="role" type="{http://generated.tm.trandefil.ru/}role" minOccurs="0"/&gt;
  *         &lt;element name="signature" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="timeStamp" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="timestamp" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="userId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "session", propOrder = {
     "role",
     "signature",
-    "timeStamp",
+    "timestamp",
     "userId"
 })
 public class Session
@@ -43,7 +43,7 @@ public class Session
     @XmlSchemaType(name = "string")
     protected Role role;
     protected String signature;
-    protected long timeStamp;
+    protected long timestamp;
     protected String userId;
 
     /**
@@ -95,19 +95,19 @@ public class Session
     }
 
     /**
-     * Gets the value of the timeStamp property.
+     * Gets the value of the timestamp property.
      * 
      */
-    public long getTimeStamp() {
-        return timeStamp;
+    public long getTimestamp() {
+        return timestamp;
     }
 
     /**
-     * Sets the value of the timeStamp property.
+     * Sets the value of the timestamp property.
      * 
      */
-    public void setTimeStamp(long value) {
-        this.timeStamp = value;
+    public void setTimestamp(long value) {
+        this.timestamp = value;
     }
 
     /**

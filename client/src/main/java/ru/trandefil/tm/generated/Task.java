@@ -22,7 +22,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="begin" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="end" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="executerId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="executorId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="projectId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
@@ -38,7 +38,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "begin",
     "description",
     "end",
-    "executerId",
+    "executorId",
     "projectId"
 })
 public class Task
@@ -51,7 +51,7 @@ public class Task
     protected String description;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar end;
-    protected String executerId;
+    protected String executorId;
     protected String projectId;
 
     /**
@@ -151,27 +151,27 @@ public class Task
     }
 
     /**
-     * Gets the value of the executerId property.
+     * Gets the value of the executorId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getExecuterId() {
-        return executerId;
+    public String getExecutorId() {
+        return executorId;
     }
 
     /**
-     * Sets the value of the executerId property.
+     * Sets the value of the executorId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setExecuterId(String value) {
-        this.executerId = value;
+    public void setExecutorId(String value) {
+        this.executorId = value;
     }
 
     /**
@@ -198,12 +198,4 @@ public class Task
         this.projectId = value;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "begin=" + begin +
-                ", end=" + end +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

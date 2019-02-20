@@ -2,6 +2,7 @@ package ru.trandefil.tm.util;
 
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
+import ru.trandefil.tm.exception.SecurityAuthentificationException;
 
 import java.io.InputStream;
 import java.util.Properties;
@@ -39,22 +40,22 @@ public class SignatureUtil {
     public static boolean checkCorrectSession(Session session) {
         if (session == null) {
             System.out.println("session is null");
-            return false;
+            throw new SecurityAuthentificationException("bad security.");
         }
         if (session.getId() == null) {
-            return false;
+            throw new SecurityAuthentificationException("bad security.");
         }
         if (session.getRole() == null) {
-            return false;
+            throw new SecurityAuthentificationException("bad security.");
         }
         if (session.getUserId() == null) {
-            return false;
+            throw new SecurityAuthentificationException("bad security.");
         }
         if (session.getTimestamp() == 0) {
-            return false;
+            throw new SecurityAuthentificationException("bad security.");
         }
         if (session.getSignature() == null) {
-            return false;
+            throw new SecurityAuthentificationException("bad security.");
         }
         return session.getSignature().equals(createSignature(session.getId(),
                 session.getUserId(), session.getTimestamp(), session.getRole()));

@@ -8,6 +8,8 @@ public interface TaskService {
 
     List<Task> getAll(String userId);
 
+    List<Task> getAll();
+
     Task save(String userId,Task task);
 
     Task delete(String userId, Task task);

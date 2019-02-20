@@ -29,6 +29,14 @@ public class TaskServiceImpl implements TaskService {
         return tasks;
     }
 
+    public List<Task> getAll() {
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final TaskRepository taskRepository = sqlSession.getMapper(TaskRepository.class);
+        final List<Task> tasks = taskRepository.getAll();
+        sqlSessionService.closeSqlSession(sqlSession);
+        return tasks;
+    }
+
     public Task save(@NonNull String userId, @NonNull Task task) {
         if (!userId.equals(task.getAssigneeId())) {
             return null;

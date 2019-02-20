@@ -52,6 +52,15 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public List<Project> getAll() {
+        final SqlSession sqlSession = sqlSessionService.getSqlSession();
+        final ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);
+        final List<Project> projectList = projectRepository.getAll();
+        sqlSessionService.closeSqlSession(sqlSession);
+        return projectList;
+    }
+
+    @Override
     public Project getById(String userId, String name) {
         final SqlSession sqlSession = sqlSessionService.getSqlSession();
         final ProjectRepository projectRepository = sqlSession.getMapper(ProjectRepository.class);

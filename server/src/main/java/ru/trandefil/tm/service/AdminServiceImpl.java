@@ -1,8 +1,17 @@
 package ru.trandefil.tm.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.trandefil.tm.api.*;
+import ru.trandefil.tm.domain.Domain;
+import ru.trandefil.tm.entity.Project;
+import ru.trandefil.tm.entity.Task;
+import ru.trandefil.tm.entity.User;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class AdminServiceImpl implements AdminService {
 
@@ -25,7 +34,7 @@ public class AdminServiceImpl implements AdminService {
                 final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
                 System.out.println(jsonString);
                 final Domain command = objectMapper.readValue(jsonString, Domain.class);
-                userRepository.clear();
+                userService.clear();
                 command.getUsers().forEach(userRepository::save);
                 projectRepository.clear();
                 command.getProjects().forEach(projectRepository::save);
@@ -39,20 +48,20 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void saveJson() {
-/*        final ObjectMapper objectMapper = new ObjectMapper();
-//        final List<Project> projectList = projectService.getAll();
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final List<Project> projectList = projectService.getAll();
         final List<User> userList = userService.getAll();
-//        final List<Task> taskList = taskService.getAll(ADMIN);
+        final List<Task> taskList = taskService.getAll();
         final Domain command = new Domain();
-//        command.setProjects(projectList);
-//        command.setTasks(taskList);
+        command.setProjects(projectList);
+        command.setTasks(taskList);
         command.setUsers(userList);
         try {
             final String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(command);
             Files.write(Paths.get("data.json"), json.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     @Override

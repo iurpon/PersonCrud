@@ -23,7 +23,7 @@ public class TaskMBRepositoryImpl implements TaskRepository {
     public List<Task> getAll(String userId) {
         SqlSession sqlSession = sqlSessionService.getSqlSession();
         TaskMapper taskMapper = sqlSession.getMapper(TaskMapper.class);
-        List<Task> tasks = taskMapper.getAll(userId);
+        List<Task> tasks = taskMapper.getAllFiltered(userId);
         sqlSessionService.closeSqlSession(sqlSession);
         return tasks;
     }

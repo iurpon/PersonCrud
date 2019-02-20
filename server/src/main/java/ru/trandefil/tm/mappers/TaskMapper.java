@@ -13,11 +13,11 @@ public interface TaskMapper {
 
     final String getById = "select * from tasks where task_id = #{id}";
 
-    final String getByName = "select * from tasks where name = #{name} and assigner_id = #{assignerId}";
+    final String getByName = "select * from tasks where name = #{name} and assigner_id = #{assigneeId}";
 
     final String insert =
             "INSERT INTO tasks " +
-                    "(task_id, name, description, role, startDate, endDate, proj_id, assigner_id, executor_id)" +
+                    "(task_id, name, description,  startDate, endDate, proj_id, assigner_id, executor_id)" +
                     " VALUES " +
                     "(#{id}, #{name}, #{description}, #{begin}, #{end}, #{projectId}, #{assigneeId}, #{executorId})";
 
@@ -56,9 +56,9 @@ public interface TaskMapper {
             @Result(property = "end", column = "endDate"),
             @Result(property = "projectId", column = "proj_id"),
             @Result(property = "assigneeId", column = "assigner_id"),
-            @Result(property = "executerId", column = "executor_id")
+            @Result(property = "executorId", column = "executor_id")
     })
-    List<Task> getAll(String userId);
+    List<Task> getAllFiltered(String userId);
 
     @Select(getById)
     @Results(value = {
@@ -69,7 +69,7 @@ public interface TaskMapper {
             @Result(property = "end", column = "endDate"),
             @Result(property = "projectId", column = "proj_id"),
             @Result(property = "assigneeId", column = "assigner_id"),
-            @Result(property = "executerId", column = "executor_id")
+            @Result(property = "executorId", column = "executor_id")
     })
     Task getById(@Param("id") String id);
 
@@ -82,9 +82,9 @@ public interface TaskMapper {
             @Result(property = "end", column = "endDate"),
             @Result(property = "projectId", column = "proj_id"),
             @Result(property = "assigneeId", column = "assigner_id"),
-            @Result(property = "executerId", column = "executor_id")
+            @Result(property = "executorId", column = "executor_id")
     })
-    Task getByName(@Param("assignerId") String assignerId, @Param("name") String name);
+    Task getByName(@Param("assigneeId") String assigneeId, @Param("name") String name);
 
     @Insert(insert)
     void insert(Task user);

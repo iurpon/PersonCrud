@@ -71,7 +71,7 @@ public interface TaskMapper {
             @Result(property = "assigneeId", column = "assigner_id"),
             @Result(property = "executorId", column = "executor_id")
     })
-    Task getById(@Param("id") String id);
+    Task getById(Task task);
 
     @Select(getByName)
     @Results(value = {

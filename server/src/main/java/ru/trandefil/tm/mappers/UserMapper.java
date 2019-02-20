@@ -7,69 +7,29 @@ import java.util.List;
 
 public interface UserMapper {
 
-    final String getAll = "select * from users";
-
-    final String insert = "INSERT INTO users (user_id, name, password, role)" +
-            " VALUES (#{id}, #{name}, #{password}, #{role})";
-
-    final String update = "UPDATE users SET name = #{name}, password = #{password}, role = #{role} where user_id = #{id}";
-
-    final String deleteById = "DELETE from users WHERE user_id = #{id}";
-
-    final String deleteByName = "DELETE from users WHERE name = #{name}";
-
-    final String getById = "select * from users where user_id = #{id}";
-
-    final String getByName = "select * from users where name = #{name}";
-
-    final String getByNameAndPass = "select * from users where name = #{name} and password = #{password}";
-
-    @Select(getAll)
-    @Results(value = {
-            @Result(property = "id", column = "user_id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "password", column = "password"),
-            @Result(property = "role", column = "role")
-    })
+    @Select("select * from users")
     List<User> getAll();
 
-    @Select(getById)
-    @Results(value = {
-            @Result(property = "id", column = "user_id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "password", column = "password"),
-            @Result(property = "role", column = "role")
-    })
-    User getById(@Param("id")String id);
+    @Select("select * from users where id = #{id}")
+    User getById(User user);
 
-    @Select(getByName)
-    @Results(value = {
-            @Result(property = "id", column = "user_id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "password", column = "password"),
-            @Result(property = "role", column = "role")
-    })
+    @Select("select * from users where name = #{name}")
     User getByName(@Param("name") String name);
 
-    @Select(getByNameAndPass)
-    @Results(value = {
-            @Result(property = "id", column = "user_id"),
-            @Result(property = "name", column = "name"),
-            @Result(property = "password", column = "password"),
-            @Result(property = "role", column = "role")
-    })
-    User getByNameAndPass(@Param("name") String name,@Param("password") String password);
+    @Select("select * from users where name = #{name} and password = #{password}")
+    User getByNameAndPass(@Param("name") String name, @Param("password") String password);
 
-    @Insert(insert)
+    @Insert("INSERT INTO users (id, name, password, role)" +
+            " VALUES (#{id}, #{name}, #{password}, #{role})")
     void insert(User user);
 
-    @Update(update)
+    @Update("UPDATE users SET name = #{name}, password = #{password}, role = #{role} where user_id = #{id}")
     void update(User user);
 
-    @Delete(deleteById)
+    @Delete("DELETE from users WHERE id = #{id}")
     void deleteById(User user);
 
-    @Delete(deleteByName)
-    void deleteByName(@Param("name")String name);
+    @Delete("DELETE from users WHERE name = #{name}")
+    void deleteByName(@Param("name") String name);
 
 }

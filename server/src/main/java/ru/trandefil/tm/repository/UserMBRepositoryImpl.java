@@ -95,11 +95,11 @@ public class UserMBRepositoryImpl implements UserRepository {
 
     @Override
     public User getById(String id) {
-        SqlSession sqlSession = sqlSessionService.getSqlSession();
+/*        SqlSession sqlSession = sqlSessionService.getSqlSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         User user = userMapper.getById(id);
-        sqlSessionService.closeSqlSession(sqlSession);
-        return user;
+        sqlSessionService.closeSqlSession(sqlSession);*/
+        return null;
     }
 
 }

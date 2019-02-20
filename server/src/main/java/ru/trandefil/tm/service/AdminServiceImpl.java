@@ -36,13 +36,13 @@ public class AdminServiceImpl implements AdminService {
                 final ObjectMapper objectMapper = new ObjectMapper();
                 final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
                 System.out.println(jsonString);
-                final Domain domain = objectMapper.readValue(jsonString, Domain.class);
+                final Domain command = objectMapper.readValue(jsonString, Domain.class);
                 userRepository.clear();
-                domain.getUsers().forEach(userRepository::save);
+                command.getUsers().forEach(userRepository::save);
                 projectRepository.clear();
-                domain.getProjects().forEach(projectRepository::save);
+                command.getProjects().forEach(projectRepository::save);
                 taskRepository.clear();
-                domain.getTasks().forEach(taskRepository::save);
+                command.getTasks().forEach(taskRepository::save);
             } catch (IOException e) {
                 System.out.println("is empty.");
                 e.printStackTrace();
@@ -55,12 +55,12 @@ public class AdminServiceImpl implements AdminService {
 //        final List<Project> projectList = projectService.getAll();
         final List<User> userList = userService.getAll();
 //        final List<Task> taskList = taskService.getAll(ADMIN);
-        final Domain domain = new Domain();
-//        domain.setProjects(projectList);
-//        domain.setTasks(taskList);
-        domain.setUsers(userList);
+        final Domain command = new Domain();
+//        command.setProjects(projectList);
+//        command.setTasks(taskList);
+        command.setUsers(userList);
         try {
-            final String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(domain);
+            final String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(command);
             Files.write(Paths.get("data.json"), json.getBytes());
         } catch (IOException e) {
             e.printStackTrace();

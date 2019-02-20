@@ -28,7 +28,7 @@ public class AdminEndPointImpl implements AdminEndPoint {
             throw new SecurityAuthentificationException("security authentification exception.");
         }
         if (!session.getRole().equals(Role.ADMIN)) {
-            System.out.println("not authorized  to do this domain.");
+            System.out.println("not authorized  to do this command.");
             throw new SecurityAuthorizationException("not authorized for this operation.");
         }
         adminService.saveJson();
@@ -42,7 +42,7 @@ public class AdminEndPointImpl implements AdminEndPoint {
             throw new SecurityAuthentificationException("security authentification exception.");
         }
         if (!session.getRole().equals(Role.ADMIN)) {
-            System.out.println("not authorized  to do this domain.");
+            System.out.println("not authorized  to do this command.");
             throw new SecurityAuthorizationException("not authorized for this operation.");
         }
         adminService.loadJson();
@@ -56,7 +56,7 @@ public class AdminEndPointImpl implements AdminEndPoint {
             throw new SecurityAuthentificationException("security authentification exception.");
         }
         if (!session.getRole().equals(Role.ADMIN)) {
-            System.out.println("not authorized  to do this domain.");
+            System.out.println("not authorized  to do this command.");
             throw new SecurityAuthorizationException("not authorized for this operation.");
         }
         adminService.clearJson();

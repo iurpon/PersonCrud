@@ -28,8 +28,8 @@ public class UserRepositoryImpl implements UserRepository {
         try {
             final ObjectMapper objectMapper = new ObjectMapper();
             final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
-            final Domain domain = objectMapper.readValue(jsonString, Domain.class);
-            domain.getUsers().forEach(this::save);
+            final Domain command = objectMapper.readValue(jsonString, Domain.class);
+            command.getUsers().forEach(this::save);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,7 +1,10 @@
 package ru.trandefil.tm.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.trandefil.tm.api.*;
+import ru.trandefil.tm.api.AdminService;
+import ru.trandefil.tm.api.ProjectService;
+import ru.trandefil.tm.api.TaskService;
+import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.domain.Domain;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
@@ -33,10 +36,10 @@ public class AdminServiceImpl implements AdminService {
                 final ObjectMapper objectMapper = new ObjectMapper();
                 final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
                 System.out.println(jsonString);
-                final Domain command = objectMapper.readValue(jsonString, Domain.class);
+/*                final Domain command = objectMapper.readValue(jsonString, Domain.class);
                 command.getUsers().forEach(System.out::println);
                 command.getProjects().forEach(System.out::println);
-                command.getTasks().forEach(System.out::println);
+                command.getTasks().forEach(System.out::println);*/
             } catch (IOException e) {
                 System.out.println("is empty.");
                 e.printStackTrace();

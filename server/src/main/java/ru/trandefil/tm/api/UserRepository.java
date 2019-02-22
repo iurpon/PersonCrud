@@ -11,4 +11,14 @@ public interface UserRepository {
 
     User getLogged(String login, String pass, EntityManager entityManager);
 
+    User findByName(String name, EntityManager em);
+
+    User saveOrUpdate(User user, EntityManager em);
+
+    void delete(User user, EntityManager em);
+
+    boolean deleteByName(String name, EntityManager em);
+
+    boolean deleteById(String id, EntityManager em);
+
 }

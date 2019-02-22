@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface UserService {
 
-    User delete(User user);
+    void delete(User user);
 
-    User deleteByName(String name);
+    void deleteByName(String name);
 
     User save(User user);
 

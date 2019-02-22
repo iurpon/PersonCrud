@@ -1,11 +1,9 @@
 package ru.trandefil.tm;
 
-import org.hibernate.Session;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.util.EMFactory;
+import ru.trandefil.tm.util.EMFactoryUtil;
 import ru.trandefil.tm.util.HashUtil;
-import ru.trandefil.tm.util.HibernateUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.persistence.EntityManager;
@@ -21,7 +19,7 @@ public class HibernateExample {
         session.merge(user);
         session.getTransaction().commit();
         session.close();*/
-        EntityManager entityManager = EMFactory.getEntityManager();
+        EntityManager entityManager = EMFactoryUtil.getEntityManager();
         entityManager.getTransaction().begin();
         entityManager.merge(user);
 //        entityManager.merge(user1);

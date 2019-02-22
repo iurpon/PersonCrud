@@ -6,7 +6,7 @@ import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.util.EMFactory;
+import ru.trandefil.tm.util.EMFactoryUtil;
 import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
@@ -23,28 +23,44 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User delete(User user) {
-        return null;
+    public void delete(@NonNull User user) {
+        EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        userRepository.delete(user, em);
+        em.getTransaction().commit();
+        em.close();
     }
 
     @Override
-    public User deleteByName(String name) {
-        return null;
+    public void deleteByName(@NonNull String name) {
     }
 
     @Override
-    public User save(User user) {
-        return null;
+    public User save(@NonNull User user) {
+        if (user.isNew()) {
+            user.setId(UUIDUtil.getUniqueString());
+        }
+        EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        userRepository.saveOrUpdate(user, em);
+        em.getTransaction().commit();
+        em.close();
+        return user;
     }
 
     @Override
-    public User getByName(String userName) {
-        return null;
+    public User getByName(@NonNull String userName) {
+        EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        User user = userRepository.findByName(userName, em);
+        em.getTransaction().commit();
+        em.close();
+        return user;
     }
 
     @Override
     public List<User> getAll() {
-        EntityManager em = EMFactory.getEntityManager();
+        EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         List<User> users = userRepository.getAll(em);
         em.getTransaction().commit();
@@ -53,10 +69,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Session getSession(String userName, String userPassword) {
-        EntityManager em = EMFactory.getEntityManager();
+    public Session getSession(@NonNull String userName, @NonNull String userPassword) {
+        EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        User user = userRepository.getLogged(userName, HashUtil.hashPassword(userPassword),em);
+        User user = userRepository.getLogged(userName, HashUtil.hashPassword(userPassword), em);
         if (user == null) {
             System.out.println("bad login.");
             return null;
@@ -77,12 +93,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void logout(String sessionId) {
+    public void logout(@NonNull String sessionId) {
 
     }
 
     @Override
-    public User constractUser(String name, String pass, String role) {
-        return null;
+    public User constractUser(@NonNull String name, @NonNull String pass, @NonNull String role) {
+        User created = new User(null, name, pass, Enum.valueOf(Role.class,role));
+        User saved = save(created);
+        return saved;
     }
 }

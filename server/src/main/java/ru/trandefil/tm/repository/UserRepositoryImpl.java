@@ -26,4 +26,39 @@ public class UserRepositoryImpl implements UserRepository {
         return logged;
     }
 
+    @Override
+    public User findByName(String name, EntityManager em) {
+        Query query = em.createQuery("Select u FROM User u WHERE u.name = :name");
+        query.setParameter("name", name);
+        User user = (User) query.getSingleResult();
+        return user;
+    }
+
+    @Override
+    public User saveOrUpdate(User user, EntityManager em) {
+        return em.merge(user);
+    }
+
+    @Override
+    public void delete(User user, EntityManager em) {
+        em.remove(user);
+    }
+
+    @Override
+    public boolean deleteByName(String name, EntityManager em) {
+        User byName = findByName(name, em);
+        if (byName != null) {
+            return deleteById(byName.getId(), em);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteById(String id, EntityManager em) {
+        Query query = em.createQuery("Select u FROM User u WHERE u.id = :id");
+        query.setParameter("id", id);
+        int executeUpdate = query.executeUpdate();
+        return executeUpdate != 0;
+    }
+
 }

@@ -1,13 +1,19 @@
 package ru.trandefil.tm.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Table(name = "user")
+@Entity
 public class User extends BaseNamedEntity {
 
     private static final long serialVersionUID = 3L;
 
     private String password;
 
+    @Column(name = "role",columnDefinition = "varchar")
     private Role role;
 
     public User() {

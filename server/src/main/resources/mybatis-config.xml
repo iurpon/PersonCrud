@@ -20,10 +20,10 @@
     </environments>
 
     <mappers>
-        <mapper class="ru.trandefil.tm.api.ProjectRepository"/>
-        <mapper class="ru.trandefil.tm.api.UserRepository"/>
-        <mapper class="ru.trandefil.tm.api.TaskRepository"/>
-        <mapper class="ru.trandefil.tm.api.SessionRepository"/>
+        <mapper class="ru.trandefil.tm.mybatis.ProjectRepository"/>
+        <mapper class="ru.trandefil.tm.mybatis.UserRepository"/>
+        <mapper class="ru.trandefil.tm.mybatis.TaskRepository"/>
+        <mapper class="ru.trandefil.tm.mybatis.SessionRepository"/>
     </mappers>
 
 </configuration>

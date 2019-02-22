@@ -1,11 +1,11 @@
-package ru.trandefil.tm.service;
+package ru.trandefil.tm.mybatis;
 
 import lombok.NonNull;
 import org.apache.ibatis.session.SqlSession;
 import ru.trandefil.tm.api.SqlSessionService;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.api.TaskRepository;
+import ru.trandefil.tm.mybatis.TaskRepository;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.List;

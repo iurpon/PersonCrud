@@ -1,4 +1,4 @@
-package ru.trandefil.tm.service;
+package ru.trandefil.tm.mybatis;
 
 
 import lombok.NonNull;
@@ -7,7 +7,7 @@ import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.SqlSessionService;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.exception.SecurityAuthorizationException;
-import ru.trandefil.tm.api.ProjectRepository;
+import ru.trandefil.tm.mybatis.ProjectRepository;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import java.util.List;

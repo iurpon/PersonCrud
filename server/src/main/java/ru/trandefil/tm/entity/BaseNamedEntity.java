@@ -1,5 +1,8 @@
 package ru.trandefil.tm.entity;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class BaseNamedEntity extends BaseEntity {
 
     protected String name;

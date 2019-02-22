@@ -1,95 +1,69 @@
 package ru.trandefil.tm.service;
 
 import lombok.NonNull;
-import org.apache.ibatis.session.SqlSession;
-import ru.trandefil.tm.api.*;
+import ru.trandefil.tm.api.UserRepository;
+import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.util.HashUtil;
+import ru.trandefil.tm.util.EMFactory;
 import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
+import javax.persistence.EntityManager;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class UserServiceImpl implements UserService {
 
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private UserRepository userRepository;
 
-    private SqlSessionService sqlSessionService;
-
-    public UserServiceImpl(SqlSessionService sqlSessionService) {
-        this.sqlSessionService = sqlSessionService;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    public User delete(@NonNull User user) {
+    public User delete(User user) {
         return null;
     }
 
     @Override
-    public User deleteByName(@NonNull String name) {
-        final SqlSession sqlSession = sqlSessionService.getSqlSession();
-        final UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
-        final User user = userRepository.getByName(name);
-        if (user == null) {
-            logger.info("wrong deleting name.");
-            return null;
-        }
-        userRepository.deleteById(user);
-        sqlSessionService.closeSqlSession(sqlSession);
-        return user;
+    public User deleteByName(String name) {
+        return null;
     }
 
     @Override
-    public User save(@NonNull User user) {
-        final SqlSession sqlSession = sqlSessionService.getSqlSession();
-        final UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
-        if (user.isNew()) {
-            user.setId(UUIDUtil.getUniqueString());
-            userRepository.insert(user);
-            sqlSessionService.closeSqlSession(sqlSession);
-            return user;
-        }
-        userRepository.update(user);
-        sqlSessionService.closeSqlSession(sqlSession);
-        return user;
+    public User save(User user) {
+        return null;
     }
 
     @Override
-    public User getByName(@NonNull String userName) {
-        final SqlSession sqlSession = sqlSessionService.getSqlSession();
-        final UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
-        final User user = userRepository.getByName(userName);
-        sqlSessionService.closeSqlSession(sqlSession);
-        return user;
+    public User getByName(String userName) {
+        return null;
     }
 
     @Override
     public List<User> getAll() {
-        final SqlSession sqlSession = sqlSessionService.getSqlSession();
-        final UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
-        final List<User> users = userRepository.getAll();
-        sqlSessionService.closeSqlSession(sqlSession);
+        EntityManager em = EMFactory.getEntityManager();
+        em.getTransaction().begin();
+        List<User> users = userRepository.getAll(em);
+        em.getTransaction().commit();
+        em.close();
         return users;
     }
 
     @Override
-    public Session getSession(@NonNull String userName, @NonNull String userPassword) {
-        final SqlSession sqlSession = sqlSessionService.getSqlSession();
-        final UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
-        final User user = userRepository.getByNameAndPass(userName, HashUtil.hashPassword(userPassword));
+    public Session getSession(String userName, String userPassword) {
+        EntityManager em = EMFactory.getEntityManager();
+        em.getTransaction().begin();
+        User user = userRepository.getLogged(userName,userPassword,em);
         if (user == null) {
             System.out.println("bad login.");
-            sqlSessionService.closeSqlSession(sqlSession);
             return null;
         }
+        em.getTransaction().commit();
+        em.close();
         System.out.println("logged " + user.getName());
         final Session newSess = createNewSession(user.getId(), user.getRole());
-        SessionRepository mapper = sqlSession.getMapper(SessionRepository.class);
-        mapper.insert(newSess);
-        sqlSessionService.closeSqlSession(sqlSession);
         return newSess;
     }
 
@@ -102,24 +76,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void logout(@NonNull final String sessionId) {
-        final SqlSession sqlSession = sqlSessionService.getSqlSession();
-        final SessionRepository mapper = sqlSession.getMapper(SessionRepository.class);
-        mapper.deleteById(sessionId);
-        sqlSessionService.closeSqlSession(sqlSession);
+    public void logout(String sessionId) {
+
     }
 
     @Override
-    public User constractUser(@NonNull final String name, @NonNull final String pass, @NonNull String role) {
-        role = role.trim().toUpperCase();
-        if ("ADMIN".equals(role) || "USER".equals(role)) {
-            final Role newRole = Enum.valueOf(Role.class, role);
-            final User newUser = new User(null, name, HashUtil.hashPassword(pass), newRole);
-            System.out.println("created user : " + newUser);
-            return save(newUser);
-        }
-        System.out.println("bad user role.");
+    public User constractUser(String name, String pass, String role) {
         return null;
     }
-
 }

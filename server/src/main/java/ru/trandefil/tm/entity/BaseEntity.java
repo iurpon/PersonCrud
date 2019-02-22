@@ -2,10 +2,14 @@ package ru.trandefil.tm.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
+@MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
+    @Id
     protected String id;
 
 

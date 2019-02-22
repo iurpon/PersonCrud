@@ -1,4 +1,4 @@
-package ru.trandefil.tm.api;
+package ru.trandefil.tm.mybatis;
 
 import org.apache.ibatis.session.SqlSession;
 

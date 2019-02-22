@@ -10,6 +10,7 @@ import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
 import ru.trandefil.tm.mybatis.ProjectServiceImpl;
+import ru.trandefil.tm.mybatis.SqlSessionService;
 import ru.trandefil.tm.mybatis.SqlSessionServiceImpl;
 import ru.trandefil.tm.mybatis.TaskServiceImpl;
 import ru.trandefil.tm.repository.UserRepositoryImpl;

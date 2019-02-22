@@ -6,8 +6,6 @@ import ru.trandefil.tm.api.*;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.mybatis.SessionRepository;
-import ru.trandefil.tm.mybatis.UserRepository;
 import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;

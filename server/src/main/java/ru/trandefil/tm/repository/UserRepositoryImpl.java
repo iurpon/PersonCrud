@@ -55,7 +55,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean deleteById(String id, EntityManager em) {
-        Query query = em.createQuery("Select u FROM User u WHERE u.id = :id");
+        Query query = em.createQuery("Delete FROM User u WHERE u.id = :id");
         query.setParameter("id", id);
         int executeUpdate = query.executeUpdate();
         return executeUpdate != 0;

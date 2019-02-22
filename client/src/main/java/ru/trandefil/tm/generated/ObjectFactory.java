@@ -24,12 +24,22 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ClearJson_QNAME = new QName("http://generated.tm.trandefil.ru/", "clearJson");
-    private final static QName _ClearJsonResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "clearJsonResponse");
-    private final static QName _LoadJson_QNAME = new QName("http://generated.tm.trandefil.ru/", "loadJson");
-    private final static QName _LoadJsonResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "loadJsonResponse");
-    private final static QName _SaveJson_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveJson");
-    private final static QName _SaveJsonResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveJsonResponse");
+    private final static QName _DeleteUserByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteUserByName");
+    private final static QName _DeleteUserByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteUserByNameResponse");
+    private final static QName _GetAllUsers_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllUsers");
+    private final static QName _GetAllUsersResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllUsersResponse");
+    private final static QName _GetSession_QNAME = new QName("http://generated.tm.trandefil.ru/", "getSession");
+    private final static QName _GetSessionResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getSessionResponse");
+    private final static QName _GetUserByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getUserByName");
+    private final static QName _GetUserByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getUserByNameResponse");
+    private final static QName _Registry_QNAME = new QName("http://generated.tm.trandefil.ru/", "registry");
+    private final static QName _RegistryResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "registryResponse");
+    private final static QName _SaveUser_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveUser");
+    private final static QName _SaveUserResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveUserResponse");
+    private final static QName _UpdateUser_QNAME = new QName("http://generated.tm.trandefil.ru/", "updateUser");
+    private final static QName _UpdateUserResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "updateUserResponse");
+    private final static QName _UserLogout_QNAME = new QName("http://generated.tm.trandefil.ru/", "userLogout");
+    private final static QName _UserLogoutResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "userLogoutResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ru.trandefil.tm.generated
@@ -39,51 +49,139 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ClearJson }
+     * Create an instance of {@link DeleteUserByName }
      * 
      */
-    public ClearJson createClearJson() {
-        return new ClearJson();
+    public DeleteUserByName createDeleteUserByName() {
+        return new DeleteUserByName();
     }
 
     /**
-     * Create an instance of {@link ClearJsonResponse }
+     * Create an instance of {@link DeleteUserByNameResponse }
      * 
      */
-    public ClearJsonResponse createClearJsonResponse() {
-        return new ClearJsonResponse();
+    public DeleteUserByNameResponse createDeleteUserByNameResponse() {
+        return new DeleteUserByNameResponse();
     }
 
     /**
-     * Create an instance of {@link LoadJson }
+     * Create an instance of {@link GetAllUsers }
      * 
      */
-    public LoadJson createLoadJson() {
-        return new LoadJson();
+    public GetAllUsers createGetAllUsers() {
+        return new GetAllUsers();
     }
 
     /**
-     * Create an instance of {@link LoadJsonResponse }
+     * Create an instance of {@link GetAllUsersResponse }
      * 
      */
-    public LoadJsonResponse createLoadJsonResponse() {
-        return new LoadJsonResponse();
+    public GetAllUsersResponse createGetAllUsersResponse() {
+        return new GetAllUsersResponse();
     }
 
     /**
-     * Create an instance of {@link SaveJson }
+     * Create an instance of {@link GetSession }
      * 
      */
-    public SaveJson createSaveJson() {
-        return new SaveJson();
+    public GetSession createGetSession() {
+        return new GetSession();
     }
 
     /**
-     * Create an instance of {@link SaveJsonResponse }
+     * Create an instance of {@link GetSessionResponse }
      * 
      */
-    public SaveJsonResponse createSaveJsonResponse() {
-        return new SaveJsonResponse();
+    public GetSessionResponse createGetSessionResponse() {
+        return new GetSessionResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetUserByName }
+     * 
+     */
+    public GetUserByName createGetUserByName() {
+        return new GetUserByName();
+    }
+
+    /**
+     * Create an instance of {@link GetUserByNameResponse }
+     * 
+     */
+    public GetUserByNameResponse createGetUserByNameResponse() {
+        return new GetUserByNameResponse();
+    }
+
+    /**
+     * Create an instance of {@link Registry }
+     * 
+     */
+    public Registry createRegistry() {
+        return new Registry();
+    }
+
+    /**
+     * Create an instance of {@link RegistryResponse }
+     * 
+     */
+    public RegistryResponse createRegistryResponse() {
+        return new RegistryResponse();
+    }
+
+    /**
+     * Create an instance of {@link SaveUser }
+     * 
+     */
+    public SaveUser createSaveUser() {
+        return new SaveUser();
+    }
+
+    /**
+     * Create an instance of {@link SaveUserResponse }
+     * 
+     */
+    public SaveUserResponse createSaveUserResponse() {
+        return new SaveUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link UpdateUser }
+     * 
+     */
+    public UpdateUser createUpdateUser() {
+        return new UpdateUser();
+    }
+
+    /**
+     * Create an instance of {@link UpdateUserResponse }
+     * 
+     */
+    public UpdateUserResponse createUpdateUserResponse() {
+        return new UpdateUserResponse();
+    }
+
+    /**
+     * Create an instance of {@link UserLogout }
+     * 
+     */
+    public UserLogout createUserLogout() {
+        return new UserLogout();
+    }
+
+    /**
+     * Create an instance of {@link UserLogoutResponse }
+     * 
+     */
+    public UserLogoutResponse createUserLogoutResponse() {
+        return new UserLogoutResponse();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
     }
 
     /**
@@ -95,57 +193,147 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ClearJson }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteUserByName }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "clearJson")
-    public JAXBElement<ClearJson> createClearJson(ClearJson value) {
-        return new JAXBElement<ClearJson>(_ClearJson_QNAME, ClearJson.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteUserByName")
+    public JAXBElement<DeleteUserByName> createDeleteUserByName(DeleteUserByName value) {
+        return new JAXBElement<DeleteUserByName>(_DeleteUserByName_QNAME, DeleteUserByName.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ClearJsonResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteUserByNameResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "clearJsonResponse")
-    public JAXBElement<ClearJsonResponse> createClearJsonResponse(ClearJsonResponse value) {
-        return new JAXBElement<ClearJsonResponse>(_ClearJsonResponse_QNAME, ClearJsonResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteUserByNameResponse")
+    public JAXBElement<DeleteUserByNameResponse> createDeleteUserByNameResponse(DeleteUserByNameResponse value) {
+        return new JAXBElement<DeleteUserByNameResponse>(_DeleteUserByNameResponse_QNAME, DeleteUserByNameResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoadJson }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllUsers }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "loadJson")
-    public JAXBElement<LoadJson> createLoadJson(LoadJson value) {
-        return new JAXBElement<LoadJson>(_LoadJson_QNAME, LoadJson.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllUsers")
+    public JAXBElement<GetAllUsers> createGetAllUsers(GetAllUsers value) {
+        return new JAXBElement<GetAllUsers>(_GetAllUsers_QNAME, GetAllUsers.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoadJsonResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllUsersResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "loadJsonResponse")
-    public JAXBElement<LoadJsonResponse> createLoadJsonResponse(LoadJsonResponse value) {
-        return new JAXBElement<LoadJsonResponse>(_LoadJsonResponse_QNAME, LoadJsonResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllUsersResponse")
+    public JAXBElement<GetAllUsersResponse> createGetAllUsersResponse(GetAllUsersResponse value) {
+        return new JAXBElement<GetAllUsersResponse>(_GetAllUsersResponse_QNAME, GetAllUsersResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveJson }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSession }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveJson")
-    public JAXBElement<SaveJson> createSaveJson(SaveJson value) {
-        return new JAXBElement<SaveJson>(_SaveJson_QNAME, SaveJson.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getSession")
+    public JAXBElement<GetSession> createGetSession(GetSession value) {
+        return new JAXBElement<GetSession>(_GetSession_QNAME, GetSession.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveJsonResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSessionResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveJsonResponse")
-    public JAXBElement<SaveJsonResponse> createSaveJsonResponse(SaveJsonResponse value) {
-        return new JAXBElement<SaveJsonResponse>(_SaveJsonResponse_QNAME, SaveJsonResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getSessionResponse")
+    public JAXBElement<GetSessionResponse> createGetSessionResponse(GetSessionResponse value) {
+        return new JAXBElement<GetSessionResponse>(_GetSessionResponse_QNAME, GetSessionResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserByName }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getUserByName")
+    public JAXBElement<GetUserByName> createGetUserByName(GetUserByName value) {
+        return new JAXBElement<GetUserByName>(_GetUserByName_QNAME, GetUserByName.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserByNameResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getUserByNameResponse")
+    public JAXBElement<GetUserByNameResponse> createGetUserByNameResponse(GetUserByNameResponse value) {
+        return new JAXBElement<GetUserByNameResponse>(_GetUserByNameResponse_QNAME, GetUserByNameResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Registry }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "registry")
+    public JAXBElement<Registry> createRegistry(Registry value) {
+        return new JAXBElement<Registry>(_Registry_QNAME, Registry.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RegistryResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "registryResponse")
+    public JAXBElement<RegistryResponse> createRegistryResponse(RegistryResponse value) {
+        return new JAXBElement<RegistryResponse>(_RegistryResponse_QNAME, RegistryResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveUser")
+    public JAXBElement<SaveUser> createSaveUser(SaveUser value) {
+        return new JAXBElement<SaveUser>(_SaveUser_QNAME, SaveUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveUserResponse")
+    public JAXBElement<SaveUserResponse> createSaveUserResponse(SaveUserResponse value) {
+        return new JAXBElement<SaveUserResponse>(_SaveUserResponse_QNAME, SaveUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUser }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "updateUser")
+    public JAXBElement<UpdateUser> createUpdateUser(UpdateUser value) {
+        return new JAXBElement<UpdateUser>(_UpdateUser_QNAME, UpdateUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUserResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "updateUserResponse")
+    public JAXBElement<UpdateUserResponse> createUpdateUserResponse(UpdateUserResponse value) {
+        return new JAXBElement<UpdateUserResponse>(_UpdateUserResponse_QNAME, UpdateUserResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserLogout }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "userLogout")
+    public JAXBElement<UserLogout> createUserLogout(UserLogout value) {
+        return new JAXBElement<UserLogout>(_UserLogout_QNAME, UserLogout.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UserLogoutResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "userLogoutResponse")
+    public JAXBElement<UserLogoutResponse> createUserLogoutResponse(UserLogoutResponse value) {
+        return new JAXBElement<UserLogoutResponse>(_UserLogoutResponse_QNAME, UserLogoutResponse.class, null, value);
     }
 
 }

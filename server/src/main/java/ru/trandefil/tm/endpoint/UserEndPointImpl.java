@@ -25,7 +25,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public User deleteUserByName(String name, Session session) {
+    public boolean deleteUserByName(String name, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -34,7 +34,7 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("not authorized  to delete user.");
             throw new SecurityAuthorizationException("no permitting for execution.");
         }
-        return userService.deleteByName(name);
+        return userService.deleteByName(name) ;
     }
 
     @Override

@@ -26,22 +26,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User delete(@NonNull User user) {
-        return null;
+    public void delete(@NonNull User user) {
+
     }
 
     @Override
-    public User deleteByName(@NonNull String name) {
+    public boolean deleteByName(@NonNull String name) {
         final SqlSession sqlSession = sqlSessionService.getSqlSession();
         final UserRepository userRepository = sqlSession.getMapper(UserRepository.class);
         final User user = userRepository.getByName(name);
         if (user == null) {
             logger.info("wrong deleting name.");
-            return null;
+            return false;
         }
         userRepository.deleteById(user);
         sqlSessionService.closeSqlSession(sqlSession);
-        return user;
+        return user != null;
     }
 
     @Override

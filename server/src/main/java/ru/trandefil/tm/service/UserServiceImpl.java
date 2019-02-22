@@ -32,7 +32,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteByName(@NonNull String name) {
+    public boolean deleteByName(@NonNull String name) {
+        EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        boolean isDeleted = userRepository.deleteByName(name, em);
+        em.getTransaction().commit();
+        em.close();
+        return isDeleted;
     }
 
     @Override
@@ -99,8 +105,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User constractUser(@NonNull String name, @NonNull String pass, @NonNull String role) {
-        User created = new User(null, name, pass, Enum.valueOf(Role.class,role));
-        User saved = save(created);
-        return saved;
+        role = role.trim().toUpperCase();
+        if ("ADMIN".equals(role) || "USER".equals(role)) {
+            final Role newRole = Enum.valueOf(Role.class, role);
+            final User newUser = new User(null, name, HashUtil.hashPassword(pass), newRole);
+            System.out.println("created user : " + newUser);
+            return save(newUser);
+        }
+        System.out.println("bad user role.");
+        return null;
     }
 }

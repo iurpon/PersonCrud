@@ -12,7 +12,7 @@ import java.util.List;
 public interface UserEndPoint {
 
     @WebMethod
-    User deleteUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    boolean deleteUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
     @WebMethod
     User updateUser(@WebParam(name = "user") User user, @WebParam(name = "session") Session session);

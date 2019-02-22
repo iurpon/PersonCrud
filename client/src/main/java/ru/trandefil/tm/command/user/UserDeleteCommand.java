@@ -34,13 +34,10 @@ public class UserDeleteCommand extends AbstractCommand {
         final Session session = getServiceLocator().getSession();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "enter user name to delete");
-        final User deleting = userEndPoint.deleteUserByName(userName, session);
-        if (deleting == null) {
+        final boolean deleting = userEndPoint.deleteUserByName(userName, session);
+        if (!deleting) {
             System.out.println("bad user name.");
             return;
-        }
-        if(deleting.getId().equals(session.getUserId())){
-            getServiceLocator().setSession(null);
         }
         System.out.println("user deleted succefully");
     }

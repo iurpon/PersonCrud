@@ -9,7 +9,7 @@ public interface UserService {
 
     void delete(User user);
 
-    void deleteByName(String name);
+    boolean deleteByName(String name);
 
     User save(User user);
 

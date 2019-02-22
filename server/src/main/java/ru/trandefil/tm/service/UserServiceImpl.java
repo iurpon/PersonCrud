@@ -7,6 +7,7 @@ import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.util.EMFactory;
+import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
     public Session getSession(String userName, String userPassword) {
         EntityManager em = EMFactory.getEntityManager();
         em.getTransaction().begin();
-        User user = userRepository.getLogged(userName,userPassword,em);
+        User user = userRepository.getLogged(userName, HashUtil.hashPassword(userPassword),em);
         if (user == null) {
             System.out.println("bad login.");
             return null;

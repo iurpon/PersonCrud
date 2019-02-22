@@ -33,7 +33,6 @@ public class Bootstrap {
 
 
 
-//    private final UserService userService = new UserServiceImpl(sqlSessionService);
 
     private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
 

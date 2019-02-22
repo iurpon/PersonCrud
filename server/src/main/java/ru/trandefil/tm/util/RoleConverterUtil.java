@@ -8,6 +8,7 @@ import javax.persistence.Converter;
 
 @Converter
 public class RoleConverterUtil implements AttributeConverter<Role,String> {
+
     @Override
     public String convertToDatabaseColumn(@NonNull Role attribute) {
         return attribute.name();
@@ -17,4 +18,5 @@ public class RoleConverterUtil implements AttributeConverter<Role,String> {
     public Role convertToEntityAttribute(@NonNull String dbData) {
         return Enum.valueOf(Role.class,dbData);
     }
+
 }

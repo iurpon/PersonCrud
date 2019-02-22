@@ -1,8 +1,9 @@
 package ru.trandefil.tm.entity;
 
-import ru.trandefil.tm.util.RoleConverterUtil;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
 import java.util.Objects;
 
 @Table(name = "user")
@@ -14,7 +15,6 @@ public class User extends BaseNamedEntity {
     private String password;
 
     @Enumerated(EnumType.STRING)
-//    @Convert(converter = RoleConverterUtil.class)
     private Role role;
 
     public User() {

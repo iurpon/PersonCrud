@@ -10,8 +10,6 @@ import java.util.Objects;
 @Entity
 public class User extends BaseNamedEntity {
 
-    private static final long serialVersionUID = 3L;
-
     private String password;
 
     @Enumerated(EnumType.STRING)

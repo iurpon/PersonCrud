@@ -1,16 +1,16 @@
 package ru.trandefil.tm.entity;
 
-import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "projects")
 public class Project extends BaseNamedEntity {
-
-    private static final long serialVersionUID = 1L;
 
     private String description;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
     private User user;
 
     public Project() {

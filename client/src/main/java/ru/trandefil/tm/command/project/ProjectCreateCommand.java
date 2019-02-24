@@ -2,6 +2,7 @@ package ru.trandefil.tm.command.project;
 
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
+import ru.trandefil.tm.generated.Project;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.Session;
 import ru.trandefil.tm.service.TerminalService;
@@ -34,7 +35,10 @@ public class ProjectCreateCommand extends AbstractCommand {
         final String projectDesc = getNotNullString(terminalService, "enter project desription");
         final ProjectEndPoint projectEndPoint = getServiceLocator().getProjectEndPoint();
         final Session session = getServiceLocator().getSession();
-        projectEndPoint.saveProject(projectName, projectDesc, session);
+        Project project = projectEndPoint.saveProject(projectName, projectDesc, session);
+        if(project != null){
+            System.out.println("saved succesfully");
+        }
     }
 
     @Override

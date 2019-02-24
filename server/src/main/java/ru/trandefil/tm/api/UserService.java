@@ -9,6 +9,8 @@ public interface UserService {
 
     User getRefById(String id);
 
+    User getById(String id);
+
     void delete(User user);
 
     boolean deleteByName(String name);

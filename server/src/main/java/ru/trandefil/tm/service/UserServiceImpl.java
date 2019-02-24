@@ -74,6 +74,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getById(String id) {
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        final User user = userRepository.getById(id,em);
+        em.close();
+        return user;
+    }
+
+    @Override
     public List<User> getAll() {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();

@@ -9,12 +9,13 @@ import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
-import ru.trandefil.tm.mybatis.ProjectServiceImpl;
-import ru.trandefil.tm.mybatis.SqlSessionService;
-import ru.trandefil.tm.mybatis.SqlSessionServiceImpl;
-import ru.trandefil.tm.mybatis.TaskServiceImpl;
+import ru.trandefil.tm.repository.ProjectRepositoryImpl;
+import ru.trandefil.tm.repository.TaskRepositoryImpl;
 import ru.trandefil.tm.repository.UserRepositoryImpl;
-import ru.trandefil.tm.service.*;
+import ru.trandefil.tm.service.AdminServiceImpl;
+import ru.trandefil.tm.service.ProjectServiceImpl;
+import ru.trandefil.tm.service.TaskServiceImpl;
+import ru.trandefil.tm.service.UserServiceImpl;
 
 import javax.xml.ws.Endpoint;
 
@@ -24,16 +25,15 @@ public class Bootstrap {
 
     private final UserService userService = new UserServiceImpl(userRepository);
 
-    private final SqlSessionService sqlSessionService = new SqlSessionServiceImpl();
+    private final ProjectRepository projectRepository = new ProjectRepositoryImpl();
 
-    private final ProjectService projectService = new ProjectServiceImpl(sqlSessionService);
+    private final ProjectService projectService = new ProjectServiceImpl(projectRepository, userService);
 
-    private final TaskService taskService = new TaskServiceImpl(sqlSessionService);
+    private final TaskRepository taskRepository = new TaskRepositoryImpl();
+
+    private final TaskService taskService = new TaskServiceImpl(taskRepository);
 
     private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService);
-
-
-
 
     private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
 

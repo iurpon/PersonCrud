@@ -1,6 +1,10 @@
 package ru.trandefil.tm.entity;
 
+import ru.trandefil.tm.util.UserXmlAdapter;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Objects;
 
 @Entity
@@ -11,6 +15,7 @@ public class Project extends BaseNamedEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
+    @XmlJavaTypeAdapter(UserXmlAdapter.class)
     private User user;
 
     public Project() {

@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;extension base="{http://generated.tm.trandefil.ru/}baseNamedEntity"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="userId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="user" type="{http://generated.tm.trandefil.ru/}user" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
@@ -29,14 +29,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "project", propOrder = {
     "description",
-    "userId"
+    "user"
 })
 public class Project
     extends BaseNamedEntity
 {
 
     protected String description;
-    protected String userId;
+    protected User user;
 
     /**
      * Gets the value of the description property.
@@ -63,27 +63,27 @@ public class Project
     }
 
     /**
-     * Gets the value of the userId property.
+     * Gets the value of the user property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link User }
      *     
      */
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Sets the value of the userId property.
+     * Sets the value of the user property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link User }
      *     
      */
-    public void setUserId(String value) {
-        this.userId = value;
+    public void setUser(User value) {
+        this.user = value;
     }
 
 }

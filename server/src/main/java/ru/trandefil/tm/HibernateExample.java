@@ -11,9 +11,9 @@ import javax.persistence.EntityManager;
 public class HibernateExample {
 
     public static void main(String[] args){
-/*        User user = new User("df6e526a-163b-4342-b55c-0377956edd06","User", HashUtil.hashPassword("userPassword"), Role.USER);
-        User user1 = new User("58b1689d-ed26-4be2-89be-8c56f7c7d8f1","Admin",HashUtil.hashPassword("adminPassword"), Role.ADMIN);*/
-        User user = new User(UUIDUtil.getUniqueString(),"bla",HashUtil.hashPassword("bla"), Role.USER);
+        User user = new User("df6e526a-163b-4342-b55c-0377956edd06","User", HashUtil.hashPassword("userPassword"), Role.USER);
+        User user1 = new User("58b1689d-ed26-4be2-89be-8c56f7c7d8f1","Admin",HashUtil.hashPassword("adminPassword"), Role.ADMIN);
+//        User user = new User(UUIDUtil.getUniqueString(),"bla",HashUtil.hashPassword("bla"), Role.USER);
 /*        Session  session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.merge(user);
@@ -22,7 +22,7 @@ public class HibernateExample {
         EntityManager entityManager = EMFactoryUtil.getEntityManager();
         entityManager.getTransaction().begin();
         entityManager.merge(user);
-//        entityManager.merge(user1);
+        entityManager.merge(user1);
         entityManager.getTransaction().commit();
         entityManager.close();
     }

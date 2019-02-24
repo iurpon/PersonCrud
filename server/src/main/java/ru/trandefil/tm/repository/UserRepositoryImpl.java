@@ -35,6 +35,19 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public User getRef(String userId, EntityManager em) {
+        return em.getReference(User.class,userId);
+    }
+
+    @Override
+    public User getById(String userId, EntityManager em) {
+        Query query = em.createQuery("select u from User u where u.id = :userId");
+        query.setParameter("userId",userId);
+        User user = (User) query.getSingleResult();
+        return user;
+    }
+
+    @Override
     public User saveOrUpdate(User user, EntityManager em) {
         return em.merge(user);
     }

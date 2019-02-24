@@ -16,7 +16,7 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(@NonNull User user) {
-        EntityManager em = EMFactoryUtil.getEntityManager();
+        final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         userRepository.delete(user, em);
         em.getTransaction().commit();
@@ -33,9 +33,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean deleteByName(@NonNull String name) {
-        EntityManager em = EMFactoryUtil.getEntityManager();
+        final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        boolean isDeleted = userRepository.deleteByName(name, em);
+        final boolean isDeleted = userRepository.deleteByName(name, em);
         em.getTransaction().commit();
         em.close();
         return isDeleted;
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         if (user.isNew()) {
             user.setId(UUIDUtil.getUniqueString());
         }
-        EntityManager em = EMFactoryUtil.getEntityManager();
+        final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         userRepository.saveOrUpdate(user, em);
         em.getTransaction().commit();
@@ -56,29 +56,38 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByName(@NonNull String userName) {
-        EntityManager em = EMFactoryUtil.getEntityManager();
+        final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        User user = userRepository.findByName(userName, em);
-        em.getTransaction().commit();
+        final User user = userRepository.findByName(userName, em);
+//        em.getTransaction().commit();
         em.close();
         return user;
     }
 
     @Override
-    public List<User> getAll() {
-        EntityManager em = EMFactoryUtil.getEntityManager();
+    public User getRefById(@NonNull String userId) {
+        final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        List<User> users = userRepository.getAll(em);
-        em.getTransaction().commit();
+        final User ref = userRepository.getRef(userId, em);
+        em.close();
+        return ref;
+    }
+
+    @Override
+    public List<User> getAll() {
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        final List<User> users = userRepository.getAll(em);
+//        em.getTransaction().commit();
         em.close();
         return users;
     }
 
     @Override
     public Session getSession(@NonNull String userName, @NonNull String userPassword) {
-        EntityManager em = EMFactoryUtil.getEntityManager();
+        final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        User user = userRepository.getLogged(userName, HashUtil.hashPassword(userPassword), em);
+        final User user = userRepository.getLogged(userName, HashUtil.hashPassword(userPassword), em);
         if (user == null) {
             System.out.println("bad login.");
             return null;

@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface UserService {
 
+    User getRefById(String id);
+
     void delete(User user);
 
     boolean deleteByName(String name);

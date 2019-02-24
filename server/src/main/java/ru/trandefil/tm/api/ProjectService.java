@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProjectService {
 
-    Project save(String userId,Project project);
+    Project save(String userId, String name, String description);
 
     List<Project> getAll(String userId);
 
@@ -16,8 +16,10 @@ public interface ProjectService {
 
     void delete(String userId, Project project);
 
-    void deleteByName(String userId, String projectName);
+    boolean deleteByName(String userId, String projectName);
 
     Project getByName(String userId, String projectName);
+
+    Project update(Project project);
 
 }

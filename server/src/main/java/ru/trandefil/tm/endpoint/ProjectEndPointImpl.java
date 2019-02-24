@@ -1,8 +1,10 @@
 package ru.trandefil.tm.endpoint;
 
 import ru.trandefil.tm.api.ProjectService;
+import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Session;
+import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.exception.SecurityAuthentificationException;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
@@ -13,10 +15,13 @@ import java.util.List;
 @WebService(endpointInterface = "ru.trandefil.tm.generated.ProjectEndPoint")
 public class ProjectEndPointImpl implements ProjectEndPoint {
 
-    private ProjectService projectService;
+    private final ProjectService projectService;
+
+
 
     public ProjectEndPointImpl(ProjectService projectService) {
         this.projectService = projectService;
+
     }
 
     @Override
@@ -25,8 +30,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        Project created = new Project(null, name, description, session.getUserId());
-        return projectService.save(session.getUserId(), created);
+        return projectService.save(session.getUserId(), name,description);
     }
 
     @Override
@@ -35,7 +39,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return projectService.save(session.getUserId(), project);
+        return projectService.update(project);
     }
 
     @Override

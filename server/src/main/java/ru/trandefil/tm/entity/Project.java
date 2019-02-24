@@ -1,5 +1,7 @@
 package ru.trandefil.tm.entity;
 
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import java.util.Objects;
 
 public class Project extends BaseNamedEntity {
@@ -8,7 +10,8 @@ public class Project extends BaseNamedEntity {
 
     private String description;
 
-    private String userId;
+    @OneToOne(fetch = FetchType.EAGER)
+    private User user;
 
     public Project() {
     }
@@ -22,18 +25,18 @@ public class Project extends BaseNamedEntity {
         this.description = description;
     }
 
-    public Project(String id, String name, String description, String userId) {
+    public Project(String id, String name, String description, User user) {
         super(id, name);
         this.description = description;
-        this.userId = userId;
+        this.user = user;
     }
 
-    public String getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getDescription() {

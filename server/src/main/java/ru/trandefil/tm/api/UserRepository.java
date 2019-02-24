@@ -13,6 +13,8 @@ public interface UserRepository {
 
     User findByName(String name, EntityManager em);
 
+    User getById(String userId, EntityManager em);
+
     User saveOrUpdate(User user, EntityManager em);
 
     void delete(User user, EntityManager em);
@@ -20,5 +22,7 @@ public interface UserRepository {
     boolean deleteByName(String name, EntityManager em);
 
     boolean deleteById(String id, EntityManager em);
+
+    User getRef(String userId, EntityManager em);
 
 }

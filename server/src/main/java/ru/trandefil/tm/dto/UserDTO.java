@@ -3,6 +3,8 @@ package ru.trandefil.tm.dto;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.User;
 
+import javax.xml.bind.annotation.XmlTransient;
+
 public class UserDTO {
 
     private String id;
@@ -12,6 +14,9 @@ public class UserDTO {
     private String password;
 
     private Role role;
+
+    public UserDTO() {
+    }
 
     public UserDTO(User user) {
         this.id = user.getId();
@@ -43,6 +48,7 @@ public class UserDTO {
         this.name = name;
     }
 
+    @XmlTransient
     public String getPassword() {
         return password;
     }
@@ -58,4 +64,13 @@ public class UserDTO {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "name='" + name + '\'' +
+                ", role=" + role +
+                '}';
+    }
+
 }

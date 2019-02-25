@@ -48,6 +48,8 @@ public class UserServiceImpl implements UserService {
         final User user = fromDTO(dto);
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
+        final User byId = userRepository.getById(user.getId(),em);
+        user.setPassword(byId.getPassword());
         userRepository.saveOrUpdate(user, em);
         em.getTransaction().commit();
         em.close();

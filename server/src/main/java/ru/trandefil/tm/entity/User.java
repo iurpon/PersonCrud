@@ -1,12 +1,10 @@
 package ru.trandefil.tm.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
-@Table(name = "user")
+@Table(name = "users")
 @Entity
 public class User extends BaseNamedEntity {
 
@@ -15,6 +13,9 @@ public class User extends BaseNamedEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Project> projects;
+
     public User() {
     }
 
@@ -22,6 +23,14 @@ public class User extends BaseNamedEntity {
         super(id, name);
         this.password = password;
         this.role = role;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 
     public String getPassword() {

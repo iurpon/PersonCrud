@@ -1,10 +1,14 @@
 package ru.trandefil.tm.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Table(name = "tasks")
 public class Task extends BaseNamedEntity {
-
-    private static final long serialVersionUID = 2L;
 
     private String description;
 
@@ -12,16 +16,20 @@ public class Task extends BaseNamedEntity {
 
     private Date end;
 
-    private String projectId;
+    @OneToOne(fetch = FetchType.EAGER)
+    private Project projectId;
 
-    private String assigneeId;
+    @OneToOne(fetch = FetchType.EAGER)
+    private User assigneeId;
 
-    private String executorId;
+    @OneToOne(fetch = FetchType.EAGER)
+    private User executorId;
 
     public Task() {
     }
 
-    public Task(String id, String name, String description, Date begin, Date end, String projectId, String assigneeId, String executorId) {
+    public Task(String id, String name, String description, Date begin, Date end,
+                Project projectId, User assigneeId, User executorId) {
         super(id, name);
         this.description = description;
         this.begin = begin;
@@ -31,27 +39,27 @@ public class Task extends BaseNamedEntity {
         this.executorId = executorId;
     }
 
-    public String getProjectId() {
+    public Project getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(String projectId) {
+    public void setProjectId(Project projectId) {
         this.projectId = projectId;
     }
 
-    public String getAssigneeId() {
+    public User getAssigneeId() {
         return assigneeId;
     }
 
-    public void setAssigneeId(String assigneeId) {
+    public void setAssigneeId(User assigneeId) {
         this.assigneeId = assigneeId;
     }
 
-    public String getExecutorId() {
+    public User getExecutorId() {
         return executorId;
     }
 
-    public void setExecutorId(String executorId) {
+    public void setExecutorId(User executorId) {
         this.executorId = executorId;
     }
 

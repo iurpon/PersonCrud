@@ -39,7 +39,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Project update(Project project) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        final Project updated = projectRepository.save(project,em);
+        final Project updated = projectRepository.save(project, em);
         em.getTransaction().commit();
         em.close();
         return updated;
@@ -92,7 +92,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project getByName(@NonNull String userId, @NonNull String projectName) {
+    public Project getByName(@NonNull String projectName, @NonNull String userId) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final Project project = projectRepository.getByName(userId, projectName, em);

@@ -58,8 +58,10 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        Task newTask = new Task(id, name, desc, start, end, projectId, session.getUserId(), executorId);
-        return taskService.save(session.getUserId(), newTask);
+    /*    Task newTask = new Task(id, name, desc, start, end, projectId, session.getUserId(), executorId);
+        return taskService.save(session.getUserId(), newTask);*/
+        return null;
+
     }
 
     @WebMethod

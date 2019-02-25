@@ -27,10 +27,10 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project getByName(String userId, String projectName, EntityManager em) {
-        Query query = em.createQuery("select p from Project p left join fetch p.user u where u.id = :userId and p.name = :name");
+    public Project getByName(String userId, String name, EntityManager em) {
+        Query query = em.createQuery("select p from Project p where p.user.id = :userId and p.name = :name");
         query.setParameter("userId", userId);
-        query.setParameter("name", projectName);
+        query.setParameter("name", name);
         Project project = (Project) query.getSingleResult();
         return project;
     }
@@ -62,6 +62,8 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     @Override
     public boolean deleteByName(String userId, String projectName, EntityManager em) {
         Query query = em.createQuery("delete from Project p where p.user.id = :userId and p.name = :projectName");
+        query.setParameter("projectName",projectName);
+        query.setParameter("userId",userId);
         int result = query.executeUpdate();
         return result != 0;
     }

@@ -85,33 +85,37 @@ public class Bootstrap implements ServiceLocator {
         getClassesAndFillMap("ru.trandefil.tm.command");
         System.out.println("enter help to see commands.");
         while (true) {
-            final String s = terminalService.nextLine();
-            final AbstractCommand abstractCommand = commandMap.get(s);
-            if (abstractCommand == null) {
-                System.out.println("Bad command.");
-                continue;
-            }
-            if (!abstractCommand.secure()) {
+            try {
+                final String s = terminalService.nextLine();
+                final AbstractCommand abstractCommand = commandMap.get(s);
+                if (abstractCommand == null) {
+                    System.out.println("Bad command.");
+                    continue;
+                }
+                if (!abstractCommand.secure()) {
+                    abstractCommand.execute();
+                    continue;
+                }
+                if (session == null) {
+                    AbstractCommand loginCommand = commandMap.get("login");
+                    loginCommand.execute();
+                }
+                if (session == null) {
+                    System.out.println("Bad login");
+                    continue;
+                }
+                if (!abstractCommand.isAdmin()) {
+                    abstractCommand.execute();
+                    continue;
+                }
+                if (!session.getRole().equals(Role.ADMIN)) {
+                    System.out.println("Not authorized. Admin only.");
+                    continue;
+                }
                 abstractCommand.execute();
-                continue;
+            } catch (Exception e) {
+               System.out.println(e.getMessage());
             }
-            if (session == null) {
-                AbstractCommand loginCommand = commandMap.get("login");
-                loginCommand.execute();
-            }
-            if (session == null) {
-                System.out.println("Bad login");
-                continue;
-            }
-            if (!abstractCommand.isAdmin()) {
-                abstractCommand.execute();
-                continue;
-            }
-            if (!session.getRole().equals(Role.ADMIN)) {
-                System.out.println("Not authorized. Admin only.");
-                continue;
-            }
-            abstractCommand.execute();
         }
     }
 

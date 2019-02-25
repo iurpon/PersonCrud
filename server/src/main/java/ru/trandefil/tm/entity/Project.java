@@ -1,9 +1,6 @@
 package ru.trandefil.tm.entity;
 
-import ru.trandefil.tm.util.UserXmlAdapter;
-
 import javax.persistence.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Entity
 @Table(name = "projects")
@@ -11,9 +8,8 @@ public class Project extends BaseNamedEntity {
 
     private String description;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @MapsId
-//    @XmlJavaTypeAdapter(UserXmlAdapter.class)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Project() {

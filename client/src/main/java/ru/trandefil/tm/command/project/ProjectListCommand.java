@@ -3,6 +3,7 @@ package ru.trandefil.tm.command.project;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.generated.Project;
+import ru.trandefil.tm.generated.ProjectDTO;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.Session;
 
@@ -31,7 +32,7 @@ public class ProjectListCommand extends AbstractCommand {
     public void execute() {
         final ProjectEndPoint projectEndPoint = getServiceLocator().getProjectEndPoint();
         final Session session = getServiceLocator().getSession();
-        final List<Project> projects = projectEndPoint.getAllProjects(session);
+        final List<ProjectDTO> projects = projectEndPoint.getAllProjects(session);
         if(projects == null){
             return;
         }

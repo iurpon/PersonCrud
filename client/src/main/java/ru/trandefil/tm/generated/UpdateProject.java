@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="project" type="{http://generated.tm.trandefil.ru/}project" minOccurs="0"/&gt;
+ *         &lt;element name="project" type="{http://generated.tm.trandefil.ru/}projectDTO" minOccurs="0"/&gt;
  *         &lt;element name="session" type="{http://generated.tm.trandefil.ru/}session" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UpdateProject {
 
-    protected Project project;
+    protected ProjectDTO project;
     protected Session session;
 
     /**
@@ -41,10 +41,10 @@ public class UpdateProject {
      * 
      * @return
      *     possible object is
-     *     {@link Project }
+     *     {@link ProjectDTO }
      *     
      */
-    public Project getProject() {
+    public ProjectDTO getProject() {
         return project;
     }
 
@@ -53,10 +53,10 @@ public class UpdateProject {
      * 
      * @param value
      *     allowed object is
-     *     {@link Project }
+     *     {@link ProjectDTO }
      *     
      */
-    public void setProject(Project value) {
+    public void setProject(ProjectDTO value) {
         this.project = value;
     }
 

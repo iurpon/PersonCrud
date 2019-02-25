@@ -3,23 +3,23 @@ package ru.trandefil.tm.generated;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for userDTO complex type.
+ * <p>Java class for projectDTO complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="userDTO"&gt;
+ * &lt;complexType name="projectDTO"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="role" type="{http://generated.tm.trandefil.ru/}role" minOccurs="0"/&gt;
+ *         &lt;element name="userName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -29,17 +29,42 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "userDTO", propOrder = {
+@XmlType(name = "projectDTO", propOrder = {
+    "description",
     "id",
     "name",
-    "role"
+    "userName"
 })
-public class UserDTO {
+public class ProjectDTO {
 
+    protected String description;
     protected String id;
     protected String name;
-    @XmlSchemaType(name = "string")
-    protected Role role;
+    protected String userName;
+
+    /**
+     * Gets the value of the description property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the value of the description property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescription(String value) {
+        this.description = value;
+    }
 
     /**
      * Gets the value of the id property.
@@ -90,27 +115,27 @@ public class UserDTO {
     }
 
     /**
-     * Gets the value of the role property.
+     * Gets the value of the userName property.
      * 
      * @return
      *     possible object is
-     *     {@link Role }
+     *     {@link String }
      *     
      */
-    public Role getRole() {
-        return role;
+    public String getUserName() {
+        return userName;
     }
 
     /**
-     * Sets the value of the role property.
+     * Sets the value of the userName property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Role }
+     *     {@link String }
      *     
      */
-    public void setRole(Role value) {
-        this.role = value;
+    public void setUserName(String value) {
+        this.userName = value;
     }
 
 }

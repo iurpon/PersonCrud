@@ -3,6 +3,7 @@ package ru.trandefil.tm.command.project;
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.generated.Project;
+import ru.trandefil.tm.generated.ProjectDTO;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.Session;
 import ru.trandefil.tm.service.TerminalService;
@@ -34,7 +35,7 @@ public class ProjectUpdateCommand extends AbstractCommand {
         final ProjectEndPoint projectEndPoint = getServiceLocator().getProjectEndPoint();
         final Session session = getServiceLocator().getSession();
         final String updatedName = getNotNullString(terminalService,"enter updated project name");
-        final Project updating = projectEndPoint.getProjectByName(updatedName,session);
+        final ProjectDTO updating = projectEndPoint.getProjectByName(updatedName,session);
         if(updating == null){
             return;
         }

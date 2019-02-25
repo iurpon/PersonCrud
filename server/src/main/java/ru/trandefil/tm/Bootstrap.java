@@ -33,7 +33,7 @@ public class Bootstrap {
 
     private final TaskService taskService = new TaskServiceImpl(taskRepository);
 
-    private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService);
+    private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService,userService);
 
     private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService);
 

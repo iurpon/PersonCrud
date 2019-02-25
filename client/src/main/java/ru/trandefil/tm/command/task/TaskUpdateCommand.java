@@ -54,7 +54,7 @@ public class TaskUpdateCommand extends AbstractCommand {
             return;
         }
         final String projectName = getNotNullString(terminalService, "name of project");
-        final Project project = projectEndPoint.getProjectByName(projectName, session);
+        final ProjectDTO project = projectEndPoint.getProjectByName(projectName, session);
         if (project == null) {
             System.out.println("wrong project name");
             return;

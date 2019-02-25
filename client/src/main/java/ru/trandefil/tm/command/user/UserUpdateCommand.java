@@ -39,9 +39,9 @@ public class UserUpdateCommand extends AbstractCommand {
         }
         if(updating.getId().equals(session.getUserId())){
             final String newName = getNotNullString(terminalService,"enter new name");
-            final String newPass = getNotNullString(terminalService,"enter new pass");
+//            final String newPass = getNotNullString(terminalService,"enter new pass");
             updating.setName(newName);
-            updating.setPassword(newPass);
+//            updating.setPassword(newPass);
         }
         if(session.getRole().equals(Role.ADMIN)){
             String role = getNotNullString(terminalService,"enter Role(ADMIN/USER)");

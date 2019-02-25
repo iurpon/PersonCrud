@@ -20,14 +20,14 @@ public interface ProjectEndPoint {
     ProjectDTO updateProject(@WebParam(name = "project") ProjectDTO project, @WebParam(name = "session") Session session);
 
     @WebMethod
-    List<Project> getAllProjects(@WebParam(name = "session") Session session);
+    List<ProjectDTO> getAllProjects(@WebParam(name = "session") Session session);
 
     @WebMethod
-    Project getProjectById(@WebParam(name = "id") String id
+    ProjectDTO getProjectById(@WebParam(name = "id") String id
             , @WebParam(name = "session") Session session);
 
     @WebMethod
-    void deleteProject(@WebParam(name = "project") Project project
+    void deleteProject(@WebParam(name = "project") ProjectDTO project
             , @WebParam(name = "session") Session session);
 
     @WebMethod
@@ -35,7 +35,7 @@ public interface ProjectEndPoint {
             , @WebParam(name = "session") Session session);
 
     @WebMethod
-    Project getProjectByName(@WebParam(name = "projectName") String projectName
+    ProjectDTO getProjectByName(@WebParam(name = "projectName") String projectName
             , @WebParam(name = "session") Session session);
 
 }

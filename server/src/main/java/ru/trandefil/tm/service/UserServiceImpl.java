@@ -3,7 +3,6 @@ package ru.trandefil.tm.service;
 import lombok.NonNull;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.api.UserService;
-import ru.trandefil.tm.dto.UserDTO;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
@@ -13,7 +12,6 @@ import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -44,26 +42,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO save(@NonNull UserDTO dto) {
-        final User user = fromDTO(dto);
+    public User save(@NonNull User user) {
+        if (user.isNew()) {
+            user.setId(UUIDUtil.getUniqueString());
+        }
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        final User byId = userRepository.getById(user.getId(),em);
-        user.setPassword(byId.getPassword());
         userRepository.saveOrUpdate(user, em);
         em.getTransaction().commit();
         em.close();
-        return getDTO(user);
+        return user;
     }
 
     @Override
-    public UserDTO getByName(@NonNull String userName) {
+    public User getByName(@NonNull String userName) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final User user = userRepository.findByName(userName, em);
 //        em.getTransaction().commit();
         em.close();
-        return getDTO(user);
+        return user;
     }
 
     @Override
@@ -85,13 +83,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> getAll() {
+    public List<User> getAll() {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final List<User> users = userRepository.getAll(em);
 //        em.getTransaction().commit();
         em.close();
-        return getDTOList(users);
+        return users;
     }
 
     @Override
@@ -124,34 +122,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO constractUser(@NonNull String name, @NonNull String pass, @NonNull String role) {
+    public User constractUser(@NonNull String name, @NonNull String pass, @NonNull String role) {
         role = role.trim().toUpperCase();
         if ("ADMIN".equals(role) || "USER".equals(role)) {
             final Role newRole = Enum.valueOf(Role.class, role);
-//            final User newUser = new User(null, name, HashUtil.hashPassword(pass), newRole);
-            final UserDTO newDto = new UserDTO(null, name, HashUtil.hashPassword(pass), newRole);
-            System.out.println("created user : " + newDto);
-            final UserDTO saved = save(newDto);
+            final User newUser = new User(null, name, HashUtil.hashPassword(pass), newRole);
+            System.out.println("created user : " + newUser);
+            final User saved = save(newUser);
             return saved;
         }
         System.out.println("bad user role.");
         return null;
-    }
-
-    private UserDTO getDTO(User user) {
-        final UserDTO dto = new UserDTO(user);
-        return dto;
-    }
-
-    private List<UserDTO> getDTOList(List<User> users) {
-        final List<UserDTO> dtoList = new ArrayList<>();
-        users.forEach(u -> dtoList.add(getDTO(u)));
-        return dtoList;
-    }
-
-    private User fromDTO(UserDTO dto) {
-        final User user = new User(dto.getId(), dto.getName(), dto.getPassword(), dto.getRole());
-        return user;
     }
 
 }

@@ -1,5 +1,6 @@
 package ru.trandefil.tm.endpoint;
 
+import lombok.NonNull;
 import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.dto.UserDTO;
 import ru.trandefil.tm.entity.Role;
@@ -8,11 +9,11 @@ import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.exception.SecurityAuthentificationException;
 import ru.trandefil.tm.exception.SecurityAuthorizationException;
 import ru.trandefil.tm.generated.UserEndPoint;
-import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebService(endpointInterface = "ru.trandefil.tm.generated.UserEndPoint")
@@ -26,7 +27,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public boolean deleteUserByName(String name, Session session) {
+    public boolean deleteUserByName(@NonNull String name, @NonNull Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -35,12 +36,12 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("not authorized  to delete user.");
             throw new SecurityAuthorizationException("no permitting for execution.");
         }
-        return userService.deleteByName(name) ;
+        return userService.deleteByName(name);
     }
 
     @Override
     @WebMethod
-    public UserDTO saveUser(String name, String pass, String role, Session session) {
+    public UserDTO saveUser(@NonNull String name, @NonNull String pass, @NonNull String role, @NonNull Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -49,38 +50,41 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("not authorized  to create new user.");
             throw new SecurityAuthorizationException("no permitting for execution.");
         }
-        return userService.constractUser(name, pass, role);
+        final User user = userService.constractUser(name, pass, role);
+        return getDTO(user);
     }
 
     @Override
     @WebMethod
-    public UserDTO getUserByName(String userName, Session session) {
+    public UserDTO getUserByName(@NonNull String userName, @NonNull Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return userService.getByName(userName);
+        final User user = userService.getByName(userName);
+        return getDTO(user);
     }
 
     @Override
     @WebMethod
-    public List<UserDTO> getAllUsers(Session session) {
+    public List<UserDTO> getAllUsers(@NonNull Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return userService.getAll();
+        final List<User> users = userService.getAll();
+        return getDTOList(users);
     }
 
     @Override
     @WebMethod
-    public Session getSession(String userName, String password) {
+    public Session getSession(@NonNull String userName, @NonNull String password) {
         return userService.getSession(userName, password);
     }
 
     @Override
     @WebMethod
-    public void userLogout(Session session) {
+    public void userLogout(@NonNull Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -90,22 +94,41 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public UserDTO updateUser(UserDTO user, Session session) {
+    public UserDTO updateUser(@NonNull UserDTO userDTO, @NonNull Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        if (!session.getRole().equals(Role.ADMIN) && !user.getId().equals(session.getUserId())) {
+        if (!session.getRole().equals(Role.ADMIN) && !userDTO.getId().equals(session.getUserId())) {
             System.out.println("not authorized  to update this user.");
             throw new SecurityAuthorizationException("no permitting for execution.");
         }
-        return userService.save(user);
+        final User user = userService.getById(userDTO.getId());
+        userDTO.setPassword(user.getPassword());
+        final User updated = userService.save(user);
+        return getDTO(updated);
     }
 
     @Override
     public Session registry(String userName, String password) {
 //        userService.save(new User(null, userName, HashUtil.hashPassword(password), Role.USER));
         return getSession(userName, password);
+    }
+
+    private UserDTO getDTO(@NonNull User user) {
+        final UserDTO dto = new UserDTO(user);
+        return dto;
+    }
+
+    private List<UserDTO> getDTOList(@NonNull List<User> users) {
+        final List<UserDTO> dtoList = new ArrayList<>();
+        users.forEach(u -> dtoList.add(getDTO(u)));
+        return dtoList;
+    }
+
+    private User fromDTO(@NonNull UserDTO dto) {
+        final User user = new User(dto.getId(), dto.getName(), dto.getPassword(), dto.getRole());
+        return user;
     }
 
 }

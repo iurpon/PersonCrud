@@ -2,7 +2,6 @@ package ru.trandefil.tm.generated;
 
 import ru.trandefil.tm.dto.UserDTO;
 import ru.trandefil.tm.entity.Session;
-import ru.trandefil.tm.entity.User;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -16,13 +15,16 @@ public interface UserEndPoint {
     boolean deleteUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
     @WebMethod
-    UserDTO updateUser(@WebParam(name = "user") UserDTO user, @WebParam(name = "session") Session session);
+    UserDTO updateUser(
+            @WebParam(name = "user") UserDTO user,
+            @WebParam(name = "pass") String pass,
+            @WebParam(name = "session") Session session);
 
     @WebMethod
     UserDTO saveUser(@WebParam(name = "name") String name,
-                  @WebParam(name = "pass") String pass,
-                  @WebParam(name = "role") String role,
-                  @WebParam Session session);
+                     @WebParam(name = "pass") String pass,
+                     @WebParam(name = "role") String role,
+                     @WebParam Session session);
 
     @WebMethod
     UserDTO getUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);

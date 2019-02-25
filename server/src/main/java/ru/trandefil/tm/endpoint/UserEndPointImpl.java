@@ -94,7 +94,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public UserDTO updateUser(@NonNull UserDTO userDTO, @NonNull Session session) {
+    public UserDTO updateUser(@NonNull UserDTO userDTO, @NonNull String pass, @NonNull Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -103,9 +103,8 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("not authorized  to update this user.");
             throw new SecurityAuthorizationException("no permitting for execution.");
         }
-        final User user = userService.getById(userDTO.getId());
-        userDTO.setPassword(user.getPassword());
-        final User updated = userService.save(user);
+        userDTO.setPassword(pass);
+        final User updated = userService.save(fromDTO(userDTO));
         return getDTO(updated);
     }
 

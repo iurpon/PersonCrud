@@ -53,15 +53,15 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("auth exc.");
         }
-        final Task task = getTaskEntity(taskDTO,session.getUserId());
+        final Task task = getTaskEntity(taskDTO, session.getUserId());
         final Task updated = taskService.save(session.getUserId(), task);
         final TaskDTO dto = getTaskDTO(updated);
         return dto;
-}
+    }
 
     @WebMethod
     @Override
-    public Task saveTask(
+    public TaskDTO saveTask(
             @WebParam(name = "id") String id,
             @WebParam(name = "name") String name,
             @WebParam(name = "desc") String desc,
@@ -75,59 +75,65 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-    /*    Task newTask = new Task(id, name, desc, start, end, projectId, session.getUserId(), executorId);
-        return taskService.save(session.getUserId(), newTask);*/
-        return null;
-
+        final Project project = projectService.getById(projectId, session.getUserId());
+        final User assignee = userService.getById(session.getUserId());
+        final User executor = userService.getById(executorId);
+        final Task newTask = new Task(id, name, desc, start, end, project, assignee, executor);
+        final Task saved = taskService.save(session.getUserId(), newTask);
+        return getTaskDTO(saved);
     }
 
     @WebMethod
     @Override
-    public Task deleteTask(Task task, Session session) {
+    public TaskDTO deleteTask(TaskDTO taskDTO, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return taskService.delete(session.getUserId(), task);
+        final Task task = getTaskEntity(taskDTO,session.getUserId());
+        final Task deleted = taskService.delete(session.getUserId(), task);
+        return getTaskDTO(deleted);
     }
 
     @WebMethod
     @Override
-    public Task deleteTaskByName(String name, Session session) {
+    public TaskDTO deleteTaskByName(String name, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return taskService.deleteByName(session.getUserId(), name);
+        final Task task = taskService.deleteByName(session.getUserId(), name);
+        return getTaskDTO(task);
     }
 
     @WebMethod
     @Override
-    public Task getTaskByName(String name, Session session) {
+    public TaskDTO getTaskByName(String name, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        return taskService.getByName(session.getUserId(), name);
+        Task task = taskService.getByName(session.getUserId(), name);
+        return getTaskDTO(task);
     }
 
-    private TaskDTO getTaskDTO(@NonNull Task task){
+    private TaskDTO getTaskDTO(@NonNull Task task) {
         return new TaskDTO(task);
     }
 
-    private List<TaskDTO> getTaskListDTO(@NonNull List<Task> tasks){
+    private List<TaskDTO> getTaskListDTO(@NonNull List<Task> tasks) {
         final List<TaskDTO> taskDTOS = new ArrayList<>();
         tasks.forEach(task -> taskDTOS.add(getTaskDTO(task)));
         return taskDTOS;
     }
 
-    private Task getTaskEntity(@NonNull TaskDTO taskDTO, String userId){
+    private Task getTaskEntity(@NonNull TaskDTO taskDTO, String userId) {
         final Project project = projectService.getByName(userId, taskDTO.getProjectName());
         final User assigner = userService.getByName(taskDTO.getAssigneeName());
         final User executor = userService.getByName(taskDTO.getExecutorName());
-        return new Task(taskDTO.getId(),taskDTO.getName(),
-                taskDTO.getDescription(),taskDTO.getBegin(),taskDTO.getEnd(),
-                project,assigner,executor);
+        return new Task(taskDTO.getId(), taskDTO.getName(),
+                taskDTO.getDescription(), taskDTO.getBegin(), taskDTO.getEnd(),
+                project, assigner, executor);
     }
 
 }

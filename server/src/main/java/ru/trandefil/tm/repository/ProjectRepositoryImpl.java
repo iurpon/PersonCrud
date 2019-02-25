@@ -13,7 +13,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     @Override
     @SuppressWarnings("unchecked")
     public List<Project> getAll(String userId, EntityManager em) {
-        Query query = em.createQuery("select p from Project p where p.user.id = :userId");
+        Query query = em.createQuery("select p from Project p left join p.user u where u.id = :userId");
         query.setParameter("userId", userId);
         List<Project> projects = query.getResultList();
         return projects;
@@ -28,7 +28,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
 
     @Override
     public Project getByName(String userId, String projectName, EntityManager em) {
-        Query query = em.createQuery("select p form Project p where p.user.id = :userId and p.name = :name");
+        Query query = em.createQuery("select p from Project p left join fetch p.user u where u.id = :userId and p.name = :name");
         query.setParameter("userId", userId);
         query.setParameter("name", projectName);
         Project project = (Project) query.getSingleResult();

@@ -1,9 +1,6 @@
 package ru.trandefil.tm.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -16,51 +13,53 @@ public class Task extends BaseNamedEntity {
 
     private Date end;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private Project projectId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "project_id")
+    private Project project;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private User assigneeId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "assignee_id")
+    private User assignee;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    private User executorId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "executor_id")
+    private User executor;
 
     public Task() {
     }
 
-    public Task(String id, String name, String description, Date begin, Date end,
-                Project projectId, User assigneeId, User executorId) {
+    public Task(String id, String name, String description, Date begin, Date end, Project project, User assignee, User executor) {
         super(id, name);
         this.description = description;
         this.begin = begin;
         this.end = end;
-        this.projectId = projectId;
-        this.assigneeId = assigneeId;
-        this.executorId = executorId;
+        this.project = project;
+        this.assignee = assignee;
+        this.executor = executor;
     }
 
-    public Project getProjectId() {
-        return projectId;
+    public Project getProject() {
+        return project;
     }
 
-    public void setProjectId(Project projectId) {
-        this.projectId = projectId;
+    public void setProject(Project project) {
+        this.project = project;
     }
 
-    public User getAssigneeId() {
-        return assigneeId;
+    public User getAssignee() {
+        return assignee;
     }
 
-    public void setAssigneeId(User assigneeId) {
-        this.assigneeId = assigneeId;
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
     }
 
-    public User getExecutorId() {
-        return executorId;
+    public User getExecutor() {
+        return executor;
     }
 
-    public void setExecutorId(User executorId) {
-        this.executorId = executorId;
+    public void setExecutor(User executor) {
+        this.executor = executor;
     }
 
     public String getDescription() {

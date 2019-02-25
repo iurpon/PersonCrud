@@ -55,7 +55,7 @@ public class UserUpdateCommand extends AbstractCommand {
             }
             updating.setRole(Enum.valueOf(Role.class, role));
         }
-        UserDTO updated = userEndPoint.updateUser(updating, newPass, session);
+        UserDTO updated = userEndPoint.updateUser(updating, newPass == null ? "" : newPass, session);
         if (updated == null) {
             System.out.println("bad updating.");
             return;

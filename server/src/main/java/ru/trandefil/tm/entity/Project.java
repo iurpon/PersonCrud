@@ -1,6 +1,7 @@
 package ru.trandefil.tm.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -11,6 +12,9 @@ public class Project extends BaseNamedEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projectId")
+    private List<Task> tasks;
 
     public Project() {
     }

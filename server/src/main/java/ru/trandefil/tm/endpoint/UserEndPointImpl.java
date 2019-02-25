@@ -103,6 +103,10 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("not authorized  to update this user.");
             throw new SecurityAuthorizationException("no permitting for execution.");
         }
+        if(pass.isEmpty()){
+            final User user = userService.getById(userDTO.getId());
+            pass = user.getPassword();
+        }
         userDTO.setPassword(pass);
         final User updated = userService.save(fromDTO(userDTO));
         return getDTO(updated);

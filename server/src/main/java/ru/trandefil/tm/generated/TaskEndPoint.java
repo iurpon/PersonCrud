@@ -1,5 +1,6 @@
 package ru.trandefil.tm.generated;
 
+import ru.trandefil.tm.dto.TaskDTO;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.Task;
 
@@ -13,10 +14,10 @@ import java.util.List;
 public interface TaskEndPoint {
 
     @WebMethod
-    List<Task> getAllTasks(@WebParam(name = "session") Session session);
+    List<TaskDTO> getAllTasks(@WebParam(name = "session") Session session);
 
     @WebMethod
-    Task saveTask(
+    TaskDTO saveTask(
             @WebParam(name = "id") String id,
             @WebParam(name = "name") String name,
             @WebParam(name = "desc") String desc,
@@ -27,15 +28,15 @@ public interface TaskEndPoint {
             @WebParam(name = "session") Session session);
 
     @WebMethod
-    Task updateTask(@WebParam(name = "task") Task task, @WebParam(name = "session") Session session);
+    TaskDTO updateTask(@WebParam(name = "task") TaskDTO task, @WebParam(name = "session") Session session);
 
     @WebMethod
-    Task deleteTask(@WebParam(name = "task") Task task, @WebParam(name = "session") Session session);
+    TaskDTO deleteTask(@WebParam(name = "task") TaskDTO task, @WebParam(name = "session") Session session);
 
     @WebMethod
-    Task deleteTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    TaskDTO deleteTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
     @WebMethod
-    Task getTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    TaskDTO getTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
 }

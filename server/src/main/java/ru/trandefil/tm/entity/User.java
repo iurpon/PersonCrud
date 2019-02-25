@@ -16,6 +16,12 @@ public class User extends BaseNamedEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Project> projects;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "assigneeId")
+    private List<Task> assignerTasks;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "executorId")
+    private List<Task> executorTasks;
+
     public User() {
     }
 

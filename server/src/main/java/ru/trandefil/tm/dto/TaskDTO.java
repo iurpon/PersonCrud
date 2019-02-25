@@ -1,5 +1,7 @@
 package ru.trandefil.tm.dto;
 
+import ru.trandefil.tm.entity.Task;
+
 import java.util.Date;
 
 public class TaskDTO {
@@ -14,21 +16,48 @@ public class TaskDTO {
 
     private Date end;
 
-    private String projectId;
+    private String  projectName;
 
-    private String assigneeId;
+    private String assigneeName;
 
-    private String executorId;
+    private String executorName;
 
-    public TaskDTO(String id, String name, String description, Date begin, Date end, String projectId, String assigneeId, String executorId) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.begin = begin;
-        this.end = end;
-        this.projectId = projectId;
-        this.assigneeId = assigneeId;
-        this.executorId = executorId;
+    public TaskDTO(Task task) {
+        this.id = task.getId();
+        this.name = task.getName();
+        this.description = task.getDescription();
+        this.begin = task.getBegin();
+        this.end = task.getEnd();
+        this.projectName = task.getProject().getName();
+        this.assigneeName = task.getAssignee().getName();
+        this.executorName = task.getExecutor().getName();
+    }
+
+    public TaskDTO() {
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getAssigneeName() {
+        return assigneeName;
+    }
+
+    public void setAssigneeName(String assigneeName) {
+        this.assigneeName = assigneeName;
+    }
+
+    public String getExecutorName() {
+        return executorName;
+    }
+
+    public void setExecutorName(String executorName) {
+        this.executorName = executorName;
     }
 
     public String getId() {
@@ -69,30 +98,6 @@ public class TaskDTO {
 
     public void setEnd(Date end) {
         this.end = end;
-    }
-
-    public String getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
-    }
-
-    public String getAssigneeId() {
-        return assigneeId;
-    }
-
-    public void setAssigneeId(String assigneeId) {
-        this.assigneeId = assigneeId;
-    }
-
-    public String getExecutorId() {
-        return executorId;
-    }
-
-    public void setExecutorId(String executorId) {
-        this.executorId = executorId;
     }
 
 }

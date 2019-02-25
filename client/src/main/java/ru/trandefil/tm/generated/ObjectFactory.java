@@ -177,19 +177,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link User }
-     * 
-     */
-    public User createUser() {
-        return new User();
-    }
-
-    /**
      * Create an instance of {@link Session }
      * 
      */
     public Session createSession() {
         return new Session();
+    }
+
+    /**
+     * Create an instance of {@link UserDTO }
+     * 
+     */
+    public UserDTO createUserDTO() {
+        return new UserDTO();
     }
 
     /**

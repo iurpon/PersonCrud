@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="user" type="{http://generated.tm.trandefil.ru/}user" minOccurs="0"/&gt;
+ *         &lt;element name="user" type="{http://generated.tm.trandefil.ru/}userDTO" minOccurs="0"/&gt;
  *         &lt;element name="session" type="{http://generated.tm.trandefil.ru/}session" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class UpdateUser {
 
-    protected User user;
+    protected UserDTO user;
     protected Session session;
 
     /**
@@ -41,10 +41,10 @@ public class UpdateUser {
      * 
      * @return
      *     possible object is
-     *     {@link User }
+     *     {@link UserDTO }
      *     
      */
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 
@@ -53,10 +53,10 @@ public class UpdateUser {
      * 
      * @param value
      *     allowed object is
-     *     {@link User }
+     *     {@link UserDTO }
      *     
      */
-    public void setUser(User value) {
+    public void setUser(UserDTO value) {
         this.user = value;
     }
 

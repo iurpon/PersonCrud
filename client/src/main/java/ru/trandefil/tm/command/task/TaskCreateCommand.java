@@ -41,7 +41,7 @@ public class TaskCreateCommand extends AbstractCommand {
         final Session session = getServiceLocator().getSession();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService, "name of task executer user");
-        final User executer = userEndPoint.getUserByName(userName, session);
+        final UserDTO executer = userEndPoint.getUserByName(userName, session);
         if (executer == null) {
             System.out.println("wrong user name.");
             return;

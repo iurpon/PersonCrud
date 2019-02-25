@@ -1,6 +1,7 @@
 package ru.trandefil.tm.endpoint;
 
 import ru.trandefil.tm.api.UserService;
+import ru.trandefil.tm.dto.UserDTO;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
@@ -39,7 +40,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public User saveUser(String name, String pass, String role, Session session) {
+    public UserDTO saveUser(String name, String pass, String role, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -53,7 +54,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public User getUserByName(String userName, Session session) {
+    public UserDTO getUserByName(String userName, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -63,7 +64,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public List<User> getAllUsers(Session session) {
+    public List<UserDTO> getAllUsers(Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -89,7 +90,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     @WebMethod
-    public User updateUser(User user, Session session) {
+    public UserDTO updateUser(UserDTO user, Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
@@ -103,7 +104,7 @@ public class UserEndPointImpl implements UserEndPoint {
 
     @Override
     public Session registry(String userName, String password) {
-        userService.save(new User(null, userName, HashUtil.hashPassword(password), Role.USER));
+//        userService.save(new User(null, userName, HashUtil.hashPassword(password), Role.USER));
         return getSession(userName, password);
     }
 

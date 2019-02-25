@@ -1,5 +1,6 @@
 package ru.trandefil.tm.api;
 
+import ru.trandefil.tm.dto.UserDTO;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 
@@ -15,16 +16,16 @@ public interface UserService {
 
     boolean deleteByName(String name);
 
-    User save(User user);
+    UserDTO save(UserDTO user);
 
-    User getByName(String userName);
+    UserDTO getByName(String userName);
 
-    List<User> getAll();
+    List<UserDTO> getAll();
 
     Session getSession(String userName, String userPassword);
 
     void logout(String sessionId);
 
-    User constractUser(String name, String pass, String role);
+    UserDTO constractUser(String name, String pass, String role);
 
 }

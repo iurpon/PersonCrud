@@ -2,10 +2,7 @@ package ru.trandefil.tm.command.user;
 
 import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
-import ru.trandefil.tm.generated.Role;
-import ru.trandefil.tm.generated.Session;
-import ru.trandefil.tm.generated.User;
-import ru.trandefil.tm.generated.UserEndPoint;
+import ru.trandefil.tm.generated.*;
 import ru.trandefil.tm.service.TerminalService;
 
 import static ru.trandefil.tm.util.UserInputUtil.getNotNullString;
@@ -35,7 +32,7 @@ public class UserUpdateCommand extends AbstractCommand {
         final Session session = getServiceLocator().getSession();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String userName = getNotNullString(terminalService,"enter user name to update");
-        final User updating = userEndPoint.getUserByName(userName,session);
+        final UserDTO updating = userEndPoint.getUserByName(userName,session);
         if(updating == null){
             System.out.println("Wrong user name.");
             return;
@@ -55,7 +52,7 @@ public class UserUpdateCommand extends AbstractCommand {
             }
             updating.setRole(Enum.valueOf(Role.class,role));
         }
-        User updated = userEndPoint.updateUser(updating,session);
+        UserDTO updated = userEndPoint.updateUser(updating,session);
         if(updated == null){
             System.out.println("bad updating.");
             return;

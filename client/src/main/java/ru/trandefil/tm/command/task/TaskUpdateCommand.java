@@ -48,7 +48,7 @@ public class TaskUpdateCommand extends AbstractCommand {
             return;
         }
         final String userName = getNotNullString(terminalService, "name of task executer user");
-        final User executer = userEndPoint.getUserByName(userName, session);
+        final UserDTO executer = userEndPoint.getUserByName(userName, session);
         if (executer == null) {
             System.out.println("wrong user name.");
             return;

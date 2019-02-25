@@ -3,6 +3,7 @@ package ru.trandefil.tm.repository;
 import lombok.NonNull;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.entity.User;
+import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -49,6 +50,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User saveOrUpdate(User user, EntityManager em) {
+        if(user.isNew()){
+            user.setId(UUIDUtil.getUniqueString());
+            em.persist(user);
+            return user;
+        }
         return em.merge(user);
     }
 

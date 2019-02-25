@@ -48,7 +48,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void saveJson() {
-        final ObjectMapper objectMapper = new ObjectMapper();
+/*        final ObjectMapper objectMapper = new ObjectMapper();
         final List<Project> projectList = projectService.getAll();
         final List<User> userList = userService.getAll();
         final List<Task> taskList = taskService.getAll();
@@ -61,7 +61,7 @@ public class AdminServiceImpl implements AdminService {
             Files.write(Paths.get("data.json"), json.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     @Override

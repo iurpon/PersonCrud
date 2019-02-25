@@ -4,6 +4,7 @@ import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.generated.Session;
 import ru.trandefil.tm.generated.User;
+import ru.trandefil.tm.generated.UserDTO;
 import ru.trandefil.tm.generated.UserEndPoint;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class UserListCommand extends AbstractCommand {
     public void execute() {
         final UserEndPoint userEndPoint = getServiceLocator().getUserEndPoint();
         final Session session = getServiceLocator().getSession();
-        final List<User> userList = userEndPoint.getAllUsers(session);
+        final List<UserDTO> userList = userEndPoint.getAllUsers(session);
         if(userList.isEmpty()){
             System.out.println("list is empty");
             return;

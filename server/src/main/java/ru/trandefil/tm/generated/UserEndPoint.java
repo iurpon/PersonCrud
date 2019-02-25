@@ -1,5 +1,6 @@
 package ru.trandefil.tm.generated;
 
+import ru.trandefil.tm.dto.UserDTO;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 
@@ -15,19 +16,19 @@ public interface UserEndPoint {
     boolean deleteUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
     @WebMethod
-    User updateUser(@WebParam(name = "user") User user, @WebParam(name = "session") Session session);
+    UserDTO updateUser(@WebParam(name = "user") UserDTO user, @WebParam(name = "session") Session session);
 
     @WebMethod
-    User saveUser(@WebParam(name = "name") String name,
+    UserDTO saveUser(@WebParam(name = "name") String name,
                   @WebParam(name = "pass") String pass,
                   @WebParam(name = "role") String role,
                   @WebParam Session session);
 
     @WebMethod
-    User getUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    UserDTO getUserByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
     @WebMethod
-    List<User> getAllUsers(@WebParam(name = "session") Session session);
+    List<UserDTO> getAllUsers(@WebParam(name = "session") Session session);
 
     @WebMethod
     void userLogout(@WebParam(name = "session") Session session);

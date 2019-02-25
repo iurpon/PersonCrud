@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlType;
     "name"
 })
 @XmlSeeAlso({
+    Project.class,
     User.class
 })
 public abstract class BaseNamedEntity

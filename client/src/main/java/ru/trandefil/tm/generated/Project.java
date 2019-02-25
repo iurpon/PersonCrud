@@ -86,11 +86,4 @@ public class Project
         this.user = value;
     }
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                "user=" + user +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

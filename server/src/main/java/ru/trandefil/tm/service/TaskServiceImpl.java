@@ -38,7 +38,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task save(@NonNull final String userId, @NonNull final Task task) {
-        if(!userId.equals(task.getAssignee())){
+        if(!userId.equals(task.getAssignee().getId())){
             throw new SecurityAuthorizationException("wrong assigner id.");
         }
         final EntityManager em = EMFactoryUtil.getEntityManager();

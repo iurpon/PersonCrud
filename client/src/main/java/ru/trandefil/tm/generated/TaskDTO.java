@@ -18,14 +18,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="assigneeName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="assigneeId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="begin" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="end" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="executorName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="executorId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="projectName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="projectId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,50 +36,50 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "taskDTO", propOrder = {
-    "assigneeName",
+    "assigneeId",
     "begin",
     "description",
     "end",
-    "executorName",
+    "executorId",
     "id",
     "name",
-    "projectName"
+    "projectId"
 })
 public class TaskDTO {
 
-    protected String assigneeName;
+    protected String assigneeId;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar begin;
     protected String description;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar end;
-    protected String executorName;
+    protected String executorId;
     protected String id;
     protected String name;
-    protected String projectName;
+    protected String projectId;
 
     /**
-     * Gets the value of the assigneeName property.
+     * Gets the value of the assigneeId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getAssigneeName() {
-        return assigneeName;
+    public String getAssigneeId() {
+        return assigneeId;
     }
 
     /**
-     * Sets the value of the assigneeName property.
+     * Sets the value of the assigneeId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setAssigneeName(String value) {
-        this.assigneeName = value;
+    public void setAssigneeId(String value) {
+        this.assigneeId = value;
     }
 
     /**
@@ -155,27 +155,27 @@ public class TaskDTO {
     }
 
     /**
-     * Gets the value of the executorName property.
+     * Gets the value of the executorId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getExecutorName() {
-        return executorName;
+    public String getExecutorId() {
+        return executorId;
     }
 
     /**
-     * Sets the value of the executorName property.
+     * Sets the value of the executorId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setExecutorName(String value) {
-        this.executorName = value;
+    public void setExecutorId(String value) {
+        this.executorId = value;
     }
 
     /**
@@ -227,36 +227,33 @@ public class TaskDTO {
     }
 
     /**
-     * Gets the value of the projectName property.
+     * Gets the value of the projectId property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getProjectName() {
-        return projectName;
+    public String getProjectId() {
+        return projectId;
     }
 
     /**
-     * Sets the value of the projectName property.
+     * Sets the value of the projectId property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setProjectName(String value) {
-        this.projectName = value;
+    public void setProjectId(String value) {
+        this.projectId = value;
     }
 
     @Override
     public String toString() {
         return "TaskDTO{" +
-                "assigneeName='" + assigneeName + '\'' +
-                ", executorName='" + executorName + '\'' +
-                ", name='" + name + '\'' +
-                ", projectName='" + projectName + '\'' +
+                "name='" + name + '\'' +
                 '}';
     }
 }

@@ -16,11 +16,11 @@ public class TaskDTO {
 
     private Date end;
 
-    private String  projectName;
+    private String projectId;
 
-    private String assigneeName;
+    private String assigneeId;
 
-    private String executorName;
+    private String executorId;
 
     public TaskDTO(Task task) {
         this.id = task.getId();
@@ -28,36 +28,36 @@ public class TaskDTO {
         this.description = task.getDescription();
         this.begin = task.getBegin();
         this.end = task.getEnd();
-        this.projectName = task.getProject().getName();
-        this.assigneeName = task.getAssignee().getName();
-        this.executorName = task.getExecutor().getName();
+        this.projectId = task.getProject().getName();
+        this.assigneeId = task.getAssignee().getName();
+        this.executorId = task.getExecutor().getName();
     }
 
     public TaskDTO() {
     }
 
-    public String getProjectName() {
-        return projectName;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
-    public String getAssigneeName() {
-        return assigneeName;
+    public String getAssigneeId() {
+        return assigneeId;
     }
 
-    public void setAssigneeName(String assigneeName) {
-        this.assigneeName = assigneeName;
+    public void setAssigneeId(String assigneeId) {
+        this.assigneeId = assigneeId;
     }
 
-    public String getExecutorName() {
-        return executorName;
+    public String getExecutorId() {
+        return executorId;
     }
 
-    public void setExecutorName(String executorName) {
-        this.executorName = executorName;
+    public void setExecutorId(String executorId) {
+        this.executorId = executorId;
     }
 
     public String getId() {

@@ -11,7 +11,7 @@ public interface TaskRepository {
 
     List<Task> getAll(EntityManager em);
 
-    Task save(String userId, Task task, EntityManager em);
+    Task save(Task task, EntityManager em);
 
     void delete(Task task, EntityManager em);
 

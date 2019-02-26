@@ -10,11 +10,11 @@ public interface TaskService {
 
     List<Task> getAll();
 
-    Task save(String userId,Task task);
+    Task save(String userId, Task task);
 
-    Task delete(String userId, Task task);
+    void delete(String userId, Task task);
 
-    Task deleteByName(String userId, String name);
+    boolean deleteByName(String userId, String name);
 
     Task getByName(String userId, String name);
 

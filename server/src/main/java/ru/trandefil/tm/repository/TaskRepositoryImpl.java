@@ -27,7 +27,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task save(@NonNull String userId, @NonNull Task task, @NonNull EntityManager em) {
+    public Task save(@NonNull Task task, @NonNull EntityManager em) {
         if (task.isNew()) {
             task.setId(UUIDUtil.getUniqueString());
             em.persist(task);
@@ -43,7 +43,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public boolean deleteByName(@NonNull String userId, @NonNull String name, @NonNull EntityManager em) {
-        Query query = em.createQuery("delete from Task t where t.assignee =:userId and t.name = :name");
+        Query query = em.createQuery("delete from Task t where t.assignee =:userId and t.name = :name)");
         query.setParameter("userId",userId);
         query.setParameter("name",name);
         int result = query.executeUpdate();
@@ -52,7 +52,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public Task getByName(@NonNull String userId, @NonNull String name, @NonNull EntityManager em) {
-        Query query = em.createQuery("select t from Task t where t.name = :name and (t.assignee = :userId or t.executor = :userId");
+        Query query = em.createQuery("select t from Task t where t.name = :name and (t.assignee = :userId or t.executor = :userId)");
         query.setParameter("name",name);
         query.setParameter("userId",userId);
         Task task = (Task) query.getSingleResult();
@@ -61,7 +61,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public Task getByid(@NonNull String userId, @NonNull String id, @NonNull EntityManager em) {
-        Query query = em.createQuery("select t from Task t where t.id = :id and (t.assignee = :userId or t.executor = :userId");
+        Query query = em.createQuery("select t from Task t where t.id = :id and (t.assignee = :userId or t.executor = :userId)");
         query.setParameter("userId",userId);
         query.setParameter("id",id);
         Task task = (Task) query.getSingleResult();

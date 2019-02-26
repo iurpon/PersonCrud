@@ -4,8 +4,10 @@ import lombok.NonNull;
 import ru.trandefil.tm.api.TaskRepository;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.entity.Task;
+import ru.trandefil.tm.exception.SecurityAuthorizationException;
+import ru.trandefil.tm.util.EMFactoryUtil;
 
-import javax.management.Query;
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public class TaskServiceImpl implements TaskService {
@@ -17,39 +19,74 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> getAll(@NonNull String userId) {
-//        Query query =
-        return null;
+    public List<Task> getAll(@NonNull final String userId) {
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        final List<Task> tasks = taskRepository.getAll(userId, em);
+        em.close();
+        return tasks;
     }
 
     @Override
     public List<Task> getAll() {
-        return null;
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        final List<Task> tasks = taskRepository.getAll(em);
+        em.close();
+        return tasks;
     }
 
     @Override
-    public Task save(@NonNull String userId,@NonNull Task task) {
-        return null;
+    public Task save(@NonNull final String userId, @NonNull final Task task) {
+        if(!userId.equals(task.getAssignee())){
+            throw new SecurityAuthorizationException("wrong assigner id.");
+        }
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        final Task saved = taskRepository.save(task,em);
+        em.getTransaction().commit();
+        em.close();
+        return saved;
     }
 
     @Override
-    public Task delete(@NonNull String userId, @NonNull Task task) {
-        return null;
+    public void delete(@NonNull final String userId, @NonNull final Task task) {
+        if(!userId.equals(task.getAssignee())){
+            throw new SecurityAuthorizationException("wrong assigner id.");
+        }
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        taskRepository.delete(task,em);
+        em.getTransaction().commit();
+        em.close();
     }
 
     @Override
-    public Task deleteByName(@NonNull String userId, @NonNull String name) {
-        return null;
+    public boolean deleteByName(@NonNull final String userId, @NonNull final String name) {
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        boolean result = taskRepository.deleteByName(userId,name,em);
+        em.getTransaction().commit();
+        em.close();
+        return result;
     }
 
     @Override
-    public Task getByName(@NonNull String userId, @NonNull String name) {
-        return null;
+    public Task getByName(@NonNull final String userId, @NonNull final String name) {
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        final Task task = taskRepository.getByName(userId,name,em);
+        em.close();
+        return task;
     }
 
     @Override
-    public Task getByid(@NonNull String userId, @NonNull String id) {
-        return null;
+    public Task getByid(@NonNull final String userId, @NonNull final String id) {
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        final Task task = taskRepository.getByName(userId,id,em);
+        em.close();
+        return task;
     }
 
 }

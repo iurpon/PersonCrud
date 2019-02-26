@@ -250,4 +250,13 @@ public class TaskDTO {
         this.projectName = value;
     }
 
+    @Override
+    public String toString() {
+        return "TaskDTO{" +
+                "assigneeName='" + assigneeName + '\'' +
+                ", executorName='" + executorName + '\'' +
+                ", name='" + name + '\'' +
+                ", projectName='" + projectName + '\'' +
+                '}';
+    }
 }

@@ -198,4 +198,13 @@ public class Task
         this.projectId = value;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "assigneeId='" + assigneeId + '\'' +
+                ", executorId='" + executorId + '\'' +
+                ", projectId='" + projectId + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

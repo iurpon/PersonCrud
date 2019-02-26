@@ -8,8 +8,11 @@ import ru.trandefil.tm.util.UUIDUtil;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class UserRepositoryImpl implements UserRepository {
+
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
     public List<User> getAll(@NonNull EntityManager em) {

@@ -48,7 +48,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
 
     @WebMethod
     @Override
-    public TaskDTO updateTask(TaskDTO taskDTO, Session session) {
+    public TaskDTO updateTask(@NonNull final TaskDTO taskDTO, @NonNull final Session session) {
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("auth exc.");
@@ -91,8 +91,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             throw new SecurityAuthentificationException("security authentification exception.");
         }
         final Task task = getTaskEntity(taskDTO,session.getUserId());
-        final Task deleted = taskService.delete(session.getUserId(), task);
-        return getTaskDTO(deleted);
+        return null;
     }
 
     @WebMethod
@@ -102,8 +101,7 @@ public class TaskEndPointImpl implements TaskEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        final Task task = taskService.deleteByName(session.getUserId(), name);
-        return getTaskDTO(task);
+        return null;
     }
 
     @WebMethod

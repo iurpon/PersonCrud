@@ -24,10 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _DeleteTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTask");
     private final static QName _DeleteTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskByName");
     private final static QName _DeleteTaskByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskByNameResponse");
-    private final static QName _DeleteTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskResponse");
     private final static QName _GetAllTasks_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasks");
     private final static QName _GetAllTasksResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasksResponse");
     private final static QName _GetTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByName");
@@ -45,14 +43,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteTask }
-     * 
-     */
-    public DeleteTask createDeleteTask() {
-        return new DeleteTask();
-    }
-
-    /**
      * Create an instance of {@link DeleteTaskByName }
      * 
      */
@@ -66,14 +56,6 @@ public class ObjectFactory {
      */
     public DeleteTaskByNameResponse createDeleteTaskByNameResponse() {
         return new DeleteTaskByNameResponse();
-    }
-
-    /**
-     * Create an instance of {@link DeleteTaskResponse }
-     * 
-     */
-    public DeleteTaskResponse createDeleteTaskResponse() {
-        return new DeleteTaskResponse();
     }
 
     /**
@@ -157,15 +139,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTask }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTask")
-    public JAXBElement<DeleteTask> createDeleteTask(DeleteTask value) {
-        return new JAXBElement<DeleteTask>(_DeleteTask_QNAME, DeleteTask.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskByName }{@code >}}
      * 
      */
@@ -181,15 +154,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskByNameResponse")
     public JAXBElement<DeleteTaskByNameResponse> createDeleteTaskByNameResponse(DeleteTaskByNameResponse value) {
         return new JAXBElement<DeleteTaskByNameResponse>(_DeleteTaskByNameResponse_QNAME, DeleteTaskByNameResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskResponse")
-    public JAXBElement<DeleteTaskResponse> createDeleteTaskResponse(DeleteTaskResponse value) {
-        return new JAXBElement<DeleteTaskResponse>(_DeleteTaskResponse_QNAME, DeleteTaskResponse.class, null, value);
     }
 
     /**

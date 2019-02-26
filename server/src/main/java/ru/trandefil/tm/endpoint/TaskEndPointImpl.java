@@ -94,27 +94,15 @@ public class TaskEndPointImpl implements TaskEndPoint {
 
     @WebMethod
     @Override
-    public TaskDTO deleteTask(@NonNull TaskDTO taskDTO, @NonNull Session session) {
-        logger.info("taskendpoint deleteTask");
-        if (!SignatureUtil.checkCorrectSession(session)) {
-            System.out.println("bad signature.");
-            throw new SecurityAuthentificationException("security authentification exception.");
-        }
-        final Task task = getTaskEntity(taskDTO,session.getUserId());
-        logger.info("returning  null");
-        return null;
-    }
-
-    @WebMethod
-    @Override
-    public TaskDTO deleteTaskByName(@NonNull String name, @NonNull Session session) {
+    public boolean deleteTaskByName(@NonNull String name, @NonNull Session session) {
         logger.info("taskendpoint deleteByName");
         if (!SignatureUtil.checkCorrectSession(session)) {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        logger.info("returning  null");
-        return null;
+        boolean isDeleted = taskService.deleteByName(session.getUserId(), name);
+        logger.info("deleted ? " + isDeleted);
+        return isDeleted;
     }
 
     @WebMethod

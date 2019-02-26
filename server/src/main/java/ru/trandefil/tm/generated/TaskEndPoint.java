@@ -31,10 +31,7 @@ public interface TaskEndPoint {
     TaskDTO updateTask(@WebParam(name = "task") TaskDTO task, @WebParam(name = "session") Session session);
 
     @WebMethod
-    TaskDTO deleteTask(@WebParam(name = "task") TaskDTO task, @WebParam(name = "session") Session session);
-
-    @WebMethod
-    TaskDTO deleteTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
+    boolean deleteTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);
 
     @WebMethod
     TaskDTO getTaskByName(@WebParam(name = "name") String name, @WebParam(name = "session") Session session);

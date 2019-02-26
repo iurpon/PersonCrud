@@ -35,12 +35,12 @@ public class TaskRemoveCommand extends AbstractCommand {
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String removingTask =
                 UserInputUtil.getNotNullString(terminalService,"enter removing task name");
-        final TaskDTO removing = taskEndPoint.deleteTaskByName(removingTask,session);
-        if(removing == null){
+        final boolean removing = taskEndPoint.deleteTaskByName(removingTask,session);
+        if(!removing){
             System.out.println("wrong task name.");
             return;
         }
-        System.out.println(removing.toString() + " deleted succesfully.");
+        System.out.println(" deleted succesfully.");
     }
 
     @Override

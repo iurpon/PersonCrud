@@ -138,11 +138,4 @@ public class ProjectDTO {
         this.userName = value;
     }
 
-    @Override
-    public String toString() {
-        return "ProjectDTO{" +
-                "name='" + name + '\'' +
-                ", userName='" + userName + '\'' +
-                '}';
-    }
 }

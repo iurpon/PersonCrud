@@ -55,7 +55,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     @Override
     public boolean deleteByName(@NonNull String userId, @NonNull String name, @NonNull EntityManager em) {
         logger.info("repo deleteByName");
-        Query query = em.createQuery("delete from Task t where t.assignee.id =:userId and t.name = :name)");
+        Query query = em.createQuery("delete from Task t where t.assignee.id =:userId and t.name = :name");
         query.setParameter("userId",userId);
         query.setParameter("name",name);
         int result = query.executeUpdate();
@@ -66,7 +66,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     @Override
     public Task getByName(@NonNull String userId, @NonNull String name, @NonNull EntityManager em) {
         logger.info("getByName repo");
-        Query query = em.createQuery("select t from Task t where t.name = :name and (t.assignee.id = :userId or t.executor.id = :userId)");
+        Query query = em.createQuery("select t from Task t where (t.assignee.id = :userId or t.executor.id = :userId) and t.name = :name");
         query.setParameter("name",name);
         query.setParameter("userId",userId);
         Task task = (Task) query.getSingleResult();
@@ -77,7 +77,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     @Override
     public Task getByid(@NonNull String userId, @NonNull String id, @NonNull EntityManager em) {
         logger.info("repo getById");
-        Query query = em.createQuery("select t from Task t where t.id = :id and (t.assignee.id = :userId or t.executor.id = :userId)");
+        Query query = em.createQuery("select t from Task t where (t.assignee.id = :userId or t.executor.id = :userId) and dt.id = :id");
         query.setParameter("userId",userId);
         query.setParameter("id",id);
         Task task = (Task) query.getSingleResult();

@@ -40,10 +40,10 @@
                                 <wsdlOption>
                                     <wsdl>http://localhost:8080/userEndPoint?wsdl</wsdl>
                                 </wsdlOption>
-        <!--                        <wsdlOption>
+                                <wsdlOption>
                                     <wsdl>http://localhost:8080/taskEndPoint?wsdl</wsdl>
                                 </wsdlOption>
-                                <wsdlOption>
+<!--                                <wsdlOption>
                                     <wsdl>http://localhost:8080/adminEndPoint?wsdl</wsdl>
                                 </wsdlOption>-->
                             </wsdlOptions>

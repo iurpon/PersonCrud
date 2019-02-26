@@ -16,10 +16,10 @@ public class User extends BaseNamedEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Project> projects;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "assigneeId")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignee")
     private List<Task> assignerTasks;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "executorId")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "executor")
     private List<Task> executorTasks;
 
     public User() {

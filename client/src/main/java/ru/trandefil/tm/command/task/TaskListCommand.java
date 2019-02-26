@@ -4,6 +4,7 @@ import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.generated.Session;
 import ru.trandefil.tm.generated.Task;
+import ru.trandefil.tm.generated.TaskDTO;
 import ru.trandefil.tm.generated.TaskEndPoint;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class TaskListCommand extends AbstractCommand {
     public void execute() {
         final TaskEndPoint taskEndPoint = getServiceLocator().getTaskEndPoint();
         final Session session = getServiceLocator().getSession();
-        final List<Task> tasks = taskEndPoint.getAllTasks(session);
+        final List<TaskDTO> tasks = taskEndPoint.getAllTasks(session);
         if(tasks == null && tasks.size()== 0){
             System.out.println("no tasks for you.");
             return;

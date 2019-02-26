@@ -42,7 +42,7 @@ public class TaskUpdateCommand extends AbstractCommand {
         final Session session = getServiceLocator().getSession();
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String taskName = getNotNullString(terminalService, "enter task name to update");
-        final Task updatingTask = taskEndPoint.getTaskByName(taskName, session);
+        final TaskDTO updatingTask = taskEndPoint.getTaskByName(taskName, session);
         if (updatingTask == null) {
             System.out.println("Wrong task name");
             return;
@@ -71,7 +71,7 @@ public class TaskUpdateCommand extends AbstractCommand {
             XMLGregorianCalendar end = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
 
 
-            Task created = taskEndPoint.saveTask(updatingTask.getId(), newTaskName, taskDesc, start, end,
+            TaskDTO created = taskEndPoint.saveTask(updatingTask.getId(), newTaskName, taskDesc, start, end,
                     project.getId(), executer.getId(), session);
             if (created == null) {
                 System.out.println("fail to create new task");

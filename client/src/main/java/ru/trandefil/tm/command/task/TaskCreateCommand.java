@@ -62,7 +62,7 @@ public class TaskCreateCommand extends AbstractCommand {
             XMLGregorianCalendar start = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
             c.setTime(endDate);
             XMLGregorianCalendar end = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
-            Task created = taskEndPoint.saveTask(null, taskName, taskDesc, start, end,
+            TaskDTO created = taskEndPoint.saveTask(null, taskName, taskDesc, start, end,
                     updating.getId(), executer.getId(), session);
             if (created == null) {
                 System.out.println("fail to create new task");

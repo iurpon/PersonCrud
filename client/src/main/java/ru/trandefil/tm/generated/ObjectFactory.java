@@ -24,22 +24,18 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _DeleteUserByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteUserByName");
-    private final static QName _DeleteUserByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteUserByNameResponse");
-    private final static QName _GetAllUsers_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllUsers");
-    private final static QName _GetAllUsersResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllUsersResponse");
-    private final static QName _GetSession_QNAME = new QName("http://generated.tm.trandefil.ru/", "getSession");
-    private final static QName _GetSessionResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getSessionResponse");
-    private final static QName _GetUserByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getUserByName");
-    private final static QName _GetUserByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getUserByNameResponse");
-    private final static QName _Registry_QNAME = new QName("http://generated.tm.trandefil.ru/", "registry");
-    private final static QName _RegistryResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "registryResponse");
-    private final static QName _SaveUser_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveUser");
-    private final static QName _SaveUserResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveUserResponse");
-    private final static QName _UpdateUser_QNAME = new QName("http://generated.tm.trandefil.ru/", "updateUser");
-    private final static QName _UpdateUserResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "updateUserResponse");
-    private final static QName _UserLogout_QNAME = new QName("http://generated.tm.trandefil.ru/", "userLogout");
-    private final static QName _UserLogoutResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "userLogoutResponse");
+    private final static QName _DeleteTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTask");
+    private final static QName _DeleteTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskByName");
+    private final static QName _DeleteTaskByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskByNameResponse");
+    private final static QName _DeleteTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "deleteTaskResponse");
+    private final static QName _GetAllTasks_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasks");
+    private final static QName _GetAllTasksResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getAllTasksResponse");
+    private final static QName _GetTaskByName_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByName");
+    private final static QName _GetTaskByNameResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "getTaskByNameResponse");
+    private final static QName _SaveTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveTask");
+    private final static QName _SaveTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "saveTaskResponse");
+    private final static QName _UpdateTask_QNAME = new QName("http://generated.tm.trandefil.ru/", "updateTask");
+    private final static QName _UpdateTaskResponse_QNAME = new QName("http://generated.tm.trandefil.ru/", "updateTaskResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ru.trandefil.tm.generated
@@ -49,139 +45,99 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DeleteUserByName }
+     * Create an instance of {@link DeleteTask }
      * 
      */
-    public DeleteUserByName createDeleteUserByName() {
-        return new DeleteUserByName();
+    public DeleteTask createDeleteTask() {
+        return new DeleteTask();
     }
 
     /**
-     * Create an instance of {@link DeleteUserByNameResponse }
+     * Create an instance of {@link DeleteTaskByName }
      * 
      */
-    public DeleteUserByNameResponse createDeleteUserByNameResponse() {
-        return new DeleteUserByNameResponse();
+    public DeleteTaskByName createDeleteTaskByName() {
+        return new DeleteTaskByName();
     }
 
     /**
-     * Create an instance of {@link GetAllUsers }
+     * Create an instance of {@link DeleteTaskByNameResponse }
      * 
      */
-    public GetAllUsers createGetAllUsers() {
-        return new GetAllUsers();
+    public DeleteTaskByNameResponse createDeleteTaskByNameResponse() {
+        return new DeleteTaskByNameResponse();
     }
 
     /**
-     * Create an instance of {@link GetAllUsersResponse }
+     * Create an instance of {@link DeleteTaskResponse }
      * 
      */
-    public GetAllUsersResponse createGetAllUsersResponse() {
-        return new GetAllUsersResponse();
+    public DeleteTaskResponse createDeleteTaskResponse() {
+        return new DeleteTaskResponse();
     }
 
     /**
-     * Create an instance of {@link GetSession }
+     * Create an instance of {@link GetAllTasks }
      * 
      */
-    public GetSession createGetSession() {
-        return new GetSession();
+    public GetAllTasks createGetAllTasks() {
+        return new GetAllTasks();
     }
 
     /**
-     * Create an instance of {@link GetSessionResponse }
+     * Create an instance of {@link GetAllTasksResponse }
      * 
      */
-    public GetSessionResponse createGetSessionResponse() {
-        return new GetSessionResponse();
+    public GetAllTasksResponse createGetAllTasksResponse() {
+        return new GetAllTasksResponse();
     }
 
     /**
-     * Create an instance of {@link GetUserByName }
+     * Create an instance of {@link GetTaskByName }
      * 
      */
-    public GetUserByName createGetUserByName() {
-        return new GetUserByName();
+    public GetTaskByName createGetTaskByName() {
+        return new GetTaskByName();
     }
 
     /**
-     * Create an instance of {@link GetUserByNameResponse }
+     * Create an instance of {@link GetTaskByNameResponse }
      * 
      */
-    public GetUserByNameResponse createGetUserByNameResponse() {
-        return new GetUserByNameResponse();
+    public GetTaskByNameResponse createGetTaskByNameResponse() {
+        return new GetTaskByNameResponse();
     }
 
     /**
-     * Create an instance of {@link Registry }
+     * Create an instance of {@link SaveTask }
      * 
      */
-    public Registry createRegistry() {
-        return new Registry();
+    public SaveTask createSaveTask() {
+        return new SaveTask();
     }
 
     /**
-     * Create an instance of {@link RegistryResponse }
+     * Create an instance of {@link SaveTaskResponse }
      * 
      */
-    public RegistryResponse createRegistryResponse() {
-        return new RegistryResponse();
+    public SaveTaskResponse createSaveTaskResponse() {
+        return new SaveTaskResponse();
     }
 
     /**
-     * Create an instance of {@link SaveUser }
+     * Create an instance of {@link UpdateTask }
      * 
      */
-    public SaveUser createSaveUser() {
-        return new SaveUser();
+    public UpdateTask createUpdateTask() {
+        return new UpdateTask();
     }
 
     /**
-     * Create an instance of {@link SaveUserResponse }
+     * Create an instance of {@link UpdateTaskResponse }
      * 
      */
-    public SaveUserResponse createSaveUserResponse() {
-        return new SaveUserResponse();
-    }
-
-    /**
-     * Create an instance of {@link UpdateUser }
-     * 
-     */
-    public UpdateUser createUpdateUser() {
-        return new UpdateUser();
-    }
-
-    /**
-     * Create an instance of {@link UpdateUserResponse }
-     * 
-     */
-    public UpdateUserResponse createUpdateUserResponse() {
-        return new UpdateUserResponse();
-    }
-
-    /**
-     * Create an instance of {@link UserLogout }
-     * 
-     */
-    public UserLogout createUserLogout() {
-        return new UserLogout();
-    }
-
-    /**
-     * Create an instance of {@link UserLogoutResponse }
-     * 
-     */
-    public UserLogoutResponse createUserLogoutResponse() {
-        return new UserLogoutResponse();
-    }
-
-    /**
-     * Create an instance of {@link UserDTO }
-     * 
-     */
-    public UserDTO createUserDTO() {
-        return new UserDTO();
+    public UpdateTaskResponse createUpdateTaskResponse() {
+        return new UpdateTaskResponse();
     }
 
     /**
@@ -193,147 +149,119 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteUserByName }{@code >}}
+     * Create an instance of {@link TaskDTO }
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteUserByName")
-    public JAXBElement<DeleteUserByName> createDeleteUserByName(DeleteUserByName value) {
-        return new JAXBElement<DeleteUserByName>(_DeleteUserByName_QNAME, DeleteUserByName.class, null, value);
+    public TaskDTO createTaskDTO() {
+        return new TaskDTO();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteUserByNameResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTask }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteUserByNameResponse")
-    public JAXBElement<DeleteUserByNameResponse> createDeleteUserByNameResponse(DeleteUserByNameResponse value) {
-        return new JAXBElement<DeleteUserByNameResponse>(_DeleteUserByNameResponse_QNAME, DeleteUserByNameResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTask")
+    public JAXBElement<DeleteTask> createDeleteTask(DeleteTask value) {
+        return new JAXBElement<DeleteTask>(_DeleteTask_QNAME, DeleteTask.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllUsers }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskByName }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllUsers")
-    public JAXBElement<GetAllUsers> createGetAllUsers(GetAllUsers value) {
-        return new JAXBElement<GetAllUsers>(_GetAllUsers_QNAME, GetAllUsers.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskByName")
+    public JAXBElement<DeleteTaskByName> createDeleteTaskByName(DeleteTaskByName value) {
+        return new JAXBElement<DeleteTaskByName>(_DeleteTaskByName_QNAME, DeleteTaskByName.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllUsersResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskByNameResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllUsersResponse")
-    public JAXBElement<GetAllUsersResponse> createGetAllUsersResponse(GetAllUsersResponse value) {
-        return new JAXBElement<GetAllUsersResponse>(_GetAllUsersResponse_QNAME, GetAllUsersResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskByNameResponse")
+    public JAXBElement<DeleteTaskByNameResponse> createDeleteTaskByNameResponse(DeleteTaskByNameResponse value) {
+        return new JAXBElement<DeleteTaskByNameResponse>(_DeleteTaskByNameResponse_QNAME, DeleteTaskByNameResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetSession }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteTaskResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getSession")
-    public JAXBElement<GetSession> createGetSession(GetSession value) {
-        return new JAXBElement<GetSession>(_GetSession_QNAME, GetSession.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "deleteTaskResponse")
+    public JAXBElement<DeleteTaskResponse> createDeleteTaskResponse(DeleteTaskResponse value) {
+        return new JAXBElement<DeleteTaskResponse>(_DeleteTaskResponse_QNAME, DeleteTaskResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetSessionResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTasks }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getSessionResponse")
-    public JAXBElement<GetSessionResponse> createGetSessionResponse(GetSessionResponse value) {
-        return new JAXBElement<GetSessionResponse>(_GetSessionResponse_QNAME, GetSessionResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllTasks")
+    public JAXBElement<GetAllTasks> createGetAllTasks(GetAllTasks value) {
+        return new JAXBElement<GetAllTasks>(_GetAllTasks_QNAME, GetAllTasks.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserByName }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetAllTasksResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getUserByName")
-    public JAXBElement<GetUserByName> createGetUserByName(GetUserByName value) {
-        return new JAXBElement<GetUserByName>(_GetUserByName_QNAME, GetUserByName.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getAllTasksResponse")
+    public JAXBElement<GetAllTasksResponse> createGetAllTasksResponse(GetAllTasksResponse value) {
+        return new JAXBElement<GetAllTasksResponse>(_GetAllTasksResponse_QNAME, GetAllTasksResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetUserByNameResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTaskByName }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getUserByNameResponse")
-    public JAXBElement<GetUserByNameResponse> createGetUserByNameResponse(GetUserByNameResponse value) {
-        return new JAXBElement<GetUserByNameResponse>(_GetUserByNameResponse_QNAME, GetUserByNameResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getTaskByName")
+    public JAXBElement<GetTaskByName> createGetTaskByName(GetTaskByName value) {
+        return new JAXBElement<GetTaskByName>(_GetTaskByName_QNAME, GetTaskByName.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Registry }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTaskByNameResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "registry")
-    public JAXBElement<Registry> createRegistry(Registry value) {
-        return new JAXBElement<Registry>(_Registry_QNAME, Registry.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "getTaskByNameResponse")
+    public JAXBElement<GetTaskByNameResponse> createGetTaskByNameResponse(GetTaskByNameResponse value) {
+        return new JAXBElement<GetTaskByNameResponse>(_GetTaskByNameResponse_QNAME, GetTaskByNameResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RegistryResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveTask }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "registryResponse")
-    public JAXBElement<RegistryResponse> createRegistryResponse(RegistryResponse value) {
-        return new JAXBElement<RegistryResponse>(_RegistryResponse_QNAME, RegistryResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveTask")
+    public JAXBElement<SaveTask> createSaveTask(SaveTask value) {
+        return new JAXBElement<SaveTask>(_SaveTask_QNAME, SaveTask.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveTaskResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveUser")
-    public JAXBElement<SaveUser> createSaveUser(SaveUser value) {
-        return new JAXBElement<SaveUser>(_SaveUser_QNAME, SaveUser.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveTaskResponse")
+    public JAXBElement<SaveTaskResponse> createSaveTaskResponse(SaveTaskResponse value) {
+        return new JAXBElement<SaveTaskResponse>(_SaveTaskResponse_QNAME, SaveTaskResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveUserResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateTask }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "saveUserResponse")
-    public JAXBElement<SaveUserResponse> createSaveUserResponse(SaveUserResponse value) {
-        return new JAXBElement<SaveUserResponse>(_SaveUserResponse_QNAME, SaveUserResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "updateTask")
+    public JAXBElement<UpdateTask> createUpdateTask(UpdateTask value) {
+        return new JAXBElement<UpdateTask>(_UpdateTask_QNAME, UpdateTask.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateTaskResponse }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "updateUser")
-    public JAXBElement<UpdateUser> createUpdateUser(UpdateUser value) {
-        return new JAXBElement<UpdateUser>(_UpdateUser_QNAME, UpdateUser.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateUserResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "updateUserResponse")
-    public JAXBElement<UpdateUserResponse> createUpdateUserResponse(UpdateUserResponse value) {
-        return new JAXBElement<UpdateUserResponse>(_UpdateUserResponse_QNAME, UpdateUserResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UserLogout }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "userLogout")
-    public JAXBElement<UserLogout> createUserLogout(UserLogout value) {
-        return new JAXBElement<UserLogout>(_UserLogout_QNAME, UserLogout.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UserLogoutResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "userLogoutResponse")
-    public JAXBElement<UserLogoutResponse> createUserLogoutResponse(UserLogoutResponse value) {
-        return new JAXBElement<UserLogoutResponse>(_UserLogoutResponse_QNAME, UserLogoutResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://generated.tm.trandefil.ru/", name = "updateTaskResponse")
+    public JAXBElement<UpdateTaskResponse> createUpdateTaskResponse(UpdateTaskResponse value) {
+        return new JAXBElement<UpdateTaskResponse>(_UpdateTaskResponse_QNAME, UpdateTaskResponse.class, null, value);
     }
 
 }

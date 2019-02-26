@@ -4,6 +4,7 @@ import ru.trandefil.tm.api.ServiceLocator;
 import ru.trandefil.tm.command.AbstractCommand;
 import ru.trandefil.tm.generated.Session;
 import ru.trandefil.tm.generated.Task;
+import ru.trandefil.tm.generated.TaskDTO;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.service.TerminalService;
 import ru.trandefil.tm.util.UserInputUtil;
@@ -34,7 +35,7 @@ public class TaskRemoveCommand extends AbstractCommand {
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String removingTask =
                 UserInputUtil.getNotNullString(terminalService,"enter removing task name");
-        final Task removing = taskEndPoint.deleteTaskByName(removingTask,session);
+        final TaskDTO removing = taskEndPoint.deleteTaskByName(removingTask,session);
         if(removing == null){
             System.out.println("wrong task name.");
             return;

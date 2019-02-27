@@ -13,7 +13,7 @@ public class Task extends BaseNamedEntity {
 
     private Date end;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
     @JoinColumn(name = "project_id")
     private Project project;
 

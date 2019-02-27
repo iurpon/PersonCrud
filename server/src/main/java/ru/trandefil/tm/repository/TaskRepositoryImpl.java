@@ -38,6 +38,7 @@ public class TaskRepositoryImpl implements TaskRepository {
         logger.info("repo save");
         if (task.isNew()) {
             task.setId(UUIDUtil.getUniqueString());
+            logger.info("persisting task : " + task);
             em.persist(task);
             logger.info("returning " + task);
             return task;

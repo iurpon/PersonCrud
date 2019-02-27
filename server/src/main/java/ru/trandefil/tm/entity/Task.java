@@ -89,7 +89,10 @@ public class Task extends BaseNamedEntity {
     @Override
     public String toString() {
         return "Task{" +
-                "name='" + name + '\'' +
+                "project=" + project +
+                ", assignee=" + assignee +
+                ", executor=" + executor +
+                ", name='" + name + '\'' +
                 ", id='" + id + '\'' +
                 '}';
     }

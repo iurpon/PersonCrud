@@ -21,7 +21,6 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> getAll(@NonNull final String userId) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
         final List<Task> tasks = taskRepository.getAll(userId, em);
         em.close();
         return tasks;
@@ -30,7 +29,6 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<Task> getAll() {
         final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
         final List<Task> tasks = taskRepository.getAll(em);
         em.close();
         return tasks;

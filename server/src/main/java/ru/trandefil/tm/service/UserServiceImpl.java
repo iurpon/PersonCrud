@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(@NonNull User user) {
+    public void delete(@NonNull final User user) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         userRepository.delete(user, em);
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteByName(@NonNull String name) {
+    public boolean deleteByName(@NonNull final String name) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final boolean isDeleted = userRepository.deleteByName(name, em);
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User save(@NonNull User user) {
+    public User save(@NonNull final User user) {
         if (user.isNew()) {
             user.setId(UUIDUtil.getUniqueString());
         }
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getByName(@NonNull String userName) {
+    public User getByName(@NonNull final String userName) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final User user = userRepository.findByName(userName, em);
@@ -111,7 +111,7 @@ public class UserServiceImpl implements UserService {
         return newSess;
     }
 
-    private Session createNewSession(@NonNull final String userId, @NonNull final Role role, @NonNull EntityManager em) {
+    private Session createNewSession(@NonNull final String userId, @NonNull final Role role, @NonNull final EntityManager em) {
         final String uuid = UUIDUtil.getUniqueString();
         final long timeStamp = System.nanoTime();
         final String signature = SignatureUtil.createSignature(uuid, userId, timeStamp, role);
@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void logout(@NonNull Session session) {
+    public void logout(@NonNull final Session session) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         sessionRepository.delete(session, em);
@@ -129,7 +129,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User constractUser(@NonNull String name, @NonNull String pass, @NonNull String role) {
+    public User constractUser(@NonNull final String name, @NonNull final String pass, @NonNull String role) {
         role = role.trim().toUpperCase();
         if ("ADMIN".equals(role) || "USER".equals(role)) {
             final Role newRole = Enum.valueOf(Role.class, role);

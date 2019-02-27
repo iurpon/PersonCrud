@@ -23,11 +23,10 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project save(@NonNull String userId, @NonNull String name, @NonNull String description) {
+    public Project save(@NonNull final String userId, @NonNull final String name, @NonNull final String description) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-//        final User ref = userService.getRefById(userId);
-        User user = userService.getById(userId);
+        final User user = userService.getRefById(userId);
         final Project created = new Project(null, name, description, user);
         final Project saved = projectRepository.save(created, em);
         em.getTransaction().commit();
@@ -36,7 +35,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project update(Project project) {
+    public Project update(@NonNull final Project project) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final Project updated = projectRepository.save(project, em);
@@ -46,9 +45,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<Project> getAll(@NonNull String userId) {
+    public List<Project> getAll(@NonNull final String userId) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
         final List<Project> projects = projectRepository.getAll(userId, em);
         em.close();
         return projects;
@@ -57,16 +55,14 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<Project> getAll() {
         final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
         final List<Project> projects = projectRepository.getAll(em);
         em.close();
         return projects;
     }
 
     @Override
-    public Project getById(@NonNull String id, @NonNull String userId) {
+    public Project getById(@NonNull final String id, @NonNull final String userId) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
         final Project project = projectRepository.getById(userId, id, em);
         em.close();
         return project;
@@ -74,15 +70,15 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void delete(@NonNull String userId, @NonNull Project project) {
-/*        final EntityManager em = EMFactoryUtil.getEntityManager();
+        final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         projectRepository.delete(project,em);
         em.getTransaction().commit();
-        em.close();*/
+        em.close();
     }
 
     @Override
-    public boolean deleteByName(@NonNull String userId, @NonNull String projectName) {
+    public boolean deleteByName(@NonNull final String userId, @NonNull final String projectName) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final boolean result = projectRepository.deleteByName(userId, projectName, em);

@@ -12,47 +12,47 @@ import java.util.logging.Logger;
 
 public class UserRepositoryImpl implements UserRepository {
 
-    private Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
-    public List<User> getAll(@NonNull EntityManager em) {
-        Query query = em.createQuery("select u from User u");
-        List<User> resultList = query.getResultList();
+    public List<User> getAll(@NonNull final EntityManager em) {
+        final Query query = em.createQuery("select u from User u");
+        final List<User> resultList = query.getResultList();
         return resultList;
     }
 
     @Override
-    public User getLogged(@NonNull String login, @NonNull String pass, @NonNull EntityManager em) {
-        Query query = em.createQuery("Select u FROM User u WHERE u.name = :name and u.password = :password");
+    public User getLogged(@NonNull final String login, @NonNull final String pass, @NonNull final EntityManager em) {
+        final Query query = em.createQuery("Select u FROM User u WHERE u.name = :name and u.password = :password");
         query.setParameter("name", login);
         query.setParameter("password", pass);
-        User logged = (User) query.getSingleResult();
+        final User logged = (User) query.getSingleResult();
         return logged;
     }
 
     @Override
-    public User findByName(String name, EntityManager em) {
-        Query query = em.createQuery("Select u FROM User u WHERE u.name = :name");
+    public User findByName(@NonNull final String name, @NonNull final  EntityManager em) {
+        final Query query = em.createQuery("Select u FROM User u WHERE u.name = :name");
         query.setParameter("name", name);
-        User user = (User) query.getSingleResult();
+        final User user = (User) query.getSingleResult();
         return user;
     }
 
     @Override
-    public User getRef(String userId, EntityManager em) {
+    public User getRef(@NonNull final String userId, @NonNull final EntityManager em) {
         return em.getReference(User.class,userId);
     }
 
     @Override
-    public User getById(String userId, EntityManager em) {
-        Query query = em.createQuery("select u from User u where u.id = :userId");
+    public User getById(@NonNull final String userId, @NonNull final EntityManager em) {
+        final Query query = em.createQuery("select u from User u where u.id = :userId");
         query.setParameter("userId",userId);
-        User user = (User) query.getSingleResult();
+        final User user = (User) query.getSingleResult();
         return user;
     }
 
     @Override
-    public User saveOrUpdate(User user, EntityManager em) {
+    public User saveOrUpdate(@NonNull final User user, @NonNull final EntityManager em) {
         if(user.isNew()){
             user.setId(UUIDUtil.getUniqueString());
             em.persist(user);
@@ -62,13 +62,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void delete(User user, EntityManager em) {
+    public void delete(@NonNull final User user, @NonNull final EntityManager em) {
         em.remove(user);
     }
 
     @Override
-    public boolean deleteByName(String name, EntityManager em) {
-        User byName = findByName(name, em);
+    public boolean deleteByName(@NonNull final String name, @NonNull final EntityManager em) {
+        final User byName = findByName(name, em);
         if (byName != null) {
             return deleteById(byName.getId(), em);
         }
@@ -76,10 +76,10 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean deleteById(String id, EntityManager em) {
-        Query query = em.createQuery("Delete FROM User u WHERE u.id = :id");
+    public boolean deleteById(@NonNull final String id, @NonNull final EntityManager em) {
+        final Query query = em.createQuery("Delete FROM User u WHERE u.id = :id");
         query.setParameter("id", id);
-        int executeUpdate = query.executeUpdate();
+        final int executeUpdate = query.executeUpdate();
         return executeUpdate != 0;
     }
 

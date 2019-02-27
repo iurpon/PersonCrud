@@ -12,10 +12,10 @@ import java.util.logging.Logger;
 
 public class TaskRepositoryImpl implements TaskRepository {
 
-    private Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     @Override
-    public List<Task> getAll(@NonNull String userId, @NonNull EntityManager em) {
+    public List<Task> getAll(@NonNull final String userId, @NonNull final EntityManager em) {
         logger.info(" repo getAll();");
         final Query query = em.createQuery("select t from Task t where t.assignee.id = :userId or t.executor = :userId");
         query.setParameter("userId", userId);
@@ -25,7 +25,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public List<Task> getAll(@NonNull EntityManager em) {
+    public List<Task> getAll(@NonNull final EntityManager em) {
         logger.info("repo getAll()");
         final Query query = em.createQuery("select t from Task t ");
         final List<Task> tasks = query.getResultList();
@@ -34,7 +34,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public Task save(@NonNull Task task, @NonNull EntityManager em) {
+    public Task save(@NonNull final Task task, @NonNull final EntityManager em) {
         logger.info("repo save");
         if (task.isNew()) {
             task.setId(UUIDUtil.getUniqueString());
@@ -48,40 +48,40 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public void delete(@NonNull Task task, @NonNull EntityManager em) {
+    public void delete(@NonNull final Task task, @NonNull final EntityManager em) {
         logger.info("repo delete");
         em.remove(task);
     }
 
     @Override
-    public boolean deleteByName(@NonNull String userId, @NonNull String name, @NonNull EntityManager em) {
+    public boolean deleteByName(@NonNull final String userId, @NonNull final String name, @NonNull final EntityManager em) {
         logger.info("repo deleteByName");
-        Query query = em.createQuery("delete from Task t where t.assignee.id =:userId and t.name = :name");
+        final Query query = em.createQuery("delete from Task t where t.assignee.id =:userId and t.name = :name");
         query.setParameter("userId",userId);
         query.setParameter("name",name);
-        int result = query.executeUpdate();
+        final int result = query.executeUpdate();
         logger.info("deleted by name ? : " + (result!=0));
         return result != 0;
     }
 
     @Override
-    public Task getByName(@NonNull String userId, @NonNull String name, @NonNull EntityManager em) {
+    public Task getByName(@NonNull final String userId, @NonNull final String name, @NonNull final EntityManager em) {
         logger.info("getByName repo");
-        Query query = em.createQuery("select t from Task t where (t.assignee.id = :userId or t.executor.id = :userId) and t.name = :name");
+        final Query query = em.createQuery("select t from Task t where (t.assignee.id = :userId or t.executor.id = :userId) and t.name = :name");
         query.setParameter("name",name);
         query.setParameter("userId",userId);
-        Task task = (Task) query.getSingleResult();
+        final Task task = (Task) query.getSingleResult();
         logger.info("returning " + task);
         return task;
     }
 
     @Override
-    public Task getByid(@NonNull String userId, @NonNull String id, @NonNull EntityManager em) {
+    public Task getByid(@NonNull final String userId, @NonNull final String id, @NonNull final EntityManager em) {
         logger.info("repo getById");
-        Query query = em.createQuery("select t from Task t where (t.assignee.id = :userId or t.executor.id = :userId) and dt.id = :id");
+        final Query query = em.createQuery("select t from Task t where (t.assignee.id = :userId or t.executor.id = :userId) and dt.id = :id");
         query.setParameter("userId",userId);
         query.setParameter("id",id);
-        Task task = (Task) query.getSingleResult();
+        final Task task = (Task) query.getSingleResult();
         logger.info("returning " + task);
         return task;
     }

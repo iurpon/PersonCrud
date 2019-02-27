@@ -13,7 +13,7 @@ public class Project extends BaseNamedEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.REMOVE,orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL)//,orphanRemoval = true
     private List<Task> tasks;
 
     public Project() {

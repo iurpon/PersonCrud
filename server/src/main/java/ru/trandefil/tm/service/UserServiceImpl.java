@@ -1,6 +1,7 @@
 package ru.trandefil.tm.service;
 
 import lombok.NonNull;
+import ru.trandefil.tm.api.SessionRepository;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Role;
@@ -18,8 +19,11 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    private final SessionRepository sessionRepository;
+
+    public UserServiceImpl(UserRepository userRepository, SessionRepository sessionRepository) {
         this.userRepository = userRepository;
+        this.sessionRepository = sessionRepository;
     }
 
     @Override
@@ -59,7 +63,6 @@ public class UserServiceImpl implements UserService {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final User user = userRepository.findByName(userName, em);
-//        em.getTransaction().commit();
         em.close();
         return user;
     }
@@ -87,7 +90,6 @@ public class UserServiceImpl implements UserService {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final List<User> users = userRepository.getAll(em);
-//        em.getTransaction().commit();
         em.close();
         return users;
     }
@@ -101,24 +103,29 @@ public class UserServiceImpl implements UserService {
             System.out.println("bad login.");
             return null;
         }
+        final Session newSess = createNewSession(user.getId(), user.getRole(), em);
         em.getTransaction().commit();
         em.close();
         System.out.println("logged " + user.getName());
-        final Session newSess = createNewSession(user.getId(), user.getRole());
+
         return newSess;
     }
 
-    private Session createNewSession(@NonNull final String userId, @NonNull final Role role) {
+    private Session createNewSession(@NonNull final String userId, @NonNull final Role role, @NonNull EntityManager em) {
         final String uuid = UUIDUtil.getUniqueString();
         final long timeStamp = System.nanoTime();
         final String signature = SignatureUtil.createSignature(uuid, userId, timeStamp, role);
-        final Session created = new Session(uuid, timeStamp, userId, role, signature);
-        return created;
+        final Session created = new Session(null, timeStamp, userId, role, signature);
+        return sessionRepository.save(created, em);
     }
 
     @Override
-    public void logout(@NonNull String sessionId) {
-
+    public void logout(@NonNull Session session) {
+        final EntityManager em = EMFactoryUtil.getEntityManager();
+        em.getTransaction().begin();
+        sessionRepository.delete(session, em);
+        em.getTransaction().commit();
+        em.close();
     }
 
     @Override

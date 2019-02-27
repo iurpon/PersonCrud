@@ -10,6 +10,7 @@ import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
 import ru.trandefil.tm.repository.ProjectRepositoryImpl;
+import ru.trandefil.tm.repository.SessionRepositoryImpl;
 import ru.trandefil.tm.repository.TaskRepositoryImpl;
 import ru.trandefil.tm.repository.UserRepositoryImpl;
 import ru.trandefil.tm.service.AdminServiceImpl;
@@ -23,7 +24,9 @@ public class Bootstrap {
 
     private final UserRepository userRepository = new UserRepositoryImpl();
 
-    private final UserService userService = new UserServiceImpl(userRepository);
+    private final SessionRepository sessionRepository = new SessionRepositoryImpl();
+
+    private final UserService userService = new UserServiceImpl(userRepository,sessionRepository);
 
     private final ProjectRepository projectRepository = new ProjectRepositoryImpl();
 

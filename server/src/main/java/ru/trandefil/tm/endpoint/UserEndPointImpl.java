@@ -89,7 +89,7 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        userService.logout(session.getId());
+        userService.logout(session);
     }
 
     @Override

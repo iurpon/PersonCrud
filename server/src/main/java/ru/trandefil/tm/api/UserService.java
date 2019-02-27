@@ -23,7 +23,7 @@ public interface UserService {
 
     Session getSession(String userName, String userPassword);
 
-    void logout(String sessionId);
+    void logout(Session session);
 
     User constractUser(String name, String pass, String role);
 

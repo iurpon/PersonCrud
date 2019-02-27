@@ -4,10 +4,8 @@ import ru.trandefil.tm.entity.Session;
 
 public interface SessionService {
 
-    Session getSession(String id);
+    void delete(Session session);
 
-    Session saveSession(Session session);
-
-    void deleteSession(String sessionId);
+    Session save(Session session);
 
 }

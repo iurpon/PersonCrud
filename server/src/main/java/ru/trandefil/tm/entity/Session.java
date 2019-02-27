@@ -2,8 +2,6 @@ package ru.trandefil.tm.entity;
 
 public class Session extends BaseEntity {
 
-    private static final long serialVersionUID = 4L;
-
     private long timestamp;
 
     private String userId;

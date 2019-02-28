@@ -113,11 +113,4 @@ public class UserDTO {
         this.role = value;
     }
 
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "name='" + name + '\'' +
-                ", role=" + role +
-                '}';
-    }
 }

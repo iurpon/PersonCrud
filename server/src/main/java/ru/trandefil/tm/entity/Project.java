@@ -1,5 +1,7 @@
 package ru.trandefil.tm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,7 @@ public class Project extends BaseNamedEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL)//,orphanRemoval = true
     private List<Task> tasks = new ArrayList<>();
 

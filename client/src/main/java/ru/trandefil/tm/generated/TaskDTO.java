@@ -250,10 +250,4 @@ public class TaskDTO {
         this.projectId = value;
     }
 
-    @Override
-    public String toString() {
-        return "TaskDTO{" +
-                "name='" + name + '\'' +
-                '}';
-    }
 }

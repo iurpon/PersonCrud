@@ -84,7 +84,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     public void clear(EntityManager em) {
         try {
             em.getTransaction().begin();
-            final Query query = em.createQuery("TRUNCATE TABLE projects;");
+            final Query query = em.createQuery("delete from Project");
             query.executeUpdate();
             em.getTransaction().commit();
             em.close();
@@ -95,4 +95,5 @@ public class ProjectRepositoryImpl implements ProjectRepository {
             }
         }
     }
+
 }

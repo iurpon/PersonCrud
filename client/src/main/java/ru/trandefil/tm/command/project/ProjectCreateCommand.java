@@ -33,7 +33,7 @@ public class ProjectCreateCommand extends AbstractCommand {
     public void execute() {
         final TerminalService terminalService = getServiceLocator().getTerminalService();
         final String projectName = getNotNullString(terminalService, "enter project name");
-        final String projectDesc = getNotNullString(terminalService, "enter project desription");
+        final String projectDesc = getNotNullString(terminalService, "enter project desсription");
         final ProjectEndPoint projectEndPoint = getServiceLocator().getProjectEndPoint();
         final Session session = getServiceLocator().getSession();
         ProjectDTO project = projectEndPoint.saveProject(projectName, projectDesc, session);

@@ -3,10 +3,10 @@ package ru.trandefil.tm.repository;
 import lombok.NonNull;
 import ru.trandefil.tm.api.SessionRepository;
 import ru.trandefil.tm.entity.Session;
-import ru.trandefil.tm.util.EMFactoryUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class SessionRepositoryImpl implements SessionRepository {
@@ -28,10 +28,9 @@ public class SessionRepositoryImpl implements SessionRepository {
 
     @Override
     public void clear(EntityManager em) {
-
         try {
             em.getTransaction().begin();
-            final Query query = em.createQuery("TRUNCATE TABLE sessions;");
+            final Query query = em.createQuery("delete from Session");
             query.executeUpdate();
             em.getTransaction().commit();
             em.close();
@@ -42,4 +41,11 @@ public class SessionRepositoryImpl implements SessionRepository {
             }
         }
     }
+
+    @Override
+    public List<Session> getAll(EntityManager em) {
+        final Query query = em.createQuery("select s from Session s");
+        return (List<Session>)query.getResultList();
+    }
+
 }

@@ -3,7 +3,6 @@ package ru.trandefil.tm.repository;
 import lombok.NonNull;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.util.EMFactoryUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.persistence.EntityManager;
@@ -32,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User findByName(@NonNull final String name, @NonNull final  EntityManager em) {
+    public User findByName(@NonNull final String name, @NonNull final EntityManager em) {
         final Query query = em.createQuery("Select u FROM User u WHERE u.name = :name");
         query.setParameter("name", name);
         final User user = (User) query.getSingleResult();
@@ -41,20 +40,20 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User getRef(@NonNull final String userId, @NonNull final EntityManager em) {
-        return em.getReference(User.class,userId);
+        return em.getReference(User.class, userId);
     }
 
     @Override
     public User getById(@NonNull final String userId, @NonNull final EntityManager em) {
         final Query query = em.createQuery("select u from User u where u.id = :userId");
-        query.setParameter("userId",userId);
+        query.setParameter("userId", userId);
         final User user = (User) query.getSingleResult();
         return user;
     }
 
     @Override
     public User saveOrUpdate(@NonNull final User user, @NonNull final EntityManager em) {
-        if(user.isNew()){
+        if (user.isNew()) {
             user.setId(UUIDUtil.getUniqueString());
             em.persist(user);
             return user;
@@ -88,7 +87,7 @@ public class UserRepositoryImpl implements UserRepository {
     public void clear(EntityManager em) {
         try {
             em.getTransaction().begin();
-            final Query query = em.createQuery("TRUNCATE TABLE users;");
+            final Query query = em.createQuery("Delete From User");
             query.executeUpdate();
             em.getTransaction().commit();
             em.close();

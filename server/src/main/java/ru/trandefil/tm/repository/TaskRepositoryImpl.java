@@ -3,7 +3,6 @@ package ru.trandefil.tm.repository;
 import lombok.NonNull;
 import ru.trandefil.tm.api.TaskRepository;
 import ru.trandefil.tm.entity.Task;
-import ru.trandefil.tm.util.EMFactoryUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.persistence.EntityManager;
@@ -58,10 +57,10 @@ public class TaskRepositoryImpl implements TaskRepository {
     public boolean deleteByName(@NonNull final String userId, @NonNull final String name, @NonNull final EntityManager em) {
         logger.info("repo deleteByName");
         final Query query = em.createQuery("delete from Task t where t.assignee.id =:userId and t.name = :name");
-        query.setParameter("userId",userId);
-        query.setParameter("name",name);
+        query.setParameter("userId", userId);
+        query.setParameter("name", name);
         final int result = query.executeUpdate();
-        logger.info("deleted by name ? : " + (result!=0));
+        logger.info("deleted by name ? : " + (result != 0));
         return result != 0;
     }
 
@@ -69,8 +68,8 @@ public class TaskRepositoryImpl implements TaskRepository {
     public Task getByName(@NonNull final String userId, @NonNull final String name, @NonNull final EntityManager em) {
         logger.info("getByName repo");
         final Query query = em.createQuery("select t from Task t where (t.assignee.id = :userId or t.executor.id = :userId) and t.name = :name");
-        query.setParameter("name",name);
-        query.setParameter("userId",userId);
+        query.setParameter("name", name);
+        query.setParameter("userId", userId);
         final Task task = (Task) query.getSingleResult();
         logger.info("returning " + task);
         return task;
@@ -80,8 +79,8 @@ public class TaskRepositoryImpl implements TaskRepository {
     public Task getByid(@NonNull final String userId, @NonNull final String id, @NonNull final EntityManager em) {
         logger.info("repo getById");
         final Query query = em.createQuery("select t from Task t where (t.assignee.id = :userId or t.executor.id = :userId) and dt.id = :id");
-        query.setParameter("userId",userId);
-        query.setParameter("id",id);
+        query.setParameter("userId", userId);
+        query.setParameter("id", id);
         final Task task = (Task) query.getSingleResult();
         logger.info("returning " + task);
         return task;
@@ -89,10 +88,13 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public void clear(EntityManager em) {
+        logger.info("task repo clear");
         try {
+
+            final Query query = em.createQuery("DELETE FROM Task");
             em.getTransaction().begin();
-            final Query query = em.createQuery("TRUNCATE TABLE tasks;");
-            query.executeUpdate();
+            final int result = query.executeUpdate();
+            logger.info("deleted rows ---------------------------------------------------: " + result);
             em.getTransaction().commit();
             em.close();
         } catch (Exception e) {
@@ -102,4 +104,5 @@ public class TaskRepositoryImpl implements TaskRepository {
             }
         }
     }
+
 }

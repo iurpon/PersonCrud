@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Table(name = "users")
+@Table(name = "users",uniqueConstraints = {@UniqueConstraint(columnNames={"name"})})
 @Entity
 public class User extends BaseNamedEntity {
 
@@ -15,6 +15,13 @@ public class User extends BaseNamedEntity {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    public User(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.password = user.getPassword();
+        this.role = user.getRole();
+    }
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")

@@ -26,9 +26,10 @@ public class ProjectServiceImpl implements ProjectService {
     public Project save(@NonNull final String userId, @NonNull final String name, @NonNull final String description) {
         EntityManager em = null;
         try {
-            EMFactoryUtil.getEntityManager();
+            em = EMFactoryUtil.getEntityManager();
             em.getTransaction().begin();
-            final User user = userService.getRefById(userId);
+//            final User user = userService.getRefById(userId);
+            final User user = userService.getById(userId);
             final Project created = new Project(null, name, description, user);
             final Project saved = projectRepository.save(created, em);
             em.getTransaction().commit();

@@ -107,7 +107,7 @@ public class ProjectServiceImpl implements ProjectService {
     public boolean deleteByName(@NonNull final String userId, @NonNull final String projectName) {
         EntityManager em = null;
         try {
-            EMFactoryUtil.getEntityManager();
+            em = EMFactoryUtil.getEntityManager();
             em.getTransaction().begin();
             final boolean result = projectRepository.deleteByName(userId, projectName, em);
             em.getTransaction().commit();

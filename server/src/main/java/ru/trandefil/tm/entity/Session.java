@@ -1,5 +1,10 @@
 package ru.trandefil.tm.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "sessions")
 public class Session extends BaseEntity {
 
     private long timestamp;

@@ -14,12 +14,15 @@ import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
     private final SessionRepository sessionRepository;
+
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     public UserServiceImpl(UserRepository userRepository, SessionRepository sessionRepository) {
         this.userRepository = userRepository;
@@ -94,7 +97,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getRefById(@NonNull String userId) {
+    public User getRefById(@NonNull final String userId) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final User ref = userRepository.getRef(userId, em);
@@ -103,7 +106,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(String id) {
+    public User getById(@NonNull final String id) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final User user = userRepository.getById(id, em);
@@ -121,7 +124,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Session getSession(@NonNull String userName, @NonNull String userPassword) {
+    public Session getSession(@NonNull final String userName, @NonNull final String userPassword) {
+        logger.info("get session");
         EntityManager em = null;
         try {
             em = EMFactoryUtil.getEntityManager();
@@ -131,7 +135,9 @@ public class UserServiceImpl implements UserService {
                 System.out.println("bad login.");
                 return null;
             }
+            logger.info("get form base user : " + user);
             final Session newSess = createNewSession(user.getId(), user.getRole(), em);
+            logger.info("created session : " + newSess);
             em.getTransaction().commit();
             em.close();
             System.out.println("logged " + user.getName());
@@ -141,15 +147,17 @@ public class UserServiceImpl implements UserService {
                 em.getTransaction().rollback();
                 em.close();
             }
+            e.getMessage();
         }
         return null;
     }
 
     private Session createNewSession(@NonNull final String userId, @NonNull final Role role, @NonNull final EntityManager em) {
+        logger.info("create new sesion");
         final String uuid = UUIDUtil.getUniqueString();
         final long timeStamp = System.nanoTime();
         final String signature = SignatureUtil.createSignature(uuid, userId, timeStamp, role);
-        final Session created = new Session(null, timeStamp, userId, role, signature);
+        final Session created = new Session(uuid, timeStamp, userId, role, signature);
         return sessionRepository.save(created, em);
     }
 
@@ -167,6 +175,7 @@ public class UserServiceImpl implements UserService {
                 em.getTransaction().rollback();
                 em.close();
             }
+            e.getMessage();
         }
     }
 

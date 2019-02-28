@@ -36,44 +36,70 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task save(@NonNull final String userId, @NonNull final Task task) {
-        if(!userId.equals(task.getAssignee().getId())){
+        if (!userId.equals(task.getAssignee().getId())) {
             throw new SecurityAuthorizationException("wrong assigner id.");
         }
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        final Task saved = taskRepository.save(task,em);
-        em.getTransaction().commit();
-        em.close();
-        return saved;
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            final Task saved = taskRepository.save(task, em);
+            em.getTransaction().commit();
+            em.close();
+            return saved;
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+        return null;
     }
 
     @Override
     public void delete(@NonNull final String userId, @NonNull final Task task) {
-        if(!userId.equals(task.getAssignee())){
+        if (!userId.equals(task.getAssignee())) {
             throw new SecurityAuthorizationException("wrong assigner id.");
         }
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        taskRepository.delete(task,em);
-        em.getTransaction().commit();
-        em.close();
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            taskRepository.delete(task, em);
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
     }
 
     @Override
     public boolean deleteByName(@NonNull final String userId, @NonNull final String name) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        boolean result = taskRepository.deleteByName(userId,name,em);
-        em.getTransaction().commit();
-        em.close();
-        return result;
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            boolean result = taskRepository.deleteByName(userId, name, em);
+            em.getTransaction().commit();
+            em.close();
+            return result;
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+        return false;
     }
 
     @Override
     public Task getByName(@NonNull final String userId, @NonNull final String name) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        final Task task = taskRepository.getByName(userId,name,em);
+        final Task task = taskRepository.getByName(userId, name, em);
         em.close();
         return task;
     }
@@ -82,7 +108,7 @@ public class TaskServiceImpl implements TaskService {
     public Task getByid(@NonNull final String userId, @NonNull final String id) {
         final EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
-        final Task task = taskRepository.getByName(userId,id,em);
+        final Task task = taskRepository.getByName(userId, id, em);
         em.close();
         return task;
     }

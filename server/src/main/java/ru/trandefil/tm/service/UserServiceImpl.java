@@ -28,21 +28,38 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(@NonNull final User user) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        userRepository.delete(user, em);
-        em.getTransaction().commit();
-        em.close();
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            userRepository.delete(user, em);
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
     }
 
     @Override
     public boolean deleteByName(@NonNull final String name) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        final boolean isDeleted = userRepository.deleteByName(name, em);
-        em.getTransaction().commit();
-        em.close();
-        return isDeleted;
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            final boolean isDeleted = userRepository.deleteByName(name, em);
+            em.getTransaction().commit();
+            em.close();
+            return isDeleted;
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+        return false;
     }
 
     @Override
@@ -50,12 +67,21 @@ public class UserServiceImpl implements UserService {
         if (user.isNew()) {
             user.setId(UUIDUtil.getUniqueString());
         }
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        userRepository.saveOrUpdate(user, em);
-        em.getTransaction().commit();
-        em.close();
-        return user;
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            userRepository.saveOrUpdate(user, em);
+            em.getTransaction().commit();
+            em.close();
+            return user;
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+        return null;
     }
 
     @Override
@@ -96,19 +122,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Session getSession(@NonNull String userName, @NonNull String userPassword) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        final User user = userRepository.getLogged(userName, HashUtil.hashPassword(userPassword), em);
-        if (user == null) {
-            System.out.println("bad login.");
-            return null;
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            final User user = userRepository.getLogged(userName, HashUtil.hashPassword(userPassword), em);
+            if (user == null) {
+                System.out.println("bad login.");
+                return null;
+            }
+            final Session newSess = createNewSession(user.getId(), user.getRole(), em);
+            em.getTransaction().commit();
+            em.close();
+            System.out.println("logged " + user.getName());
+            return newSess;
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
         }
-        final Session newSess = createNewSession(user.getId(), user.getRole(), em);
-        em.getTransaction().commit();
-        em.close();
-        System.out.println("logged " + user.getName());
-
-        return newSess;
+        return null;
     }
 
     private Session createNewSession(@NonNull final String userId, @NonNull final Role role, @NonNull final EntityManager em) {
@@ -121,11 +155,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void logout(@NonNull final Session session) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        sessionRepository.delete(session, em);
-        em.getTransaction().commit();
-        em.close();
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            sessionRepository.delete(session, em);
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
     }
 
     @Override

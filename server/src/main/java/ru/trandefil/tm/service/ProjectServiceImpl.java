@@ -24,24 +24,42 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Project save(@NonNull final String userId, @NonNull final String name, @NonNull final String description) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        final User user = userService.getRefById(userId);
-        final Project created = new Project(null, name, description, user);
-        final Project saved = projectRepository.save(created, em);
-        em.getTransaction().commit();
-        em.close();
-        return saved;
+        EntityManager em = null;
+        try {
+            EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            final User user = userService.getRefById(userId);
+            final Project created = new Project(null, name, description, user);
+            final Project saved = projectRepository.save(created, em);
+            em.getTransaction().commit();
+            em.close();
+            return saved;
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+        return null;
     }
 
     @Override
     public Project update(@NonNull final Project project) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        final Project updated = projectRepository.save(project, em);
-        em.getTransaction().commit();
-        em.close();
-        return updated;
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            final Project updated = projectRepository.save(project, em);
+            em.getTransaction().commit();
+            em.close();
+            return updated;
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+        return null;
     }
 
     @Override
@@ -70,26 +88,44 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public void delete(@NonNull String userId, @NonNull Project project) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        projectRepository.delete(project,em);
-        em.getTransaction().commit();
-        em.close();
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            projectRepository.delete(project, em);
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
     }
 
     @Override
     public boolean deleteByName(@NonNull final String userId, @NonNull final String projectName) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
-        em.getTransaction().begin();
-        final boolean result = projectRepository.deleteByName(userId, projectName, em);
-        em.getTransaction().commit();
-        em.close();
-        return result;
+        EntityManager em = null;
+        try {
+            EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            final boolean result = projectRepository.deleteByName(userId, projectName, em);
+            em.getTransaction().commit();
+            em.close();
+            return result;
+
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+        return false;
     }
 
     @Override
     public Project getByName(@NonNull String projectName, @NonNull String userId) {
-        final EntityManager em = EMFactoryUtil.getEntityManager();
+        EntityManager em = EMFactoryUtil.getEntityManager();
         em.getTransaction().begin();
         final Project project = projectRepository.getByName(userId, projectName, em);
         em.close();

@@ -14,15 +14,15 @@ public class Task extends BaseNamedEntity {
     private Date end;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "project_id")
+//    @JoinColumn(name = "project_id")
     private Project project;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "assignee_id")
+//    @JoinColumn(name = "assignee_id")
     private User assignee;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "executor_id")
+//    @JoinColumn(name = "executor_id")
     private User executor;
 
     public Task() {

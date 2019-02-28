@@ -1,6 +1,7 @@
 package ru.trandefil.tm.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,13 +15,13 @@ public class User extends BaseNamedEntity {
     private Role role;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Project> projects;
+    private List<Project> projects = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "assignee")
-    private List<Task> assignerTasks;
+    private List<Task> assignerTasks = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "executor")
-    private List<Task> executorTasks;
+    private List<Task> executorTasks = new ArrayList<>();
 
     public User() {
     }

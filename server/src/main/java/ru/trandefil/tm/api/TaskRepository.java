@@ -21,6 +21,6 @@ public interface TaskRepository {
 
     Task getByid(String userId, String id, EntityManager em);
 
-    void clear();
+    void clear(EntityManager em);
 
 }

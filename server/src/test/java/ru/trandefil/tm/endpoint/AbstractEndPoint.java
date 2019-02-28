@@ -1,6 +1,7 @@
 package ru.trandefil.tm.endpoint;
 
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import ru.trandefil.tm.api.*;
 import ru.trandefil.tm.generated.AdminEndPoint;
@@ -16,6 +17,7 @@ import ru.trandefil.tm.service.ProjectServiceImpl;
 import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.UserServiceImpl;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.logging.Logger;
@@ -63,6 +65,15 @@ public abstract class AbstractEndPoint {
         if(entityManagerFactory != null){
             entityManagerFactory.close();
         }
+    }
+
+    @Before
+    public void beforeEachTest(){
+        final EntityManager em = entityManagerFactory.createEntityManager();
+        taskRepository.clear(em);
+        projectRepository.clear(em);
+        sessionRepository.clear(em);
+        userRepository.clear(em);
     }
 
 }

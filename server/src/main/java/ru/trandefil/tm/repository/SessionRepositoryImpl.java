@@ -27,10 +27,9 @@ public class SessionRepositoryImpl implements SessionRepository {
     }
 
     @Override
-    public void clear() {
-        EntityManager em = null;
+    public void clear(EntityManager em) {
+
         try {
-            em = EMFactoryUtil.getEntityManager();
             em.getTransaction().begin();
             final Query query = em.createQuery("TRUNCATE TABLE sessions;");
             query.executeUpdate();

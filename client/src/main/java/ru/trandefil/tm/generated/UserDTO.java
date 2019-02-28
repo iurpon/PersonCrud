@@ -35,6 +35,13 @@ import javax.xml.bind.annotation.XmlType;
     "role"
 })
 public class UserDTO {
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "name='" + name + '\'' +
+                ", role=" + role +
+                '}';
+    }
 
     protected String id;
     protected String name;

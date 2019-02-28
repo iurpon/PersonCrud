@@ -25,4 +25,6 @@ public interface UserRepository {
 
     User getRef(String userId, EntityManager em);
 
+    void clear();
+
 }

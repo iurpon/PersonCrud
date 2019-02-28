@@ -21,4 +21,6 @@ public interface ProjectRepository {
 
     boolean deleteByName(String userId, String projectName, EntityManager em);
 
+    void clear();
+
 }

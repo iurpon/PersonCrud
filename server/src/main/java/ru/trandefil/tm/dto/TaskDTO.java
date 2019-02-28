@@ -28,9 +28,9 @@ public class TaskDTO {
         this.description = task.getDescription();
         this.begin = task.getBegin();
         this.end = task.getEnd();
-        this.projectId = task.getProject().getName();
-        this.assigneeId = task.getAssignee().getName();
-        this.executorId = task.getExecutor().getName();
+        this.projectId = task.getProject().getId();
+        this.assigneeId = task.getAssignee().getId();
+        this.executorId = task.getExecutor().getId();
     }
 
     public TaskDTO() {

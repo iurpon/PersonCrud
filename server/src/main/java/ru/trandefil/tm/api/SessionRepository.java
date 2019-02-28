@@ -10,4 +10,6 @@ public interface SessionRepository {
 
     Session save(Session session, EntityManager em);
 
+    void clear();
+
 }

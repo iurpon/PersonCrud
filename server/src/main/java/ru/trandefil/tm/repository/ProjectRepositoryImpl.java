@@ -3,6 +3,7 @@ package ru.trandefil.tm.repository;
 import lombok.NonNull;
 import ru.trandefil.tm.api.ProjectRepository;
 import ru.trandefil.tm.entity.Project;
+import ru.trandefil.tm.util.EMFactoryUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import java.util.logging.Logger;
 public class ProjectRepositoryImpl implements ProjectRepository {
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     @Override
     @SuppressWarnings("unchecked")
     public List<Project> getAll(@NonNull final String userId, @NonNull final EntityManager em) {
@@ -69,13 +71,30 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     @Override
     public boolean deleteByName(@NonNull final String userId, @NonNull final String projectName, @NonNull final EntityManager em) {
         logger.info("task repo deleteByName");
-        Project project = getByName(userId,projectName,em);
-        if(project == null){
+        Project project = getByName(userId, projectName, em);
+        if (project == null) {
             logger.info("wrong project name.");
             return false;
         }
-        delete(project,em);
+        delete(project, em);
         return true;
     }
 
+    @Override
+    public void clear() {
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            final Query query = em.createQuery("TRUNCATE TABLE projects;");
+            query.executeUpdate();
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+    }
 }

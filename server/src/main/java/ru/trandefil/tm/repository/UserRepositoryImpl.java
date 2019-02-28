@@ -3,6 +3,7 @@ package ru.trandefil.tm.repository;
 import lombok.NonNull;
 import ru.trandefil.tm.api.UserRepository;
 import ru.trandefil.tm.entity.User;
+import ru.trandefil.tm.util.EMFactoryUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.persistence.EntityManager;
@@ -83,4 +84,21 @@ public class UserRepositoryImpl implements UserRepository {
         return executeUpdate != 0;
     }
 
+    @Override
+    public void clear() {
+        EntityManager em = null;
+        try {
+            em = EMFactoryUtil.getEntityManager();
+            em.getTransaction().begin();
+            final Query query = em.createQuery("TRUNCATE TABLE users;");
+            query.executeUpdate();
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+                em.close();
+            }
+        }
+    }
 }

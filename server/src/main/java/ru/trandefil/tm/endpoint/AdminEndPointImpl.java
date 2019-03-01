@@ -10,10 +10,11 @@ import ru.trandefil.tm.util.SignatureUtil;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-@ApplicationScoped
+@Singleton
 @WebService(endpointInterface = "ru.trandefil.tm.generated.AdminEndPoint")
 public class AdminEndPointImpl implements AdminEndPoint {
 

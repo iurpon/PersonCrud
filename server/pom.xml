@@ -96,6 +96,14 @@
             <version>3.1.0.Final</version>
         </dependency>
 
+         https://mvnrepository.com/artifact/org.jboss.weld/weld-core
+        <dependency>
+            <groupId>org.jboss.weld</groupId>
+            <artifactId>weld-core</artifactId>
+            <version>2.4.3.Final</version>
+        </dependency>
+
+
 
         <!-- https://mvnrepository.com/artifact/javax.enterprise/cdi-api -->
         <!-- https://mvnrepository.com/artifact/javax.enterprise/cdi-api -->

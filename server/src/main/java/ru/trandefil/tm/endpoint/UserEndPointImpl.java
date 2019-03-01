@@ -13,12 +13,13 @@ import ru.trandefil.tm.util.SignatureUtil;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApplicationScoped
+@Singleton
 @WebService(endpointInterface = "ru.trandefil.tm.generated.UserEndPoint")
 public class UserEndPointImpl implements UserEndPoint {
 

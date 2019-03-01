@@ -5,11 +5,14 @@ import ru.trandefil.tm.api.TaskRepository;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.util.UUIDUtil;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 import java.util.logging.Logger;
 
+
+@ApplicationScoped
 public class TaskRepositoryImpl implements TaskRepository {
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());

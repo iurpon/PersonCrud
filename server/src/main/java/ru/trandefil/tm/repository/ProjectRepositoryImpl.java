@@ -6,11 +6,13 @@ import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.util.EMFactoryUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 import java.util.logging.Logger;
 
+@ApplicationScoped
 public class ProjectRepositoryImpl implements ProjectRepository {
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());

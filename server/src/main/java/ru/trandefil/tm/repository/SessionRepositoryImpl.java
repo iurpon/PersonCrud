@@ -4,11 +4,14 @@ import lombok.NonNull;
 import ru.trandefil.tm.api.SessionRepository;
 import ru.trandefil.tm.entity.Session;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 import java.util.logging.Logger;
 
+
+@ApplicationScoped
 public class SessionRepositoryImpl implements SessionRepository {
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());

@@ -28,7 +28,8 @@ public class Bootstrap {
     @Inject
     private UserRepository userRepository;
 
-    private final SessionRepository sessionRepository = new SessionRepositoryImpl();
+    @Inject
+    private SessionRepository sessionRepository;
 
     private final UserService userService = new UserServiceImpl(userRepository,sessionRepository);
 

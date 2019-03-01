@@ -11,21 +11,21 @@ import ru.trandefil.tm.exception.SecurityAuthentificationException;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 @WebService(endpointInterface = "ru.trandefil.tm.generated.ProjectEndPoint")
 public class ProjectEndPointImpl implements ProjectEndPoint {
 
-    private final ProjectService projectService;
+    @Inject
+    private ProjectService projectService;
 
-    private final UserService userService;
-
-    public ProjectEndPointImpl(ProjectService projectService, UserService userService) {
-        this.projectService = projectService;
-        this.userService = userService;
-    }
+    @Inject
+    private UserService userService;
 
     @Override
     public ProjectDTO saveProject(String name, String description, Session session) {

@@ -16,6 +16,7 @@ import static ru.trandefil.tm.TestData.USER;
 
 public class UserEndPointImplTest extends AbstractEndPoint {
 
+/*
     @Test
     public void deleteUserByName() {
         User newUser = new User(null, "newUser", "newPass", Role.USER);
@@ -79,5 +80,6 @@ public class UserEndPointImplTest extends AbstractEndPoint {
     @Test
     public void registry() {
     }
+*/
 
 }

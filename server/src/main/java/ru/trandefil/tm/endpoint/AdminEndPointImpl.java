@@ -8,17 +8,17 @@ import ru.trandefil.tm.exception.SecurityAuthorizationException;
 import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+@ApplicationScoped
 @WebService(endpointInterface = "ru.trandefil.tm.generated.AdminEndPoint")
 public class AdminEndPointImpl implements AdminEndPoint {
 
+    @Inject
     private AdminService adminService;
-
-    public AdminEndPointImpl(AdminService adminService) {
-        this.adminService = adminService;
-    }
 
     @Override
     @WebMethod

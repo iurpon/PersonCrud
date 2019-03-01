@@ -9,8 +9,7 @@ public class App {
         SeContainerInitializer initializer = SeContainerInitializer.newInstance();
         initializer.addPackages(true, App.class);
         SeContainer container = initializer.initialize();
-
-        Bootstrap bootStrap = new Bootstrap();
+        Bootstrap bootStrap  = container.select(Bootstrap.class).get();
         bootStrap.init();
     }
 

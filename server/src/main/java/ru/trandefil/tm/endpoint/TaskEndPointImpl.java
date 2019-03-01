@@ -13,6 +13,8 @@ import ru.trandefil.tm.exception.SecurityAuthentificationException;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -21,22 +23,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+@ApplicationScoped
 @WebService(endpointInterface = "ru.trandefil.tm.generated.TaskEndPoint")
 public class TaskEndPointImpl implements TaskEndPoint {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
-    private final TaskService taskService;
+    @Inject
+    private TaskService taskService;
 
-    private final ProjectService projectService;
+    @Inject
+    private ProjectService projectService;
 
-    private final UserService userService;
-
-    public TaskEndPointImpl(TaskService taskService, ProjectService projectService, UserService userService) {
-        this.taskService = taskService;
-        this.projectService = projectService;
-        this.userService = userService;
-    }
+    @Inject
+    private UserService userService;
 
     @WebMethod
     @Override

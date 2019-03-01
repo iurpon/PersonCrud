@@ -31,28 +31,35 @@ public class Bootstrap {
     @Inject
     private SessionRepository sessionRepository;
 
-    private final UserService userService = new UserServiceImpl(userRepository,sessionRepository);
+    @Inject
+    private UserService userService;
 
-    private final ProjectRepository projectRepository = new ProjectRepositoryImpl();
+    @Inject
+    private ProjectRepository projectRepository;
 
-    private final ProjectService projectService = new ProjectServiceImpl(projectRepository, userService);
+    @Inject
+    private ProjectService projectService;
 
-    private final TaskRepository taskRepository = new TaskRepositoryImpl();
+    @Inject
+    private TaskRepository taskRepository;
 
-    private final TaskService taskService = new TaskServiceImpl(taskRepository);
+    @Inject
+    private TaskService taskService;
 
-    private final ProjectEndPoint projectEndPoint = new ProjectEndPointImpl(projectService,userService);
+    @Inject
+    private ProjectEndPoint projectEndPoint;
 
-    private final TaskEndPoint taskEndPoint = new TaskEndPointImpl(taskService,projectService,userService);
+    @Inject
+    private TaskEndPoint taskEndPoint;
 
-    private final UserEndPoint userEndPoint = new UserEndPointImpl(userService);
+    @Inject
+    private UserEndPoint userEndPoint;
 
-    private final AdminService adminService = new AdminServiceImpl(
-            projectService,
-            userService,
-            taskService);
+    @Inject
+    private AdminService adminService;
 
-    private final AdminEndPoint adminEndPoint = new AdminEndPointImpl(adminService);
+    @Inject
+    private AdminEndPoint adminEndPoint;
 
     public void init() {
         Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl", projectEndPoint);

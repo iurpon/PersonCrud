@@ -11,19 +11,19 @@ import ru.trandefil.tm.exception.SecurityAuthorizationException;
 import ru.trandefil.tm.generated.UserEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApplicationScoped
 @WebService(endpointInterface = "ru.trandefil.tm.generated.UserEndPoint")
 public class UserEndPointImpl implements UserEndPoint {
 
+    @Inject
     private UserService userService;
-
-    public UserEndPointImpl(UserService userService) {
-        this.userService = userService;
-    }
 
     @Override
     @WebMethod
@@ -103,7 +103,7 @@ public class UserEndPointImpl implements UserEndPoint {
             System.out.println("not authorized  to update this user.");
             throw new SecurityAuthorizationException("no permitting for execution.");
         }
-        if(pass.isEmpty()){
+        if (pass.isEmpty()) {
             final User user = userService.getById(userDTO.getId());
             pass = user.getPassword();
         }

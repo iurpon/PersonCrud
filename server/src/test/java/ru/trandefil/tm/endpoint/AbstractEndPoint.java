@@ -27,7 +27,7 @@ import static ru.trandefil.tm.TestData.*;
 
 public abstract class AbstractEndPoint {
 
-    protected final UserRepository userRepository = new UserRepositoryImpl();
+ /*   protected final UserRepository userRepository = new UserRepositoryImpl();
 
     protected final SessionRepository sessionRepository = new SessionRepositoryImpl();
 
@@ -79,7 +79,7 @@ public abstract class AbstractEndPoint {
         sessionRepository.clear(EMFactoryUtil.getEntityManager());
         userRepository.clear(EMFactoryUtil.getEntityManager());
 
-/*        userRepository.saveOrUpdate(ADMIN, EMFactoryUtil.getEntityManager());
+*//*        userRepository.saveOrUpdate(ADMIN, EMFactoryUtil.getEntityManager());
         userRepository.saveOrUpdate(USER, EMFactoryUtil.getEntityManager());
 
 
@@ -89,7 +89,7 @@ public abstract class AbstractEndPoint {
 
         taskRepository.save(TASK1_ADMIN, entityManagerFactory.createEntityManager());
         taskRepository.save(TASK2_ADMIN, entityManagerFactory.createEntityManager());
-        taskRepository.save(TASK1_USER, entityManagerFactory.createEntityManager());*/
+        taskRepository.save(TASK1_USER, entityManagerFactory.createEntityManager());*//*
 
         userService.save(ADMIN);
         userService.save(USER);
@@ -102,5 +102,5 @@ public abstract class AbstractEndPoint {
         taskService.save(USER.getId(),TASK1_USER);
 
     }
-
+*/
 }

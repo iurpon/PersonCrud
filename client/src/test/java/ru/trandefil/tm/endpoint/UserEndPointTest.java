@@ -24,7 +24,7 @@ public class UserEndPointTest extends AbstractEndPoint {
 
     @Test
     public void getSession() {
-        Session session = userEndPoint.getSession("Admin", "adminPassword");
+        Session session = userEndPoint.getSession("bla", "bla");
         assertEquals(session != null, true);
     }
 

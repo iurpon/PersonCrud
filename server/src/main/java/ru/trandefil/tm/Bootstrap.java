@@ -18,11 +18,15 @@ import ru.trandefil.tm.service.ProjectServiceImpl;
 import ru.trandefil.tm.service.TaskServiceImpl;
 import ru.trandefil.tm.service.UserServiceImpl;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.xml.ws.Endpoint;
 
+@ApplicationScoped
 public class Bootstrap {
 
-    private final UserRepository userRepository = new UserRepositoryImpl();
+    @Inject
+    private UserRepository userRepository;
 
     private final SessionRepository sessionRepository = new SessionRepositoryImpl();
 

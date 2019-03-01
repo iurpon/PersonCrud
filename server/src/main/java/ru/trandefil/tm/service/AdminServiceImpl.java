@@ -10,25 +10,25 @@ import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.entity.User;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+@ApplicationScoped
 public class AdminServiceImpl implements AdminService {
 
-    private final ProjectService projectService;
+    @Inject
+    private ProjectService projectService;
 
-    private final UserService userService;
+    @Inject
+    private UserService userService;
 
-    private final TaskService taskService;
-
-    public AdminServiceImpl(ProjectService projectService, UserService userService, TaskService taskService) {
-        this.projectService = projectService;
-        this.userService = userService;
-        this.taskService = taskService;
-    }
+    @Inject
+    private TaskService taskService;
 
     @Override
     public void loadJson() {

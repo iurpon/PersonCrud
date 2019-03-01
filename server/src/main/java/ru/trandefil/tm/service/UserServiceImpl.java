@@ -13,22 +13,22 @@ import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
+@ApplicationScoped
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    @Inject
+    private UserRepository userRepository;
 
-    private final SessionRepository sessionRepository;
+    @Inject
+    private SessionRepository sessionRepository;
 
     private final Logger logger = Logger.getLogger(this.getClass().getName());
-
-    public UserServiceImpl(UserRepository userRepository, SessionRepository sessionRepository) {
-        this.userRepository = userRepository;
-        this.sessionRepository = sessionRepository;
-    }
 
     @Override
     public void delete(@NonNull final User user) {

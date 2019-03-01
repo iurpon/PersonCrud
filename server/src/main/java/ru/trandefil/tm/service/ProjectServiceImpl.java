@@ -8,19 +8,19 @@ import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.util.EMFactoryUtil;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+@ApplicationScoped
 public class ProjectServiceImpl implements ProjectService {
 
-    private final ProjectRepository projectRepository;
+    @Inject
+    private ProjectRepository projectRepository;
 
-    private final UserService userService;
-
-    public ProjectServiceImpl(ProjectRepository projectRepository, UserService userService) {
-        this.projectRepository = projectRepository;
-        this.userService = userService;
-    }
+    @Inject
+    private UserService userService;
 
     @Override
     public Project save(@NonNull final String userId, @NonNull final String name, @NonNull final String description) {

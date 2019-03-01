@@ -7,16 +7,16 @@ import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.exception.SecurityAuthorizationException;
 import ru.trandefil.tm.util.EMFactoryUtil;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+@ApplicationScoped
 public class TaskServiceImpl implements TaskService {
 
-    private final TaskRepository taskRepository;
-
-    public TaskServiceImpl(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
+    @Inject
+    private TaskRepository taskRepository;
 
     @Override
     public List<Task> getAll(@NonNull final String userId) {

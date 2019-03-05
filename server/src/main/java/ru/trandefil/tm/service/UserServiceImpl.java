@@ -14,12 +14,14 @@ import ru.trandefil.tm.util.SignatureUtil;
 import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
 @ApplicationScoped
+@Alternative
 public class UserServiceImpl implements UserService {
 
     @Inject

@@ -30,36 +30,73 @@ public class DSUserService implements UserService {
 
     @Override
     public User getRefById(String id) {
-        return null;
+        logger.info("ds userservice getRefByid");
+        try {
+            return userRepository.getReference(id);
+        } catch (Exception e) {
+            throw new DataBaseException(e.getMessage());
+        }
     }
 
     @Override
-    public User getById(String id) {
-        return null;
+    public User getById(@NonNull final String id) {
+        logger.info("ds userservice getByid");
+        try {
+            return userRepository.findBy(id);
+        } catch (Exception e) {
+            throw new DataBaseException(e.getMessage());
+        }
     }
 
     @Override
     public void delete(User user) {
-
+        logger.info("ds userservice delete");
+        try {
+            userRepository.remove(user);
+        } catch (Exception e) {
+            throw new DataBaseException(e.getMessage());
+        }
     }
 
     @Override
-    public boolean deleteByName(String name) {
-        return false;
+    public boolean deleteByName(@NonNull final String name) {
+        logger.info("ds userservice deleteByName");
+        try {
+            int result = userRepository.deleteByName(name);
+            return result != 0;
+        } catch (Exception e) {
+            throw new DataBaseException(e.getMessage());
+        }
     }
 
     @Override
-    public User save(User user) {
-        return null;
+    public User save(@NonNull final User user) {
+        logger.info("ds userservice save");
+        try {
+            if (user.isNew()) {
+                user.setId(UUIDUtil.getUniqueString());
+                userRepository.persist(user);
+                return user;
+            }
+            return userRepository.merge(user);
+        } catch (Exception e) {
+            throw new DataBaseException(e.getMessage());
+        }
     }
 
     @Override
-    public User getByName(String userName) {
-        return null;
+    public User getByName(@NonNull final String userName) {
+        logger.info("ds userservice getByName");
+        try {
+            return userRepository.findBy(userName);
+        } catch (Exception e) {
+            throw new DataBaseException(e.getMessage());
+        }
     }
 
     @Override
     public List<User> getAll() {
+        logger.info("ds userservice getAll");
         try {
             return userRepository.findAll();
         } catch (Exception e) {
@@ -69,6 +106,7 @@ public class DSUserService implements UserService {
 
     @Override
     public Session getSession(@NonNull final String userName, @NonNull final String userPassword) {
+        logger.info("ds userservice getSession");
         try {
             logger.info("get session");
             final User user = userRepository.getLoggedUser(userName, HashUtil.hashPassword(userPassword));
@@ -98,6 +136,7 @@ public class DSUserService implements UserService {
 
     @Override
     public void logout(Session session) {
+        logger.info("ds userservice logout");
         try {
             sessionRepository.remove(session);
         } catch (Exception e) {
@@ -107,6 +146,7 @@ public class DSUserService implements UserService {
 
     @Override
     public User constractUser(@NonNull final String name, @NonNull final String pass, @NonNull String role) {
+        logger.info("ds userservice constract user");
         role = role.trim().toUpperCase();
         if ("ADMIN".equals(role) || "USER".equals(role)) {
             final Role newRole = Enum.valueOf(Role.class, role);

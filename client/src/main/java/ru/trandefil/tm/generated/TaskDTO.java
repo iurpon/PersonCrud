@@ -47,15 +47,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class TaskDTO {
 
-    @Override
-    public String toString() {
-        return "TaskDTO{" +
-                "begin=" + begin +
-                ", end=" + end +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
     protected String assigneeId;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar begin;

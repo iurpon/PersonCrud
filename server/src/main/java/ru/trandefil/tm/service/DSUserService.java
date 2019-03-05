@@ -7,7 +7,6 @@ import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.exception.RepositoryLayerException;
-import ru.trandefil.tm.repository.DSSessionRepository;
 import ru.trandefil.tm.repository.DSUserRepository;
 import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;

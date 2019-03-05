@@ -13,22 +13,22 @@ import java.util.List;
 public interface DSUserRepository extends FullEntityRepository<User, String> {
 
     @Override
-    void persist(User user);
+    void persist(@NonNull User user);
 
     @Override
-    User merge(User user);
+    User merge(@NonNull User user);
 
     @Override
-    User getReference(Object o);
+    User getReference(@NonNull Object o);
 
     @Override
-    User findBy(String s);
+    User findBy(@NonNull String s);
 
     @Override
     List<User> findAll();
 
     @Override
-    void remove(User user);
+    void remove(@NonNull User user);
 
     @Query(value = "delete from User u where u.id = :id")
     int deleteById(@NonNull @QueryParam("id") String id);

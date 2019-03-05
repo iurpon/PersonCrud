@@ -21,7 +21,7 @@ public class DSSessionService implements SessionService {
     @Override
     public void delete(@NonNull final Session session) {
         try {
-            sessionRepository.deleteSession(session.getId());
+            sessionRepository.remove(session);
         } catch (Exception e) {
             throw new RepositoryLayerException(e.getMessage());
         }

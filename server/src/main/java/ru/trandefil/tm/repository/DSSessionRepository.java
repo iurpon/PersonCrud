@@ -19,7 +19,9 @@ public interface DSSessionRepository extends FullEntityRepository<Session, Strin
     @Override
     void remove(@NonNull Session session);
 
-    @Query(value = "delete from Session s where s.id = :id")
-    void deleteSession(@NonNull @QueryParam("id") String id);
+    @Query(value = "delete from Session s where s.id = :sessionId")
+    void deleteSession(@NonNull @QueryParam("sessionId") String sessionId);
+
+
 
 }

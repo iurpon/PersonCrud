@@ -8,11 +8,13 @@ import ru.trandefil.tm.exception.SecurityAuthorizationException;
 import ru.trandefil.tm.util.EMFactoryUtil;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 
 @ApplicationScoped
+@Alternative
 public class TaskServiceImpl implements TaskService {
 
     @Inject

@@ -9,11 +9,13 @@ import ru.trandefil.tm.entity.User;
 import ru.trandefil.tm.util.EMFactoryUtil;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 
 @ApplicationScoped
+@Alternative
 public class ProjectServiceImpl implements ProjectService {
 
     @Inject

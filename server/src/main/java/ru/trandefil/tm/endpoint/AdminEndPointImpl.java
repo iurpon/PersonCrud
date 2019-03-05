@@ -16,9 +16,9 @@ import javax.jws.WebService;
 
 @Singleton
 @WebService(endpointInterface = "ru.trandefil.tm.generated.AdminEndPoint")
-public class AdminEndPointImpl implements AdminEndPoint {
+public class AdminEndPointImpl {//implements AdminEndPoint {
 
-    @Inject
+/*    @Inject
     private AdminService adminService;
 
     @Override
@@ -61,6 +61,6 @@ public class AdminEndPointImpl implements AdminEndPoint {
             throw new SecurityAuthorizationException("not authorized for this operation.");
         }
         adminService.clearJson();
-    }
+    }*/
 
 }

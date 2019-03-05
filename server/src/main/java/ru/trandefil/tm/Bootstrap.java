@@ -1,22 +1,13 @@
 package ru.trandefil.tm;
 
 import ru.trandefil.tm.api.*;
-import ru.trandefil.tm.endpoint.AdminEndPointImpl;
-import ru.trandefil.tm.endpoint.ProjectEndPointImpl;
-import ru.trandefil.tm.endpoint.TaskEndPointImpl;
-import ru.trandefil.tm.endpoint.UserEndPointImpl;
 import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
-import ru.trandefil.tm.repository.ProjectRepositoryImpl;
-import ru.trandefil.tm.repository.SessionRepositoryImpl;
-import ru.trandefil.tm.repository.TaskRepositoryImpl;
-import ru.trandefil.tm.repository.UserRepositoryImpl;
-import ru.trandefil.tm.service.AdminServiceImpl;
-import ru.trandefil.tm.service.ProjectServiceImpl;
-import ru.trandefil.tm.service.TaskServiceImpl;
-import ru.trandefil.tm.service.UserServiceImpl;
+import ru.trandefil.tm.repository.DSProjectRepository;
+import ru.trandefil.tm.repository.DSSessionRepository;
+import ru.trandefil.tm.repository.DSUserRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -26,46 +17,48 @@ import javax.xml.ws.Endpoint;
 public class Bootstrap {
 
     @Inject
-    private UserRepository userRepository;
+    private DSUserRepository userRepository;
 
     @Inject
-    private SessionRepository sessionRepository;
+    private DSSessionRepository sessionRepository;
 
     @Inject
     private UserService userService;
 
     @Inject
-    private ProjectRepository projectRepository;
+    private DSProjectRepository projectRepository;
 
     @Inject
     private ProjectService projectService;
 
-    @Inject
+/*    @Inject
     private TaskRepository taskRepository;
 
     @Inject
     private TaskService taskService;
 
+
+    @Inject
+    private TaskEndPoint taskEndPoint;*/
+
+
     @Inject
     private ProjectEndPoint projectEndPoint;
 
     @Inject
-    private TaskEndPoint taskEndPoint;
-
-    @Inject
     private UserEndPoint userEndPoint;
 
-    @Inject
+/*    @Inject
     private AdminService adminService;
 
     @Inject
-    private AdminEndPoint adminEndPoint;
+    private AdminEndPoint adminEndPoint;*/
 
     public void init() {
         Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl", projectEndPoint);
-        Endpoint.publish("http://localhost:8080/taskEndPoint?wsdl", taskEndPoint);
+//        Endpoint.publish("http://localhost:8080/taskEndPoint?wsdl", taskEndPoint);
         Endpoint.publish("http://localhost:8080/userEndPoint?wsdl", userEndPoint);
-        Endpoint.publish("http://localhost:8080/adminEndPoint?wsdl", adminEndPoint);
+//        Endpoint.publish("http://localhost:8080/adminEndPoint?wsdl", adminEndPoint);
     }
 
 }

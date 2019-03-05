@@ -8,6 +8,7 @@
         <class>ru.trandefil.tm.entity.User</class>
         <class>ru.trandefil.tm.entity.Project</class>
         <class>ru.trandefil.tm.entity.Task</class>
+        <class>ru.trandefil.tm.entity.Session</class>
         <properties>
             <property name="javax.persistence.provider"
                       value="org.hibernate.jpa.HibernatePersistenceProvider" />

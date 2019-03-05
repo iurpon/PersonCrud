@@ -63,6 +63,9 @@ public class UserEndPointImpl implements UserEndPoint {
             throw new SecurityAuthentificationException("security authentification exception.");
         }
         final User user = userService.getByName(userName);
+        if(user == null){
+            return null;
+        }
         return getDTO(user);
     }
 

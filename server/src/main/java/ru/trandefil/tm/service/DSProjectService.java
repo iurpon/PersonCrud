@@ -9,6 +9,7 @@ import ru.trandefil.tm.exception.RepositoryLayerException;
 import ru.trandefil.tm.exception.SecurityAuthorizationException;
 import ru.trandefil.tm.repository.DSProjectRepository;
 import ru.trandefil.tm.repository.DSUserRepository;
+import ru.trandefil.tm.util.UUIDUtil;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -34,8 +35,9 @@ public class DSProjectService implements ProjectService {
                 logger.info("save project failed.user is null.");
                 throw new SecurityAuthorizationException("bad userId");
             }
-            final Project project = new Project(null, name, description, user);
-            return projectRepository.save(project);
+            final Project project = new Project(UUIDUtil.getUniqueString(), name, description, user);
+            projectRepository.persist(project);
+            return project;
         } catch (SecurityAuthorizationException e) {
             throw new RepositoryLayerException(e.getMessage());
         }

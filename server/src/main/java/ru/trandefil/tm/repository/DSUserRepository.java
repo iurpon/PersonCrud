@@ -36,6 +36,9 @@ public interface DSUserRepository extends FullEntityRepository<User, String> {
     @Query(value = "delete from User u where u.name = :name")
     int deleteByName(@NonNull @QueryParam("name") String name);
 
+    @Query(value = "select u from User u where u.name = :name")
+    User getByName(@NonNull @QueryParam("name") String name);
+
     @Query(value = "select u from User u where u.name = :name and u.password = :pass")
     User getLoggedUser(@NonNull @QueryParam("name") String name, @NonNull @QueryParam("pass") String pass);
 

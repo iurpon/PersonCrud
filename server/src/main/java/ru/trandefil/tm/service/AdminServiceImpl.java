@@ -19,9 +19,9 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @ApplicationScoped
-public class AdminServiceImpl{//} implements AdminService {
+public class AdminServiceImpl implements AdminService {
 
-/*    @Inject
+    @Inject
     private ProjectService projectService;
 
     @Inject
@@ -36,10 +36,10 @@ public class AdminServiceImpl{//} implements AdminService {
                 final ObjectMapper objectMapper = new ObjectMapper();
                 final String jsonString = new String(Files.readAllBytes(Paths.get("data.json")));
                 System.out.println(jsonString);
-*//*                final Domain command = objectMapper.readValue(jsonString, Domain.class);
+                final Domain command = objectMapper.readValue(jsonString, Domain.class);
                 command.getUsers().forEach(System.out::println);
                 command.getProjects().forEach(System.out::println);
-                command.getTasks().forEach(System.out::println);*//*
+                command.getTasks().forEach(System.out::println);
             } catch (IOException e) {
                 System.out.println("is empty.");
                 e.printStackTrace();
@@ -68,6 +68,6 @@ public class AdminServiceImpl{//} implements AdminService {
     public void clearJson() {
         final File file = new File("data.json");
         file.delete();
-    }*/
+    }
 
 }

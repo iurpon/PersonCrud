@@ -1,6 +1,9 @@
 package ru.trandefil.tm.repository;
 
+import lombok.NonNull;
 import org.apache.deltaspike.data.api.FullEntityRepository;
+import org.apache.deltaspike.data.api.Query;
+import org.apache.deltaspike.data.api.QueryParam;
 import org.apache.deltaspike.data.api.Repository;
 import ru.trandefil.tm.entity.Session;
 
@@ -14,6 +17,9 @@ public interface DSSessionRepository extends FullEntityRepository<Session, Strin
     void clear();
 
     @Override
-    void remove(Session session);
+    void remove(@NonNull Session session);
+
+    @Query(value = "delete from Session s where s.id = :id")
+    void deleteSession(@NonNull @QueryParam("id") String id);
 
 }

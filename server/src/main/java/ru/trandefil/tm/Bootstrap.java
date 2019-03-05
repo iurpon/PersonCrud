@@ -1,8 +1,10 @@
 package ru.trandefil.tm;
 
+import ru.trandefil.tm.api.AdminService;
 import ru.trandefil.tm.api.ProjectService;
 import ru.trandefil.tm.api.TaskService;
 import ru.trandefil.tm.api.UserService;
+import ru.trandefil.tm.generated.AdminEndPoint;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.generated.TaskEndPoint;
 import ru.trandefil.tm.generated.UserEndPoint;
@@ -49,17 +51,17 @@ public class Bootstrap {
     @Inject
     private UserEndPoint userEndPoint;
 
-/*    @Inject
+    @Inject
     private AdminService adminService;
 
     @Inject
-    private AdminEndPoint adminEndPoint;*/
+    private AdminEndPoint adminEndPoint;
 
     public void init() {
         Endpoint.publish("http://localhost:8080/projectEndPoint?wsdl", projectEndPoint);
         Endpoint.publish("http://localhost:8080/taskEndPoint?wsdl", taskEndPoint);
         Endpoint.publish("http://localhost:8080/userEndPoint?wsdl", userEndPoint);
-//        Endpoint.publish("http://localhost:8080/adminEndPoint?wsdl", adminEndPoint);
+        Endpoint.publish("http://localhost:8080/adminEndPoint?wsdl", adminEndPoint);
     }
 
 }

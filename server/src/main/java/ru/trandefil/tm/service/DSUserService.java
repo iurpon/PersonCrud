@@ -26,7 +26,7 @@ public class DSUserService implements UserService {
     private DSUserRepository userRepository;
 
     @Inject
-    private DSSessionRepository sessionRepository;
+    private DSSessionService sessionService;
 
     @Override
     public User getRefById(String id) {
@@ -88,7 +88,7 @@ public class DSUserService implements UserService {
     public User getByName(@NonNull final String userName) {
         logger.info("ds userservice getByName");
         try {
-            return userRepository.findBy(userName);
+            return userRepository.getByName(userName);
         } catch (Exception e) {
             throw new RepositoryLayerException(e.getMessage());
         }
@@ -130,7 +130,7 @@ public class DSUserService implements UserService {
         final long timeStamp = System.nanoTime();
         final String signature = SignatureUtil.createSignature(uuid, userId, timeStamp, role);
         final Session created = new Session(uuid, timeStamp, userId, role, signature);
-        sessionRepository.persist(created);
+        sessionService.save(created);
         return created;
     }
 
@@ -138,7 +138,7 @@ public class DSUserService implements UserService {
     public void logout(Session session) {
         logger.info("ds userservice logout");
         try {
-            sessionRepository.remove(session);
+            sessionService.delete(session);
         } catch (Exception e) {
             throw new RepositoryLayerException(e.getMessage());
         }

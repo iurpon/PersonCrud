@@ -36,6 +36,13 @@ import javax.xml.bind.annotation.XmlType;
     "userName"
 })
 public class ProjectDTO {
+    @Override
+    public String toString() {
+        return "ProjectDTO{" +
+                "name='" + name + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
+    }
 
     protected String description;
     protected String id;

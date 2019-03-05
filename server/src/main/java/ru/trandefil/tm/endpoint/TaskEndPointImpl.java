@@ -26,11 +26,11 @@ import java.util.logging.Logger;
 
 @Singleton
 @WebService(endpointInterface = "ru.trandefil.tm.generated.TaskEndPoint")
-public class TaskEndPointImpl{// implements TaskEndPoint {
+public class TaskEndPointImpl implements TaskEndPoint {
 
     private Logger logger = Logger.getLogger(this.getClass().getName());
 
-/*    @Inject
+    @Inject
     private TaskService taskService;
 
     @Inject
@@ -136,6 +136,6 @@ public class TaskEndPointImpl{// implements TaskEndPoint {
         return new Task(taskDTO.getId(), taskDTO.getName(),
                 taskDTO.getDescription(), taskDTO.getBegin(), taskDTO.getEnd(),
                 project, assigner, executor);
-    }*/
+    }
 
 }

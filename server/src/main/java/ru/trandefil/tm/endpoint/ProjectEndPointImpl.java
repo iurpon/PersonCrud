@@ -11,7 +11,6 @@ import ru.trandefil.tm.exception.SecurityAuthentificationException;
 import ru.trandefil.tm.generated.ProjectEndPoint;
 import ru.trandefil.tm.util.SignatureUtil;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.jws.WebService;
@@ -93,7 +92,10 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
             System.out.println("bad signature.");
             throw new SecurityAuthentificationException("security authentification exception.");
         }
-        Project project = projectService.getByName(projectName, session.getUserId());
+        Project project = projectService.getByName(session.getUserId(), projectName);
+        if (project == null) {
+            return null;
+        }
         return getDTOproject(project);
     }
 
@@ -110,7 +112,7 @@ public class ProjectEndPointImpl implements ProjectEndPoint {
 
     private Project fromDTO(@NonNull ProjectDTO dto) {
         final User user = userService.getByName(dto.getUserName());
-        final Project project = new Project(dto.getId(),dto.getName(),dto.getDescription(),user);
+        final Project project = new Project(dto.getId(), dto.getName(), dto.getDescription(), user);
         return project;
     }
 

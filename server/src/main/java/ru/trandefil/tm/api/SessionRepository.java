@@ -15,5 +15,4 @@ public interface SessionRepository {
 
     List<Session> getAll(EntityManager em);
 
-
 }

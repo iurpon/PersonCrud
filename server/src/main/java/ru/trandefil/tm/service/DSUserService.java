@@ -6,7 +6,7 @@ import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.exception.DataBaseException;
+import ru.trandefil.tm.exception.RepositoryLayerException;
 import ru.trandefil.tm.repository.DSSessionRepository;
 import ru.trandefil.tm.repository.DSUserRepository;
 import ru.trandefil.tm.util.HashUtil;
@@ -34,7 +34,7 @@ public class DSUserService implements UserService {
         try {
             return userRepository.getReference(id);
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class DSUserService implements UserService {
         try {
             return userRepository.findBy(id);
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ public class DSUserService implements UserService {
         try {
             userRepository.remove(user);
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ public class DSUserService implements UserService {
             int result = userRepository.deleteByName(name);
             return result != 0;
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -80,7 +80,7 @@ public class DSUserService implements UserService {
             }
             return userRepository.merge(user);
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -90,7 +90,7 @@ public class DSUserService implements UserService {
         try {
             return userRepository.findBy(userName);
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -100,7 +100,7 @@ public class DSUserService implements UserService {
         try {
             return userRepository.findAll();
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -120,7 +120,7 @@ public class DSUserService implements UserService {
             System.out.println("logged " + user.getName());
             return newSess;
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -140,7 +140,7 @@ public class DSUserService implements UserService {
         try {
             sessionRepository.remove(session);
         } catch (Exception e) {
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 

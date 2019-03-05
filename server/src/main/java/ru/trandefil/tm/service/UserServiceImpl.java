@@ -7,7 +7,7 @@ import ru.trandefil.tm.api.UserService;
 import ru.trandefil.tm.entity.Role;
 import ru.trandefil.tm.entity.Session;
 import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.exception.DataBaseException;
+import ru.trandefil.tm.exception.RepositoryLayerException;
 import ru.trandefil.tm.util.EMFactoryUtil;
 import ru.trandefil.tm.util.HashUtil;
 import ru.trandefil.tm.util.SignatureUtil;
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
                 em.getTransaction().rollback();
                 em.close();
             }
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
                 em.getTransaction().rollback();
                 em.close();
             }
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
                 em.getTransaction().rollback();
                 em.close();
             }
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 
@@ -180,7 +180,7 @@ public class UserServiceImpl implements UserService {
                 em.close();
             }
             e.getMessage();
-            throw new DataBaseException(e.getMessage());
+            throw new RepositoryLayerException(e.getMessage());
         }
     }
 

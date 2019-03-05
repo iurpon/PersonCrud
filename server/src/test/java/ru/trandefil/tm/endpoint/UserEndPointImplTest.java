@@ -1,18 +1,6 @@
 package ru.trandefil.tm.endpoint;
 
-import org.hibernate.exception.ConstraintViolationException;
-import org.junit.Test;
-import ru.trandefil.tm.entity.Role;
-import ru.trandefil.tm.entity.Session;
-import ru.trandefil.tm.entity.User;
-import ru.trandefil.tm.exception.DataBaseException;
-import ru.trandefil.tm.util.EMFactoryUtil;
-
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
-import static ru.trandefil.tm.TestData.ADMIN;
-import static ru.trandefil.tm.TestData.USER;
 
 public class UserEndPointImplTest extends AbstractEndPoint {
 
@@ -36,7 +24,7 @@ public class UserEndPointImplTest extends AbstractEndPoint {
         assertEquals(newUser, saved);
     }
 
-    @Test(expected = DataBaseException.class)
+    @Test(expected = RepositoryLayerException.class)
     public void saveDuplicate(){
         User newUser = new User(null, "newUser", "newPass", Role.USER);
         userService.save(newUser);

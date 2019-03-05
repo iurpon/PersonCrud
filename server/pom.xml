@@ -23,6 +23,7 @@
         <junit.vesion>4.10</junit.vesion>
         <mysql-connector-java.version>5.1.4</mysql-connector-java.version>
         <hibernate.version>5.3.2.Final</hibernate.version>
+        <deltaspike.version>1.9.0</deltaspike.version>
     </properties>
 
     <build>
@@ -94,7 +95,7 @@
             <version>3.1.0.Final</version>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>org.jboss.weld</groupId>
             <artifactId>weld-core</artifactId>
             <version>2.4.3.Final</version>
@@ -104,7 +105,53 @@
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
             <version>2.0</version>
+        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.deltaspike.core/deltaspike-core-api -->
+        <dependency>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-api</artifactId>
+            <version>${deltaspike.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.deltaspike.core/deltaspike-core-impl -->
+        <dependency>
+            <groupId>org.apache.deltaspike.core</groupId>
+            <artifactId>deltaspike-core-impl</artifactId>
+            <version>${deltaspike.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.deltaspike.cdictrl/deltaspike-cdictrl-api -->
+        <dependency>
+            <groupId>org.apache.deltaspike.cdictrl</groupId>
+            <artifactId>deltaspike-cdictrl-api</artifactId>
+            <version>${deltaspike.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.deltaspike.cdictrl/deltaspike-cdictrl-weld -->
+        <dependency>
+            <groupId>org.apache.deltaspike.cdictrl</groupId>
+            <artifactId>deltaspike-cdictrl-weld</artifactId>
+            <version>${deltaspike.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.deltaspike.modules/deltaspike-data-module-api -->
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-data-module-api</artifactId>
+            <version>${deltaspike.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.deltaspike.modules/deltaspike-data-module-impl -->
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-data-module-impl</artifactId>
+            <version>${deltaspike.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
 
     </dependencies>
 

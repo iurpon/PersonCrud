@@ -3,6 +3,7 @@ package ru.trandefil.tm.service;
 import lombok.NonNull;
 import org.apache.deltaspike.jpa.api.transaction.Transactional;
 import ru.trandefil.tm.api.TaskService;
+import ru.trandefil.tm.entity.Project;
 import ru.trandefil.tm.entity.Task;
 import ru.trandefil.tm.exception.RepositoryLayerException;
 import ru.trandefil.tm.exception.SecurityAuthorizationException;
@@ -71,8 +72,8 @@ public class DSTaskService implements TaskService {
     @Override
     public boolean deleteByName(@NonNull final String userId, @NonNull final String name) {
         try {
-            boolean result = taskRepository.deleteByName(userId, name);
-            return result;
+            int result = taskRepository.deleteByName(userId, name);
+            return  result != 0;
         } catch (Exception e) {
             throw new RepositoryLayerException(e.getMessage());
         }

@@ -28,7 +28,7 @@ public interface DSTaskRepository extends FullEntityRepository<Task, String> {
     void remove(Task task);
 
     @Query(value = "delete from Task t where t.assignee.id = :userId and t.name = :name")
-    boolean deleteByName(@NonNull @QueryParam("userId") String userId, @NonNull @QueryParam("name") String name);
+    int deleteByName(@NonNull @QueryParam("userId") String userId, @NonNull @QueryParam("name") String name);
 
     @Query(value = "select t from Task t where t.assignee.id = :userId and t.name = :name")
     Task getByName(@NonNull @QueryParam("userId") String userId, @NonNull @QueryParam("name") String name);

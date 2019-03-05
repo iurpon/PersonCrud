@@ -85,8 +85,12 @@ public class DSProjectService implements ProjectService {
     @Override
     public boolean deleteByName(@NonNull final String userId, @NonNull final String projectName) {
         try {
-            int result = projectRepository.removeByName(projectName, userId);
-            return result != 0;
+            final Project project = projectRepository.getByName(userId,projectName);
+            if(project == null){
+                return false;
+            }
+            projectRepository.remove(project);
+            return true;
         } catch (Exception e) {
             throw new RepositoryLayerException(e.getMessage());
         }

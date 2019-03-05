@@ -17,7 +17,7 @@ public class Project extends BaseNamedEntity {
     private User user;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL)//,orphanRemoval = true
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Task> tasks = new ArrayList<>();
 
     public Project() {
